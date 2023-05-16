@@ -1,0 +1,6 @@
+.inputBox:focus-within label {
+     top: 0;
+     -translate-y-full: 0;
+     font-size: 0.7rem;
+     color: #6b7280;
+}

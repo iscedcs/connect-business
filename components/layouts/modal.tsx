@@ -1,0 +1,63 @@
+import React, { useState } from 'react';
+import { AnimatePresence, motion, Variants } from 'framer-motion';
+
+interface ModalProps {
+	children: React.ReactNode;
+	isOpen: boolean;
+	onClose?: () => void; // Add onClose prop for closing the modal
+}
+
+const Modal = ({ children, isOpen, onClose }: ModalProps) => {
+	const modalVariants: Variants = {
+		initial: {
+			opacity: 0,
+			y: -50,
+		},
+		animate: {
+			opacity: 1,
+			y: 0,
+			transition: {
+				duration: 0.3, // Reduce the duration for smoother animation
+				type: 'spring',
+				damping: 20,
+				stiffness: 200,
+			},
+		},
+		exit: {
+			opacity: 0,
+			y: 50,
+			transition: {
+				duration: 0.3,
+			},
+		},
+	};
+
+	return (
+		<AnimatePresence>
+			{isOpen && (
+				<motion.div
+					key='modal'
+					className='fixed inset-0 flex items-center justify-center bg-opacity-40 bg-white backdrop-filter backdrop-blur-sm'
+					variants={modalVariants}
+					initial='initial'
+					animate='animate'
+					exit='exit'
+				>
+					<div className='absolute inset-0'></div>
+					{children}
+					{onClose && (
+						<button
+							className='absolute top-0 right-0 m-4 p-2 text-gray-500'
+							onClick={onClose}
+							aria-label='Close'
+						>
+							{/* Add a close button */}X
+						</button>
+					)}
+				</motion.div>
+			)}
+		</AnimatePresence>
+	);
+};
+
+export default Modal;
