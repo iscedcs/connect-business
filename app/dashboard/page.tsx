@@ -15,10 +15,10 @@ export default function Dashboard() {
 				profileName='Da Civic'
 				notificationCount={10}
 			/>
-			<SearchBar />
+			{/* <SearchBar /> */}
 			<div className='grid grid-cols-12 w-full gap-6 overflow-hidden'>
-				<div className='col-span-9 overflow-y-scroll'>
-					<div className='grid grid-cols-3 gap-6'>
+				<div className='col-span-12 md:col-span-9 overflow-y-scroll'>
+					<div className='grid grid-cols-6 gap-6'>
 						<DashboardCard
 							amount='178'
 							newAmount='20'
@@ -57,7 +57,7 @@ export default function Dashboard() {
 						/>
 					</div>
 				</div>
-				<div className='col-span-3 w-full h-full overflow-y-scroll rounded-2xl bg-white border border-gray-200 relative p-3 shadow-mid'>
+				<div className='col-span-12 md:col-span-3 w-full h-full overflow-y-scroll rounded-2xl bg-white border border-gray-200 relative p-3 shadow-mid'>
 					<div className='flex flex-col justify-start gap-5'>
 						<Calendar
 							onSelectDate={(date) => {

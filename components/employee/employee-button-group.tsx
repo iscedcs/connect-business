@@ -30,7 +30,7 @@ const EmployeesButtonGroup: React.FC<EmployeesButtonGroupProps> = ({
 					<button
 						key={button.id}
 						id={button.id}
-						className={`flex-grow-0 flex-shrink-0 min-w-min text-lg text-center h-10 ${
+						className={`flex-grow-0 flex-shrink-0 min-w-min text-tiny md:text-lg text-center h-10 ${
 							activeButton === button.id
 								? 'text-black border-b-2 border-black'
 								: 'text-gray-500'

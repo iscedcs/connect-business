@@ -37,5 +37,43 @@ export interface EmployeeDetails {
 	name: string;
 	email: string;
 	position: string;
-	image: string;
+	image?: string;
+	status: string;
+	address: string;
+	phone: string;
+	gender: string;
+}
+
+export interface DropdownItem {
+	title: string;
+	link?: string;
+	onClick?: () => void;
+	icon: React.ReactNode;
+	color: string;
+}
+
+export interface DropdownProps {
+	isOpen: boolean; // New prop for controlling the visibility of the dropdown
+	items: DropdownItem[];
+	onClose: () => void;
+}
+
+export interface EmployeeCardProps {
+	name: string;
+	email: string;
+	position: string;
+	image?: string;
+	onClick: () => void;
+	status: string;
+}
+
+export interface NavBarMobileButtonProps {
+	imageSrc: string;
+	links: {
+		title: string;
+		href: string;
+		icon: string;
+		bgColor: string;
+		borderColor: string;
+	}[];
 }

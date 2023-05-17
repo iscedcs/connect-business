@@ -20,7 +20,7 @@ export default function AddEmployee() {
 				notificationCount={10}
 			/>
 			<div className='grid grid-cols-12 w-full h-full gap-6 py-5 overflow-hidden'>
-				<div className='col-span-6 pt-20'>
+				<div className='col-span-12 md:col-span-8 lg:col-span-6 pt-20'>
 					<form className='flex flex-col gap-5'>
 						<TextInput label={"Employee's Name"} />
 						<TextInput label={"Employee's Email Address"} />

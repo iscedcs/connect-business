@@ -45,7 +45,7 @@ export default function DashboardCard({
 
 	return (
 		<motion.div
-			className='col-span-1 w-full min-h-[250px] relative overflow-hidden rounded-xl bg-white border border-gray-200 hover:shadow-mid transition-all duration-500'
+			className='col-span-6 md:col-span-3 lg:col-span-2 w-full min-h-[250px] relative overflow-hidden rounded-xl bg-white border border-gray-200 hover:shadow-mid transition-all duration-500'
 			id='dashboard-card'
 			onHoverStart={() => setIsHovered(true)}
 			onHoverEnd={() => setIsHovered(false)}

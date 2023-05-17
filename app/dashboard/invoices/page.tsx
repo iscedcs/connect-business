@@ -12,7 +12,7 @@ export default function Invoices() {
 				profileName='Da Civic'
 				notificationCount={10}
 			/>
-			<SearchBar />
+			{/* <SearchBar /> */}
 			<div className='grid grid-cols-12 w-full h-full gap-6 py-5 overflow-hidden'></div>
 		</Fragment>
 	);

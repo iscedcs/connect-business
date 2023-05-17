@@ -2,13 +2,21 @@
 import React, { Fragment, useState, ChangeEvent } from 'react';
 import Header from '@/components/dashboard/header';
 import SearchBar from '@/components/dashboard/search-bar';
-import EmployeeCard from '@/components/employee/employee-card';
 import { EMPLOYEES_DETAILS } from '@/utils/data';
 import { EmployeeDetails } from '@/utils/types';
+import Modal from '@/components/layouts/modal';
+import Image from 'next/image';
+import OnboardedEmployees from '@/components/employee/onboarded-employees';
+import WaitlistedEmployees from '@/components/employee/waitlisted-employees';
 
 interface EmployeesProps {}
 
 export default function Employees(props: EmployeesProps) {
+	const [activeTab, setActiveTab] = useState<string>('onboarded');
+	const [selectedEmployee, setSelectedEmployee] =
+		useState<EmployeeDetails | null>(null);
+
+	const [modalOpen, setModalOpen] = useState<boolean>(false);
 	const [searchQuery, setSearchQuery] = useState<string>('');
 	const [searchResults, setSearchResults] =
 		useState<EmployeeDetails[]>(EMPLOYEES_DETAILS);
@@ -26,6 +34,24 @@ export default function Employees(props: EmployeesProps) {
 		setSearchResults(filteredResults);
 	};
 
+	const handleSetActiveTab = (tab: string) => {
+		setActiveTab(tab);
+	};
+
+	const handleCloseModal = () => {
+		setModalOpen(false);
+	};
+
+	const handleCardClick = (employee: EmployeeDetails) => {
+		setSelectedEmployee(employee);
+		setModalOpen(!modalOpen);
+	};
+	const onboardedEmployees = searchResults.filter(
+		(employee) => employee.status === 'onboarded'
+	);
+	const waitlistedEmployees = searchResults.filter(
+		(employee) => employee.status === 'waitlisted'
+	);
 	return (
 		<Fragment>
 			<Header
@@ -34,18 +60,163 @@ export default function Employees(props: EmployeesProps) {
 				profileName='Da Civic'
 				notificationCount={10}
 			/>
-			<SearchBar onChange={handleSearch} />
-			<div className='grid grid-cols-12 w-full gap-6 px-2 py-5 overflow-hidden overflow-y-scroll'>
-				{searchResults.map((employee) => (
-					<EmployeeCard
-						key={employee.id}
-						name={employee.name}
-						email={employee.email}
-						position={employee.position}
-						image={employee.image}
-					/>
-				))}
-			</div>
+			<SearchBar
+				onChange={handleSearch}
+				handleSetActiveTab={handleSetActiveTab}
+			/>
+			{activeTab === 'onboarded' && (
+				<OnboardedEmployees
+					handleCardClick={handleCardClick}
+					searchResults={onboardedEmployees}
+				/>
+			)}
+			{activeTab === 'waitlisted' && (
+				<WaitlistedEmployees
+					handleCardClick={handleCardClick}
+					searchResults={waitlistedEmployees}
+				/>
+			)}
+			<Modal isOpen={modalOpen}>
+				{selectedEmployee && (
+					<div className='bg-white rounded-lg w-[600px] shadow-mid'>
+						<div className='flex justify-center items-center w-full h-16 border-b text-large font-bold relative'>
+							<button
+								onClick={handleCloseModal}
+								className='w-16 h-16 rounded-full absolute left-0 top-0 px-6'
+							>
+								<svg
+									width={24}
+									height={24}
+									viewBox='0 0 24 24'
+									fill='none'
+									xmlns='http://www.w3.org/2000/svg'
+									preserveAspectRatio='none'
+								>
+									<path
+										d='M5 5L18.9991 18.9991'
+										stroke='#000001'
+										strokeWidth='1.5'
+										strokeLinecap='round'
+										strokeLinejoin='round'
+									/>
+									<path
+										d='M5.00094 18.9991L19 5'
+										stroke='#000001'
+										strokeWidth='1.5'
+										strokeLinecap='round'
+										strokeLinejoin='round'
+									/>
+								</svg>
+							</button>
+							Profile
+						</div>
+						<div className='flex flex-col gap-6 md:gap-12 px-4 md:px-10 pt-4 pb-10'>
+							<div className='mx-auto'>
+								<div className='flex flex-col justify-center items-center gap-4 mx-auto'>
+									<div className='bg-gradient-to-b from-white to-black p-[2px] h-[90px] md:h-[120px] w-[90px] md:w-[120px] rounded-full overflow-hidden'>
+										{selectedEmployee.image ? (
+											<Image
+												height={120}
+												width={120}
+												className='flex-grow-0 bg-white flex-shrink-0 object-cover object-top rounded-full h-[85px] md:h-[115px] w-[85px] md:w-[115px]'
+												src={
+													selectedEmployee.image
+												}
+												alt='profile'
+											/>
+										) : (
+											<div
+												className={`h-[85px] md:h-[115px] w-[85px] md:w-[115px] bg-white flex items-center justify-center rounded-full`}
+											>
+												<svg
+													width='50'
+													height='50'
+													viewBox='0 0 24 24'
+													fill='none'
+													xmlns='http://www.w3.org/2000/svg'
+												>
+													<path
+														d='M12.1586 10.87C12.0586 10.86 11.9386 10.86 11.8286 10.87C9.44859 10.79 7.55859 8.84 7.55859 6.44C7.55859 3.99 9.53859 2 11.9986 2C14.4486 2 16.4386 3.99 16.4386 6.44C16.4286 8.84 14.5386 10.79 12.1586 10.87Z'
+														stroke='currentColor'
+														strokeWidth='1.5'
+														strokeLinecap='round'
+														strokeLinejoin='round'
+													/>
+													<path
+														d='M7.15875 14.56C4.73875 16.18 4.73875 18.82 7.15875 20.43C9.90875 22.27 14.4188 22.27 17.1688 20.43C19.5888 18.81 19.5888 16.17 17.1688 14.56C14.4288 12.73 9.91875 12.73 7.15875 14.56Z'
+														stroke='currentColor'
+														strokeWidth='1.5'
+														strokeLinecap='round'
+														strokeLinejoin='round'
+													/>
+												</svg>
+											</div>
+										)}
+									</div>
+									<div className='flex flex-col justify-center items-center flex-grow-0 flex-shrink-0'>
+										<p className='w-full text-lg md:text-xl font-bold text-center text-[#000001]'>
+											{selectedEmployee.name}
+										</p>
+									</div>
+								</div>
+							</div>
+							<div className='flex flex-col gap-4'>
+								<div className='flex flex-col justify-center items-center gap-6'>
+									<div className='w-full border-b pb-3 flex justify-between text-sm gap-2'>
+										<div className=''>Role</div>
+										<div className='font-semibold max-w-sm'>
+											{selectedEmployee.name}
+										</div>
+									</div>
+									<div className='w-full border-b pb-3 flex justify-between text-sm gap-2'>
+										<div className=''>
+											Email Address
+										</div>
+										<div className='font-semibold max-w-sm'>
+											{selectedEmployee.email}
+										</div>
+									</div>
+									<div className='w-full border-b pb-3 flex justify-between text-sm gap-2'>
+										<div className=''>
+											Phone Number
+										</div>
+										<div className='font-semibold max-w-sm'>
+											{selectedEmployee.phone}
+										</div>
+									</div>
+									<div className='w-full border-b pb-3 flex justify-between text-sm gap-2'>
+										<div className=''>Gender</div>
+										<div className='font-semibold max-w-sm'>
+											{selectedEmployee.gender}
+										</div>
+									</div>
+									<div className='w-full border-b pb-3 flex justify-between text-sm gap-2'>
+										<div className=''>
+											Home Address
+										</div>
+										<div className='font-semibold max-w-sm'>
+											{
+												selectedEmployee.address
+											}
+										</div>
+									</div>
+								</div>
+								{selectedEmployee.status ===
+									'waitlisted' && (
+									<div className='flex justify-evenly'>
+										<button className='min-w-min text-red-500 capitalize px-5 py-2 rounded-full font-semibold'>
+											delete employee
+										</button>
+										<button className='min-w-min text-white capitalize px-5 py-2 rounded-full font-semibold bg-black'>
+											confirm employee
+										</button>
+									</div>
+								)}
+							</div>
+						</div>
+					</div>
+				)}
+			</Modal>
 		</Fragment>
 	);
 }

@@ -17,7 +17,7 @@ export default function Header({
 }: HeaderProps) {
 	const pathName = usePathname();
 	return (
-		<div className='w-full flex justify-between items-center h-[60px]'>
+		<div className='w-full flex justify-between items-center h-8 md:h-[60px]'>
 			<div className='flex flex-col justify-start items-start gap-1'>
 				<p className='flex-grow-0 flex-shrink-0 text-2xl font-bold text-left text-black'>
 					{headerTitle}
@@ -36,7 +36,7 @@ export default function Header({
 						viewBox='0 0 24 24'
 						fill='none'
 						xmlns='http://www.w3.org/2000/svg'
-						className='flex-grow-0 flex-shrink-0 w-6 h-6 relative'
+						className='flex-grow-0 flex-shrink-0 w-6 h-6'
 						preserveAspectRatio='none'
 					>
 						<path
@@ -65,7 +65,7 @@ export default function Header({
 						{notificationCount}
 					</span>
 				</div>
-				<div className='flex justify-center items-center flex-grow-0 flex-shrink-0 w-[124px] relative gap-2'>
+				<div className='hidden md:flex justify-center items-center flex-grow-0 flex-shrink-0 w-[124px] relative gap-2'>
 					<p className='flex-grow-0 flex-shrink-0 w-[72px] text-base font-bold text-left text-[#2b2b2b]'>
 						{profileName}
 					</p>
