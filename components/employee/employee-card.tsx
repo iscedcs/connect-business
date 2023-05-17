@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { DropdownItem, EmployeeCardProps } from '@/utils/types';
 import Dropdown from '../ui/dropdown';
-import { on } from 'events';
 
 export default function EmployeeCard({
 	name,
@@ -12,6 +11,7 @@ export default function EmployeeCard({
 	image,
 	onClick,
 	status,
+	onDelete,
 }: EmployeeCardProps) {
 	const [isHovered, setIsHovered] = useState(false);
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -36,6 +36,7 @@ export default function EmployeeCard({
 			backgroundColor: '#ffffff',
 		},
 	};
+
 	const imageVariants = {
 		hovered: {
 			scale: 1.2,
@@ -44,6 +45,7 @@ export default function EmployeeCard({
 			scale: 1,
 		},
 	};
+
 	const textVariants = {
 		hovered: {
 			y: 10,
@@ -52,6 +54,7 @@ export default function EmployeeCard({
 			y: 0,
 		},
 	};
+
 	const waitlistedDropdownItems: DropdownItem[] = [
 		{
 			title: 'Profile',
@@ -88,7 +91,7 @@ export default function EmployeeCard({
 			title: 'Confirm',
 			color: 'text-black',
 			onClick: () => {
-				// Handle confirm click
+				// Handle delete click
 			},
 			icon: (
 				<svg
@@ -127,9 +130,7 @@ export default function EmployeeCard({
 		{
 			title: 'Delete',
 			color: 'text-red-500',
-			onClick: () => {
-				// Handle delete click
-			},
+			onClick: onDelete,
 			icon: (
 				<svg
 					width={20}
@@ -179,6 +180,7 @@ export default function EmployeeCard({
 			),
 		},
 	];
+
 	const onboardedDropdownItems: DropdownItem[] = [
 		{
 			title: 'Profile',
@@ -214,9 +216,7 @@ export default function EmployeeCard({
 		{
 			title: 'Delete',
 			color: 'text-red-500',
-			onClick: () => {
-				// Handle delete click
-			},
+			onClick: onDelete,
 			icon: (
 				<svg
 					width={20}

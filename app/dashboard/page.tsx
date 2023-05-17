@@ -1,9 +1,8 @@
 'use client';
 import Appointment from '@/components/dashboard/appointment';
-import Calendar from '@/components/dashboard/calendar';
 import DashboardCard from '@/components/dashboard/dashboard-card';
 import Header from '@/components/dashboard/header';
-import SearchBar from '@/components/dashboard/search-bar';
+// import SearchBar from '@/components/dashboard/search-bar';
 import React, { Fragment } from 'react';
 
 export default function Dashboard() {
@@ -16,9 +15,9 @@ export default function Dashboard() {
 				notificationCount={10}
 			/>
 			{/* <SearchBar /> */}
-			<div className='grid grid-cols-12 w-full gap-6 overflow-hidden'>
-				<div className='col-span-12 md:col-span-9 overflow-y-scroll'>
-					<div className='grid grid-cols-6 gap-6'>
+			<div className='grid grid-cols-12 w-full gap-6 overflow-hidden mt-5'>
+				<div className='col-span-12 md:col-span-6 lg:col-span-8 xl:col-span-9 overflow-hidden overflow-y-scroll'>
+					<div className='grid grid-cols-12 gap-6'>
 						<DashboardCard
 							amount='178'
 							newAmount='20'
@@ -57,16 +56,7 @@ export default function Dashboard() {
 						/>
 					</div>
 				</div>
-				<div className='col-span-12 md:col-span-3 w-full h-full overflow-y-scroll rounded-2xl bg-white border border-gray-200 relative p-3 shadow-mid'>
-					<div className='flex flex-col justify-start gap-5'>
-						<Calendar
-							onSelectDate={(date) => {
-								alert('You selected ' + date);
-							}}
-						/>
-						<Appointment />
-					</div>
-				</div>
+				<Appointment />
 			</div>
 		</Fragment>
 	);

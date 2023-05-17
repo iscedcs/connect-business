@@ -13,6 +13,7 @@ export default function SearchBar({
 	handleSetActiveTab,
 }: SearchBarProps) {
 	const pathName = usePathname();
+
 	const buttons = [
 		{
 			id: 'onboardedBtn',
@@ -31,8 +32,8 @@ export default function SearchBar({
 			{pathName === '/dashboard/employees' && (
 				<EmployeesButtonGroup buttons={buttons} />
 			)}
-			<div className='flex items-center gap-5 justify-between w-full mt-3 md:mt-0 md:h-24'>
-				<div className='flex-grow-0 flex-shrink-0 min-w-min px-5 md:w-[180px] h-10 rounded-xl bg-black'>
+			<div className='flex items-center gap-5 justify-between lg:justify-end w-full mt-3 md:mt-0 md:h-40'>
+				<div className='flex-grow-0 flex-shrink-0 min-w-min px-5 xl:w-[180px] h-10 rounded-xl bg-black'>
 					<Link
 						className='w-full h-full flex items-center justify-center'
 						href={'/dashboard/add-employee'}
@@ -42,7 +43,7 @@ export default function SearchBar({
 						</p>
 					</Link>
 				</div>
-				<div className='flex-grow-0 min-w-[160px] md:w-[300px] h-10 overflow-hidden rounded-xl border border-black'>
+				<div className='flex-grow-0 min-w-[160px] xl:w-[300px] h-10 overflow-hidden rounded-xl border border-black'>
 					<div className='flex justify-between items-center relative'>
 						<input
 							className='w-full h-10 text-sm text-start pl-4 pr-10 outline-none shadow-mw'

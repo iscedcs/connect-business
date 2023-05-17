@@ -25,14 +25,14 @@ const EmployeesButtonGroup: React.FC<EmployeesButtonGroupProps> = ({
 
 	return (
 		<div className='flex-grow w-full h-10'>
-			<div className='flex justify-start items-center h-10 flex-grow-0 flex-shrink-0 relative gap-6'>
+			<div className='flex justify-start items-center h-10 flex-grow-0 flex-shrink-0 relative gap-3 lg:gap-6'>
 				{buttons.map((button) => (
 					<button
 						key={button.id}
 						id={button.id}
-						className={`flex-grow-0 flex-shrink-0 min-w-min text-tiny md:text-lg text-center h-10 ${
+						className={`flex-grow-0 flex-shrink-0 min-w-min text-tiny lg:text-base xl:text-lg text-center h-10 ${
 							activeButton === button.id
-								? 'text-black border-b-2 border-black'
+								? 'text-black border-b-2 border-black font-semibold'
 								: 'text-gray-500'
 						} ${button.className || ''}`}
 						onClick={() =>

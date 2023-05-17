@@ -16,7 +16,8 @@ export default function Employees(props: EmployeesProps) {
 	const [selectedEmployee, setSelectedEmployee] =
 		useState<EmployeeDetails | null>(null);
 
-	const [modalOpen, setModalOpen] = useState<boolean>(false);
+	const [profileModalOpen, setprofileModalOpen] = useState<boolean>(false);
+	const [profileDeleteOpen, setprofileDeleteOpen] = useState<boolean>(false);
 	const [searchQuery, setSearchQuery] = useState<string>('');
 	const [searchResults, setSearchResults] =
 		useState<EmployeeDetails[]>(EMPLOYEES_DETAILS);
@@ -39,12 +40,26 @@ export default function Employees(props: EmployeesProps) {
 	};
 
 	const handleCloseModal = () => {
-		setModalOpen(false);
+		setprofileModalOpen(false);
+	};
+
+	const handleDeleteModal = () => {
+		setprofileDeleteOpen(true);
+		setprofileModalOpen(false);
+	};
+
+	const handleCloseDeleteModal = () => {
+		setprofileDeleteOpen(false);
+	};
+
+	const handleDelete = () => {
+		alert('Deleted');
+		setprofileDeleteOpen(false);
 	};
 
 	const handleCardClick = (employee: EmployeeDetails) => {
 		setSelectedEmployee(employee);
-		setModalOpen(!modalOpen);
+		setprofileModalOpen(!profileModalOpen);
 	};
 	const onboardedEmployees = searchResults.filter(
 		(employee) => employee.status === 'onboarded'
@@ -68,15 +83,17 @@ export default function Employees(props: EmployeesProps) {
 				<OnboardedEmployees
 					handleCardClick={handleCardClick}
 					searchResults={onboardedEmployees}
+					handleDelete={handleDeleteModal}
 				/>
 			)}
 			{activeTab === 'waitlisted' && (
 				<WaitlistedEmployees
 					handleCardClick={handleCardClick}
 					searchResults={waitlistedEmployees}
+					handleDelete={handleDeleteModal}
 				/>
 			)}
-			<Modal isOpen={modalOpen}>
+			<Modal isOpen={profileModalOpen}>
 				{selectedEmployee && (
 					<div className='bg-white rounded-lg w-[600px] shadow-mid'>
 						<div className='flex justify-center items-center w-full h-16 border-b text-large font-bold relative'>
@@ -110,9 +127,9 @@ export default function Employees(props: EmployeesProps) {
 							</button>
 							Profile
 						</div>
-						<div className='flex flex-col gap-6 md:gap-12 px-4 md:px-10 pt-4 pb-10'>
+						<div className='flex flex-col w-full gap-6 md:gap-12 px-4 md:px-10 pt-4 pb-10'>
 							<div className='mx-auto'>
-								<div className='flex flex-col justify-center items-center gap-4 mx-auto'>
+								<div className='flex flex-col justify-center items-center gap-4 cursor-pointer'>
 									<div className='bg-gradient-to-b from-white to-black p-[2px] h-[90px] md:h-[120px] w-[90px] md:w-[120px] rounded-full overflow-hidden'>
 										{selectedEmployee.image ? (
 											<Image
@@ -204,10 +221,15 @@ export default function Employees(props: EmployeesProps) {
 								{selectedEmployee.status ===
 									'waitlisted' && (
 									<div className='flex justify-evenly'>
-										<button className='min-w-min text-red-500 capitalize px-5 py-2 rounded-full font-semibold'>
+										<button
+											onClick={
+												handleDeleteModal
+											}
+											className='min-w-min text-red-500 capitalize px-5 py-2 rounded-full text-[10px] lg:text-base font-semibold '
+										>
 											delete employee
 										</button>
-										<button className='min-w-min text-white capitalize px-5 py-2 rounded-full font-semibold bg-black'>
+										<button className='min-w-min text-white capitalize px-5 py-2 rounded-full text-[10px] lg:text-base font-semibold bg-black'>
 											confirm employee
 										</button>
 									</div>
@@ -216,6 +238,63 @@ export default function Employees(props: EmployeesProps) {
 						</div>
 					</div>
 				)}
+			</Modal>
+			<Modal isOpen={profileDeleteOpen}>
+				<div className='bg-white rounded-lg max-w-[600px] shadow-mid'>
+					<div className='flex justify-center items-center w-full h-16 border-b text-large font-bold relative'>
+						<button
+							onClick={handleCloseDeleteModal}
+							className='w-16 h-16 rounded-full absolute left-0 top-0 px-6'
+						>
+							<svg
+								width={24}
+								height={24}
+								viewBox='0 0 24 24'
+								fill='none'
+								xmlns='http://www.w3.org/2000/svg'
+								preserveAspectRatio='none'
+							>
+								<path
+									d='M5 5L18.9991 18.9991'
+									stroke='#000001'
+									strokeWidth='1.5'
+									strokeLinecap='round'
+									strokeLinejoin='round'
+								/>
+								<path
+									d='M5.00094 18.9991L19 5'
+									stroke='#000001'
+									strokeWidth='1.5'
+									strokeLinecap='round'
+									strokeLinejoin='round'
+								/>
+							</svg>
+						</button>
+						Delete Profile
+					</div>
+					<div className='flex flex-col gap-6 md:gap-12 px-4 md:px-10 pt-4 pb-10'>
+						<div className='flex flex-col gap-4'>
+							<div className='flex flex-col justify-center items-center py-24'>
+								Are you sure you want to delete this
+								profile?
+							</div>
+							<div className='flex flex-col items-center gap-3'>
+								<button
+									onClick={handleDelete}
+									className='w-[200px] bg-red-700 text-white capitalize px-5 py-2 rounded-full font-semibold'
+								>
+									delete profile
+								</button>
+								<button
+									onClick={handleCloseDeleteModal}
+									className='min-w-min capitalize px-5 py-2 rounded-full font-semibold'
+								>
+									Cancel
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
 			</Modal>
 		</Fragment>
 	);

@@ -45,7 +45,7 @@ export default function DashboardCard({
 
 	return (
 		<motion.div
-			className='col-span-6 md:col-span-3 lg:col-span-2 w-full min-h-[250px] relative overflow-hidden rounded-xl bg-white border border-gray-200 hover:shadow-mid transition-all duration-500'
+			className='col-span-12 lg:col-span-6 xl:col-span-4 w-full min-h-[240px] relative overflow-hidden rounded-xl bg-white border border-gray-200 hover:shadow-mid transition-all duration-500'
 			id='dashboard-card'
 			onHoverStart={() => setIsHovered(true)}
 			onHoverEnd={() => setIsHovered(false)}
@@ -87,7 +87,7 @@ export default function DashboardCard({
 						>
 							{isHovered ? newAmount + '+' : amount}
 						</p>
-						<p className='flex-grow-0 flex-shrink-0 w-[244px] text-base text-center text-black'>
+						<p className='flex-grow-0 flex-shrink-0 w-full text-base text-center text-black'>
 							{isHovered ? newDescription : description}
 						</p>
 					</motion.div>

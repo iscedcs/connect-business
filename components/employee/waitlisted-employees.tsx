@@ -4,11 +4,13 @@ import EmployeeCard from './employee-card';
 interface OnboardedEmployeesProps {
 	searchResults: EmployeeDetails[];
 	handleCardClick: any;
+	handleDelete: any;
 }
 
 export default function WaitlistedEmployees({
 	searchResults,
 	handleCardClick,
+	handleDelete,
 }: OnboardedEmployeesProps) {
 	const isEmpty = searchResults.length === 0;
 	const sortedResults = searchResults.sort((a, b) =>
@@ -26,6 +28,7 @@ export default function WaitlistedEmployees({
 						image={employee.image}
 						onClick={() => handleCardClick(employee)}
 						status={employee.status}
+						onDelete={handleDelete}
 					/>
 				))
 			) : (

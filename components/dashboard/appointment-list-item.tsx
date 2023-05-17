@@ -9,8 +9,8 @@ export default function AppointmentListItem() {
 						AK
 					</p>
 				</div>
-				<div className='flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative'>
-					<p className='flex-grow-0 flex-shrink-0 w-full text-sm font-bold text-left text-[#23262f]'>
+				<div className='flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative w-full'>
+					<p className='truncate overflow-hidden text-ellipsis text-tiny lg:text-sm font-bold text-left text-black'>
 						Events Booking By Ahmed
 					</p>
 					<p className='flex-grow-0 flex-shrink-0 w-full text-[10px] text-left text-[#808080]'>

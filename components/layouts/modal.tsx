@@ -43,7 +43,7 @@ const Modal = ({ children, isOpen, onClose }: ModalProps) => {
 					animate='animate'
 					exit='exit'
 				>
-					<div className='absolute inset-0'></div>
+					<div className='inset-0'></div>
 					{children}
 					{onClose && (
 						<button

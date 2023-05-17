@@ -63,7 +63,8 @@ export interface EmployeeCardProps {
 	email: string;
 	position: string;
 	image?: string;
-	onClick: () => void;
+	onClick?: () => void;
+	onDelete?: () => void;
 	status: string;
 }
 
