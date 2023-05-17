@@ -1,5 +1,6 @@
 import React from 'react';
-import ApointmentList from './apointment-list';
+import AppointmentList from './appointment-list';
+import { APPOINTMENT_DETAILS } from '@/utils/data';
 import Calendar from './calendar';
 
 export default function Appointment() {
@@ -7,6 +8,8 @@ export default function Appointment() {
 		<div className='col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 w-full h-full overflow-y-scroll rounded-2xl bg-white border border-gray-200 relative p-3 shadow-mid'>
 			<div className='flex flex-col justify-start gap-5 mb-5'>
 				<Calendar
+					type='small'
+					appointmentList={APPOINTMENT_DETAILS}
 					onSelectDate={(date) => {
 						alert('You selected ' + date);
 					}}
@@ -16,7 +19,7 @@ export default function Appointment() {
 				<p className='flex-grow-0 flex-shrink-0 text-base font-bold text-left text-black'>
 					Today’s Appointment
 				</p>
-				<ApointmentList />
+				<AppointmentList />
 			</div>
 		</div>
 	);

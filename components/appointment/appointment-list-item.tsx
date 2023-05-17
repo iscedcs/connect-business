@@ -1,20 +1,34 @@
+import { formatDate, getInitials } from '@/utils/function-helpers';
 import React from 'react';
 
-export default function AppointmentListItem() {
+interface AppointmentListItemProps {
+	creator: string;
+	title: string;
+	date: string;
+	onClick?: () => void;
+}
+
+export default function AppointmentListItem({
+	creator,
+	title,
+	date,
+}: AppointmentListItemProps) {
+	const initials = getInitials(creator);
+	const readableDate = formatDate(date);
 	return (
 		<div className='flex-grow-0 flex-shrink-0 w-full h-14 overflow-hidden rounded-xl bg-gray-200/[0.84]'>
 			<div className='flex justify-start items-start px-3 py-2 gap-3'>
 				<div className='flex flex-grow-0 flex-shrink-0 w-10 h-10 relative overflow-hidden rounded-full bg-black items-center justify-center'>
-					<p className='text-sm font-bold text-center text-white'>
-						AK
+					<p className='text-sm font-bold text-center uppercase text-white'>
+						{initials}
 					</p>
 				</div>
 				<div className='flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative w-full'>
 					<p className='truncate overflow-hidden text-ellipsis text-tiny lg:text-sm font-bold text-left text-black'>
-						Events Booking By Ahmed
+						{title}
 					</p>
 					<p className='flex-grow-0 flex-shrink-0 w-full text-[10px] text-left text-[#808080]'>
-						12:00 PM 26 April, 2023
+						{readableDate}
 					</p>
 				</div>
 			</div>

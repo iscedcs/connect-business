@@ -1,5 +1,5 @@
 'use client';
-import Appointment from '@/components/dashboard/appointment';
+import Appointment from '@/components/appointment/appointment';
 import DashboardCard from '@/components/dashboard/dashboard-card';
 import Header from '@/components/dashboard/header';
 // import SearchBar from '@/components/dashboard/search-bar';

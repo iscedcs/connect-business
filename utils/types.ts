@@ -78,3 +78,22 @@ export interface NavBarMobileButtonProps {
 		borderColor: string;
 	}[];
 }
+
+export interface CalendarEvent {
+	id: string;
+	title: string;
+	start: string;
+	end: string;
+	location: string;
+	description: string;
+	attendees: string[];
+	isAllDay: boolean;
+	recurrence: Recurrence | null;
+	creator: string;
+}
+
+export interface Recurrence {
+	frequency: string;
+	interval: number;
+	end: string | null;
+}

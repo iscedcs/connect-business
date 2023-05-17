@@ -1,7 +1,10 @@
+import DashboardLayout from './dashboard/layout';
+
 export default function Home() {
 	return (
-		<main className='flex min-h-screen flex-col items-center justify-center p-24'>
-			I am a boy
-		</main>
+		<DashboardLayout>
+			Welcome to connect for business
+			<p>Waiting for an home page</p>
+		</DashboardLayout>
 	);
 }
