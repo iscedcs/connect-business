@@ -645,4 +645,17 @@ export const APPOINTMENT_DETAILS = [
 			end: null,
 		},
 	},
+	{
+		id: 'event-16',
+		creator: 'Mary Soe',
+		title: 'Product Dismissal',
+		start: '2023-05-12T15:00:00.000Z',
+		end: '2023-05-12T17:00:00.000Z',
+		location: 'Offline',
+		description:
+			'Official dismissal of our new product with a live offline event.',
+		attendees: [],
+		isAllDay: false,
+		recurrence: null,
+	},
 ];
