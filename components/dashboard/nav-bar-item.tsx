@@ -1,13 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-interface NavBarItemProps {
-	name: string;
-	active?: boolean;
-	icon: string;
-	activeIcon: string;
-	href: string;
-}
 
 export default function NavBarItem({
 	name,

@@ -1,7 +1,6 @@
 import React, { ReactNode, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { DropdownProps } from '@/utils/types';
 
 export default function Dropdown({ isOpen, items, onClose }: DropdownProps) {
 	const dropdownRef = useRef<HTMLDivElement>(null);

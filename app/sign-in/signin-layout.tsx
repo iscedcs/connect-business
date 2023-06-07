@@ -1,10 +1,5 @@
 import React, { Fragment } from 'react';
 
-interface SigninLayoutProps {
-	left: React.ReactNode;
-	right: React.ReactNode;
-}
-
 export default function SigninLayout({ left, right }: SigninLayoutProps) {
 	return (
 		<Fragment>

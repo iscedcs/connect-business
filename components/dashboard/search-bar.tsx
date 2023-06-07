@@ -1,29 +1,28 @@
+'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 import EmployeesButtonGroup from '../employee/employee-button-group';
 
-interface SearchBarProps {
-	onChange?: React.ChangeEventHandler<HTMLInputElement>;
-	handleSetActiveTab: (tab: string) => void;
-}
-
 export default function SearchBar({
 	onChange,
 	handleSetActiveTab,
+	showAddEmployee,
 }: SearchBarProps) {
 	const pathName = usePathname();
 
-	const buttons = [
+	let buttons = [
 		{
 			id: 'onboardedBtn',
 			label: 'Onboarded Employees',
-			onClick: () => handleSetActiveTab('onboarded'),
+			onClick: () =>
+				handleSetActiveTab && handleSetActiveTab('onboarded'),
 		},
 		{
 			id: 'waitlistedBtn',
 			label: 'Waitlisted Employees',
-			onClick: () => handleSetActiveTab('waitlisted'),
+			onClick: () =>
+				handleSetActiveTab && handleSetActiveTab('waitlisted'),
 		},
 	];
 
@@ -33,16 +32,18 @@ export default function SearchBar({
 				<EmployeesButtonGroup buttons={buttons} />
 			)}
 			<div className='flex items-center gap-5 justify-between lg:justify-end w-full mt-3 md:mt-0 md:h-40'>
-				<div className='flex-grow-0 flex-shrink-0 min-w-min px-5 xl:w-[180px] h-10 rounded-xl bg-black'>
-					<Link
-						className='w-full h-full flex items-center justify-center'
-						href={'/dashboard/add-employee'}
-					>
-						<p className='text-sm font-bold text-center text-white'>
-							Add Employee
-						</p>
-					</Link>
-				</div>
+				{showAddEmployee && (
+					<div className='flex-grow-0 flex-shrink-0 min-w-min px-5 xl:w-[180px] h-10 rounded-xl bg-black'>
+						<Link
+							className='w-full h-full flex items-center justify-center'
+							href={'/dashboard/add-employee'}
+						>
+							<p className='text-sm font-bold text-center text-white'>
+								Add Employee
+							</p>
+						</Link>
+					</div>
+				)}
 				<div className='flex-grow-0 min-w-[160px] xl:w-[300px] h-10 overflow-hidden rounded-xl border border-black'>
 					<div className='flex justify-between items-center relative'>
 						<input

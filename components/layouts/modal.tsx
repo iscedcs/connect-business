@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 
-interface ModalProps {
-	children: React.ReactNode;
-	isOpen: boolean;
-	onClose?: () => void; // Add onClose prop for closing the modal
-}
-
 const Modal = ({ children, isOpen, onClose }: ModalProps) => {
 	const modalVariants: Variants = {
 		initial: {

@@ -2,12 +2,7 @@
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import React from 'react';
-interface HeaderProps {
-	headerTitle: string;
-	profileName?: string;
-	profileImage: string;
-	notificationCount: number;
-}
+import IconButton from '../ui/button/icon-button';
 
 export default function Header({
 	headerTitle,
@@ -29,14 +24,17 @@ export default function Header({
 				)}
 			</div>
 			<div className='flex justify-center items-center gap-8'>
-				<div className='h-6 w-6 relative'>
+				<IconButton
+					notificationCount={notificationCount}
+					href='/dashboard/notifications'
+				>
 					<svg
-						width={24}
-						height={24}
+						width={20}
+						height={20}
 						viewBox='0 0 24 24'
 						fill='none'
 						xmlns='http://www.w3.org/2000/svg'
-						className='flex-grow-0 flex-shrink-0 w-6 h-6'
+						className='flex-grow-0 flex-shrink-0 w-5 h-5'
 						preserveAspectRatio='none'
 					>
 						<path
@@ -61,10 +59,7 @@ export default function Header({
 							strokeMiterlimit={10}
 						/>
 					</svg>
-					<span className='absolute top-0 right-0 translate-x-1/4 -translate-y-1/4 text-[8px] text-center rounded-full text-white bg-red-600 h-3 w-3'>
-						{notificationCount}
-					</span>
-				</div>
+				</IconButton>
 				<div className='hidden md:flex justify-center items-center flex-grow-0 flex-shrink-0 w-[124px] relative gap-2'>
 					<p className='flex-grow-0 flex-shrink-0 w-[72px] text-base font-bold text-left text-[#2b2b2b]'>
 						{profileName}

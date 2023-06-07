@@ -1,11 +1,5 @@
-import { EmployeeDetails } from '@/utils/types';
 import React from 'react';
 import EmployeeCard from './employee-card';
-interface OnboardedEmployeesProps {
-	searchResults: EmployeeDetails[];
-	handleCardClick: any;
-	handleDelete: any;
-}
 
 export default function WaitlistedEmployees({
 	searchResults,

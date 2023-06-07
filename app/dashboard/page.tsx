@@ -2,6 +2,7 @@
 import Appointment from '@/components/appointment/appointment';
 import DashboardCard from '@/components/dashboard/dashboard-card';
 import Header from '@/components/dashboard/header';
+import SearchBar from '@/components/dashboard/search-bar';
 // import SearchBar from '@/components/dashboard/search-bar';
 import React, { Fragment } from 'react';
 
@@ -14,7 +15,7 @@ export default function Dashboard() {
 				profileName='Da Civic'
 				notificationCount={10}
 			/>
-			{/* <SearchBar /> */}
+			<SearchBar showAddEmployee />
 			<div className='grid grid-cols-12 w-full gap-6 overflow-hidden mt-5'>
 				<div className='col-span-12 md:col-span-6 lg:col-span-8 xl:col-span-9 overflow-hidden overflow-y-scroll'>
 					<div className='grid grid-cols-12 gap-6'>
@@ -23,6 +24,7 @@ export default function Dashboard() {
 							newAmount='20'
 							description='Total Patronizing Clients'
 							newDescription='From last week'
+							href='dashboard/clients'
 						/>
 						<DashboardCard
 							amount='64'

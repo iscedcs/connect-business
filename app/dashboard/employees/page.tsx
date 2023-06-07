@@ -9,8 +9,6 @@ import Image from 'next/image';
 import OnboardedEmployees from '@/components/employee/onboarded-employees';
 import WaitlistedEmployees from '@/components/employee/waitlisted-employees';
 
-interface EmployeesProps {}
-
 export default function Employees(props: EmployeesProps) {
 	const [activeTab, setActiveTab] = useState<string>('onboarded');
 	const [selectedEmployee, setSelectedEmployee] =
@@ -78,6 +76,7 @@ export default function Employees(props: EmployeesProps) {
 			<SearchBar
 				onChange={handleSearch}
 				handleSetActiveTab={handleSetActiveTab}
+				showAddEmployee
 			/>
 			{activeTab === 'onboarded' && (
 				<OnboardedEmployees

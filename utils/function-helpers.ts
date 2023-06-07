@@ -49,3 +49,26 @@ export function formatDate(dateString: string): string {
 
 	return formattedDate;
 }
+
+export function getTimeAgo(timestamp: Date): string {
+	const now = new Date();
+	const secondsElapsed = Math.floor(
+		(now.getTime() - timestamp.getTime()) / 1000
+	);
+
+	if (secondsElapsed < 60) {
+		return `${secondsElapsed} sec ago`;
+	} else if (secondsElapsed < 600) {
+		const minutes = Math.floor(secondsElapsed / 60);
+		return `${minutes} min ago`;
+	} else if (secondsElapsed < 3600) {
+		const minutes = Math.floor(secondsElapsed / 600) * 10;
+		return `${minutes} min ago`;
+	} else if (secondsElapsed < 86400) {
+		const hours = Math.floor(secondsElapsed / 3600);
+		return `${hours} hour ago`;
+	} else {
+		const days = Math.floor(secondsElapsed / 86400);
+		return `${days} days ago`;
+	}
+}

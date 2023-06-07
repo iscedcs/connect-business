@@ -1,12 +1,7 @@
 import { CalendarEvent } from '@/utils/types';
 import React, { useState } from 'react';
 import Modal from '../layouts/modal';
-
-interface CalendarProps {
-	onSelectDate?: (date: Date) => void;
-	type?: 'small' | 'large';
-	appointmentList: CalendarEvent[];
-}
+import AppointmentListItem from './appointment-list-item';
 
 const Calendar: React.FC<CalendarProps> = ({
 	onSelectDate,
@@ -187,37 +182,19 @@ const Calendar: React.FC<CalendarProps> = ({
 	}> = ({ date, events }) => {
 		return (
 			<Modal isOpen={showEventListModal}>
-				<div className='bg-white w-[500px] flex flex-col justify-between rounded-lg shadow-mid p-5 md:p-10'>
+				<div className='bg-white w-[500px] flex flex-col gap-3 justify-between rounded-lg shadow-mid p-5 md:p-10'>
 					<h2>Event List for {date.toDateString()}</h2>
 					{events.map((event, index) => (
-						<div
+						<AppointmentListItem
 							key={index}
-							className='event-item'
-						>
-							<div>
-								<strong>Title:</strong> {event.title}
-							</div>
-							<div>
-								<strong>Creator:</strong>{' '}
-								{event.creator}
-							</div>
-							<div>
-								<strong>Start:</strong>{' '}
-								{new Date(event.start).toString()}
-							</div>
-							<div>
-								<strong>End:</strong>{' '}
-								{new Date(event.end).toString()}
-							</div>
-							<div>
-								<strong>Location:</strong>{' '}
-								{event.location}
-							</div>
-							<div>
-								<strong>Description:</strong>{' '}
-								{event.description}
-							</div>
-						</div>
+							creator={event.creator}
+							title={event.title}
+							date={event.start}
+							endDate={event.end}
+							location={event.location}
+							description={event.description}
+							attendees={event.attendees}
+						/>
 					))}
 					<button onClick={() => setShowEventListModal(false)}>
 						Close

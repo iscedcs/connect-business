@@ -1,16 +1,5 @@
 import React, { useState } from 'react';
 
-interface Button {
-	id: string;
-	label: string;
-	className?: string;
-	onClick?: () => void;
-}
-
-interface EmployeesButtonGroupProps {
-	buttons: Button[];
-}
-
 const EmployeesButtonGroup: React.FC<EmployeesButtonGroupProps> = ({
 	buttons,
 }) => {

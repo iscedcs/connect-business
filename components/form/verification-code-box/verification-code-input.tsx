@@ -1,11 +1,6 @@
 import { useState, useRef, RefObject } from 'react';
 import classNames from 'classnames';
 
-interface VerificationCodeValidationBoxProps {
-	onCodeComplete: (code: string) => void;
-	error?: boolean;
-}
-
 const VerificationCodeValidationBox = ({
 	onCodeComplete,
 	error,

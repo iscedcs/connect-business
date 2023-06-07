@@ -35,7 +35,6 @@ module.exports = {
           '4px 0px 20px rgba(0, 0, 0, 0.04)',
           '0px 4px 24px rgba(0, 0, 0, 0.04)'
         ],
-        // 'mw': '',
       },
       colors: {
         'success': '#00B96B'

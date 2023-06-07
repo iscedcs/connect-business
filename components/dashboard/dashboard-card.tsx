@@ -1,19 +1,14 @@
 import Image from 'next/image';
 import React from 'react';
 import { motion } from 'framer-motion';
-
-interface DashboardCardProps {
-	amount: string;
-	newAmount: string;
-	description: string;
-	newDescription: string;
-}
+import Link from 'next/link';
 
 export default function DashboardCard({
 	amount,
 	newAmount,
 	description,
 	newDescription,
+	href,
 }: DashboardCardProps) {
 	const [isHovered, setIsHovered] = React.useState(false);
 
@@ -51,48 +46,52 @@ export default function DashboardCard({
 			onHoverEnd={() => setIsHovered(false)}
 			variants={cardVariants}
 		>
-			<div className='flex justify-center items-center px-2 py-10'>
-				<motion.div
-					className='flex flex-col items-center justify-center gap-6'
-					variants={imageVariants}
-					transition={{ duration: 0.5 }}
-				>
-					<div
-						className={`w-[134px] h-[71px] ${
-							isHovered
-								? 'scale-150 transition-all duration-500'
-								: ''
-						} `}
-					>
-						<Image
-							src={'/img/curve.png'}
-							width={134}
-							height={71}
-							alt=''
-							className='h-full w-full object-center'
-						/>
-					</div>
+			<Link href={href ? href : ''}>
+				<div className='flex justify-center items-center px-2 py-10'>
 					<motion.div
-						className='flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 relative gap-2'
-						variants={textVariants}
-						initial='initial'
-						animate={isHovered ? 'hover' : 'initial'}
+						className='flex flex-col items-center justify-center gap-6'
+						variants={imageVariants}
+						transition={{ duration: 0.5 }}
 					>
-						<p
-							className={`flex-grow-0 flex-shrink-0 w-[88px] h-7 text-2xl font-bold text-center ${
+						<div
+							className={`w-[134px] h-[71px] ${
 								isHovered
-									? 'text-green-500'
-									: 'text-black'
-							}`}
+									? 'scale-150 transition-all duration-500'
+									: ''
+							} `}
 						>
-							{isHovered ? newAmount + '+' : amount}
-						</p>
-						<p className='flex-grow-0 flex-shrink-0 w-full text-base text-center text-black'>
-							{isHovered ? newDescription : description}
-						</p>
+							<Image
+								src={'/img/curve.png'}
+								width={134}
+								height={71}
+								alt=''
+								className='h-full w-full object-center'
+							/>
+						</div>
+						<motion.div
+							className='flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 relative gap-2'
+							variants={textVariants}
+							initial='initial'
+							animate={isHovered ? 'hover' : 'initial'}
+						>
+							<p
+								className={`flex-grow-0 flex-shrink-0 w-[88px] h-7 text-2xl font-bold text-center ${
+									isHovered
+										? 'text-green-500'
+										: 'text-black'
+								}`}
+							>
+								{isHovered ? newAmount + '+' : amount}
+							</p>
+							<p className='flex-grow-0 flex-shrink-0 w-full text-base text-center text-black'>
+								{isHovered
+									? newDescription
+									: description}
+							</p>
+						</motion.div>
 					</motion.div>
-				</motion.div>
-			</div>
+				</div>
+			</Link>
 		</motion.div>
 	);
 }
