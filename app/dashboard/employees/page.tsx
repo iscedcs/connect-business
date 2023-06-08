@@ -3,7 +3,6 @@ import React, { Fragment, useState, ChangeEvent } from 'react';
 import Header from '@/components/dashboard/header';
 import SearchBar from '@/components/dashboard/search-bar';
 import { EMPLOYEES_DETAILS } from '@/utils/data';
-import { EmployeeDetails } from '@/utils/types';
 import Modal from '@/components/layouts/modal';
 import Image from 'next/image';
 import OnboardedEmployees from '@/components/employee/onboarded-employees';

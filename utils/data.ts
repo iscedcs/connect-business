@@ -5697,13 +5697,13 @@ export const NOTIFICATIONS: NotificationItem[] = [
 		timestamp: new Date('2023-06-07T10:00:00Z'),
 		read: false,
 	},
-	// {
-	// 	id: '12',
-	// 	title: 'Important Announcement',
-	// 	message: 'There is an important announcement regarding the upcoming office move.',
-	// 	timestamp: new Date('2023-06-07T15:30:00Z'),
-	// 	read: false,
-	// },
+	{
+		id: '12',
+		title: 'Important Announcement',
+		message: 'There is an important announcement regarding the upcoming office move.',
+		timestamp: new Date('2023-06-07T15:30:00Z'),
+		read: false,
+	},
 	// {
 	// 	id: '13',
 	// 	title: 'New Feature Released',

@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { DropdownItem, EmployeeCardProps } from '@/utils/types';
 import Dropdown from '../ui/dropdown';
 
 export default function EmployeeCard({

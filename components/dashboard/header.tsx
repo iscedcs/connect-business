@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 import IconButton from '../ui/button/icon-button';
+import Link from 'next/link';
 
 export default function Header({
 	headerTitle,
@@ -64,15 +65,17 @@ export default function Header({
 					<p className='flex-grow-0 flex-shrink-0 w-[72px] text-base font-bold text-left text-[#2b2b2b]'>
 						{profileName}
 					</p>
-					<div className='flex justify-center items-center overflow-hidden flex-grow-0 flex-shrink-0 w-11 h-11 rounded-full bg-black bg-cover bg-no-repeat bg-center'>
-						<Image
-							src={profileImage}
-							height={44}
-							width={44}
-							alt='profile image'
-							className='w-full h-full object-center object-cover'
-						/>
-					</div>
+					<Link href={'/dashboard/profile'}>
+						<div className='flex justify-center items-center overflow-hidden flex-grow-0 flex-shrink-0 w-11 h-11 rounded-full bg-black bg-cover bg-no-repeat bg-center'>
+							<Image
+								src={profileImage}
+								height={44}
+								width={44}
+								alt='profile image'
+								className='w-full h-full object-center object-cover'
+							/>
+						</div>
+					</Link>
 				</div>
 			</div>
 		</div>

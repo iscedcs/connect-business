@@ -221,3 +221,8 @@ interface NotificationItemProps {
 interface NotificationItemComponent {
 	(props: NotificationItemProps): JSX.Element;
 }
+
+interface TabItemProps {
+	text: string;
+	href?: string;
+}
