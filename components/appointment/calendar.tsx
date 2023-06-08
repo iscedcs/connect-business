@@ -1,4 +1,3 @@
-import { CalendarEvent } from '@/utils/types';
 import React, { useState } from 'react';
 import Modal from '../layouts/modal';
 import AppointmentListItem from './appointment-list-item';

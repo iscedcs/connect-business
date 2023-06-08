@@ -1,4 +1,3 @@
-import { TextProps } from '@/utils/types';
 import React from 'react';
 
 export default function Text({

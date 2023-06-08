@@ -2,7 +2,6 @@
 import React from 'react';
 import styles from './text-input.module.css';
 import Image from 'next/image';
-import { TextInputProps } from '@/utils/types';
 
 function TextInput({
 	label,

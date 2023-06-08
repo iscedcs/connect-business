@@ -123,10 +123,10 @@ interface AppointmentListItemProps {
 	creator: string;
 	title: string;
 	date: string;
-	endDate: string;
-	location: string;
-	description: string;
-	attendees: string[];
+	endDate?: string;
+	location?: string;
+	description?: string;
+	attendees?: string[];
 	onClick?: () => void;
 }
 

@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 import styles from './button.module.css';
-import { ButtonProps } from '@/utils/types';
 import Link from 'next/link';
 
 export default function Button({

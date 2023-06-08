@@ -1,5 +1,4 @@
 'use client';
-import { NavBarMobileButtonProps } from '@/utils/types';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';

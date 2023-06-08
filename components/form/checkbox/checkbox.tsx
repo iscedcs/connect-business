@@ -1,7 +1,6 @@
 'use client';
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { CheckboxProps } from '@/utils/types';
 
 const Checkbox = ({ checked, onChange }: CheckboxProps) => {
 	const [isChecked, setIsChecked] = useState<boolean>(checked);

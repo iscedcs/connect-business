@@ -163,9 +163,12 @@ const PasswordResetPage = () => {
 									variant='email'
 									label='Business Email'
 									name='email'
-									onBlur={(event) =>
-										setEmail(event.target.value)
-									}
+									onBlur={(
+										event: React.FocusEvent<
+											HTMLInputElement,
+											Element
+										>
+									) => setEmail(event.target.value)}
 									// error={error !== ''}
 									onInput={handleInputChange}
 								/>

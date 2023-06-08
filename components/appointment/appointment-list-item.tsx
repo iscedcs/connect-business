@@ -52,7 +52,7 @@ export default function AppointmentListItem({
 						</div>
 						<div>
 							<strong>End:</strong>{' '}
-							{new Date(endDate).toString()}
+							{endDate && new Date(endDate).toString()}
 						</div>
 						<div>
 							<strong>Location:</strong> {location}
