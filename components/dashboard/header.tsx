@@ -67,7 +67,7 @@ export default function Header({
 					</p>
 					<Link href={'/dashboard/profile'}>
 						<div className='flex justify-center items-center overflow-hidden flex-grow-0 flex-shrink-0 w-11 h-11 rounded-full bg-black bg-cover bg-no-repeat bg-center'>
-							<Image
+							<BlurImage
 								src={profileImage}
 								height={44}
 								width={44}

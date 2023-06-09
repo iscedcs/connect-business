@@ -12,7 +12,7 @@ export default function SignUp() {
 			<form className='overflow-hidden bg-white flex flex-col justify-between max-w-[400px] h-[500px] xl:h-[650px] 2xl:h-[750px]'>
 				<div>
 					<div className='mx-auto h-6 xl:h-10 mb-5'>
-						<Image
+						<BlurImage
 							src='/img/logo_full_black.svg'
 							alt='ISCE Connect Logo'
 							height={48}
@@ -76,7 +76,7 @@ export default function SignUp() {
 	);
 	const rightSide = (
 		<div className='hidden lg:block col-span-1 h-screen relative'>
-			<Image
+			<BlurImage
 				src='/img/card-colors.png'
 				alt='Card Colors'
 				height={1080}

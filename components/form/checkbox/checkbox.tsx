@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import Image from 'next/image';
+import BlurImage from '@/components/ui/blur-image';
 
 const Checkbox = ({ checked, onChange }: CheckboxProps) => {
 	const [isChecked, setIsChecked] = useState<boolean>(checked);
@@ -24,7 +25,7 @@ const Checkbox = ({ checked, onChange }: CheckboxProps) => {
 					style={{ display: 'none' }}
 				/>
 				<div className='hover:scale-110'>
-					<Image
+					<BlurImage
 						src={
 							isChecked
 								? '/icons/checkbox-checked.svg'

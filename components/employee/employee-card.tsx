@@ -294,7 +294,7 @@ export default function EmployeeCard({
 							}`}
 						>
 							{image ? (
-								<Image
+								<BlurImage
 									src={image || '/icons/profile.svg'}
 									height={50}
 									width={50}

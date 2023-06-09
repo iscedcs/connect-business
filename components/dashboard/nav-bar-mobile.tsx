@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { Fragment, useEffect, useRef, useState } from 'react';
+import BlurImage from '../ui/blur-image';
 
 export default function NavBarMobileButton({
 	imageSrc,
@@ -65,7 +66,7 @@ export default function NavBarMobileButton({
 											exit={{ top: 0 }}
 											title={title}
 										>
-											<Image
+											<BlurImage
 												src={icon}
 												height={24}
 												width={24}
@@ -86,7 +87,7 @@ export default function NavBarMobileButton({
 						setClicked(!clicked);
 					}}
 				>
-					<Image
+					<BlurImage
 						src={imageSrc}
 						height={80}
 						width={80}

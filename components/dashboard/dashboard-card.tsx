@@ -60,7 +60,7 @@ export default function DashboardCard({
 									: ''
 							} `}
 						>
-							<Image
+							<BlurImage
 								src={'/img/curve.png'}
 								width={134}
 								height={71}

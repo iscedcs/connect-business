@@ -1,4 +1,5 @@
 import ProfileTab from '@/components/profile/profile-tabs';
+import BlurImage from '@/components/ui/blur-image';
 import Image from 'next/image';
 import React from 'react';
 
@@ -60,7 +61,7 @@ export default function ProfileLayout({
 			</div>
 			<div className='w-full h-[172px] relative'>
 				<div>
-					<Image
+					<BlurImage
 						src={'/img/header-image.jpg'}
 						alt='header-image'
 						width={1080}
@@ -108,7 +109,7 @@ export default function ProfileLayout({
 				</div>
 				<div className='flex justify-start items-start absolute bottom-0 translate-y-1/2 left-10 gap-2'>
 					<div className='flex-grow-0 flex-shrink-0 w-[120px] h-[120px] relative overflow-hidden rounded-full bg-gradient-to-b from-black/0 via-black/100 to-black/100 p-[2px]'>
-						<Image
+						<BlurImage
 							className='w-full h-full rounded-full object-center object-cover'
 							src='/img/profile-image.jpg'
 							alt='profile-image'

@@ -130,7 +130,7 @@ export default function Employees(props: EmployeesProps) {
 								<div className='flex flex-col justify-center items-center gap-4 cursor-pointer'>
 									<div className='bg-gradient-to-b from-white to-black p-[2px] h-[90px] md:h-[120px] w-[90px] md:w-[120px] rounded-full overflow-hidden'>
 										{selectedEmployee.image ? (
-											<Image
+											<BlurImage
 												height={120}
 												width={120}
 												className='flex-grow-0 bg-white flex-shrink-0 object-cover object-top rounded-full h-[85px] md:h-[115px] w-[85px] md:w-[115px]'

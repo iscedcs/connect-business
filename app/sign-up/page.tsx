@@ -10,7 +10,7 @@ import SigninLayout from '../sign-in/signin-layout';
 export default function SignUp() {
 	const leftSide = (
 		<div className='hidden lg:block col-span-1 h-screen relative'>
-			<Image
+			<BlurImage
 				src='/img/card-colors.png'
 				alt='Card Colors'
 				height={1080}
@@ -43,7 +43,7 @@ export default function SignUp() {
 		<div className='flex flex-col justify-center items-center col-span-2 lg:col-span-1 px-3 lg:px-0 pt-10 lg:pt-0'>
 			<form className='overflow-hidden bg-white flex flex-col justify-between max-w-[400px] h-[500px] xl:h-[650px] 2xl:h-[750px]'>
 				<div className='mx-auto h-6 xl:h-10 mb-5'>
-					<Image
+					<BlurImage
 						src='/img/logo_full_black.svg'
 						alt='ISCE Connect Logo'
 						height={48}

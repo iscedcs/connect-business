@@ -2,6 +2,7 @@
 import React from 'react';
 import styles from './text-input.module.css';
 import Image from 'next/image';
+import BlurImage from '@/components/ui/blur-image';
 
 function TextInput({
 	label,
@@ -81,7 +82,7 @@ function TextInput({
 				>
 					{show ? (
 						<div className='w-6 h-6'>
-							<Image
+							<BlurImage
 								src='/icons/show.svg'
 								width={24}
 								height={24}
@@ -90,7 +91,7 @@ function TextInput({
 						</div>
 					) : (
 						<div className='w-6 h-6'>
-							<Image
+							<BlurImage
 								src='/icons/hide.svg'
 								width={24}
 								height={24}

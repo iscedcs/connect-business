@@ -7,6 +7,7 @@ import TextInput from '@/components/form/input/text-input';
 import Text from '@/components/ui/text';
 import Link from 'next/link';
 import VerificationCodeValidationBox from '@/components/form/verification-code-box/verification-code-input';
+import BlurImage from '@/components/ui/blur-image';
 
 type ResetPageState =
 	| 'enter-email'
@@ -114,7 +115,7 @@ const PasswordResetPage = () => {
 		<div className='flex justify-center items-center h-screen'>
 			<div className='-mt-24'>
 				<div className='mx-auto h-6 xl:h-10 mb-5'>
-					<Image
+					<BlurImage
 						src='/img/logo_full_black.svg'
 						alt='ISCE Connect Logo'
 						height={48}
@@ -324,7 +325,7 @@ const PasswordResetPage = () => {
 								</p>
 
 								<div className='h-[132px] w-[132px] bg-success bg-opacity-20 rounded-full flex justify-center items-center'>
-									<Image
+									<BlurImage
 										src='/icons/success.svg'
 										height={132}
 										width={132}

@@ -19,7 +19,7 @@ export default function NavBarItem({
 			>
 				<div className='flex flex-col justify-center items-center gap-2'>
 					<div className='flex justify-center items-start flex-grow-0 flex-shrink-0 relative h-6 w-6'>
-						<Image
+						<BlurImage
 							src={active ? activeIcon : icon}
 							height={24}
 							width={24}
