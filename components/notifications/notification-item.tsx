@@ -20,7 +20,7 @@ export default function NotificationItem({
 			>
 				<div
 					className={`absolute bg-black rounded-full top-1/2 -right-2 -translate-y-1/2 ${
-						hovered ? 'h-96 w-[200%]' : 'h-96 w-1 '
+						hovered ? 'h-20 w-[200%]' : 'h-96 w-1 '
 					} transition-all duration-1000`}
 				></div>
 				<svg

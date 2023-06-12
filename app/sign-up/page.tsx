@@ -2,10 +2,10 @@ import Checkbox from '@/components/form/checkbox/checkbox';
 import TextInput from '@/components/form/input/text-input';
 import Button from '@/components/ui/button/button';
 import Text from '@/components/ui/text';
-import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import SigninLayout from '../sign-in/signin-layout';
+import BlurImage from '@/components/ui/blur-image';
 
 export default function SignUp() {
 	const leftSide = (

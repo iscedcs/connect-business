@@ -17,6 +17,16 @@ interface TextInputProps {
 	name?: string;
 	error?: boolean;
 }
+interface TextAreaProps {
+	label: string;
+	value?: string;
+	onInput?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+	onBlur?: (event: React.FocusEvent<HTMLTextAreaElement>) => void;
+	className?: string;
+	name?: string;
+	error?: boolean;
+	placeholder?: string;
+}
 
 interface ButtonProps {
 	size?: 'sm' | 'md' | 'lg';
@@ -225,4 +235,34 @@ interface NotificationItemComponent {
 interface TabItemProps {
 	text: string;
 	href?: string;
+}
+
+interface SettingsCardProps {
+	title: string;
+	icon: React.ReactNode;
+	link?: string;
+}
+
+interface TabProps {
+	text: string;
+	href: string;
+}
+
+interface TabMenuProps {
+	tabs: TabProps[];
+}
+
+interface template {
+	image: string;
+	active: boolean;
+	onClick?: () => void;
+}
+
+interface TemplatesProps {
+	templates: template[];
+}
+
+interface SocialIcons {
+	name: string;
+	icon: React.ReactNode;
 }

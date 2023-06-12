@@ -72,3 +72,14 @@ export function getTimeAgo(timestamp: Date): string {
 		return `${days} days ago`;
 	}
 }
+
+export function GetTitle(input: string): string {
+	const parts = input.split('/');
+	const lastElement = parts[parts.length - 1];
+
+	const words = lastElement.split('-').map((word) => {
+		return word.charAt(0).toUpperCase() + word.slice(1);
+	});
+
+	return words.join(' ');
+}

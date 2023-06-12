@@ -13,13 +13,8 @@ export default function AddEmployee() {
 	};
 	return (
 		<Fragment>
-			<Header
-				profileImage='/img/avatar.jpeg'
-				headerTitle='Add Employee'
-				profileName='Da Civic'
-				notificationCount={10}
-			/>
-			<div className='grid grid-cols-12 w-full h-full gap-6 py-5 overflow-hidden'>
+			<Header />
+			<div className='grid grid-cols-12 w-full h-full gap-6 py-5 px-10 overflow-hidden'>
 				<div className='col-span-12 md:col-span-8 lg:col-span-6 pt-20'>
 					<form className='flex flex-col gap-5'>
 						<TextInput label={"Employee's Name"} />
@@ -64,7 +59,7 @@ export default function AddEmployee() {
 							height={132}
 							rx={66}
 							fill='#00B96B'
-							fill-opacity='0.12'
+							fillOpacity='0.12'
 						/>
 						<path
 							d='M66.0006 107.667C89.0125 107.667 107.667 89.0119 107.667 66C107.667 42.9882 89.0125 24.3334 66.0006 24.3334C42.9888 24.3334 24.334 42.9882 24.334 66C24.334 89.0119 42.9888 107.667 66.0006 107.667Z'

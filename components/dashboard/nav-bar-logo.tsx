@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
+import BlurImage from '../ui/blur-image';
 
 export default function NavBarLogo() {
 	return (

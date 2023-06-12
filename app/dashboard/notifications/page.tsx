@@ -2,23 +2,18 @@
 import Header from '@/components/dashboard/header';
 import NotificationItem from '@/components/notifications/notification-item';
 import NotificationList from '@/components/notifications/notification-list';
-import { NOTIFICATIONS } from '@/utils/data';
+import { COMPANY_PROFILE } from '@/utils/data';
 import React, { Fragment } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Notifications() {
-	const sortedNotifications = [...NOTIFICATIONS].sort(
+	const sortedNotifications = [...COMPANY_PROFILE.notifications].sort(
 		(a, b) => b.timestamp.getTime() - a.timestamp.getTime()
 	);
 
 	return (
 		<Fragment>
-			<Header
-				profileImage='/img/avatar.jpeg'
-				headerTitle='Notifications'
-				profileName='Da Civic'
-				notificationCount={10}
-			/>
+			<Header />
 			<NotificationList>
 				<AnimatePresence>
 					{sortedNotifications.map((notification, index) => (

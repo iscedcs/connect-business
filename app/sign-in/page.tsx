@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import SigninLayout from './signin-layout';
+import BlurImage from '@/components/ui/blur-image';
 
 export default function SignUp() {
 	const leftSide = (

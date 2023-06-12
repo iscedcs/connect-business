@@ -2,6 +2,7 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Dropdown from '../ui/dropdown';
+import BlurImage from '../ui/blur-image';
 
 export default function EmployeeCard({
 	name,

@@ -2,19 +2,20 @@
 import ClientTable from '@/components/clients/client-table';
 import Header from '@/components/dashboard/header';
 import SearchBar from '@/components/dashboard/search-bar';
-import { ALL_CLIENTS } from '@/utils/data';
+import { COMPANY_PROFILE } from '@/utils/data';
 import React, { ChangeEvent, Fragment } from 'react';
 
 export default function Clients() {
 	const [searchQuery, setSearchQuery] = React.useState<string>('');
-	const [searchResults, setSearchResults] =
-		React.useState<Client[]>(ALL_CLIENTS);
+	const [searchResults, setSearchResults] = React.useState<Client[]>(
+		COMPANY_PROFILE.clients
+	);
 
 	const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
 		const query = event.target.value.toLowerCase();
 		setSearchQuery(query);
 
-		const filteredResults = ALL_CLIENTS.filter(
+		const filteredResults = COMPANY_PROFILE.clients.filter(
 			(client) =>
 				client.fullName.toLowerCase().includes(query) ||
 				client.email.toLowerCase().includes(query)
@@ -23,12 +24,7 @@ export default function Clients() {
 	};
 	return (
 		<Fragment>
-			<Header
-				profileImage='/img/avatar.jpeg'
-				headerTitle='Clients'
-				profileName='Da Civic'
-				notificationCount={2}
-			/>
+			<Header />
 			<SearchBar onChange={handleSearch} />
 			<ClientTable selectedClients={searchResults} />
 		</Fragment>

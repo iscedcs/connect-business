@@ -67,7 +67,7 @@ export default function ClientTable({ selectedClients }: ClientTableProps) {
 		}
 
 		return (
-			<div className='flex justify-center items-center flex-grow-0 flex-shrink-0 relative gap-1'>
+			<div className='flex justify-center items-center flex-grow-0 flex-shrink-0 relative gap-1 px-10'>
 				{/* previous page */}
 				<svg
 					width={44}

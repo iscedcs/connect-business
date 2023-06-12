@@ -9,14 +9,9 @@ import React, { Fragment } from 'react';
 export default function Dashboard() {
 	return (
 		<Fragment>
-			<Header
-				profileImage='/img/avatar.jpeg'
-				headerTitle='Dashboard'
-				profileName='Da Civic'
-				notificationCount={10}
-			/>
+			<Header />
 			<SearchBar showAddEmployee />
-			<div className='grid grid-cols-12 w-full gap-6 overflow-hidden mt-5'>
+			<div className='grid grid-cols-12 w-full gap-6 overflow-hidden mt-5 px-10'>
 				<div className='col-span-12 md:col-span-6 lg:col-span-8 xl:col-span-9 overflow-hidden overflow-y-scroll'>
 					<div className='grid grid-cols-12 gap-6'>
 						<DashboardCard

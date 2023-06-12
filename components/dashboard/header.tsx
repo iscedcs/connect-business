@@ -1,32 +1,31 @@
 'use client';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 import IconButton from '../ui/button/icon-button';
 import Link from 'next/link';
+import BlurImage from '../ui/blur-image';
+import { GetTitle } from '@/utils/function-helpers';
+import { COMPANY_PROFILE } from '@/utils/data';
 
-export default function Header({
-	headerTitle,
-	profileName,
-	profileImage,
-	notificationCount,
-}: HeaderProps) {
+export default function Header() {
 	const pathName = usePathname();
 	return (
-		<div className='w-full flex justify-between items-center h-8 md:h-[60px]'>
+		<div className='w-full flex justify-between items-center h-8 md:h-[60px] pt-10 px-10'>
 			<div className='flex flex-col justify-start items-start gap-1'>
 				<p className='flex-grow-0 flex-shrink-0 text-2xl font-bold text-left text-black'>
-					{headerTitle}
+					{GetTitle(pathName)}
 				</p>
 				{pathName === '/dashboard' && (
 					<p className='flex-grow-0 flex-shrink-0 text-base text-left text-black'>
-						Welcome back, {profileName}.
+						Welcome back, {COMPANY_PROFILE.name}.
 					</p>
 				)}
 			</div>
 			<div className='flex justify-center items-center gap-8'>
 				<IconButton
-					notificationCount={notificationCount}
+					notificationCount={
+						COMPANY_PROFILE.notifications.length
+					}
 					href='/dashboard/notifications'
 				>
 					<svg
@@ -63,12 +62,12 @@ export default function Header({
 				</IconButton>
 				<div className='hidden md:flex justify-center items-center flex-grow-0 flex-shrink-0 w-[124px] relative gap-2'>
 					<p className='flex-grow-0 flex-shrink-0 w-[72px] text-base font-bold text-left text-[#2b2b2b]'>
-						{profileName}
+						{COMPANY_PROFILE.name}
 					</p>
 					<Link href={'/dashboard/profile'}>
 						<div className='flex justify-center items-center overflow-hidden flex-grow-0 flex-shrink-0 w-11 h-11 rounded-full bg-black bg-cover bg-no-repeat bg-center'>
 							<BlurImage
-								src={profileImage}
+								src={COMPANY_PROFILE.logo}
 								height={44}
 								width={44}
 								alt='profile image'

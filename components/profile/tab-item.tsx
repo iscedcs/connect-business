@@ -15,7 +15,7 @@ export default function TabItem({ text, href }: TabItemProps) {
 			onMouseEnter={() => setHovered(true)}
 			onMouseLeave={() => setHovered(false)}
 		>
-			<div className=''>{text}</div>
+			<div className={`${active && 'font-bold'}`}>{text}</div>
 			<div
 				className={`h-0.5 bg-blue-600 ${
 					hovered || active ? 'w-full' : 'w-0'

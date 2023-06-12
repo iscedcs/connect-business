@@ -2,7 +2,6 @@
 import React from 'react';
 import styles from './text-input.module.css';
 import Image from 'next/image';
-import BlurImage from '@/components/ui/blur-image';
 
 function TextInput({
 	label,
@@ -61,7 +60,7 @@ function TextInput({
 					isValueEmpty
 						? 'top-0 text-[0.75rem]'
 						: 'top-[calc(50%-0.5rem)] xl:top-[calc(50%-0.75rem)'
-				}   text-gray-400 left-4 transition-all duration-200 ease-in-out`}
+				}   text-gray-500 left-4 transition-all duration-200 ease-in-out`}
 				htmlFor={name}
 			>
 				{label}
@@ -82,7 +81,7 @@ function TextInput({
 				>
 					{show ? (
 						<div className='w-6 h-6'>
-							<BlurImage
+							<Image
 								src='/icons/show.svg'
 								width={24}
 								height={24}
@@ -91,7 +90,7 @@ function TextInput({
 						</div>
 					) : (
 						<div className='w-6 h-6'>
-							<BlurImage
+							<Image
 								src='/icons/hide.svg'
 								width={24}
 								height={24}

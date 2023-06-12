@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
 import Button from '@/components/ui/button/button';
 import TextInput from '@/components/form/input/text-input';
 import Text from '@/components/ui/text';

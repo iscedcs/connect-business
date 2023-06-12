@@ -2,11 +2,12 @@
 import React, { Fragment, useState, ChangeEvent } from 'react';
 import Header from '@/components/dashboard/header';
 import SearchBar from '@/components/dashboard/search-bar';
-import { EMPLOYEES_DETAILS } from '@/utils/data';
+import { COMPANY_PROFILE } from '@/utils/data';
 import Modal from '@/components/layouts/modal';
 import Image from 'next/image';
 import OnboardedEmployees from '@/components/employee/onboarded-employees';
 import WaitlistedEmployees from '@/components/employee/waitlisted-employees';
+import BlurImage from '@/components/ui/blur-image';
 
 export default function Employees(props: EmployeesProps) {
 	const [activeTab, setActiveTab] = useState<string>('onboarded');
@@ -16,14 +17,15 @@ export default function Employees(props: EmployeesProps) {
 	const [profileModalOpen, setprofileModalOpen] = useState<boolean>(false);
 	const [profileDeleteOpen, setprofileDeleteOpen] = useState<boolean>(false);
 	const [searchQuery, setSearchQuery] = useState<string>('');
-	const [searchResults, setSearchResults] =
-		useState<EmployeeDetails[]>(EMPLOYEES_DETAILS);
+	const [searchResults, setSearchResults] = useState<EmployeeDetails[]>(
+		COMPANY_PROFILE.employees
+	);
 
 	const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
 		const query = event.target.value.toLowerCase();
 		setSearchQuery(query);
 
-		const filteredResults = EMPLOYEES_DETAILS.filter(
+		const filteredResults = COMPANY_PROFILE.employees.filter(
 			(employee) =>
 				employee.name.toLowerCase().includes(query) ||
 				employee.email.toLowerCase().includes(query) ||
@@ -66,12 +68,7 @@ export default function Employees(props: EmployeesProps) {
 	);
 	return (
 		<Fragment>
-			<Header
-				profileImage='/img/avatar.jpeg'
-				headerTitle='Employees'
-				profileName='Da Civic'
-				notificationCount={10}
-			/>
+			<Header />
 			<SearchBar
 				onChange={handleSearch}
 				handleSetActiveTab={handleSetActiveTab}

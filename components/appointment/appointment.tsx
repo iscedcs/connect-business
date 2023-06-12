@@ -1,6 +1,6 @@
 import React from 'react';
 import AppointmentList from './appointment-list';
-import { APPOINTMENT_DETAILS } from '@/utils/data';
+import { COMPANY_PROFILE } from '@/utils/data';
 import Calendar from './calendar';
 
 export default function Appointment() {
@@ -9,7 +9,7 @@ export default function Appointment() {
 			<div className='flex flex-col justify-start gap-5 mb-5'>
 				<Calendar
 					type='small'
-					appointmentList={APPOINTMENT_DETAILS}
+					appointmentList={COMPANY_PROFILE.appointments}
 					onSelectDate={(date) => {
 						alert('You selected ' + date);
 					}}

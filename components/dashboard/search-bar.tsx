@@ -27,7 +27,7 @@ export default function SearchBar({
 	];
 
 	return (
-		<div className='flex flex-col md:flex-row justify-end items-center w-full md:gap-6 overflow-hidden'>
+		<div className='flex flex-col md:flex-row justify-end items-center w-full md:gap-6 overflow-hidden px-10'>
 			{pathName === '/dashboard/employees' && (
 				<EmployeesButtonGroup buttons={buttons} />
 			)}
