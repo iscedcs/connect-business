@@ -3,7 +3,6 @@ import Appointment from '@/components/appointment/appointment';
 import DashboardCard from '@/components/dashboard/dashboard-card';
 import Header from '@/components/dashboard/header';
 import SearchBar from '@/components/dashboard/search-bar';
-// import SearchBar from '@/components/dashboard/search-bar';
 import React, { Fragment } from 'react';
 
 export default function Dashboard() {

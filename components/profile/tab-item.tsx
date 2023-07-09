@@ -3,10 +3,11 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
 
-export default function TabItem({ text, href }: TabItemProps) {
+export default function TabItem({ text, href, color }: TabItemProps) {
 	const [hovered, setHovered] = useState(false);
 	const path = usePathname();
 	const active = path === href;
+	const themeColor = color ? `${color}` : `#5555ff`;
 
 	return (
 		<Link
@@ -17,9 +18,10 @@ export default function TabItem({ text, href }: TabItemProps) {
 		>
 			<div className={`${active && 'font-bold'}`}>{text}</div>
 			<div
-				className={`h-0.5 bg-blue-600 ${
+				className={`h-0.5 ${
 					hovered || active ? 'w-full' : 'w-0'
 				} transition-all duration-500`}
+				style={{ backgroundColor: themeColor }}
 			></div>
 		</Link>
 	);

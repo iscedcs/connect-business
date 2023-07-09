@@ -45,6 +45,7 @@ export default function DashboardCard({
 			id='dashboard-card'
 			onHoverStart={() => setIsHovered(true)}
 			onHoverEnd={() => setIsHovered(false)}
+			onClick={() => {}}
 			variants={cardVariants}
 		>
 			<Link href={href ? href : ''}>

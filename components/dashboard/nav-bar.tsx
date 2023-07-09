@@ -1,8 +1,10 @@
+'use client';
 import React, { Fragment } from 'react';
 import NavBarLogo from './nav-bar-logo';
 import NavBarList from './nav-bar-list';
 import NavBarLogout from './nav-bar-logout';
 import NavBarMobileButton from './nav-bar-mobile';
+import { signOut } from 'next-auth/react';
 
 export default function NavBar() {
 	return (
@@ -12,7 +14,7 @@ export default function NavBar() {
 					<NavBarLogo />
 					<NavBarList />
 				</div>
-				<NavBarLogout />
+				<NavBarLogout onClick={() => signOut()} />
 			</div>
 			<NavBarMobileButton
 				imageSrc='/img/avatar.jpeg'

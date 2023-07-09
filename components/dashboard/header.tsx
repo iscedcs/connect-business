@@ -60,8 +60,8 @@ export default function Header() {
 						/>
 					</svg>
 				</IconButton>
-				<div className='hidden md:flex justify-center items-center flex-grow-0 flex-shrink-0 w-[124px] relative gap-2'>
-					<p className='flex-grow-0 flex-shrink-0 w-[72px] text-base font-bold text-left text-[#2b2b2b]'>
+				<div className='hidden md:flex justify-center items-center flex-grow-0 flex-shrink-0 w-fit relative gap-2'>
+					<p className='flex-grow-0 flex-shrink-0 w-fit text-base font-bold text-left text-[#2b2b2b]'>
 						{COMPANY_PROFILE.name}
 					</p>
 					<Link href={'/dashboard/profile'}>

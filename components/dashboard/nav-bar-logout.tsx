@@ -1,8 +1,11 @@
 import React from 'react';
 
-export default function NavBarLogout() {
+export default function NavBarLogout({ onClick }: any) {
 	return (
-		<button className='w-full h-[72px] overflow-hidden'>
+		<button
+			className='w-full h-[72px] overflow-hidden'
+			onClick={onClick}
+		>
 			<div className='flex flex-col justify-start items-center gap-2 text-white hover:text-blue-500 transition-colors duration-500'>
 				<div className='flex justify-center items-start flex-grow-0 flex-shrink-0 relative '>
 					<svg

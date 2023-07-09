@@ -17,6 +17,15 @@ interface TextInputProps {
 	name?: string;
 	error?: boolean;
 }
+
+interface SelectInputProps {
+	options: string[];
+	className?: string;
+	label?: string;
+	onSelect?: (option: string) => void;
+	name?: string;
+}
+
 interface TextAreaProps {
 	label: string;
 	value?: string;
@@ -235,6 +244,7 @@ interface NotificationItemComponent {
 interface TabItemProps {
 	text: string;
 	href?: string;
+	color?: string;
 }
 
 interface SettingsCardProps {
@@ -250,6 +260,7 @@ interface TabProps {
 
 interface TabMenuProps {
 	tabs: TabProps[];
+	color?: string;
 }
 
 interface template {

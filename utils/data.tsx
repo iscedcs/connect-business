@@ -5767,20 +5767,23 @@ export const COMPANY_PROFILE = {
 		{
 			image: '/img/template-1.png',
 			name: 'Template-1',
-			active: false,
+			active: true,
 			default: true,
+			themeColor: '#f40dee',
 		},
 		{
 			image: '/img/template-2.png',
 			name: 'Template-2',
 			active: false,
-			default: true,
+			default: false,
+			themeColor: 'red',
 		},
 		{
 			image: '/img/template-3.png',
 			name: 'Template-3',
-			active: true,
+			active: false,
 			default: false,
+			themeColor: '#000000',
 		},
 	],
 };

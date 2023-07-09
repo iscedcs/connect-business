@@ -370,8 +370,8 @@ export default function EditProfile() {
 																stroke-miterlimit={
 																	10
 																}
-																stroke-linecap='round'
-																stroke-linejoin='round'
+																strokeLinecap='round'
+																strokeLinejoin='round'
 															/>
 														</svg>
 													</div>

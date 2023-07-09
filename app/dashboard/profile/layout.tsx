@@ -12,10 +12,13 @@ export default function ProfileLayout({
 	const activeTemplate = COMPANY_PROFILE.templates.find(
 		(template) => template.active
 	);
-	const templateName = activeTemplate ? activeTemplate.name : '';
+	const defaultTemplate = COMPANY_PROFILE.templates.find(
+		(template) => template.default
+	);
+	const template = activeTemplate ? activeTemplate : defaultTemplate;
 
 	let layout;
-	switch (templateName) {
+	switch (template?.name) {
 		case 'Template-1':
 			layout = (
 				// Layout for Template-1
@@ -89,7 +92,10 @@ export default function ProfileLayout({
 						</div>
 					</div>
 					<div className='flex flex-col px-10 py-20 gap-10'>
-						<TabMenu tabs={PROFILE_TAB} />
+						<TabMenu
+							tabs={PROFILE_TAB}
+							color={template.themeColor}
+						/>
 						{children}
 					</div>
 				</Fragment>
@@ -168,7 +174,10 @@ export default function ProfileLayout({
 						</div>
 					</div>
 					<div className='flex flex-col items-center justify-center mt-[180px] text-center px-10 py-20 gap-10'>
-						<TabMenu tabs={PROFILE_TAB} />
+						<TabMenu
+							tabs={PROFILE_TAB}
+							color={template.themeColor}
+						/>
 						{children}
 					</div>
 				</Fragment>
@@ -250,7 +259,10 @@ export default function ProfileLayout({
 						</Link>
 					</div>
 					<div className='flex flex-col items-center justify-center text-center px-10 py-8 gap-10'>
-						<TabMenu tabs={PROFILE_TAB} />
+						<TabMenu
+							tabs={PROFILE_TAB}
+							color={template.themeColor}
+						/>
 						{children}
 					</div>
 				</Fragment>
