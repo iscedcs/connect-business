@@ -23,6 +23,13 @@ export default function SignUp() {
 		confirm_password: '',
 		termsAgreed: false,
 	});
+
+	const config = {
+		headers: {
+			'x-api-key': process.env.X_API_KEY,
+		},
+	};
+
 	const [successModal, setSuccessModal] = React.useState(false);
 	const [failureModal, setFailureModal] = React.useState(false);
 	console.log(formData);
@@ -88,7 +95,8 @@ export default function SignUp() {
 			// Make the API request to create the business account
 			const { data: response } = await axios.post(
 				API + URLS.business.auth.create,
-				data
+				data,
+				config
 			);
 			console.log(response);
 
@@ -314,7 +322,7 @@ export default function SignUp() {
 							fill='#BA1A1A'
 						/>
 					</svg>
-					<span>Failed</span>
+					<span>{failureMessage}</span>
 				</div>
 			</Modal>
 		</Fragment>

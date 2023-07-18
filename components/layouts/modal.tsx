@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+'use client';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 
 const Modal = ({ children, isOpen, onClose }: ModalProps) => {

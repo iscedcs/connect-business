@@ -1,3 +1,4 @@
+'use client';
 import { formatDate, getInitials } from '@/utils/function-helpers';
 import React from 'react';
 import Modal from '../layouts/modal';

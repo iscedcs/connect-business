@@ -1,9 +1,9 @@
 'use client';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
 import React, { Fragment, useEffect, useRef, useState } from 'react';
 import BlurImage from '../ui/blur-image';
+import { signOut } from 'next-auth/react';
 
 export default function NavBarMobileButton({
 	imageSrc,
@@ -49,6 +49,13 @@ export default function NavBarMobileButton({
 									<Link
 										key={i}
 										href={href}
+										onClick={() => {
+											if (title === 'logout') {
+												signOut();
+											} else {
+												setClicked(false);
+											}
+										}}
 									>
 										<motion.div
 											className={`h-14 w-14 border ${borderColor} ${bgColor} hover:scale-110 flex items-center justify-center rounded-full absolute right-0`}

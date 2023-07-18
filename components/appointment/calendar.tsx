@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import Modal from '../layouts/modal';
 import AppointmentListItem from './appointment-list-item';
@@ -181,7 +182,7 @@ const Calendar: React.FC<CalendarProps> = ({
 	}> = ({ date, events }) => {
 		return (
 			<Modal isOpen={showEventListModal}>
-				<div className='bg-white w-[500px] flex flex-col gap-3 justify-between rounded-lg shadow-mid p-5 md:p-10'>
+				<div className='bg-white w-[500px] flex flex-col gap-3 justify-between rounded-lg shadow-mid p-4 md:p-10'>
 					<h2>Event List for {date.toDateString()}</h2>
 					{events.map((event, index) => (
 						<AppointmentListItem

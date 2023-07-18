@@ -1,8 +1,11 @@
 export const COMPANY_PROFILE = {
-	name: 'Da Civic Events',
-	admin: 'Seun Babs',
+	name: 'ISCE Digital Concept',
+	admin: 'Ayobami Oyeniran',
 	position: 'CEO',
-	logo: '/img/avatar.jpeg',
+	logo: '/logo-white-on-black.png',
+	// cardBanner: '/img/allcardcolors.png',
+	cardBanner: '/img/header-image.jpg',
+	adminPicture: '/img/profile-image.jpg',
 	about: {
 		text: `Event planning involves the process of organizing and coordinating various elements to create a successful event. This could include social gatherings, corporate conferences, weddings, trade shows, or any other type of event. The goal of event planning is to ensure that all aspects, such as venue selection, budgeting, logistics, catering, entertainment, and marketing, are carefully managed to meet the objectives and expectations of the event.`,
 		images: [
@@ -5767,7 +5770,7 @@ export const COMPANY_PROFILE = {
 		{
 			image: '/img/template-1.png',
 			name: 'Template-1',
-			active: true,
+			active: false,
 			default: true,
 			themeColor: '#f40dee',
 		},
@@ -5781,9 +5784,9 @@ export const COMPANY_PROFILE = {
 		{
 			image: '/img/template-3.png',
 			name: 'Template-3',
-			active: false,
+			active: true,
 			default: false,
-			themeColor: '#000000',
+			themeColor: 'green',
 		},
 	],
 };
@@ -5792,6 +5795,12 @@ export const PROFILE_TAB: TabProps[] = [
 	{ text: 'About Us', href: '/dashboard/profile' },
 	{ text: 'Our Services', href: '/dashboard/profile/services' },
 	{ text: 'Contact Us', href: '/dashboard/profile/contact' },
+];
+
+export const CUSTOMER_TAB: TabProps[] = [
+	{ text: 'About Us', href: '/profile' },
+	{ text: 'Our Services', href: '/profile/services' },
+	{ text: 'Contact Us', href: '/profile/contact' },
 ];
 
 export const CUSTOMIZE_TAB: TabProps[] = [

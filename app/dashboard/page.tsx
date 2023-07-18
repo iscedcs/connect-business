@@ -1,16 +1,12 @@
-'use client';
 import Appointment from '@/components/appointment/appointment';
 import DashboardCard from '@/components/dashboard/dashboard-card';
-import Header from '@/components/dashboard/header';
 import SearchBar from '@/components/dashboard/search-bar';
-import React, { Fragment } from 'react';
 
 export default function Dashboard() {
 	return (
-		<Fragment>
-			<Header />
+		<div className='px-4 md:p-10'>
 			<SearchBar showAddEmployee />
-			<div className='grid grid-cols-12 w-full gap-6 overflow-hidden mt-5 px-10'>
+			<div className='grid grid-cols-12 gap-6 overflow-hidden mt-5'>
 				<div className='col-span-12 md:col-span-6 lg:col-span-8 xl:col-span-9 overflow-hidden overflow-y-scroll'>
 					<div className='grid grid-cols-12 gap-6'>
 						<DashboardCard
@@ -54,6 +50,6 @@ export default function Dashboard() {
 				</div>
 				<Appointment />
 			</div>
-		</Fragment>
+		</div>
 	);
 }

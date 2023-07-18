@@ -4,10 +4,10 @@ import Header from '@/components/dashboard/header';
 import SearchBar from '@/components/dashboard/search-bar';
 import { COMPANY_PROFILE } from '@/utils/data';
 import Modal from '@/components/layouts/modal';
-import Image from 'next/image';
 import OnboardedEmployees from '@/components/employee/onboarded-employees';
 import WaitlistedEmployees from '@/components/employee/waitlisted-employees';
 import BlurImage from '@/components/ui/blur-image';
+import EmployeesButtonGroup from '@/components/employee/employee-button-group';
 
 export default function Employees(props: EmployeesProps) {
 	const [activeTab, setActiveTab] = useState<string>('onboarded');
@@ -66,14 +66,31 @@ export default function Employees(props: EmployeesProps) {
 	const waitlistedEmployees = searchResults.filter(
 		(employee) => employee.status === 'waitlisted'
 	);
+
+	let buttons = [
+		{
+			id: 'onboardedBtn',
+			label: 'Onboarded Employees',
+			onClick: () =>
+				handleSetActiveTab && handleSetActiveTab('onboarded'),
+		},
+		{
+			id: 'waitlistedBtn',
+			label: 'Waitlisted Employees',
+			onClick: () =>
+				handleSetActiveTab && handleSetActiveTab('waitlisted'),
+		},
+	];
+
 	return (
 		<Fragment>
-			<Header />
-			<SearchBar
-				onChange={handleSearch}
-				handleSetActiveTab={handleSetActiveTab}
-				showAddEmployee
-			/>
+			<div className='flex flex-col md:flex-row justify-between items-center px-4 md:px-10 gap-6'>
+				<EmployeesButtonGroup buttons={buttons} />
+				<SearchBar
+					onChange={handleSearch}
+					showAddEmployee
+				/>
+			</div>
 			{activeTab === 'onboarded' && (
 				<OnboardedEmployees
 					handleCardClick={handleCardClick}

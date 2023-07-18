@@ -1,22 +1,19 @@
-'use client';
 import ApointmentList from '@/components/appointment/appointment-list';
 import Calendar from '@/components/appointment/calendar';
-import Header from '@/components/dashboard/header';
 import { COMPANY_PROFILE } from '@/utils/data';
 import React, { Fragment } from 'react';
 
 export default function Appointments() {
 	return (
 		<Fragment>
-			<Header />
-			<div className='flex flex-col w-full h-full gap-6 py-5 px-10 overflow-hidden overflow-y-scroll'>
+			<div className='flex flex-col w-full h-full gap-6 py-5 px-4 md:px-10 overflow-hidden overflow-y-scroll'>
 				<div className='flex flex-col justify-start gap-5 mb-5'>
 					<Calendar
 						appointmentList={COMPANY_PROFILE.appointments}
 						type='large'
-						onSelectDate={(date) => {
-							alert('You selected ' + date);
-						}}
+						// onSelectDate={(date) => {
+						// 	alert('You selected ' + date);
+						// }}
 					/>
 				</div>
 				<div className='flex flex-col justify-start items-start gap-4'>

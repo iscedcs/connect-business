@@ -20,7 +20,7 @@ export default function TabItem({ text, href, color }: TabItemProps) {
 			<div
 				className={`h-0.5 ${
 					hovered || active ? 'w-full' : 'w-0'
-				} transition-all duration-500`}
+				} transition-all duration-300`}
 				style={{ backgroundColor: themeColor }}
 			></div>
 		</Link>

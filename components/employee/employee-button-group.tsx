@@ -14,7 +14,7 @@ const EmployeesButtonGroup: React.FC<EmployeesButtonGroupProps> = ({
 
 	return (
 		<div className='flex-grow w-full h-10'>
-			<div className='flex justify-start items-center h-10 flex-grow-0 flex-shrink-0 relative gap-3 lg:gap-6'>
+			<div className='flex justify-between md:justify-start items-center h-10 flex-grow-0 flex-shrink-0 relative gap-3 lg:gap-6'>
 				{buttons.map((button) => (
 					<button
 						key={button.id}

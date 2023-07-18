@@ -14,38 +14,38 @@ export default function ProfileAbout() {
 				entertainment, and marketing, are carefully managed to meet
 				the objectives and expectations of the event.
 			</p>
-			<div className='flex-grow-0 flex-shrink-0 flex justify-start gap-10'>
-				<div className='w-72 h-96 overflow-hidden rounded-3xl'>
+			<div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
+				<div className='max-w-72 h-96 overflow-hidden rounded-3xl'>
 					<BlurImage
 						src='/img/about-4.jpg'
-						className='w-72 h-96 rounded-3xl object-cover'
+						className='max-w-72 h-96 rounded-3xl object-cover'
 						alt='About 1'
 						height={384}
 						width={288}
 					/>
 				</div>
-				<div className='w-72 h-96 overflow-hidden rounded-3xl'>
+				<div className='max-w-72 h-96 overflow-hidden rounded-3xl'>
 					<BlurImage
 						src='/img/about-3.jpg'
-						className='w-72 h-96 rounded-3xl object-cover'
+						className='max-w-72 h-96 rounded-3xl object-cover'
 						alt='About 1'
 						height={384}
 						width={288}
 					/>
 				</div>
-				<div className='w-72 h-96 overflow-hidden rounded-3xl'>
+				<div className='max-w-72 h-96 overflow-hidden rounded-3xl'>
 					<BlurImage
 						src='/img/about-2.jpg'
-						className='w-72 h-96 rounded-3xl object-cover'
+						className='max-w-72 h-96 rounded-3xl object-cover'
 						alt='About 1'
 						height={384}
 						width={288}
 					/>
 				</div>
-				<div className='w-72 h-96 overflow-hidden rounded-3xl'>
+				<div className='max-w-72 h-96 overflow-hidden rounded-3xl'>
 					<BlurImage
 						src='/img/about-1.jpg'
-						className='w-72 h-96 rounded-3xl object-cover'
+						className='max-w-72 h-96 rounded-3xl object-cover'
 						alt='About 1'
 						height={384}
 						width={288}

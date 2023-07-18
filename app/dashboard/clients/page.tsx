@@ -1,6 +1,5 @@
 'use client';
 import ClientTable from '@/components/clients/client-table';
-import Header from '@/components/dashboard/header';
 import SearchBar from '@/components/dashboard/search-bar';
 import { COMPANY_PROFILE } from '@/utils/data';
 import React, { ChangeEvent, Fragment } from 'react';
@@ -24,7 +23,6 @@ export default function Clients() {
 	};
 	return (
 		<Fragment>
-			<Header />
 			<SearchBar onChange={handleSearch} />
 			<ClientTable selectedClients={searchResults} />
 		</Fragment>

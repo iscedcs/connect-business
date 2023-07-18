@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 export default function ProfileContact() {
 	return (
 		<Fragment>
-			<div className='flex justify-start items-start relative gap-[34px]'>
+			<div className='flex flex-wrap justify-center items-start relative gap-8'>
 				<div className='flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 relative'>
 					<svg
 						width={100}

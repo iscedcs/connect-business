@@ -1,11 +1,16 @@
 'use client';
 import './globals.css';
 import { SessionProvider } from 'next-auth/react';
-import { Inter } from 'next/font/google';
+import { Mulish } from 'next/font/google';
 import NextTopLoader from 'nextjs-toploader';
-import { Session } from 'next-auth';
+// import { Session } from 'next-auth';
 
-const inter = Inter({ subsets: ['latin'] });
+const mulish = Mulish({
+	weight: ['200', '300', '400', '500', '600', '700', '800', '900', '1000'],
+	style: ['normal', 'italic'],
+	subsets: ['latin'],
+	display: 'swap',
+});
 
 // interface NextAuthSession extends Session {
 // 	user: {
@@ -26,7 +31,7 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<SessionProvider session={session}>
-				<body className={inter.className}>
+				<body className={`${mulish.className}`}>
 					<NextTopLoader showSpinner={false} />
 					{children}
 				</body>

@@ -1,3 +1,4 @@
+'use client';
 import BlurImage from '@/components/ui/blur-image';
 import React from 'react';
 
@@ -8,6 +9,7 @@ export default function Templates({ templates }: TemplatesProps) {
 				<div
 					key={index}
 					className='flex-grow-0 flex-shrink-0 w-96 h-[240] relative overflow-hidden rounded-xl bg-white border border-gray-100 hover:shadow-mid transition-all duration-500'
+					onClick={() => alert()}
 				>
 					<BlurImage
 						src={template.image}

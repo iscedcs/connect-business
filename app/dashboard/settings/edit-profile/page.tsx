@@ -1,5 +1,4 @@
 'use client';
-import Header from '@/components/dashboard/header';
 import TextInput from '@/components/form/input/text-input';
 import TextAreaInput from '@/components/form/input/textarea-input';
 import Modal from '@/components/layouts/modal';
@@ -79,12 +78,10 @@ export default function EditProfile() {
 
 	return (
 		<Fragment>
-			<Header />
 			<div className='flex flex-col justify-start items-start h-full overflow-y-scroll p-10'>
 				<p className='text-lg font-bold text-left mb-5'>
 					{stage}/3
 				</p>
-
 				<AnimatePresence>
 					{state === 'about' && (
 						<motion.form

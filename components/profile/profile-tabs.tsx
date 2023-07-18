@@ -1,4 +1,3 @@
-import React from 'react';
 import TabItem from './tab-item';
 
 export default function TabMenu({ tabs, color }: TabMenuProps) {

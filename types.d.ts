@@ -184,7 +184,6 @@ interface NavBarItemProps {
 
 interface SearchBarProps {
 	onChange?: React.ChangeEventHandler<HTMLInputElement>;
-	handleSetActiveTab?: (tab: string) => void;
 	showAddEmployee?: boolean;
 }
 

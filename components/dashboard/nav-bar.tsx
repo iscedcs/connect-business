@@ -5,19 +5,20 @@ import NavBarList from './nav-bar-list';
 import NavBarLogout from './nav-bar-logout';
 import NavBarMobileButton from './nav-bar-mobile';
 import { signOut } from 'next-auth/react';
+import { COMPANY_PROFILE } from '@/utils/data';
 
 export default function NavBar() {
 	return (
 		<Fragment>
-			<div className='hidden max-w-[204px] overflow-y-scroll h-full md:flex flex-col justify-between overflow-hidden bg-black py-8'>
-				<div className=''>
+			<div className='hidden max-w-[204px] overflow-y-scroll h-screen md:flex flex-col justify-between gap-3 overflow-hidden bg-black py-8'>
+				<div className='flex flex-col gap-5'>
 					<NavBarLogo />
 					<NavBarList />
 				</div>
 				<NavBarLogout onClick={() => signOut()} />
 			</div>
 			<NavBarMobileButton
-				imageSrc='/img/avatar.jpeg'
+				imageSrc={COMPANY_PROFILE.logo}
 				links={[
 					{
 						title: 'Dashboard',
@@ -62,7 +63,7 @@ export default function NavBar() {
 						icon: '/icons/settings-active.svg',
 					},
 					{
-						title: 'Logout',
+						title: 'logout',
 						href: '/dashboard/logout',
 						bgColor: 'bg-black',
 						borderColor: 'border-white',
