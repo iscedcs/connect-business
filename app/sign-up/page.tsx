@@ -46,7 +46,6 @@ export default function SignUp() {
 			...prevFormData,
 			type: option,
 		}));
-		// Do something with the selected option
 	};
 
 	const handleChecked = (checked: boolean) => {
@@ -55,7 +54,6 @@ export default function SignUp() {
 			...prevFormData,
 			termsAgreed: checked,
 		}));
-		// Do something with the selected option
 	};
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -81,7 +79,6 @@ export default function SignUp() {
 		console.log(data);
 
 		try {
-			// Validate the form data
 			if (
 				!formData.name ||
 				!formData.email ||
@@ -92,7 +89,6 @@ export default function SignUp() {
 				throw new Error('Invalid form data'); // Throw an error instead of sending a response
 			}
 
-			// Make the API request to create the business account
 			const { data: response } = await axios.post(
 				API + URLS.business.auth.create,
 				data,
@@ -116,8 +112,7 @@ export default function SignUp() {
 		} catch ({ error }: any) {
 			const errorMessage =
 				error?.response?.data?.message || error?.message;
-			// Handle any unexpected errors
-			// Handle the error accordingly, e.g., show an error message to the user
+
 			setFailureModal(true);
 			setFailureMessage(errorMessage);
 			console.error(errorMessage); // Log the error
