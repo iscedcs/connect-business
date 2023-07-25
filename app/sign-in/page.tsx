@@ -6,37 +6,34 @@ import Text from '@/components/ui/text';
 import Link from 'next/link';
 import SigninLayout from './signin-layout';
 import BlurImage from '@/components/ui/blur-image';
-import { signIn } from 'next-auth/react';
+import axios from 'axios';
+import { redirect } from 'next/navigation';
 
 interface Error {
 	message: string;
 }
 
-export default function SignUp() {
+export default function Login() {
 	const [userName, setUserName] = useState('');
 	const [passWord, setPassWord] = useState('');
 	const [error, setError] = useState<Error[]>([]);
 
 	const hasErrors = error.length > 0;
 
-	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
+	const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
 
-		if (!userName || !passWord) {
-			setError([
-				{ message: 'Please enter both username and password' },
-			]);
+		const { data: response } = await axios.post('http://localhost:5000/api/business/auth/login', {
+			email: userName,
+			password: passWord
+		}, { headers: { 'x-api-key': 'UISNAHSJAKKSJSKASL' }});
+
+		if (!response) {
+			console.log(response.message);
 			return;
 		}
 
-		const result = await signIn('credentials', {
-			email: userName,
-			password: passWord,
-			redirect: true,
-			callbackUrl: '/dashboard',
-		});
-
-		console.log(result);
+		window.location.href = '/dashboard';
 	};
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -135,6 +132,7 @@ export default function SignUp() {
 				<Button
 					variant='primary'
 					className='w-full'
+					type={'submit'}
 				>
 					Sign In
 				</Button>

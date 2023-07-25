@@ -43,6 +43,7 @@ interface ButtonProps {
 	className?: string;
 	variant: 'primary' | 'secondary';
 	href?: string;
+	type?: 'button' | 'submit' | 'reset' | undefined;
 	onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 

@@ -9,6 +9,7 @@ export default function Button({
 	variant,
 	onClick,
 	href,
+	type
 }: ButtonProps) {
 	const handleMouseMove = (
 		e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>
@@ -97,6 +98,7 @@ export default function Button({
 			className={getButtonStyles()}
 			onClick={onClick}
 			onMouseMove={handleMouseMove}
+			type={ type }
 		>
 			{children}
 		</button>
