@@ -34,6 +34,7 @@ export default function Login() {
 		}
 
 		window.location.href = '/dashboard';
+		return;
 	};
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
