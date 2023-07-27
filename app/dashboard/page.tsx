@@ -1,51 +1,36 @@
+'use client';
+
 import Appointment from '@/components/appointment/appointment';
 import DashboardCard from '@/components/dashboard/dashboard-card';
 import SearchBar from '@/components/dashboard/search-bar';
+import { COMPANY_PROFILE } from '@/utils/data';
+import { useSession } from 'next-auth/react';
+import { redirect } from 'next/navigation';
 
 export default function Dashboard() {
+	const { data: session } = useSession({
+		required: true,
+		onUnauthenticated() {
+			redirect('/signin?callbackUrl=/dashboard');
+		},
+	});
+	console.log(session);
 	return (
 		<div className='px-4 md:p-10'>
 			<SearchBar showAddEmployee />
 			<div className='grid grid-cols-12 gap-6 overflow-hidden mt-5'>
 				<div className='col-span-12 md:col-span-6 lg:col-span-8 xl:col-span-9 overflow-hidden overflow-y-scroll'>
 					<div className='grid grid-cols-12 gap-6'>
-						<DashboardCard
-							amount='178'
-							newAmount='20'
-							description='Total Patronizing Clients'
-							newDescription='From last week'
-							href='dashboard/clients'
-						/>
-						<DashboardCard
-							amount='64'
-							newAmount='20'
-							description='Total Non Patronizing Clients'
-							newDescription='From last week'
-						/>
-						<DashboardCard
-							amount='200'
-							newAmount='20'
-							description='Total Connected Clients'
-							newDescription='From last week'
-						/>
-						<DashboardCard
-							amount='54'
-							newAmount='20'
-							description='Total Onboarded Employees'
-							newDescription='From last week'
-						/>
-						<DashboardCard
-							amount='178'
-							newAmount='20'
-							description='Total Appointments'
-							newDescription='From last week'
-						/>
-						<DashboardCard
-							amount='56'
-							newAmount='20'
-							description='Total Invoice'
-							newDescription='From last week'
-						/>
+						{COMPANY_PROFILE.dashboard.map((card) => (
+							<DashboardCard
+								key={card.id}
+								amount={card.amount}
+								newAmount={card.newAmount}
+								description={card.description}
+								newDescription={card.newDescription}
+								href={card.href}
+							/>
+						))}
 					</div>
 				</div>
 				<Appointment />

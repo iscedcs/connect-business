@@ -24,8 +24,8 @@ const PasswordResetPage = () => {
 	const handleVerificationCode = (code: string) => {
 		setVerificationCode(code);
 	};
-	console.log(error);
-	console.log(verificationCode);
+	// console.log(error);
+	// console.log(verificationCode);
 
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 	const verificationCodeRegex = /^\d{4}$/;

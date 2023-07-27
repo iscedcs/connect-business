@@ -36,7 +36,7 @@ export default function SignUp() {
 			callbackUrl: '/dashboard',
 		});
 
-		console.log(result);
+		// console.log(result);
 	};
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

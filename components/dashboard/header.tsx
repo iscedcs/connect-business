@@ -7,6 +7,7 @@ import BlurImage from '../ui/blur-image';
 import { GetTitle } from '@/utils/function-helpers';
 import { COMPANY_PROFILE } from '@/utils/data';
 import { notificationIcon } from '@/utils/icons';
+// import { useSession } from 'next-auth/react';
 
 export default function Header() {
 	const pathName = usePathname();

@@ -1,9 +1,7 @@
-'use client';
 import './globals.css';
-import { SessionProvider } from 'next-auth/react';
 import { Mulish } from 'next/font/google';
 import NextTopLoader from 'nextjs-toploader';
-// import { Session } from 'next-auth';
+import Provider from '@/components/helpers/session-provider';
 
 const mulish = Mulish({
 	weight: ['200', '300', '400', '500', '600', '700', '800', '900', '1000'],
@@ -12,30 +10,26 @@ const mulish = Mulish({
 	display: 'swap',
 });
 
-// interface NextAuthSession extends Session {
-// 	user: {
-// 		id: string;
-// 		name: string;
-// 		email: string;
-// 	};
-// }
+export const metadata = {
+	title: 'Connect For Business',
+	description: 'The Business Version For Connect',
+	viewport:
+		'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
+};
 
 export default function RootLayout({
 	children,
-	session,
 }: {
 	children: React.ReactNode;
-	session: any;
-	// session: NextAuthSession;
 }) {
 	return (
 		<html lang='en'>
-			<SessionProvider session={session}>
+			<Provider>
 				<body className={`${mulish.className}`}>
 					<NextTopLoader showSpinner={false} />
 					{children}
 				</body>
-			</SessionProvider>
+			</Provider>
 		</html>
 	);
 }

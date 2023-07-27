@@ -1,4 +1,5 @@
 export const COMPANY_PROFILE = {
+	id: 'IIC4BNIGLAGFES00001',
 	name: 'ISCE Digital Concept',
 	admin: 'Ayobami Oyeniran',
 	position: 'CEO',
@@ -6,6 +7,56 @@ export const COMPANY_PROFILE = {
 	// cardBanner: '/img/allcardcolors.png',
 	cardBanner: '/img/header-image.jpg',
 	adminPicture: '/img/profile-image.jpg',
+	dashboard: [
+		{
+			id: '0',
+			amount: '178',
+			newAmount: '20',
+			description: 'Total Patronizing Clients',
+			newDescription: 'From last week',
+			href: '/dashboard/clients',
+		},
+		{
+			id: '1',
+			amount: '64',
+			newAmount: '20',
+			description: 'Total Non Patronizing Clients',
+			newDescription: 'From last week',
+			href: '/dashboard',
+		},
+		{
+			id: '2',
+			amount: '200',
+			newAmount: '20',
+			description: 'Total Connected Clients',
+			newDescription: 'From last week',
+			href: '/dashboard',
+		},
+		{
+			id: '3',
+			amount: '54',
+			newAmount: '20',
+			description: 'Total Onboarded Employees',
+			newDescription: 'From last week',
+			href: '/dashboard',
+		},
+		{
+			id: '4',
+			amount: '178',
+			newAmount: '20',
+			description: 'Total Appointments',
+			newDescription: 'From last week',
+			href: '/dashboard',
+		},
+		{
+			id: '5',
+			amount: '329',
+			newAmount: '20',
+			description: 'Total Invoice',
+			newDescription: 'From last week',
+			href: '/dashboard',
+		},
+	],
 	about: {
 		text: `Event planning involves the process of organizing and coordinating various elements to create a successful event. This could include social gatherings, corporate conferences, weddings, trade shows, or any other type of event. The goal of event planning is to ensure that all aspects, such as venue selection, budgeting, logistics, catering, entertainment, and marketing, are carefully managed to meet the objectives and expectations of the event.`,
 		images: [
@@ -5977,3 +6028,8 @@ export const SOCIAL_ICONS: SocialIcons[] = [
 		),
 	},
 ];
+
+export const EMPLOYEE_DETAILS = {
+	id: '001',
+	themeColor: '#973534',
+};

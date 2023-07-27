@@ -7,7 +7,11 @@ export const URLS = {
 			signin: '/business/auth/login',
 			// Add more routes under the 'auth' namespace if needed
 		},
-		dashboard: 'business/dashboard',
+		dashboard: '/business/dashboard',
+		appointments: {
+			all: '/business/appointments',
+		},
+
 		// Add more namespaces or routes under 'business' if needed
 	},
 	// Add more top-level namespaces or routes as needed

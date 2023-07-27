@@ -32,7 +32,7 @@ export default function SignUp() {
 
 	const [successModal, setSuccessModal] = React.useState(false);
 	const [failureModal, setFailureModal] = React.useState(false);
-	console.log(formData);
+	// console.log(formData);
 
 	const options = [
 		'Service Based Business',
@@ -41,7 +41,7 @@ export default function SignUp() {
 	];
 
 	const handleSelect = (option: string) => {
-		console.log('Selected option:', option);
+		// console.log('Selected option:', option);
 		setFormData((prevFormData) => ({
 			...prevFormData,
 			type: option,
@@ -49,7 +49,7 @@ export default function SignUp() {
 	};
 
 	const handleChecked = (checked: boolean) => {
-		console.log(checked);
+		// console.log(checked);
 		setFormData((prevFormData) => ({
 			...prevFormData,
 			termsAgreed: checked,
@@ -76,7 +76,7 @@ export default function SignUp() {
 			confirm_password: formData.password,
 		};
 
-		console.log(data);
+		// console.log(data);
 
 		try {
 			if (
@@ -94,7 +94,7 @@ export default function SignUp() {
 				data,
 				config
 			);
-			console.log(response);
+			// console.log(response);
 
 			if (!response) {
 				throw new Error('Hello! Something went wrong');
