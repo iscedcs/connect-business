@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { signIn, signOut, useSession } from 'next-auth/react';
-import NavBarLogo from '../dashboard/nav-bar-logo';
 import Link from 'next/link';
+import NavBarLogo from '../shared/nav-bar/nav-bar-logo';
 
 export default function NavBarHome() {
 	const { data: session } = useSession();
@@ -12,7 +12,7 @@ export default function NavBarHome() {
 			<NavBarLogo />
 			<ul className='flex gap-3'>
 				<li>
-					<Link href='/dashboard'>Dashboard</Link>
+					<Link href='/admin'>Dashboard</Link>
 				</li>
 			</ul>
 			<div>

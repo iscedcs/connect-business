@@ -1,11 +1,11 @@
 'use client';
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import TextInput from '@/components/form/input/text-input';
-import Button from '@/components/ui/button/button';
-import Text from '@/components/ui/text';
+import TextInput from '@/components/shared/form/input/text-input';
+import Button from '@/components/shared/ui/button/button';
+import Text from '@/components/shared/ui/text';
 import Link from 'next/link';
 import SigninLayout from './signin-layout';
-import BlurImage from '@/components/ui/blur-image';
+import BlurImage from '@/components/shared/ui/blur-image';
 import { signIn } from 'next-auth/react';
 
 interface Error {
@@ -33,7 +33,7 @@ export default function SignUp() {
 			email: userName,
 			password: passWord,
 			redirect: true,
-			callbackUrl: '/dashboard',
+			callbackUrl: '/admin',
 		});
 
 		// console.log(result);

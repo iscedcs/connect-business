@@ -92,7 +92,7 @@ interface NavBarMobileButtonProps {
 	links: {
 		title: string;
 		href: string;
-		icon: string;
+		activeIcon: string;
 		bgColor: string;
 		borderColor: string;
 	}[];
@@ -275,4 +275,13 @@ interface TemplatesProps {
 interface SocialIcons {
 	name: string;
 	icon: React.ReactNode;
+}
+
+interface Link {
+	title: string;
+	href: string;
+	bgColor: string;
+	borderColor: string;
+	icon: string;
+	activeIcon: string;
 }

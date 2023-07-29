@@ -83,3 +83,18 @@ export function GetTitle(input: string): string {
 
 	return words.join(' ');
 }
+
+export function formatName(name: string): string {
+	const nameParts = name.trim().split(' ');
+
+	if (nameParts.length >= 3) {
+		const firstName = nameParts[0];
+		const lastName = nameParts[1];
+
+		const otherNameInitial = nameParts[2].charAt(0) + '.';
+
+		return `${firstName} ${lastName} ${otherNameInitial}`;
+	} else {
+		return name;
+	}
+}

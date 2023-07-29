@@ -1,6 +1,6 @@
 import { API, URLS } from '@/utils/consts';
 import axios from 'axios';
-import NextAuth from 'next-auth';
+import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
 const config = {
@@ -9,7 +9,7 @@ const config = {
 	},
 };
 
-const handler = NextAuth({
+export const authOptions: NextAuthOptions = {
 	providers: [
 		CredentialsProvider({
 			name: 'Credentials',
@@ -28,9 +28,15 @@ const handler = NextAuth({
 				);
 				try {
 					if (res.status === 200) {
-						const user = res.data;
-						// console.log(user);
-						return user;
+						const user = res.data.data;
+						console.log(user);
+						return {
+							...user,
+							token_type: user.token_type,
+							expires_in: user.expires_in,
+							access_token: user.access_token,
+							refresh_token: user.refresh_token,
+						};
 					} else {
 						console.log('something went wrong');
 					}
@@ -57,20 +63,30 @@ const handler = NextAuth({
 		signIn: '/sign-in',
 	},
 	callbacks: {
-		async jwt({ token, account }) {
-			// Persist the OAuth access_token to the token right after signin
-			if (account) {
-				token.accessToken = account.access_token;
+		session: ({ session, token }) => {
+			return {
+				...session,
+				user: {
+					...session.user,
+					access_token: token.access_token,
+				},
+			};
+		},
+		jwt: ({ token, user }) => {
+			if (user) {
+				const u = user as unknown as any;
+				return {
+					...token,
+					id: u.id,
+					access_token: u.access_token,
+				};
 			}
 			return token;
 		},
-		// async session({ session, token, user }) {
-		// 	// Send properties to the client, like an access_token from a provider.
-		// 	session.accessToken = token.accessToken;
-		// 	return session;
-		// },
 	},
-});
+};
+
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
 

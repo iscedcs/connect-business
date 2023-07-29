@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import TabMenu from '../profile/profile-tabs';
 import { COMPANY_PROFILE, PROFILE_TAB } from '@/utils/data';
-import BlurImage from '../ui/blur-image';
+import BlurImage from '../shared/ui/blur-image';
 import Link from 'next/link';
 
 export default function TemplateTwo({
@@ -24,7 +24,7 @@ export default function TemplateTwo({
 					/>
 				</div>
 				<Link
-					href={'/dashboard/settings/edit-profile'}
+					href={'/admin/settings/edit-profile'}
 					className='flex justify-end items-center absolute right-0 md:right-10 top-5 gap-3 text-white'
 				>
 					<svg

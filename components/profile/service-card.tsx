@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import BlurImage from '../ui/blur-image';
+import BlurImage from '../shared/ui/blur-image';
 
 export default function ServiceCard({
 	image,
@@ -14,7 +14,7 @@ export default function ServiceCard({
 	const [hovered, setHovered] = useState<boolean>(false);
 	return (
 		<div
-			className='flex-grow-0 flex-shrink-0 w-72 h-96 relative bg-white shadow-mid rounded-2xl cursor-pointer'
+			className='flex-grow-0 flex-shrink-0 w-72 h-96 relative bg-white shadow-mid rounded-2xl cursor-pointer overflow-hidden'
 			onMouseEnter={() => setHovered(true)}
 			onMouseLeave={() => setHovered(false)}
 			// onClick={}

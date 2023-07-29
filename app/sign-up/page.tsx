@@ -1,16 +1,15 @@
 'use client';
-import Checkbox from '@/components/form/checkbox/checkbox';
-import TextInput from '@/components/form/input/text-input';
-import Button from '@/components/ui/button/button';
-import Text from '@/components/ui/text';
+import Checkbox from '@/components/shared/form/checkbox/checkbox';
+import TextInput from '@/components/shared/form/input/text-input';
+import Button from '@/components/shared/ui/button/button';
+import Text from '@/components/shared/ui/text';
 import Link from 'next/link';
 import React, { Fragment } from 'react';
 import SigninLayout from '../sign-in/signin-layout';
-import BlurImage from '@/components/ui/blur-image';
-import SelectInput from '@/components/form/select/select-input';
-import { API, URLS } from '@/utils/consts';
-import axios from 'axios';
+import BlurImage from '@/components/shared/ui/blur-image';
+import SelectInput from '@/components/shared/form/select/select-input';
 import Modal from '@/components/layouts/modal';
+import createBusiness from '../api/signup/route';
 
 export default function SignUp() {
 	const [failureMessage, setFailureMessage] = React.useState('');
@@ -26,13 +25,13 @@ export default function SignUp() {
 
 	const config = {
 		headers: {
-			'x-api-key': process.env.X_API_KEY,
+			// 'x-api-key': process.env.X_API_KEY,
+			'x-api-key': 'UISNAHSJAKKSJSKASL',
 		},
 	};
 
 	const [successModal, setSuccessModal] = React.useState(false);
 	const [failureModal, setFailureModal] = React.useState(false);
-	// console.log(formData);
 
 	const options = [
 		'Service Based Business',
@@ -41,7 +40,6 @@ export default function SignUp() {
 	];
 
 	const handleSelect = (option: string) => {
-		// console.log('Selected option:', option);
 		setFormData((prevFormData) => ({
 			...prevFormData,
 			type: option,
@@ -49,7 +47,6 @@ export default function SignUp() {
 	};
 
 	const handleChecked = (checked: boolean) => {
-		// console.log(checked);
 		setFormData((prevFormData) => ({
 			...prevFormData,
 			termsAgreed: checked,
@@ -76,8 +73,6 @@ export default function SignUp() {
 			confirm_password: formData.password,
 		};
 
-		// console.log(data);
-
 		try {
 			if (
 				!formData.name ||
@@ -89,12 +84,8 @@ export default function SignUp() {
 				throw new Error('Invalid form data'); // Throw an error instead of sending a response
 			}
 
-			const { data: response } = await axios.post(
-				API + URLS.business.auth.create,
-				data,
-				config
-			);
-			// console.log(response);
+			const { data: response } = await createBusiness(data);
+			console.log(response);
 
 			if (!response) {
 				throw new Error('Hello! Something went wrong');
@@ -263,7 +254,7 @@ export default function SignUp() {
 				onClose={() => setSuccessModal(false)}
 				isOpen={successModal}
 			>
-				<div className='h-[500px] w-[500px] flex justify-center items-center bg-white rounded-3xl'>
+				<div className='h-[500px] w-[500px] flex flex-col gap-5 justify-center items-center bg-white rounded-3xl'>
 					<svg
 						width={132}
 						height={132}
@@ -289,6 +280,15 @@ export default function SignUp() {
 							fill='#FFFFFE'
 						/>
 					</svg>
+
+					<div>Business Created Succesfully</div>
+
+					<Button
+						onClick={() => setSuccessModal(false)}
+						variant='primary'
+					>
+						Close
+					</Button>
 				</div>
 			</Modal>
 			<Modal
@@ -317,7 +317,14 @@ export default function SignUp() {
 							fill='#BA1A1A'
 						/>
 					</svg>
-					<span>{failureMessage}</span>
+					<div>Something Went Wrong</div>
+
+					<Button
+						onClick={() => setFailureModal(false)}
+						variant='primary'
+					>
+						Close
+					</Button>
 				</div>
 			</Modal>
 		</Fragment>
