@@ -2,14 +2,22 @@
 import TextInput from '@/components/shared/form/input/text-input';
 import Modal from '@/components/layouts/modal';
 import Button from '@/components/shared/ui/button/button';
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import addEmployee from '@/app/api/add-employee/route';
-import { useSession } from 'next-auth/react';
+// import { useSession } from 'next-auth/react';
+// import { getHeaderDetails } from '@/utils/get-data';
 
-export default function AddEmployee() {
-	const { data: session } = useSession();
-	console.log(session?.user);
+// const getData = async () => {
+// 	const { data: session } = useSession();
+// 	const accessToken = session?.user.access_token as string;
+// 	const user = await getHeaderDetails();
 
+// 	localStorage.setItem('accessToken', accessToken);
+
+// 	return user;
+// };
+
+const AddEmployee = () => {
 	const [employeeAdded, setEmployeeAdded] = React.useState(false);
 	const [formData, setFormData] = React.useState({
 		business_id: '',
@@ -166,4 +174,6 @@ export default function AddEmployee() {
 			</Modal>
 		</Fragment>
 	);
-}
+};
+
+export default AddEmployee;
