@@ -285,3 +285,12 @@ interface Link {
 	icon: string;
 	activeIcon: string;
 }
+
+declare namespace NodeJS {
+	interface ProcessEnv {
+		NEXTAUTH_SECRET: string;
+		NEXTAUTH_URL: string;
+		X_API_KEY: string;
+		SECRET_KEY: string;
+	}
+}

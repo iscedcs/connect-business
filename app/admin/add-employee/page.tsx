@@ -3,19 +3,27 @@ import TextInput from '@/components/shared/form/input/text-input';
 import Modal from '@/components/layouts/modal';
 import Button from '@/components/shared/ui/button/button';
 import React, { Fragment, useState } from 'react';
-import addEmployee from '@/app/api/add-employee/route';
-// import { useSession } from 'next-auth/react';
-// import { getHeaderDetails } from '@/utils/get-data';
+import axios from 'axios';
+import { API, URLS, xApiKey } from '@/utils/consts';
 
-// const getData = async () => {
-// 	const { data: session } = useSession();
-// 	const accessToken = session?.user.access_token as string;
-// 	const user = await getHeaderDetails();
+const accessToken = localStorage.getItem('accessToken');
 
-// 	localStorage.setItem('accessToken', accessToken);
+const getData = async () => {
+	const user = await axios.get(API + URLS.business.dashboard, {
+		headers: {
+			Authorization: `Bearer ${accessToken}`,
+			'x-api-key': 'UISNAHSJAKKSJSKASL',
+		},
+	});
 
-// 	return user;
-// };
+	localStorage.setItem('userData', JSON.stringify(user));
+	return user;
+};
+const headers = {
+	'Content-Type': 'application/json',
+	'x-api-key': 'UISNAHSJAKKSJSKASL',
+	Autorization: `Bearer ${accessToken}`,
+};
 
 const AddEmployee = () => {
 	const [employeeAdded, setEmployeeAdded] = React.useState(false);
@@ -62,7 +70,13 @@ const AddEmployee = () => {
 			// 	throw new Error('Invalid form data');
 			// }
 
-			const { data: response } = await addEmployee(data);
+			const response = await axios.post(
+				API + URLS.business.team.create,
+				data,
+				{
+					headers,
+				}
+			);
 			console.log(response);
 
 			if (!response) {
@@ -76,12 +90,13 @@ const AddEmployee = () => {
 				role: '',
 				gender: 'Not Specified',
 			});
+			return response;
 		} catch ({ error }: any) {
 			const errorMessage =
 				error?.response?.data?.message || error?.message;
 			console.error(errorMessage); // Log the error
 		}
-		setEmployeeAdded(true);
+		// setEmployeeAdded(true);
 	};
 	return (
 		<Fragment>

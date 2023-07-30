@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import BlurImage from '../ui/blur-image';
 
 export default function NavBarItem({
 	name,

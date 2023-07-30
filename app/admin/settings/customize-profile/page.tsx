@@ -1,4 +1,4 @@
-import Templates from '@/components/settings/templates';
+import Templates from '@/components/admin/settings/templates';
 import { COMPANY_PROFILE } from '@/utils/data';
 import React from 'react';
 
