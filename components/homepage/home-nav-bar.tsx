@@ -1,12 +1,12 @@
 'use client';
 
 import React from 'react';
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { signIn, signOut } from 'next-auth/react';
 import Link from 'next/link';
 import NavBarLogo from '../shared/nav-bar/nav-bar-logo';
+import { Session } from 'next-auth';
 
-export default function NavBarHome() {
-	const { data: session } = useSession();
+export default function NavBarHome({ session }: { session: Session | null }) {
 	return (
 		<div className='w-screen flex justify-between items-center bg-gray-300 px-5'>
 			<NavBarLogo />
@@ -16,9 +16,8 @@ export default function NavBarHome() {
 				</li>
 			</ul>
 			<div>
-				{session?.user ? (
+				{session ? (
 					<div className='flex gap-3'>
-						{session.user.email}
 						<button onClick={() => signOut()}>Log Out</button>
 					</div>
 				) : (

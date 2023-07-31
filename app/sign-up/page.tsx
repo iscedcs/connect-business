@@ -9,7 +9,7 @@ import SigninLayout from '../sign-in/signin-layout';
 import BlurImage from '@/components/shared/ui/blur-image';
 import SelectInput from '@/components/shared/form/select/select-input';
 import Modal from '@/components/layouts/modal';
-import createBusiness from '../api/signup/create-business';
+import { createBusiness } from '@/utils/server-data-retrival-functions';
 
 export default function SignUp() {
 	const [failureMessage, setFailureMessage] = React.useState('');

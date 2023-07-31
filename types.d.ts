@@ -294,3 +294,24 @@ declare namespace NodeJS {
 		SECRET_KEY: string;
 	}
 }
+
+interface resetP {
+	email: string;
+}
+
+interface CreateBusinessP {
+	name: string;
+	email: string;
+	type: string;
+	password: string;
+	confirm_password: string;
+}
+
+interface addStaffP {
+	business_id?: string;
+	name: string;
+	email: string;
+	phone: string;
+	role: string;
+	gender?: string;
+}

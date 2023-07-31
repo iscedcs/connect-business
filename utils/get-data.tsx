@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { API, URLS, xApiKey } from './consts';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { getServerSession } from 'next-auth';
+import { options } from '@/app/api/auth/[...nextauth]/options';
 
 export const getHeaderDetails = async () => {
-	const session = await getServerSession(authOptions);
+	const session = await getServerSession(options);
 	const accessToken = session?.user.access_token;
 
 	const res = await axios.get(API + URLS.business.dashboard, {
@@ -15,11 +15,6 @@ export const getHeaderDetails = async () => {
 	});
 	if (res.status === 200) {
 		let headerDetails = res.data;
-		// headerDetails = {
-		// 	...headerDetails,
-		// 	token: accessToken,
-		// };
-		// console.log(headerDetails.data.user.business_id);
 		return headerDetails;
 	} else {
 		console.log('something went wrong');

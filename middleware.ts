@@ -2,7 +2,7 @@
 
 export { default } from 'next-auth/middleware';
 
-export const config = { matcher: ['/admin/:path*'] };
+export const config = { matcher: ['/admin/:path*', '/staff/:path*'] };
 
 // export function middleware(req: NextRequest) {
 // 	const response = NextResponse.next();

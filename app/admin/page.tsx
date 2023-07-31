@@ -1,16 +1,10 @@
 'use client';
-
 import Appointment from '@/components/admin/appointment/appointment';
 import DashboardCard from '@/components/admin/dashboard-card';
 import SearchBar from '@/components/admin/search-bar';
 import { COMPANY_PROFILE } from '@/utils/data';
-import { useSession } from 'next-auth/react';
 
-export default function Dashboard() {
-	const { data: session } = useSession();
-	const accessToken = session?.user.access_token as string;
-	localStorage.setItem('accessToken', accessToken);
-
+export default async function Dashboard() {
 	return (
 		<div className='px-4 md:px-10'>
 			<SearchBar showAddEmployee />

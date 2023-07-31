@@ -2,30 +2,12 @@
 import TextInput from '@/components/shared/form/input/text-input';
 import Modal from '@/components/layouts/modal';
 import Button from '@/components/shared/ui/button/button';
-import React, { Fragment, useState } from 'react';
-import axios from 'axios';
-import { API, URLS, xApiKey } from '@/utils/consts';
-
-const accessToken = localStorage.getItem('accessToken');
-
-const getData = async () => {
-	const user = await axios.get(API + URLS.business.dashboard, {
-		headers: {
-			Authorization: `Bearer ${accessToken}`,
-			'x-api-key': 'UISNAHSJAKKSJSKASL',
-		},
-	});
-
-	localStorage.setItem('userData', JSON.stringify(user));
-	return user;
-};
-const headers = {
-	'Content-Type': 'application/json',
-	'x-api-key': 'UISNAHSJAKKSJSKASL',
-	Autorization: `Bearer ${accessToken}`,
-};
+import React, { Fragment } from 'react';
+import { addStaff } from '@/utils/server-data-retrival-functions';
+import { useSession } from 'next-auth/react';
 
 const AddEmployee = () => {
+	const session = useSession();
 	const [employeeAdded, setEmployeeAdded] = React.useState(false);
 	const [formData, setFormData] = React.useState({
 		business_id: '',
@@ -43,6 +25,7 @@ const AddEmployee = () => {
 			[name]: value,
 		}));
 		console.log(formData);
+		console.log(session);
 	};
 
 	const handleAddEmployee = async (
@@ -60,24 +43,7 @@ const AddEmployee = () => {
 		};
 
 		try {
-			// if (
-			// 	!formData.name ||
-			// 	!formData.email ||
-			// 	!formData.type ||
-			// 	!formData.password ||
-			// 	formData.password !== formData.confirm_password
-			// ) {
-			// 	throw new Error('Invalid form data');
-			// }
-
-			const response = await axios.post(
-				API + URLS.business.team.create,
-				data,
-				{
-					headers,
-				}
-			);
-			console.log(response);
+			const response = await addStaff(data);
 
 			if (!response) {
 				throw new Error('Hello! Something went wrong');
