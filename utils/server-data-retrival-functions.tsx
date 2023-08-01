@@ -16,7 +16,7 @@ export const dashboardDetails = async () => {
 
 	if (res.status === 200) {
 		const details = res.data;
-		console.log(details);
+		// console.log(details);
 		return details;
 	} else {
 		console.log('something went wrong');
@@ -85,6 +85,7 @@ export const addStaff = async (data: addStaffP): Promise<any> => {
 		return response.data;
 	} catch (error) {
 		console.error(error);
+		return null;
 	}
 };
 

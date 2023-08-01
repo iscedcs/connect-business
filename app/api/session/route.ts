@@ -4,7 +4,6 @@ import { options } from '../auth/[...nextauth]/options';
 
 export async function GET(request: Request) {
 	const session = await getServerSession(options);
-	console.log(session);
 	if (!session) {
 		return new NextResponse(
 			JSON.stringify({

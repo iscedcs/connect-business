@@ -7,6 +7,8 @@ declare module 'next-auth' {
 			id: string;
 			access_token: string;
 			refresh_token: string;
+			business_id: string;
+			member_id: string;
 		} & DefaultSession;
 	}
 	interface User extends DefaultUser {
@@ -14,6 +16,8 @@ declare module 'next-auth' {
 		expires_in: string;
 		access_token: string;
 		refresh_token: string;
+		business_id: string;
+		member_id: string;
 		id: string;
 	}
 }
@@ -21,6 +25,8 @@ declare module 'next-auth' {
 	interface JWT extends DefaultJWT {
 		access_token: string;
 		refresh_token: string;
+		business_id: string;
+		member_id: string;
 		id: string;
 	}
 }

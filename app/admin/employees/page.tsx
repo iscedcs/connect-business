@@ -8,7 +8,7 @@ import SearchBar from '@/components/admin/search-bar';
 import WaitlistedEmployees from '@/components/admin/employee/waitlisted-employees';
 import OnboardedEmployees from '@/components/admin/employee/onboarded-employees';
 
-export default async function Employees(props: EmployeesProps) {
+export default function Employees(props: EmployeesProps) {
 	const [activeTab, setActiveTab] = useState<string>('onboarded');
 	const [selectedEmployee, setSelectedEmployee] =
 		useState<EmployeeDetails | null>(null);

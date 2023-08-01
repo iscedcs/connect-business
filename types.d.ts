@@ -44,6 +44,7 @@ interface ButtonProps {
 	variant: 'primary' | 'secondary';
 	href?: string;
 	onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+	isLoading?: boolean;
 }
 
 interface CheckboxProps {
@@ -311,7 +312,18 @@ interface addStaffP {
 	business_id?: string;
 	name: string;
 	email: string;
-	phone: string;
+	phone?: string;
 	role: string;
 	gender?: string;
+}
+
+interface NewInputProps
+	extends React.DetailedHTMLProps<
+		React.InputHTMLAttributes<HTMLInputElement>,
+		HTMLInputElement
+	> {
+	variant: 'primary' | 'secondary'; // Update with other variants as needed
+	type: 'password' | 'email' | 'phone' | 'tel' | 'text';
+	hasError?: boolean;
+	label?: string;
 }

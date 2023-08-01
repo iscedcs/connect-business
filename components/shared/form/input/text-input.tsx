@@ -39,6 +39,7 @@ function TextInput({
 			setIsValueEmpty(true);
 		}
 	};
+
 	return (
 		<div
 			className={`${styles.inputBox} relative flex flex-col w-full h-12 xl:h-14 rounded-xl bg-gray-100/30 text-gray-400`}

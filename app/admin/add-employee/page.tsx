@@ -1,22 +1,29 @@
 'use client';
-import TextInput from '@/components/shared/form/input/text-input';
 import Modal from '@/components/layouts/modal';
 import Button from '@/components/shared/ui/button/button';
 import React, { Fragment } from 'react';
-import { addStaff } from '@/utils/server-data-retrival-functions';
 import { useSession } from 'next-auth/react';
+import NewInput from '@/components/shared/form/input/new-input';
 
 const AddEmployee = () => {
-	const session = useSession();
+	const { data: session } = useSession();
+	const [isLoading, setIsLoading] = React.useState(false);
+
+	const [businessId, setBusinessId] = React.useState(
+		session?.user?.business_id
+	);
 	const [employeeAdded, setEmployeeAdded] = React.useState(false);
 	const [formData, setFormData] = React.useState({
-		business_id: '',
+		business_id: businessId,
 		name: '',
 		email: '',
 		phone: '',
 		role: '',
-		gender: 'Not Specified',
 	});
+
+	React.useEffect(() => {
+		setBusinessId(session?.user?.business_id as any);
+	}, []);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -24,76 +31,90 @@ const AddEmployee = () => {
 			...prevFormData,
 			[name]: value,
 		}));
-		console.log(formData);
-		console.log(session);
 	};
 
 	const handleAddEmployee = async (
 		e: React.MouseEvent<HTMLButtonElement>
 	) => {
 		e.preventDefault();
-
+		setIsLoading(true);
+		console.log(formData);
 		const data = {
-			business_id: formData.business_id,
+			business_id: businessId,
 			name: formData.name,
 			email: formData.email,
 			phone: formData.phone,
 			role: formData.role,
-			gender: formData.gender,
 		};
 
-		try {
-			const response = await addStaff(data);
-
-			if (!response) {
-				throw new Error('Hello! Something went wrong');
-			}
-			setFormData({
-				business_id: '',
-				name: '',
-				email: '',
-				phone: '',
-				role: '',
-				gender: 'Not Specified',
+		const res = await fetch('/api/add-staff', {
+			method: 'POST',
+			body: JSON.stringify(data),
+		})
+			.then((res) => {
+				console.log(res);
+			})
+			.catch((error) => {
+				console.error(error?.message);
 			});
-			return response;
-		} catch ({ error }: any) {
-			const errorMessage =
-				error?.response?.data?.message || error?.message;
-			console.error(errorMessage); // Log the error
-		}
-		// setEmployeeAdded(true);
+		setFormData({
+			business_id: businessId,
+			name: '',
+			email: '',
+			phone: '',
+			role: '',
+		});
+		setIsLoading(false);
+		setEmployeeAdded(true);
+		return res;
 	};
 	return (
 		<Fragment>
 			<div className='grid grid-cols-12 w-full h-full gap-6 py-5 px-10 overflow-hidden'>
 				<div className='col-span-12 md:col-span-8 lg:col-span-6 pt-20'>
 					<form className='flex flex-col gap-5'>
-						<TextInput
+						<NewInput
+							variant='primary'
+							type='text'
+							onInput={handleChange}
 							label={"Employee's Name"}
 							onBlur={handleChange}
 							name='name'
+							value={formData.name}
 						/>
-						<TextInput
+						<NewInput
+							variant='primary'
+							type='text'
+							onInput={handleChange}
 							label={"Employee's Email Address"}
 							onBlur={handleChange}
 							name='email'
+							value={formData.email}
 						/>
-						<TextInput
+						<NewInput
+							variant='primary'
+							type='text'
+							onInput={handleChange}
 							label={"Employee's Phone Number"}
 							onBlur={handleChange}
 							name='phone'
+							value={formData.phone}
 						/>
-						<TextInput
+						<NewInput
+							variant='primary'
+							type='text'
+							onInput={handleChange}
 							label={"Employee's Role"}
 							onBlur={handleChange}
 							name='role'
+							value={formData.role}
 						/>
 						<div className='mt-3'>
 							<Button
 								variant='primary'
 								className='w-full'
 								onClick={handleAddEmployee}
+								isLoading={isLoading}
 							>
 								Add Employee
 							</Button>
