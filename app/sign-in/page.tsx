@@ -7,6 +7,7 @@ import Link from 'next/link';
 import SigninLayout from './signin-layout';
 import BlurImage from '@/components/shared/ui/blur-image';
 import { signIn } from 'next-auth/react';
+import NewInput from '@/components/shared/form/input/new-input';
 
 interface Error {
 	message: string;
@@ -15,12 +16,14 @@ interface Error {
 export default function SignUp() {
 	const [userName, setUserName] = useState('');
 	const [passWord, setPassWord] = useState('');
+	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState<Error[]>([]);
 
 	const hasErrors = error.length > 0;
 
 	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		setIsLoading(true);
 
 		if (!userName || !passWord) {
 			setError([
@@ -36,7 +39,9 @@ export default function SignUp() {
 			callbackUrl: '/admin',
 		});
 
-		// console.log(result);
+		console.log(result);
+		setIsLoading(false);
+		return result;
 	};
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -100,20 +105,23 @@ export default function SignUp() {
 						</div>
 						<div className='flex flex-col gap-3 xl:gap-6'>
 							<div className='flex flex-col gap-2 xl:gap-6'>
-								<TextInput
+								<NewInput
+									variant='primary'
+									type='email'
 									className='w-full'
 									label='Business ID'
 									name='username'
 									onBlur={handleChange}
-									error={hasErrors}
+									onInput={handleChange}
 								/>
-								<TextInput
-									variant='password'
+								<NewInput
+									variant='primary'
+									type='password'
 									className='w-full'
 									label='Password'
 									name='password'
 									onBlur={handleChange}
-									error={hasErrors}
+									onInput={handleChange}
 								/>
 							</div>
 							<Text
@@ -133,6 +141,7 @@ export default function SignUp() {
 					</div>
 				</div>
 				<Button
+					isLoading={isLoading}
 					variant='primary'
 					className='w-full'
 				>

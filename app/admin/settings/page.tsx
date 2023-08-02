@@ -10,17 +10,17 @@ export default function Settings() {
 				<SettingsCard
 					title='Edit Business Profile'
 					icon={editIcon}
-					link='dashboard/settings/edit-profile'
+					link='/admin/settings/edit-profile'
 				/>
 				<SettingsCard
 					title='Customize Business Profile'
 					icon={customizeIcon}
-					link='dashboard/settings/customize-profile'
+					link='/admin/settings/customize-profile'
 				/>
 				<SettingsCard
 					title='Update Passwoord'
 					icon={updateIcon}
-					link='dashboard/settings/update-password'
+					link='/admin/settings/update-password'
 				/>
 			</div>
 		</Fragment>

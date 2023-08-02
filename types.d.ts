@@ -41,9 +41,9 @@ interface ButtonProps {
 	size?: 'sm' | 'md' | 'lg';
 	children?: React.ReactNode;
 	className?: string;
-	variant: 'primary' | 'secondary';
+	variant: 'primary' | 'secondary' | 'danger' | success;
 	href?: string;
-	onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+	onClick?: any;
 	isLoading?: boolean;
 }
 
@@ -62,6 +62,16 @@ interface EmployeeDetails {
 	address: string;
 	phone: string;
 	gender: string;
+	role?: string;
+	business_id?: string;
+	deleted?: boolean;
+	device_id?: string;
+	device_type?: string;
+	gender?: 'Male' | 'Female' | 'Not Specified';
+	member_id?: string;
+	password?: string;
+	phone: null;
+	waitlist: boolean;
 }
 
 interface DropdownItem {
@@ -80,12 +90,15 @@ interface DropdownProps {
 
 interface EmployeeCardProps {
 	name: string;
-	email: string;
-	position: string;
+	email?: string;
+	position?: string;
+	deleted?: boolean;
 	image?: string;
 	onClick?: () => void;
 	onDelete?: () => void;
-	status: string;
+	onOnboard?: () => void;
+	waitlist?: boolean;
+	index: number;
 }
 
 interface NavBarMobileButtonProps {
@@ -130,6 +143,7 @@ interface OnboardedEmployeesProps {
 	searchResults: EmployeeDetails[];
 	handleCardClick: any;
 	handleDelete: any;
+	handleOnboard?: any;
 }
 
 interface EmployeesProps {}

@@ -1,4 +1,4 @@
-export const API = 'https://lobster-app-wxw8t.ondigitalocean.app/api';
+export const API = 'https://monolith.isce.app/api';
 
 export const URLS = {
 	business: {
@@ -14,6 +14,7 @@ export const URLS = {
 		},
 		team: {
 			create: '/business/team-members',
+			onboard: '/business/team-members/onboard/',
 		},
 
 		// Add more namespaces or routes under 'business' if needed

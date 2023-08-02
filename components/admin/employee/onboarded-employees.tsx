@@ -7,28 +7,29 @@ export default function OnboardedEmployees({
 	handleDelete,
 }: OnboardedEmployeesProps) {
 	const isEmpty = searchResults.length === 0;
-	const sortedResults = searchResults.sort((a, b) =>
-		a.name.localeCompare(b.name)
-	);
 
+	const sortedResults =
+		searchResults.sort((a, b) => a.name.localeCompare(b.name)) || '';
 	return (
 		<div className='grid grid-cols-12 w-full gap-6 px-2 py-5 overflow-hidden overflow-y-scroll'>
 			{!isEmpty ? (
-				sortedResults.map((employee) => (
+				sortedResults.map((member, index) => (
 					<EmployeeCard
-						key={employee.id}
-						name={employee.name}
-						email={employee.email}
-						position={employee.position}
-						image={employee.image}
-						onClick={() => handleCardClick(employee)}
-						status={employee.status}
-						onDelete={handleDelete}
+						key={member.member_id}
+						name={member.name}
+						email={member.email}
+						position={member.role}
+						image={member.image}
+						onClick={() => handleCardClick(member)}
+						waitlist={member.waitlist}
+						onDelete={() => handleDelete(member.member_id)}
+						index={index}
+						deleted={member.deleted}
 					/>
 				))
 			) : (
-				<div className='text-center text-2xl text-gray-500 col-span-12'>
-					No employees found
+				<div className='text-center text-2xl text-gray-500 col-span-12 min-h-[300px] flex items-center justify-center'>
+					No Onboarded Employees, Check the Waitlisted Section
 				</div>
 			)}
 		</div>

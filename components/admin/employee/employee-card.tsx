@@ -9,8 +9,11 @@ export default function EmployeeCard({
 	position,
 	image,
 	onClick,
-	status,
+	waitlist,
 	onDelete,
+	deleted,
+	onOnboard,
+	index,
 }: EmployeeCardProps) {
 	const [isHovered, setIsHovered] = useState(false);
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -27,13 +30,10 @@ export default function EmployeeCard({
 		setIsHovered(false);
 	};
 
-	const variants = {
-		hovered: {
-			backgroundColor: '#000000',
-		},
-		initial: {
-			backgroundColor: '#ffffff',
-		},
+	const cardVariants = {
+		initial: { opacity: 0, y: 20 },
+		animate: { opacity: 1, y: 0 },
+		exit: { opacity: 0, y: -20 },
 	};
 
 	const imageVariants = {
@@ -89,9 +89,7 @@ export default function EmployeeCard({
 		{
 			title: 'Confirm',
 			color: 'text-black',
-			onClick: () => {
-				// Handle delete click
-			},
+			onClick: onOnboard,
 			icon: (
 				<svg
 					width={20}
@@ -269,14 +267,15 @@ export default function EmployeeCard({
 	return (
 		<AnimatePresence>
 			<motion.div
-				className='col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 w-full min-w-[200px] h-[200px] bg-white rounded-xl cursor-pointer relative'
+				className='group hover:bg-black col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 w-full min-w-[200px] h-[200px] bg-white rounded-xl cursor-pointer relative transition-all duration-500'
 				onMouseEnter={handleHover}
 				onMouseLeave={handleMouseLeave}
 				initial='initial'
-				animate={isHovered ? 'hovered' : 'initial'}
-				exit='initial'
-				variants={variants}
-				transition={{ duration: 0.5 }}
+				animate={'animate'}
+				exit='exit'
+				onClick={onClick}
+				variants={cardVariants}
+				transition={{ duration: 0.5, delay: index * 0.2 }}
 			>
 				<div className='flex-grow-0 flex-shrink-0 w-full h-full relative overflow-hidden border rounded-xl border-[#f2f2f2] p-5'>
 					<div className='flex flex-col justify-center items-center gap-2'>
@@ -409,7 +408,7 @@ export default function EmployeeCard({
 						isOpen={isDropdownOpen}
 						onClose={handleDropdownToggle}
 						items={
-							status === 'waitlisted'
+							waitlist
 								? waitlistedDropdownItems
 								: onboardedDropdownItems
 						}

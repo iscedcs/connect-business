@@ -17,7 +17,6 @@ export default function Button({
 			const trail = document.createElement('div');
 			trail.classList.add(
 				styles.trail,
-				// variant === 'primary' ? 'bg-white' : 'bg-black',
 				'bg-white',
 				'h-2.5',
 				'w-2.5',
@@ -67,12 +66,18 @@ export default function Button({
 			: 'min-w-min px-8 py-2 xl:py-3 font-bold capitalize rounded-3xl text-small xl:text-regular overflow-hidden';
 		const pri = 'text-white bg-black';
 		const sec = 'text-white border border-white';
+		const dang = 'text-white bg-red-600';
+		const suc = 'text-white bg-green-600';
 
 		switch (variant) {
 			case 'primary':
 				return `${defaultClasses} ${pri} ${className || ''}`;
 			case 'secondary':
 				return `${defaultClasses} ${sec} ${className || ''}`;
+			case 'danger':
+				return `${defaultClasses} ${dang} ${className || ''}`;
+			case 'success':
+				return `${defaultClasses} ${suc} ${className || ''}`;
 			default:
 				return `${defaultClasses} ${className || ''}`;
 		}
@@ -86,9 +91,8 @@ export default function Button({
 			>
 				{isLoading ? (
 					<div className='flex justify-center items-center w-full'>
-						{' '}
 						<svg
-							className='animate-spin h-6 w-6 mr-3'
+							className='animate-spin h-6 w-6'
 							viewBox='0 0 24 24'
 							xmlns='http://www.w3.org/2000/svg'
 							fill='none'
@@ -101,7 +105,6 @@ export default function Button({
 								d='M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99'
 							/>
 						</svg>
-						loading...
 					</div>
 				) : (
 					children
@@ -120,9 +123,8 @@ export default function Button({
 					className='flex justify-center items-center w-full'
 					onMouseMove={handleMouseMove}
 				>
-					{' '}
 					<svg
-						className='animate-spin h-6 w-6 mr-3'
+						className='animate-spin h-6 w-6'
 						viewBox='0 0 24 24'
 						xmlns='http://www.w3.org/2000/svg'
 						fill='none'
@@ -135,7 +137,6 @@ export default function Button({
 							d='M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99'
 						/>
 					</svg>
-					loading...
 				</div>
 			) : (
 				children

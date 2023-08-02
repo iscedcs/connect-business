@@ -22,12 +22,88 @@ export async function POST(req: NextRequest, res: NextResponse) {
 			method: 'POST',
 			headers,
 			body: JSON.stringify(body),
+			// next: { revalidate: 10 },
 		});
 
-		const serverData = await response.json();
+		if (response.status !== 200) {
+			throw new Error('Something Went wrong');
+		} else {
+			const serverData = await response.json();
 
-		return NextResponse.json(serverData);
+			return NextResponse.json(serverData);
+		}
 	} catch (error: any) {
 		return error?.message;
 	}
+}
+
+export async function GET(req: NextRequest, res: NextResponse) {
+	const session = await getServerSession(options);
+	const accessToken = session?.user.access_token;
+
+	const headers = {
+		'Content-Type': 'application/json',
+		'x-api-key': process.env.X_API_KEY,
+		Authorization: `Bearer ${accessToken}`,
+	};
+	try {
+		const url = API + URLS.business.team.create;
+		console.log(accessToken);
+
+		const response = await fetch(url, {
+			method: 'GET',
+			headers,
+			// next: { revalidate: 10 },
+		});
+
+		if (response.status !== 200) {
+			console.log(NextResponse.json(response));
+			throw new Error('Something Went wrong');
+		} else {
+			const serverData = await response.json();
+
+			return NextResponse.json(serverData);
+		}
+	} catch (error: any) {
+		return error?.message;
+	}
+}
+
+export async function DELETE(req: NextRequest) {
+	// const session = await getServerSession(options);
+	// const accessToken = session?.user.access_token;
+
+	const body = await req.json();
+	const id = body.id;
+	console.log('ID is ', id);
+
+	const url = `${API}${URLS.business.team.onboard}${id}`;
+	console.log(url);
+
+	// const headers = {
+	// 	'Content-Type': 'application/json',
+	// 	'x-api-key': process.env.X_API_KEY,
+	// 	Authorization: `Bearer ${accessToken}`,
+	// };
+
+	// try {
+	// const url = `${API}${URLS.business.team.onboard}${id}`;
+	// console.log(url);
+	// 	const response = await fetch(url, {
+	// 		method: 'DELETE',
+	// 		headers,
+	// 	});
+
+	// 	if (response.status !== 200) {
+	// 		throw new Error(`Something Went wrong ${response.statusText}`);
+	// 	} else {
+	// 		const deleteData = await response.json();
+
+	// 		return NextResponse.json(deleteData);
+	// 	}
+	// } catch (error: any) {
+	// 	console.log(error?.message);
+	// 	return error?.message;
+	// }
+	return null;
 }

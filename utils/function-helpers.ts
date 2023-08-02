@@ -98,3 +98,15 @@ export function formatName(name: string): string {
 		return name;
 	}
 }
+
+export function extractLastPartFromUrl(url: string): string | null {
+	try {
+		const urlObj = new URL(url);
+		const pathParts = urlObj.pathname.split('/');
+		const lastPart = pathParts[pathParts.length - 1];
+		return lastPart || null;
+	} catch (error) {
+		console.error('Error parsing URL:', error);
+		return null;
+	}
+}
