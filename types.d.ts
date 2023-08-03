@@ -336,8 +336,9 @@ interface NewInputProps
 		React.InputHTMLAttributes<HTMLInputElement>,
 		HTMLInputElement
 	> {
-	variant: 'primary' | 'secondary'; // Update with other variants as needed
+	variant?: 'primary' | 'secondary'; // Update with other variants as needed
 	type: 'password' | 'email' | 'phone' | 'tel' | 'text';
 	hasError?: boolean;
 	label?: string;
+	errorMessage?: string;
 }

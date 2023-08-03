@@ -7,45 +7,65 @@ import Link from 'next/link';
 import SigninLayout from './signin-layout';
 import BlurImage from '@/components/shared/ui/blur-image';
 import { signIn } from 'next-auth/react';
+import { NextResponse } from 'next/server';
 import NewInput from '@/components/shared/form/input/new-input';
+import Image from 'next/image';
 
 interface Error {
 	message: string;
+	title: string;
 }
 
 export default function SignUp() {
 	const [userName, setUserName] = useState('');
 	const [passWord, setPassWord] = useState('');
-	const [isLoading, setIsLoading] = useState(false);
-	const [error, setError] = useState<Error[]>([]);
+	const [errorUsername, setErrorUsername] = useState<boolean>(false);
+	const [errorPassword, setErrorPassword] = useState<boolean>(false);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [errors, setErrors] = useState<any[]>([]);
 
-	const hasErrors = error.length > 0;
-
+	// const handleInput = (e: FormEvent<HTMLFormElement>) => {};
 	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
 		setIsLoading(true);
+		e.preventDefault();
 
-		if (!userName || !passWord) {
-			setError([
-				{ message: 'Please enter both username and password' },
+		if (!userName) {
+			setErrors((prevErrors) => [
+				...prevErrors,
+				{ name: 'Please enter username', title: 'username' },
 			]);
+			setErrorUsername(true);
+			setIsLoading(false);
+			return;
+		}
+		if (!passWord) {
+			setErrors((prevErrors) => [
+				...prevErrors,
+				{ password: 'Please Enter Password', title: 'password' },
+			]);
+			setErrorPassword(true);
+			setIsLoading(false);
 			return;
 		}
 
-		const result = await signIn('credentials', {
-			email: userName,
-			password: passWord,
-			redirect: true,
-			callbackUrl: '/admin',
-		});
-
-		console.log(result);
-		setIsLoading(false);
-		return result;
+		try {
+			const result = await signIn('credentials', {
+				email: userName,
+				password: passWord,
+				redirect: true,
+				callbackUrl: '/admin',
+			});
+			setIsLoading(true);
+			return result;
+		} catch (error) {
+			setIsLoading(true);
+			return NextResponse.json(error);
+		}
 	};
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
+		console.log(errors);
 
 		if (name === 'username') {
 			setUserName(value);
@@ -54,33 +74,33 @@ export default function SignUp() {
 		}
 
 		// Clear existing errors
-		setError([]);
+		// setErrors([]);
 
 		// Validate input fields
 		if (name === 'username' && value.trim() === '') {
-			setError((prevErrors) => [
+			setErrors((prevErrors) => [
 				...prevErrors,
-				{ message: 'Username is required' },
+				{ [name]: 'Username Connot Be Empty', title: name },
 			]);
 		}
 
 		if (name === 'password' && value.trim() === '') {
-			setError((prevErrors) => [
+			setErrors((prevErrors) => [
 				...prevErrors,
-				{ message: 'Password is required' },
+				{ [name]: 'Password Connot Be Empty', title: name },
 			]);
 		}
 	};
 
 	const leftSide = (
-		<div className='flex flex-col justify-center items-center col-span-2 lg:col-span-1 px-3 lg:px-0 pt-10 lg:pt-0'>
+		<div className='flex flex-col justify-center items-center col-span-3 lg:col-span-1 px-3 lg:px-0 pt-10 lg:pt-0'>
 			<form
-				className='overflow-hidden bg-white flex flex-col justify-between max-w-[400px] h-[500px] xl:h-[650px] 2xl:h-[750px]'
+				className='overflow-hidden bg-white flex flex-col justify-between max-w-[400px] w-full min-w-[280px] px-2 h-[500px] xl:h-[650px] 2xl:h-[750px]'
 				onSubmit={handleSubmit}
 			>
-				<div>
+				<div className=''>
 					<div className='mx-auto h-6 xl:h-10 mb-5'>
-						<BlurImage
+						<Image
 							src='/img/logo_full_black.svg'
 							alt='ISCE Connect Logo'
 							height={48}
@@ -106,22 +126,26 @@ export default function SignUp() {
 						<div className='flex flex-col gap-3 xl:gap-6'>
 							<div className='flex flex-col gap-2 xl:gap-6'>
 								<NewInput
-									variant='primary'
-									type='email'
+									type='text'
 									className='w-full'
 									label='Business ID'
 									name='username'
-									onBlur={handleChange}
+									value={userName}
 									onInput={handleChange}
+									onBlur={handleChange}
+									hasError={errorUsername}
+									errorMessage='UserName Error'
 								/>
 								<NewInput
-									variant='primary'
 									type='password'
 									className='w-full'
 									label='Password'
 									name='password'
-									onBlur={handleChange}
+									value={passWord}
 									onInput={handleChange}
+									onBlur={handleChange}
+									hasError={errorPassword}
+									errorMessage='Password Error'
 								/>
 							</div>
 							<Text
