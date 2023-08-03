@@ -65,7 +65,7 @@ export default function SignUp() {
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
-		console.log(errors);
+		// console.log(errors);
 
 		if (name === 'username') {
 			setUserName(value);
