@@ -6,6 +6,7 @@ import { API, URLS } from './consts';
 export const dashboardDetails = async () => {
 	const session = await getServerSession(options);
 	const accessToken = session?.user.access_token;
+	console.log(accessToken);
 
 	const res = await axios.get(API + URLS.business.dashboard, {
 		headers: {
