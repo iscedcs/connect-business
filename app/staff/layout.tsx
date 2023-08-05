@@ -13,12 +13,11 @@ export default async function DashboardLayout({
 }: {
 	children: React.ReactNode;
 }) {
-	const user = await getHeaderDetails();
 	return (
 		<div className='w-full h-screen md:h-screen relative flex overflow-hidden bg-black px-2 py-2'>
 			<NavBar links={STAFF_NAVLINKS} />
 			<div className='w-full h-full flex flex-col gap-3 overflow-hidden rounded-2xl bg-white'>
-				<Header companyName={user.data.business.name} />
+				<Header />
 				<div className='h-full overflow-y-scroll'>{children}</div>
 			</div>
 		</div>
