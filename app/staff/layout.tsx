@@ -1,14 +1,13 @@
 import Header from '@/components/admin/header';
 import NavBar from '@/components/shared/nav-bar/nav-bar';
 import { STAFF_NAVLINKS } from '@/utils/data';
-import { getHeaderDetails } from '@/utils/get-data';
 
 export const metadata = {
 	title: 'Dashboard',
 	description: 'The Dashboard For Connect For Business',
 };
 
-export default async function DashboardLayout({
+export default function DashboardLayout({
 	children,
 }: {
 	children: React.ReactNode;
