@@ -16,16 +16,20 @@ export default function Appointments() {
 
 	React.useEffect(() => {
 		const getAppointmentData = async () => {
-			const response = await fetch('/api/dashboard', {
-				next: { revalidate: 60 },
+			const response = await fetch('/api/appointment', {
+				// next: { revalidate: 60 },
 			});
 			if (response.status !== 200) {
 				console.log(NextResponse.json(response));
 				throw new Error('Something Went wrong');
 			} else {
 				const appointmentData = await response.json();
-				// setAppointmentData(appointmentData?.data.appointments);
-				console.log(appointmentData?.data);
+				setAppointmentData(
+					appointmentData?.data.business.business_appointments
+				);
+				console.log(
+					appointmentData?.data.business.business_appointments
+				);
 				return NextResponse.json(appointmentData);
 			}
 		};

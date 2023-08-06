@@ -51,6 +51,17 @@ module.exports = {
       colors: {
         'success': '#00B96B'
       },
+      keyframes: {
+        scale: {
+          '0%': { transform: 'scale(1)', opacity: 1 },
+          '100%': { transform: 'scale(1.9)', opacity: 0 },
+        }
+
+      },
+      animation: {
+        'scale': 'scale 1s ease-in-out infinite',
+      }
+
     },
     plugins: [],
   }

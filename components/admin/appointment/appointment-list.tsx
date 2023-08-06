@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import AppointmentListItem from './appointment-list-item';
-import { COMPANY_PROFILE } from '@/utils/data';
 
 export default function AppointmentList({
 	selectedDate,
@@ -10,11 +9,11 @@ export default function AppointmentList({
 	appointmentData: any;
 }) {
 	let allAppointments = appointmentData;
-	if (selectedDate) {
-		allAppointments = allAppointments.filter((appointment: any) =>
-			appointment.start.startsWith(selectedDate.toLocaleString())
-		);
-	}
+	// if (selectedDate) {
+	// 	allAppointments = allAppointments.filter((appointment: any) =>
+	// 		appointment.start.startsWith(selectedDate.toLocaleString())
+	// 	);
+	// }
 
 	return (
 		<Fragment>
@@ -22,7 +21,7 @@ export default function AppointmentList({
 				allAppointments.map((appointment: any) => (
 					<AppointmentListItem
 						key={appointment.id}
-						creator={appointment.creator}
+						// creator={appointment.creator}
 						title={appointment.title}
 						date={appointment.start}
 					/>

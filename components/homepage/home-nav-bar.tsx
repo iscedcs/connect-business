@@ -21,7 +21,15 @@ export default function NavBarHome({ session }: { session: Session | null }) {
 						<button onClick={() => signOut()}>Log Out</button>
 					</div>
 				) : (
-					<button onClick={() => signIn()}>SignIn</button>
+					<>
+						<button onClick={() => signIn()}>Sign In</button>
+						<Link
+							href={'/sign-up'}
+							className='ml-5'
+						>
+							Sign Up
+						</Link>
+					</>
 				)}
 			</div>
 		</div>

@@ -3,8 +3,8 @@ import NavBar from '@/components/shared/nav-bar/nav-bar';
 import { STAFF_NAVLINKS } from '@/utils/data';
 
 export const metadata = {
-	title: 'Dashboard',
-	description: 'The Dashboard For Connect For Business',
+	title: 'ISCE | Connect For Business',
+	description: 'ISCE Connect for Businesses, Teams, Groups and many more.',
 };
 
 export default function DashboardLayout({

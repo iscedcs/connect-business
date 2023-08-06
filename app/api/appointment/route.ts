@@ -47,7 +47,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
 		Authorization: `Bearer ${accessToken}`,
 	};
 	try {
-		const url = API + URLS.business.team.create;
+		const url = API + URLS.business.appointments.all;
 		console.log(accessToken);
 
 		const response = await fetch(url, {
@@ -61,7 +61,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
 			throw new Error('Something Went wrong');
 		} else {
 			const serverData = await response.json();
-
+			console.log(serverData);
 			return NextResponse.json(serverData);
 		}
 	} catch (error: any) {

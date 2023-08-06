@@ -12,7 +12,7 @@ export default function AppointmentListItem({
 	description,
 	attendees,
 }: AppointmentListItemProps) {
-	const initials = getInitials(creator);
+	// const initials = getInitials(creator);
 	const readableDate = formatDate(date);
 	const [showSingleAppointment, setShowSingleAppointment] =
 		React.useState(false);
@@ -25,7 +25,7 @@ export default function AppointmentListItem({
 				<div className='flex justify-start items-start px-3 py-2 gap-3'>
 					<div className='flex flex-grow-0 flex-shrink-0 w-10 h-10 relative overflow-hidden rounded-full bg-black items-center justify-center'>
 						<p className='text-sm font-bold text-center uppercase text-white'>
-							{initials}
+							{/* {initials} */}
 						</p>
 					</div>
 					<div className='flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative w-full'>

@@ -154,7 +154,7 @@ interface SigninLayoutProps {
 }
 
 interface AppointmentListItemProps {
-	creator: string;
+	creator?: string;
 	title: string;
 	date: string;
 	endDate?: string;
