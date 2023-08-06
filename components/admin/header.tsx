@@ -15,16 +15,12 @@ const Header = () => {
 
 	React.useEffect(() => {
 		const getData = async () => {
-			const response = await fetch('/api/dashboard', {
-				// next: { revalidate: 60 },
-			});
+			const response = await fetch('/api/dashboard', {});
 			if (response.status !== 200) {
-				console.log(NextResponse.json(response));
 				throw new Error('Something Went wrong');
 			} else {
 				const dd = await response.json();
 				setDashboardD(dd?.data?.user?.name);
-				console.log(dd);
 				return NextResponse.json(dd);
 			}
 		};
