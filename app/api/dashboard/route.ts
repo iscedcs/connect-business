@@ -25,7 +25,6 @@ export async function GET(req: NextRequest, res: NextResponse) {
 			throw new Error('Something Went wrong');
 		} else {
 			const dd = await response.json();
-			console.log(dd);
 			return NextResponse.json(dd);
 		}
 	} catch (error: any) {

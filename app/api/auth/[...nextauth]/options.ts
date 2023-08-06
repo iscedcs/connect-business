@@ -18,7 +18,6 @@ export const options: NextAuthOptions = {
 				password: { label: 'Password', type: 'password' },
 			},
 			async authorize(credentials) {
-				console.log(`${API + URLS.business.auth.signin}`);
 				const res = await axios.post(
 					API + URLS.business.auth.signin,
 					{

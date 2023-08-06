@@ -1,10 +1,9 @@
-'use client';
 import Appointment from '@/components/admin/appointment/appointment';
 import DashboardCard from '@/components/admin/dashboard-card';
 import SearchBar from '@/components/admin/search-bar';
 import { COMPANY_PROFILE } from '@/utils/data';
 
-export default async function Dashboard() {
+export default function Dashboard() {
 	return (
 		<div className='px-4 md:px-10'>
 			<SearchBar showAddEmployee />
