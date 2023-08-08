@@ -5,25 +5,41 @@ export default function AppointmentList({
 	selectedDate,
 	appointmentData,
 }: {
-	selectedDate?: string | number | Date;
-	appointmentData: any;
+	selectedDate: Date;
+	appointmentData: AppointmentListItemProps[];
 }) {
-	let allAppointments = appointmentData;
-	// if (selectedDate) {
-	// 	allAppointments = allAppointments.filter((appointment: any) =>
-	// 		appointment.start.startsWith(selectedDate.toLocaleString())
-	// 	);
-	// }
-
+	const allAppointments = appointmentData;
+	const targetDate = selectedDate.toISOString();
+	const filteredAppointments = allAppointments.filter((appointment) => {
+		return appointment.date === targetDate;
+	});
 	return (
 		<Fragment>
-			{allAppointments.length > 0 ? (
-				allAppointments.map((appointment: any) => (
+			{filteredAppointments.length > 0 ? (
+				filteredAppointments.map((appointment, i) => (
 					<AppointmentListItem
-						key={appointment.id}
-						// creator={appointment.creator}
-						title={appointment.title}
-						date={appointment.start}
+						key={i}
+						appointment_id={appointment.appointment_id!}
+						attendees={appointment.attendees!}
+						business_id={appointment.business_id!}
+						createdAt={appointment.createdAt!}
+						creator={appointment.creator!}
+						date={appointment.date!}
+						deleted={appointment.deleted!}
+						description={appointment.description!}
+						email={appointment.email!}
+						end_time={appointment.end_time!}
+						id={appointment.id!}
+						location={appointment.location!}
+						member_id={appointment.member_id!}
+						onClick={appointment.onClick!}
+						onDelete={appointment.onDelete!}
+						onEdit={appointment.onEdit!}
+						phone={appointment.phone!}
+						showOptions
+						start_time={appointment.start_time!}
+						title={appointment.title!}
+						updatedAt={appointment.updatedAt!}
 					/>
 				))
 			) : (

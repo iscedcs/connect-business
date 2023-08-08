@@ -41,7 +41,7 @@ interface ButtonProps {
 	size?: 'sm' | 'md' | 'lg';
 	children?: React.ReactNode;
 	className?: string;
-	variant: 'primary' | 'secondary' | 'danger' | success;
+	variant: 'primary' | 'secondary' | 'danger' | 'success';
 	href?: string;
 	onClick?: any;
 	isLoading?: boolean;
@@ -154,20 +154,34 @@ interface SigninLayoutProps {
 }
 
 interface AppointmentListItemProps {
-	creator?: string;
-	title: string;
-	date: string;
-	endDate?: string;
-	location?: string;
-	description?: string;
+	appointment_id: string;
 	attendees?: string[];
+	business_id: string;
+	createdAt?: string;
+	creator?: string;
+	date: string;
+	deleted?: boolean;
+	description?: string;
+	email: string;
+	end_time: string;
+	id: string;
+	location?: string;
+	member_id: string;
 	onClick?: () => void;
+	onClick?: () => void;
+	onDelete?: () => void;
+	onEdit?: () => void;
+	phone: string;
+	showOptions?: boolean;
+	start_time: string;
+	title: string;
+	updatedAt: string;
 }
 
 interface CalendarProps {
 	onSelectDate?: (date: Date) => void;
 	type?: 'small' | 'large';
-	appointmentList: CalendarEvent[];
+	appointmentList: AppointmentListItemProps[];
 }
 
 interface ClientTableProps {

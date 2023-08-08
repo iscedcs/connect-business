@@ -18,17 +18,18 @@ export const options: NextAuthOptions = {
 				password: { label: 'Password', type: 'password' },
 			},
 			async authorize(credentials) {
-				const res = await axios.post(
-					API + URLS.business.auth.signin,
-					{
-						email: credentials?.email,
-						password: credentials?.password,
-					},
-					config
-				);
 				try {
+					const res = await axios.post(
+						API + URLS.business.auth.signin,
+						{
+							email: credentials?.email,
+							password: credentials?.password,
+						},
+						config
+					);
 					if (res.status === 200) {
 						let user = res?.data?.data;
+						console.log(user);
 						return user;
 					} else {
 						console.log('something went wrong');

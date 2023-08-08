@@ -113,3 +113,83 @@ export const notificationIcon = (
 		/>
 	</svg>
 );
+
+export const appointmentDeleteIcon = (
+	<svg
+		xmlns='http://www.w3.org/2000/svg'
+		width='24'
+		height='24'
+		viewBox='0 0 24 24'
+		fill='none'
+	>
+		<path
+			d='M21 5.97998C17.67 5.64998 14.32 5.47998 10.98 5.47998C9 5.47998 7.02 5.57998 5.04 5.77998L3 5.97998'
+			stroke='#000001'
+			strokeWidth='1.5'
+			strokeLinecap='round'
+			strokeLinejoin='round'
+		/>
+		<path
+			d='M8.5 4.97L8.72 3.66C8.88 2.71 9 2 10.69 2H13.31C15 2 15.13 2.75 15.28 3.67L15.5 4.97'
+			stroke='#000001'
+			strokeWidth='1.5'
+			strokeLinecap='round'
+			strokeLinejoin='round'
+		/>
+		<path
+			d='M18.8484 9.14014L18.1984 19.2101C18.0884 20.7801 17.9984 22.0001 15.2084 22.0001H8.78844C5.99844 22.0001 5.90844 20.7801 5.79844 19.2101L5.14844 9.14014'
+			stroke='#000001'
+			strokeWidth='1.5'
+			strokeLinecap='round'
+			strokeLinejoin='round'
+		/>
+		<path
+			d='M10.3281 16.5H13.6581'
+			stroke='#000001'
+			strokeWidth='1.5'
+			strokeLinecap='round'
+			strokeLinejoin='round'
+		/>
+		<path
+			d='M9.5 12.5H14.5'
+			stroke='#000001'
+			strokeWidth='1.5'
+			strokeLinecap='round'
+			strokeLinejoin='round'
+		/>
+	</svg>
+);
+
+export const appointmentEditIcon = (
+	<svg
+		xmlns='http://www.w3.org/2000/svg'
+		width='24'
+		height='24'
+		viewBox='0 0 24 24'
+		fill='none'
+	>
+		<path
+			d='M11 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22H15C20 22 22 20 22 15V13'
+			stroke='#000001'
+			strokeWidth='1.5'
+			strokeLinecap='round'
+			strokeLinejoin='round'
+		/>
+		<path
+			d='M16.0418 3.02025L8.16183 10.9003C7.86183 11.2003 7.56183 11.7903 7.50183 12.2203L7.07183 15.2303C6.91183 16.3203 7.68183 17.0803 8.77183 16.9303L11.7818 16.5003C12.2018 16.4403 12.7918 16.1403 13.1018 15.8403L20.9818 7.96025C22.3418 6.60025 22.9818 5.02025 20.9818 3.02025C18.9818 1.02025 17.4018 1.66025 16.0418 3.02025Z'
+			stroke='#000001'
+			strokeWidth='1.5'
+			strokeMiterlimit='10'
+			strokeLinecap='round'
+			strokeLinejoin='round'
+		/>
+		<path
+			d='M14.9102 4.15039C15.5802 6.54039 17.4502 8.41039 19.8502 9.09039'
+			stroke='#000001'
+			strokeWidth='1.5'
+			strokeMiterlimit='10'
+			strokeLinecap='round'
+			strokeLinejoin='round'
+		/>
+	</svg>
+);

@@ -1,18 +1,17 @@
 'use client';
 import ApointmentList from '@/components/admin/appointment/appointment-list';
 import Calendar from '@/components/admin/appointment/calendar';
-import { COMPANY_PROFILE } from '@/utils/data';
 import { NextResponse } from 'next/server';
 import React, { Fragment, useState } from 'react';
 
 export default function Appointments() {
-	const d = new Date();
+	const timestamp = new Date().setHours(1, 0, 0, 0);
+	const d = new Date(timestamp);
 	const [selectedDate, setSelectedDate] = useState(d);
 	const [appointmentData, setAppointmentData] = useState([]);
-	const sd = selectedDate.toDateString();
-	console.log(selectedDate);
-	// console.log(appointmentData);
-	console.log(sd);
+	// const [appointmentData, setAppointmentData] = useState<
+	// 	Array<AppointmentListItemProps>
+	// >([]);
 
 	React.useEffect(() => {
 		const getAppointmentData = async () => {
@@ -41,10 +40,12 @@ export default function Appointments() {
 			<div className='flex flex-col w-full h-full gap-6 py-5 px-4 md:px-10 overflow-hidden overflow-y-scroll'>
 				<div className='flex flex-col justify-start gap-5 mb-5'>
 					<Calendar
-						appointmentList={COMPANY_PROFILE.appointments}
+						appointmentList={appointmentData}
 						type='large'
 						onSelectDate={(date) => {
-							setSelectedDate(date);
+							setSelectedDate(
+								new Date(date.setHours(1, 0, 0, 0))
+							);
 						}}
 					/>
 				</div>

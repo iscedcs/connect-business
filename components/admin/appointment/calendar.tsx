@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Modal from '../../layouts/modal';
 import AppointmentListItem from './appointment-list-item';
+import Button from '@/components/shared/ui/button/button';
 
 const Calendar: React.FC<CalendarProps> = ({
 	onSelectDate,
@@ -11,7 +12,7 @@ const Calendar: React.FC<CalendarProps> = ({
 	const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 	const [currentDate, setCurrentDate] = useState(new Date());
 	const [currentMonth, setCurrentMonth] = useState(currentDate.getMonth());
-	const [iscActive, setIsActive] = useState(true);
+	const [isActive, setIsActive] = useState(true);
 	const [showEventListModal, setShowEventListModal] = useState(false);
 	const [showAddEventModal, setShowAddEventModal] = useState(false);
 
@@ -33,10 +34,8 @@ const Calendar: React.FC<CalendarProps> = ({
 		// Check if the clicked date has an event
 		const hasEvent = appointmentList.some(
 			(event) =>
-				new Date(event.start).toDateString() ===
-					date.toDateString() ||
-				(new Date(event.start) <= date &&
-					new Date(event.end) >= date)
+				new Date(event.date).toLocaleDateString() ===
+				date.toLocaleDateString()
 		);
 
 		if (hasEvent) {
@@ -149,11 +148,10 @@ const Calendar: React.FC<CalendarProps> = ({
 
 	const hasAppointmentOnDate = (date: Date) => {
 		return appointmentList.some((event) => {
-			const eventStartDate = new Date(event.start);
-			const eventEndDate = new Date(event.end);
+			const eventStartDate = new Date(event.date);
 			return (
-				eventStartDate.toDateString() === date.toDateString() ||
-				(eventStartDate <= date && eventEndDate >= date)
+				eventStartDate.toLocaleDateString() ===
+				date.toLocaleDateString()
 			);
 		});
 	};
@@ -178,27 +176,44 @@ const Calendar: React.FC<CalendarProps> = ({
 
 	const EventListModal: React.FC<{
 		date: Date;
-		events: CalendarEvent[];
+		events: AppointmentListItemProps[];
 	}> = ({ date, events }) => {
 		return (
 			<Modal isOpen={showEventListModal}>
 				<div className='bg-white w-[500px] flex flex-col gap-3 justify-between rounded-lg shadow-mid p-4 md:p-10'>
 					<h2>Event List for {date.toDateString()}</h2>
-					{events.map((event, index) => (
+					{events.map((event, i) => (
 						<AppointmentListItem
-							key={index}
-							creator={event.creator}
-							title={event.title}
-							date={event.start}
-							endDate={event.end}
-							location={event.location}
-							description={event.description}
-							attendees={event.attendees}
+							key={i}
+							appointment_id={event.appointment_id!}
+							attendees={event.attendees!}
+							business_id={event.business_id!}
+							createdAt={event.createdAt!}
+							creator={event.creator!}
+							date={event.date!}
+							deleted={event.deleted!}
+							description={event.description!}
+							email={event.email!}
+							end_time={event.end_time!}
+							id={event.id!}
+							location={event.location!}
+							member_id={event.member_id!}
+							onClick={event.onClick!}
+							onDelete={event.onDelete!}
+							onEdit={event.onEdit!}
+							phone={event.phone!}
+							// showOptions
+							start_time={event.start_time!}
+							title={event.title!}
+							updatedAt={event.updatedAt!}
 						/>
 					))}
-					<button onClick={() => setShowEventListModal(false)}>
+					<Button
+						variant='secondary'
+						onClick={() => setShowEventListModal(false)}
+					>
 						Close
-					</button>
+					</Button>
 				</div>
 			</Modal>
 		);
@@ -325,7 +340,7 @@ const Calendar: React.FC<CalendarProps> = ({
 						<div className={`p-3 w-min `}>Tue</div>
 						<div
 							className={`p-3 w-min ${
-								iscActive && 'border-b-2 border-black'
+								isActive && 'border-b-2 border-black'
 							}`}
 						>
 							Wed
@@ -343,12 +358,10 @@ const Calendar: React.FC<CalendarProps> = ({
 						date={selectedDate}
 						events={appointmentList.filter(
 							(event) =>
-								new Date(event.start).toDateString() ===
-									selectedDate.toDateString() ||
-								(new Date(event.start) <=
-									selectedDate &&
-									new Date(event.end) >=
-										selectedDate)
+								new Date(
+									event.date
+								).toLocaleDateString() ===
+								selectedDate.toLocaleDateString()
 						)}
 					/>
 				)}

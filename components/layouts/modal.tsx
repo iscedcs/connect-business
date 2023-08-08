@@ -5,13 +5,13 @@ const Modal = ({ children, isOpen, onClose }: ModalProps) => {
 	const modalVariants: Variants = {
 		initial: {
 			opacity: 0,
-			y: -50,
+			y: -350,
 		},
 		animate: {
 			opacity: 1,
 			y: 0,
 			transition: {
-				duration: 0.3, // Reduce the duration for smoother animation
+				duration: 0.1, // Reduce the duration for smoother animation
 				type: 'spring',
 				damping: 20,
 				stiffness: 200,
@@ -19,9 +19,9 @@ const Modal = ({ children, isOpen, onClose }: ModalProps) => {
 		},
 		exit: {
 			opacity: 0,
-			y: 50,
+			y: -350,
 			transition: {
-				duration: 0.3,
+				duration: 0.1,
 			},
 		},
 	};

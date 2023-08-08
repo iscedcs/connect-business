@@ -17,7 +17,7 @@ export default function Button({
 			const trail = document.createElement('div');
 			trail.classList.add(
 				styles.trail,
-				'bg-white',
+				`${variant === 'secondary' ? 'bg-black' : 'bg-white'}`,
 				'h-2.5',
 				'w-2.5',
 				'rounded-full',
@@ -65,7 +65,7 @@ export default function Button({
 			? 'px-8 py-3 xl:py-3 font-bold capitalize rounded-3xl text-small xl:text-regular overflow-hidden'
 			: 'min-w-min px-8 py-2 xl:py-3 font-bold capitalize rounded-3xl text-small xl:text-regular overflow-hidden';
 		const pri = 'text-white bg-black';
-		const sec = 'text-white border border-white';
+		const sec = 'text-black border border-white';
 		const dang = 'text-white bg-red-600';
 		const suc = 'text-white bg-green-600';
 
