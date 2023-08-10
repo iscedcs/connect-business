@@ -492,3 +492,20 @@ interface ProfileFormP {
 	services: ServiceP[];
 	features: FeatureP[];
 }
+
+interface BusinessFormP {
+	name: string;
+	profile_image: string;
+	logo: string;
+	description: string;
+	details: string;
+	images: ImageP[];
+}
+
+interface ServicesFormP {
+	services: ServiceP[];
+}
+
+interface SocialsFormP {
+	features: FeatureP[];
+}

@@ -1,3 +1,4 @@
+'use client';
 import React, { useState, useRef } from 'react';
 import Compressor from 'compressorjs';
 import { generateUniqueID } from '@/utils/function-helpers';

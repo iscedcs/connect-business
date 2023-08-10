@@ -2,6 +2,11 @@ import TabMenu from '@/components/profile/profile-tabs';
 import { CUSTOMIZE_TAB } from '@/utils/data';
 import React, { Fragment } from 'react';
 
+export const metadata = {
+	title: 'Dashboard | Settings - Customize Profile',
+	description: 'ISCE Connect for Businesses, Teams, Groups and many more.',
+};
+
 export default function CustomizeLayout({
 	children,
 }: {

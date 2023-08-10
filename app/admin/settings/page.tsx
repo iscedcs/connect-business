@@ -10,7 +10,17 @@ export default function Settings() {
 				<SettingsCard
 					title='Edit Business Profile'
 					icon={editIcon}
-					link='/admin/settings/edit-profile'
+					link='/admin/settings/edit-business'
+				/>
+				<SettingsCard
+					title='Edit User Profile'
+					icon={editIcon}
+					link='/admin/settings/edit-user'
+				/>
+				<SettingsCard
+					title='Edit Social Links'
+					icon={editIcon}
+					link='/admin/settings/edit-social'
 				/>
 				<SettingsCard
 					title='Customize Business Profile'

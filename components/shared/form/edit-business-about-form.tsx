@@ -1,6 +1,5 @@
 'use client';
 import TextInput from '@/components/shared/form/input/text-input';
-import TextAreaInput from '@/components/shared/form/input/textarea-input';
 import Modal from '@/components/layouts/modal';
 import Button from '@/components/shared/ui/button/button';
 import IconButton from '@/components/shared/ui/button/icon-button';
@@ -136,8 +135,18 @@ export default function EditProfileform({
 							Add Service
 						</Button>
 					)}
-					<div className='text-lg font-bold text-center'>
-						{stage}/3
+					<div className='text-lg w-full font-bold text-center flex gap-3 justify-end'>
+						{stage > 1 && (
+							<div className='flex gap-2'>
+								{'<'}
+								<span>
+									{stage === 2
+										? 'ABOUT'
+										: 'SERVICES'}
+								</span>
+							</div>
+						)}
+						<div className=''>{stage}/3</div>
 					</div>
 				</div>
 				<AnimatePresence>

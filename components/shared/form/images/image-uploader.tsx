@@ -1,8 +1,10 @@
+'use client';
 import React, { useState, useRef } from 'react';
 import Compressor from 'compressorjs';
 import { generateUniqueID } from '@/utils/function-helpers';
 import { imageAddIcon } from '@/utils/icons';
 import BlurImage from '../../ui/blur-image';
+import Alert from '../../ui/alert';
 
 interface MultipleImagesUploaderProps {
 	folder?: string;
@@ -110,23 +112,24 @@ const MultipleImagesUploader: React.FC<MultipleImagesUploaderProps> = (
 	};
 
 	return (
-		<div>
+		<>
 			<div>
-				<div className='flex gap-3 flex-wrap'>
-					{props.initialImages.map((imageUrl, index) => (
-						<div
-							key={index}
-							className='relative w-52 aspect-[2/3] rounded-2xl overflow-hidden'
-						>
-							<BlurImage
+				<div>
+					<div className='flex gap-3 flex-wrap'>
+						{imagePreviews.map((imageUrl, index) => (
+							<div
 								key={index}
-								src={imageUrl.url}
-								height={600}
-								width={400}
-								alt={`avatar-${index}`}
-								className='w-52 aspect-[2/3] rounded-2xl object-cover'
-							/>
-							{/* <div
+								className='relative w-52 aspect-[2/3] rounded-2xl overflow-hidden'
+							>
+								<BlurImage
+									key={index}
+									src={imageUrl}
+									height={600}
+									width={400}
+									alt={`avatar-${index}`}
+									className='w-52 aspect-[2/3] rounded-2xl object-cover'
+								/>
+								{/* <div
 								onClick={() => {
 									const newInitialImages = [
 										...props.initialImages,
@@ -142,35 +145,46 @@ const MultipleImagesUploader: React.FC<MultipleImagesUploaderProps> = (
 									{appointmentDeleteIcon}
 								</IconButton>
 							</div> */}
-						</div>
-					))}
-					<div
-						onClick={handleClick}
-						className={`w-52 aspect-[2/3] rounded-2xl bg-gray-100 flex-col flex items-center justify-center`}
-					>
+							</div>
+						))}
 						<div
-							className={`${
-								isLoading ? 'animate-spin' : ''
-							}`}
+							onClick={handleClick}
+							className={`w-52 aspect-[2/3] rounded-2xl bg-gray-100 flex-col flex items-center justify-center`}
 						>
-							{imageAddIcon}
+							<div
+								className={`${
+									isLoading ? 'animate-spin' : ''
+								}`}
+							>
+								{imageAddIcon}
+							</div>
+							<p className='text-sm text-center text-black'>
+								{isLoading ? 'Uploading' : props.text}
+							</p>
 						</div>
-						<p className='text-sm text-center text-black'>
-							{isLoading ? 'Uploading' : props.text}
-						</p>
 					</div>
 				</div>
+				<input
+					ref={hiddenFileInput}
+					type='file'
+					onChange={handleImageSelection}
+					accept='image/*'
+					className='hidden'
+					disabled={isLoading}
+					multiple // Allow multiple file selection
+				/>
 			</div>
-			<input
-				ref={hiddenFileInput}
-				type='file'
-				onChange={handleImageSelection}
-				accept='image/*'
-				className='hidden'
-				disabled={isLoading}
-				multiple // Allow multiple file selection
-			/>
-		</div>
+			{isLoading && (
+				<Alert
+					message='Uploading!'
+					type='success'
+					autoClose={true}
+					autoCloseDelay={5000}
+					showIcon={true}
+					closeButtonLabel='x'
+				/>
+			)}
+		</>
 	);
 };
 

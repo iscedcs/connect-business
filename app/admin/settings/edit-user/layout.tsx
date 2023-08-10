@@ -1,9 +1,9 @@
 export const metadata = {
-	title: 'Dashboard | Edit Profile',
+	title: 'Dashboard | Settings | User Profile',
 	description: 'ISCE Connect for Businesses, Teams, Groups and many more.',
 };
 
-export default async function ProfileLayout({
+export default async function EditUserLayout({
 	children,
 }: {
 	children: React.ReactNode;

@@ -6,7 +6,6 @@ import { getAppointments } from '../lib/server-functions';
 
 export default async function Dashboard() {
 	const data: AppointmentDataP = await getAppointments();
-	console.log(data);
 	return (
 		<div className='px-4 md:px-10'>
 			<SearchBar showAddEmployee />
