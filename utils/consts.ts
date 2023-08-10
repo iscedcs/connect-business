@@ -1,4 +1,5 @@
 export const API = 'https://monolith.isce.app/api';
+export const APII = 'https://developer.isce.app/v1';
 
 export const URLS = {
 	business: {
@@ -16,8 +17,14 @@ export const URLS = {
 			create: '/business/team-members',
 			onboard: '/business/team-members/onboard/',
 		},
+		profile: {
+			all: '/business/profile',
+		},
 
 		// Add more namespaces or routes under 'business' if needed
+	},
+	images: {
+		upload: '/spaces/api/uploadFile',
 	},
 	// Add more top-level namespaces or routes as needed
 };

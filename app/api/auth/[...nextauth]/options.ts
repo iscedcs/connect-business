@@ -29,7 +29,7 @@ export const options: NextAuthOptions = {
 					);
 					if (res.status === 200) {
 						let user = res?.data?.data;
-						console.log(user);
+						// console.log(user);
 						return user;
 					} else {
 						console.log('something went wrong');
@@ -56,6 +56,7 @@ export const options: NextAuthOptions = {
 	},
 	pages: {
 		signIn: '/sign-in',
+		error: '/sign-in',
 	},
 	callbacks: {
 		session: ({ session, token }) => {
@@ -63,6 +64,7 @@ export const options: NextAuthOptions = {
 			session.user.refresh_token = token.refresh_token as string;
 			session.user.business_id = token.business_id as string;
 			session.user.member_id = token.member_id as string;
+			session.user.role = token.role as string;
 			return session;
 		},
 		jwt: ({ token, user }) => {
@@ -70,6 +72,7 @@ export const options: NextAuthOptions = {
 			if (user) token.refresh_token = user.refresh_token;
 			if (user) token.business_id = user.business_id;
 			if (user) token.member_id = user.member_id;
+			if (user) token.role = user.role;
 			return token;
 		},
 	},

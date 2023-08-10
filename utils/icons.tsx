@@ -124,35 +124,35 @@ export const appointmentDeleteIcon = (
 	>
 		<path
 			d='M21 5.97998C17.67 5.64998 14.32 5.47998 10.98 5.47998C9 5.47998 7.02 5.57998 5.04 5.77998L3 5.97998'
-			stroke='#000001'
+			stroke='currentColor'
 			strokeWidth='1.5'
 			strokeLinecap='round'
 			strokeLinejoin='round'
 		/>
 		<path
 			d='M8.5 4.97L8.72 3.66C8.88 2.71 9 2 10.69 2H13.31C15 2 15.13 2.75 15.28 3.67L15.5 4.97'
-			stroke='#000001'
+			stroke='currentColor'
 			strokeWidth='1.5'
 			strokeLinecap='round'
 			strokeLinejoin='round'
 		/>
 		<path
 			d='M18.8484 9.14014L18.1984 19.2101C18.0884 20.7801 17.9984 22.0001 15.2084 22.0001H8.78844C5.99844 22.0001 5.90844 20.7801 5.79844 19.2101L5.14844 9.14014'
-			stroke='#000001'
+			stroke='currentColor'
 			strokeWidth='1.5'
 			strokeLinecap='round'
 			strokeLinejoin='round'
 		/>
 		<path
 			d='M10.3281 16.5H13.6581'
-			stroke='#000001'
+			stroke='currentColor'
 			strokeWidth='1.5'
 			strokeLinecap='round'
 			strokeLinejoin='round'
 		/>
 		<path
 			d='M9.5 12.5H14.5'
-			stroke='#000001'
+			stroke='currentColor'
 			strokeWidth='1.5'
 			strokeLinecap='round'
 			strokeLinejoin='round'
@@ -188,6 +188,98 @@ export const appointmentEditIcon = (
 			stroke='#000001'
 			strokeWidth='1.5'
 			strokeMiterlimit='10'
+			strokeLinecap='round'
+			strokeLinejoin='round'
+		/>
+	</svg>
+);
+
+export const imageAddIcon = (
+	<svg
+		width={64}
+		height={64}
+		viewBox='0 0 64 64'
+		fill='none'
+		xmlns='http://www.w3.org/2000/svg'
+		className='w-16 h-16'
+		preserveAspectRatio='xMidYMid meet'
+	>
+		<path
+			d='M48 33.5H16C15.1828 33.5 14.5 32.8172 14.5 32C14.5 31.1828 15.1828 30.5 16 30.5H48C48.8172 30.5 49.5 31.1828 49.5 32C49.5 32.8172 48.8172 33.5 48 33.5Z'
+			fill='#292D32'
+			stroke='black'
+		/>
+		<path
+			d='M32 49.5C31.1828 49.5 30.5 48.8172 30.5 48V16C30.5 15.1828 31.1828 14.5 32 14.5C32.8172 14.5 33.5 15.1828 33.5 16V48C33.5 48.8172 32.8172 49.5 32 49.5Z'
+			fill='#292D32'
+			stroke='black'
+		/>
+	</svg>
+);
+
+export const imageProfileIcon = (
+	<svg
+		width='24'
+		height='24'
+		viewBox='0 0 24 24'
+		fill='none'
+		xmlns='http://www.w3.org/2000/svg'
+		className='h-12 w-12'
+	>
+		<path
+			d='M12.1586 10.87C12.0586 10.86 11.9386 10.86 11.8286 10.87C9.44859 10.79 7.55859 8.84 7.55859 6.44C7.55859 3.99 9.53859 2 11.9986 2C14.4486 2 16.4386 3.99 16.4386 6.44C16.4286 8.84 14.5386 10.79 12.1586 10.87Z'
+			stroke='currentColor'
+			strokeWidth='1.5'
+			strokeLinecap='round'
+			strokeLinejoin='round'
+		/>
+		<path
+			d='M7.15875 14.56C4.73875 16.18 4.73875 18.82 7.15875 20.43C9.90875 22.27 14.4188 22.27 17.1688 20.43C19.5888 18.81 19.5888 16.17 17.1688 14.56C14.4288 12.73 9.91875 12.73 7.15875 14.56Z'
+			stroke='currentColor'
+			strokeWidth='1.5'
+			strokeLinecap='round'
+			strokeLinejoin='round'
+		/>
+	</svg>
+);
+
+export const imageEditIcon = (
+	<svg
+		width={24}
+		height={24}
+		viewBox='0 0 24 24'
+		fill='none'
+		xmlns='http://www.w3.org/2000/svg'
+		className='w-5 h-5 absolute bottom-2 right-2'
+		preserveAspectRatio='none'
+	>
+		<rect
+			width={24}
+			height={24}
+			rx={6}
+			fill='currentColor'
+			className=''
+		/>
+		<path
+			d='M11 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22H15C20 22 22 20 22 15V13'
+			stroke='white'
+			strokeWidth='1.5'
+			strokeLinecap='round'
+			strokeLinejoin='round'
+		/>
+		<path
+			d='M16.0379 3.02025L8.15793 10.9003C7.85793 11.2003 7.55793 11.7903 7.49793 12.2203L7.06793 15.2303C6.90793 16.3203 7.67793 17.0803 8.76793 16.9303L11.7779 16.5003C12.1979 16.4403 12.7879 16.1403 13.0979 15.8403L20.9779 7.96025C22.3379 6.60025 22.9779 5.02025 20.9779 3.02025C18.9779 1.02025 17.3979 1.66025 16.0379 3.02025Z'
+			stroke='white'
+			strokeWidth='1.5'
+			strokeMiterlimit={10}
+			strokeLinecap='round'
+			strokeLinejoin='round'
+		/>
+		<path
+			d='M14.9062 4.15039C15.5763 6.54039 17.4463 8.41039 19.8463 9.09039'
+			stroke='white'
+			strokeWidth='1.5'
+			strokeMiterlimit={10}
 			strokeLinecap='round'
 			strokeLinejoin='round'
 		/>

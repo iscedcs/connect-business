@@ -6,7 +6,7 @@ import React, { Fragment } from 'react';
 export default function Settings() {
 	return (
 		<Fragment>
-			<div className='flex flex-wrap justify-center items-start p-10 gap-10 mt-10'>
+			<div className='flex flex-wrap items-start justify-center lg:justify-start p-4 lg:p-10 gap-5'>
 				<SettingsCard
 					title='Edit Business Profile'
 					icon={editIcon}

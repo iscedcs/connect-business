@@ -54,6 +54,7 @@ export default function Appointments() {
 						Today’s Appointment
 					</p>
 					<ApointmentList
+						showOptions={true}
 						appointmentData={appointmentData}
 						selectedDate={selectedDate}
 					/>

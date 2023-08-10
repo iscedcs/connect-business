@@ -66,7 +66,8 @@ const Calendar: React.FC<CalendarProps> = ({
 
 	const handleTodayClick = () => {
 		setCurrentDate(new Date());
-		setSelectedDate(null);
+		setSelectedDate(new Date());
+		handleDateClick(new Date());
 	};
 
 	const generateCalendarGrid = () => {
@@ -90,7 +91,7 @@ const Calendar: React.FC<CalendarProps> = ({
 					key={`prev-${day}`}
 					className={`${
 						hasAppointment ? 'bg-black text-white' : ''
-					} text-gray-400 cursor-pointer flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 h-6 w-6 relative p-2 lg:p-4 m-1 rounded-full hover:bg-black/20 transition-colors duration-500`}
+					} text-gray-400 cursor-pointer flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 h-6 w-6 relative p-2 m-1 rounded-full hover:bg-black/20 transition-colors duration-500`}
 					onClick={() => handleDateClick(date)}
 				>
 					{day}
@@ -112,12 +113,14 @@ const Calendar: React.FC<CalendarProps> = ({
 				<div
 					key={date.toISOString()}
 					className={`cursor-pointer ${
-						isSelected || isToday
-							? 'bg-black text-white border-2 border-blue-500'
+						isToday
+							? 'bg-orange-500 text-white border border-black'
+							: isSelected
+							? 'bg-emerald-500 text-white border border-black'
 							: ''
 					} ${
 						hasAppointment ? 'bg-black text-white' : ''
-					} flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 h-6 w-6 relative p-2 lg:p-4 m-1 rounded-full hover:bg-black/20 transition-colors duration-500`}
+					} flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 h-6 w-6 relative p-2 m-1 rounded-full hover:bg-black/20 transition-colors duration-500`}
 					onClick={() => handleDateClick(date)}
 				>
 					{day}
@@ -135,7 +138,7 @@ const Calendar: React.FC<CalendarProps> = ({
 					key={`next-${day}`}
 					className={`${
 						hasAppointment ? 'bg-black text-white' : ''
-					} text-gray-400 cursor-pointer flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 h-6 w-6 relative p-2 lg:p-4 m-1 rounded-full hover:bg-black/20 transition-colors duration-500`}
+					} text-gray-400 cursor-pointer flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 h-6 w-6 relative p-2 m-1 rounded-full hover:bg-black/20 transition-colors duration-500`}
 					onClick={() => handleDateClick(date)}
 				>
 					{day}
@@ -189,7 +192,7 @@ const Calendar: React.FC<CalendarProps> = ({
 							attendees={event.attendees!}
 							business_id={event.business_id!}
 							createdAt={event.createdAt!}
-							creator={event.creator!}
+							name={event.name!}
 							date={event.date!}
 							deleted={event.deleted!}
 							description={event.description!}
@@ -221,88 +224,102 @@ const Calendar: React.FC<CalendarProps> = ({
 
 	if (type === 'small') {
 		return (
-			<div>
-				<div className='grid grid-cols-7 gap-2 text-tiny'>
-					<div className='col-span-7 flex justify-between items-center self-stretch flex-grow-0 flex-shrink-0 relative p-1'>
-						<button onClick={handlePreviousClick}>
-							<svg
-								width={16}
-								height={16}
-								viewBox='0 0 16 16'
-								fill='none'
-								xmlns='http://www.w3.org/2000/svg'
-								className='flex-grow-0 flex-shrink-0 w-4 h-4 relative'
-								preserveAspectRatio='xMidYMid meet'
-							>
-								<path
-									d='M9.99925 13.28L5.65258 8.9333C5.13924 8.41997 5.13924 7.57997 5.65258 7.06664L9.99925 2.71997'
-									stroke='#000001'
-									strokeWidth='1.5'
-									strokeMiterlimit={10}
-									strokeLinecap='round'
-									strokeLinejoin='round'
-								/>
-							</svg>
+			<>
+				<div>
+					<div className='grid grid-cols-7 gap-2 text-tiny'>
+						<div className='col-span-7 flex justify-between items-center self-stretch flex-grow-0 flex-shrink-0 relative p-1'>
+							<button onClick={handlePreviousClick}>
+								<svg
+									width={16}
+									height={16}
+									viewBox='0 0 16 16'
+									fill='none'
+									xmlns='http://www.w3.org/2000/svg'
+									className='flex-grow-0 flex-shrink-0 w-4 h-4 relative'
+									preserveAspectRatio='xMidYMid meet'
+								>
+									<path
+										d='M9.99925 13.28L5.65258 8.9333C5.13924 8.41997 5.13924 7.57997 5.65258 7.06664L9.99925 2.71997'
+										stroke='#000001'
+										strokeWidth='1.5'
+										strokeMiterlimit={10}
+										strokeLinecap='round'
+										strokeLinejoin='round'
+									/>
+								</svg>
+							</button>
+							<div className='flex-grow-0 flex-shrink-0 text-sm font-bold text-center text-black'>
+								{getMonthName(currentDate.getMonth())}{' '}
+								{currentDate.getFullYear()}
+							</div>
+							<button onClick={handleNextClick}>
+								<svg
+									width={16}
+									height={16}
+									viewBox='0 0 16 16'
+									fill='none'
+									xmlns='http://www.w3.org/2000/svg'
+									className='flex-grow-0 flex-shrink-0 w-4 h-4 relative'
+									preserveAspectRatio='xMidYMid meet'
+								>
+									<path
+										d='M6.00075 13.28L10.3474 8.9333C10.8608 8.41997 10.8608 7.57997 10.3474 7.06664L6.00075 2.71997'
+										stroke='#000001'
+										strokeWidth='1.5'
+										strokeMiterlimit={10}
+										strokeLinecap='round'
+										strokeLinejoin='round'
+									/>
+								</svg>
+							</button>
+						</div>
+						<div className='col-span-7 grid grid-cols-7 border-b pb-2 mb-2'>
+							<div className='text-center text-gray-400'>
+								Su
+							</div>
+							<div className='text-center text-gray-400'>
+								Mo
+							</div>
+							<div className='text-center text-gray-400'>
+								Tu
+							</div>
+							<div className='text-center text-gray-400'>
+								We
+							</div>
+							<div className='text-center text-gray-400'>
+								Th
+							</div>
+							<div className='text-center text-gray-400'>
+								Fr
+							</div>
+							<div className='text-center text-gray-400'>
+								Sa
+							</div>
+						</div>
+						<div className='col-span-7 grid grid-cols-7 gap-1'>
+							{generateCalendarGrid()}
+						</div>
+						<button
+							onClick={handleTodayClick}
+							className='mx-auto col-span-7 px-3'
+						>
+							TODAY
 						</button>
-						<div className='flex-grow-0 flex-shrink-0 text-sm font-bold text-center text-black'>
-							{getMonthName(currentDate.getMonth())}{' '}
-							{currentDate.getFullYear()}
-						</div>
-						<button onClick={handleNextClick}>
-							<svg
-								width={16}
-								height={16}
-								viewBox='0 0 16 16'
-								fill='none'
-								xmlns='http://www.w3.org/2000/svg'
-								className='flex-grow-0 flex-shrink-0 w-4 h-4 relative'
-								preserveAspectRatio='xMidYMid meet'
-							>
-								<path
-									d='M6.00075 13.28L10.3474 8.9333C10.8608 8.41997 10.8608 7.57997 10.3474 7.06664L6.00075 2.71997'
-									stroke='#000001'
-									strokeWidth='1.5'
-									strokeMiterlimit={10}
-									strokeLinecap='round'
-									strokeLinejoin='round'
-								/>
-							</svg>
-						</button>
 					</div>
-					<div className='col-span-7 grid grid-cols-7 border-b pb-2 mb-2'>
-						<div className='text-center text-gray-400'>
-							Su
-						</div>
-						<div className='text-center text-gray-400'>
-							Mo
-						</div>
-						<div className='text-center text-gray-400'>
-							Tu
-						</div>
-						<div className='text-center text-gray-400'>
-							We
-						</div>
-						<div className='text-center text-gray-400'>
-							Th
-						</div>
-						<div className='text-center text-gray-400'>
-							Fr
-						</div>
-						<div className='text-center text-gray-400'>
-							Sa
-						</div>
-					</div>
-					<div className='col-span-7 grid grid-cols-7'>
-						{generateCalendarGrid()}
-					</div>
-					<button
-						onClick={handleTodayClick}
-						className='mx-auto col-span-7 px-3'
-					>
-						TODAY
-					</button>
 				</div>
-			</div>
+				{showEventListModal && selectedDate && (
+					<EventListModal
+						date={selectedDate}
+						events={appointmentList.filter(
+							(event) =>
+								new Date(
+									event.date
+								).toLocaleDateString() ===
+								selectedDate.toLocaleDateString()
+						)}
+					/>
+				)}
+			</>
 		);
 	} else {
 		return (

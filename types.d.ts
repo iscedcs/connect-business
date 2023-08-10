@@ -158,7 +158,7 @@ interface AppointmentListItemProps {
 	attendees?: string[];
 	business_id: string;
 	createdAt?: string;
-	creator?: string;
+	name?: string;
 	date: string;
 	deleted?: boolean;
 	description?: string;
@@ -355,4 +355,140 @@ interface NewInputProps
 	hasError?: boolean;
 	label?: string;
 	errorMessage?: string;
+}
+
+interface DashboardDataP {
+	data: {
+		user: {
+			id: number;
+			member_id?: string;
+			business_id?: string;
+			device_id?: string;
+			device_type?: string;
+			name?: string;
+			email?: string;
+			password?: string;
+			phone?: string;
+			role?: string;
+			gender?: string;
+			waitlist: false;
+			deleted: false;
+			createdAt?: string;
+			updatedAt?: string;
+		};
+		business: {
+			id: 5;
+			business_id?: string;
+			name?: string;
+			email?: string;
+			type?: string;
+			phone?: string;
+			address?: string;
+			website?: string;
+			tax_id?: string;
+			description?: string;
+			details?: string;
+			createdAt?: string;
+			updatedAt?: string;
+		};
+		appointments: [];
+	};
+}
+
+interface AppointmentDataP {
+	data: {
+		business: {
+			id: number | string;
+			member_id?: string;
+			business_id?: string;
+			device_id?: string;
+			device_type?: string;
+			image?: string;
+			gallery?: string[];
+			services?: ServiceP[];
+			name?: string;
+			email?: string;
+			password?: string;
+			phone?: string;
+			role?: string;
+			gender?: string;
+			waitlist?: boolean;
+			deleted?: boolean;
+			createdAt?: string;
+			updatedAt?: string;
+			business_appointments: Array<AppointmentListItemProps>;
+		};
+	};
+}
+
+interface ProfileP {
+	business: {
+		id: number | string;
+		business_id?: string;
+		name?: string;
+		email?: string;
+		type?: string;
+		phone?: string;
+		address?: string;
+		logo?: string;
+		gallery?: string[];
+		services?: ServiceP[];
+		website?: string;
+		tax_id?: string;
+		description?: string;
+		details?: string;
+		createdAt?: string;
+		updatedAt?: string;
+	};
+	user: {
+		id: number | string;
+		member_id?: string;
+		business_id?: string;
+		device_id?: string;
+		device_type?: string;
+		name?: string;
+		email?: string;
+		image?: string;
+		password?: string;
+		phone?: string;
+		role?: string;
+		gender?: string;
+		waitlist?: boolean;
+		deleted?: boolean;
+		createdAt?: string;
+		updatedAt?: string;
+	};
+}
+
+interface ServiceP {
+	name: string;
+	description: string;
+	image: string;
+}
+
+interface ImageP {
+	name: string;
+	url: string;
+}
+
+interface FeatureP {
+	type: string;
+	icon: string;
+	label: string;
+	content: string;
+}
+interface Error {
+	message: string;
+	title: string;
+}
+
+interface ProfileFormP {
+	name: string;
+	profile_image: string;
+	logo: string;
+	description: string;
+	details: string;
+	images: ImageP[];
+	services: ServiceP[];
+	features: FeatureP[];
 }

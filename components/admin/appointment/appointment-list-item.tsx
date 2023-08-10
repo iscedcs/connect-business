@@ -12,7 +12,7 @@ export default function AppointmentListItem({
 	attendees,
 	business_id,
 	createdAt,
-	creator,
+	name,
 	date,
 	deleted,
 	description,
@@ -30,8 +30,6 @@ export default function AppointmentListItem({
 	title,
 	updatedAt,
 }: AppointmentListItemProps) {
-	// const initials = getInitials(creator);
-
 	const readableDate = formatDate(date);
 	const [showSingleAppointment, setShowSingleAppointment] =
 		React.useState(false);
@@ -42,21 +40,21 @@ export default function AppointmentListItem({
 	return (
 		<>
 			<div className='flex-grow-0 flex-shrink-0 w-full h-14 overflow-hidden rounded-xl bg-gray-200/[0.84]'>
-				<div className='flex justify-between items-center px-3 lg:px-9 py-2 gap-3'>
+				<div className='flex justify-between items-center px-3 py-2 gap-3'>
 					<div
 						className='flex items-center gap-4'
 						onClick={() => setShowSingleAppointment(true)}
 					>
 						<div className='flex flex-grow-0 flex-shrink-0 w-10 h-10 relative overflow-hidden rounded-full bg-black items-center justify-center'>
 							<p className='text-sm font-bold text-center uppercase text-white'>
-								IN
+								{getInitials(name || 'Initial Name')}
 							</p>
 						</div>
-						<div className='flex flex-col flex-grow-0 flex-shrink-0 relative w-full'>
-							<p className='truncate overflow-hidden text-ellipsis text-tiny lg:text-sm font-bold text-left text-black'>
+						<div className='flex flex-col cursor-pointer relative w-full'>
+							<p className='truncate overflow-hidden text-ellipsis text-tiny font-bold text-left text-black'>
 								{title}
 							</p>
-							<p className='flex-grow-0 flex-shrink-0 w-full text-[10px] text-left text-[#808080]'>
+							<p className='w-full text-[10px] text-left text-[#808080]'>
 								{`${start_time}, ${readableDate}`}
 							</p>
 						</div>
@@ -118,11 +116,11 @@ export default function AppointmentListItem({
 						<div className='mx-auto'>
 							<div className='flex flex-col justify-center items-center gap-4 cursor-pointer'>
 								<div className='bg-black text-white text-4xl p-[2px] h-[90px] md:h-[120px] w-[90px] md:w-[120px] rounded-full overflow-hidden flex items-center justify-center'>
-									{getInitials(creator || 'Creator')}
+									{getInitials(name || 'Creator')}
 								</div>
 								<div className='flex flex-col justify-center items-center flex-grow-0 flex-shrink-0'>
 									<p className='w-full text-lg md:text-xl font-bold text-center text-[#000001]'>
-										{creator || 'Creator'}
+										{name || 'Creator'}
 									</p>
 								</div>
 							</div>
@@ -304,12 +302,12 @@ export default function AppointmentListItem({
 								<div className='flex flex-col justify-center items-center gap-4 cursor-pointer'>
 									<div className='bg-black text-white text-4xl p-[2px] h-[90px] md:h-[120px] w-[90px] md:w-[120px] rounded-full overflow-hidden flex items-center justify-center'>
 										{getInitials(
-											creator || 'Creator'
+											name || 'Creator'
 										)}
 									</div>
 									<div className='flex flex-col justify-center items-center flex-grow-0 flex-shrink-0'>
 										<p className='w-full text-lg md:text-xl font-bold text-center text-[#000001]'>
-											{creator || 'Creator'}
+											{name || 'Creator'}
 										</p>
 									</div>
 								</div>

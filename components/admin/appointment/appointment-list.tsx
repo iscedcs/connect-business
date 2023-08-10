@@ -4,9 +4,11 @@ import AppointmentListItem from './appointment-list-item';
 export default function AppointmentList({
 	selectedDate,
 	appointmentData,
+	showOptions = false,
 }: {
 	selectedDate: Date;
 	appointmentData: AppointmentListItemProps[];
+	showOptions?: boolean;
 }) {
 	const allAppointments = appointmentData;
 	const targetDate = selectedDate.toISOString();
@@ -23,7 +25,7 @@ export default function AppointmentList({
 						attendees={appointment.attendees!}
 						business_id={appointment.business_id!}
 						createdAt={appointment.createdAt!}
-						creator={appointment.creator!}
+						name={appointment.name!}
 						date={appointment.date!}
 						deleted={appointment.deleted!}
 						description={appointment.description!}
@@ -36,7 +38,7 @@ export default function AppointmentList({
 						onDelete={appointment.onDelete!}
 						onEdit={appointment.onEdit!}
 						phone={appointment.phone!}
-						showOptions
+						showOptions={showOptions}
 						start_time={appointment.start_time!}
 						title={appointment.title!}
 						updatedAt={appointment.updatedAt!}

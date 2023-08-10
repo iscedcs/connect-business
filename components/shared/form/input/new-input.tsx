@@ -43,6 +43,7 @@ const NewInput: FC<NewInputProps> = ({
 					{label}
 				</label>
 				<input
+					spellCheck={false}
 					type={
 						type === 'password'
 							? showPassword

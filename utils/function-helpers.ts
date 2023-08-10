@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export function getInitials(name: string): string {
 	const words = name.trim().split(' ');
 
@@ -62,6 +64,9 @@ export function getTimeAgo(timestamp: Date): string {
 }
 
 export function GetTitle(input: string): string {
+	if (input === '/admin' || input === '/staff') {
+		return 'Dashboard';
+	}
 	const parts = input.split('/');
 	const lastElement = parts[parts.length - 1];
 
@@ -98,3 +103,9 @@ export function extractLastPartFromUrl(url: string): string | null {
 		return null;
 	}
 }
+
+export const generateUniqueID = (): string => {
+	const id = uuidv4();
+	console.log(id);
+	return id;
+};

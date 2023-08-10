@@ -61,7 +61,7 @@ export default function Dashboard() {
 												x2={1}
 												y2={140}
 												stroke='#F2F2F2'
-												stroke-width={2}
+												strokeWidth={2}
 											/>
 										</svg>
 										<p className='flex-grow-0 flex-shrink-0 w-3 h-5 text-xs text-center text-[#000001]'>
@@ -83,7 +83,7 @@ export default function Dashboard() {
 												x2={1}
 												y2={140}
 												stroke='#F2F2F2'
-												stroke-width={2}
+												strokeWidth={2}
 											/>
 										</svg>
 										<p className='flex-grow-0 flex-shrink-0 w-3 h-5 text-xs text-center text-[#000001]'>
@@ -105,7 +105,7 @@ export default function Dashboard() {
 												x2={1}
 												y2={140}
 												stroke='#F2F2F2'
-												stroke-width={2}
+												strokeWidth={2}
 											/>
 										</svg>
 										<p className='flex-grow-0 flex-shrink-0 w-3 h-5 text-xs text-center text-[#000001]'>
@@ -127,7 +127,7 @@ export default function Dashboard() {
 												x2={1}
 												y2={140}
 												stroke='#F2F2F2'
-												stroke-width={2}
+												strokeWidth={2}
 											/>
 										</svg>
 										<p className='flex-grow-0 flex-shrink-0 w-3 h-5 text-xs text-center text-[#000001]'>
@@ -149,7 +149,7 @@ export default function Dashboard() {
 												x2={1}
 												y2={140}
 												stroke='#F2F2F2'
-												stroke-width={2}
+												strokeWidth={2}
 											/>
 										</svg>
 										<p className='flex-grow-0 flex-shrink-0 w-3 h-5 text-xs text-center text-[#000001]'>
@@ -171,7 +171,7 @@ export default function Dashboard() {
 												x2={1}
 												y2={140}
 												stroke='#F2F2F2'
-												stroke-width={2}
+												strokeWidth={2}
 											/>
 										</svg>
 										<p className='flex-grow-0 flex-shrink-0 w-3 h-5 text-xs text-center text-[#000001]'>
@@ -193,7 +193,7 @@ export default function Dashboard() {
 												x2={1}
 												y2={140}
 												stroke='#F2F2F2'
-												stroke-width={2}
+												strokeWidth={2}
 											/>
 										</svg>
 										<p className='flex-grow-0 flex-shrink-0 w-3 h-5 text-xs text-center text-[#000001]'>
@@ -214,15 +214,15 @@ export default function Dashboard() {
 										<path
 											d='M14 188L102.427 141.22C110.607 136.893 120.396 136.887 128.581 141.203L201.656 179.737C203.875 180.907 206.242 181.774 208.692 182.313L215.433 183.799C226.889 186.323 238.705 181.438 245.033 171.561L302.293 82.1963C311.917 67.1762 332.945 64.8654 345.601 77.4372L421.533 152.863C430.099 161.372 443.156 163.432 453.926 157.972L529.433 119.691C534.605 117.069 540.464 116.118 546.2 116.968L638 130.576'
 											stroke='#E0E0E0'
-											stroke-width={4}
-											stroke-linecap='round'
+											strokeWidth={4}
+											strokeLinecap='round'
 										/>
 									</g>
 									<path
 										d='M14 167.31L103.728 110.137C113.769 103.74 126.756 104.391 136.107 111.76L198.945 161.286C212.642 172.081 232.77 167.863 240.98 152.476L297.677 46.2146C306.963 28.8115 330.852 26.2092 343.667 41.205L420.741 131.395C428.972 141.027 442.644 143.931 454.08 138.478L528.349 103.059C533.28 100.708 538.791 99.8498 544.203 100.591L638 113.445'
 										stroke='#000001'
-										stroke-width={4}
-										stroke-linecap='round'
+										strokeWidth={4}
+										strokeLinecap='round'
 									/>
 									{/* <defs>
 										<filter

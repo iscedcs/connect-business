@@ -5,7 +5,7 @@ export default function SettingsCard({ title, icon, link }: SettingsCardProps) {
 	return (
 		<Link
 			href={link!}
-			className='flex-grow-0 flex-shrink-0 w-[300px] h-[200px] overflow-hidden rounded-3xl bg-white border border-gray-100 hover:shadow-mid transition-all duration-500'
+			className='flex-grow-0 flex-shrink-0 w-[250px] h-[180px] overflow-hidden rounded-3xl bg-white border border-gray-100 hover:shadow-mid transition-all duration-500'
 		>
 			<div className='flex flex-col gap-4 justify-center items-center h-full w-full'>
 				<div className='text-blue-500'>{icon}</div>

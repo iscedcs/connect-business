@@ -9,6 +9,7 @@ declare module 'next-auth' {
 			refresh_token: string;
 			business_id: string;
 			member_id: string;
+			role: string;
 		} & DefaultSession;
 	}
 	interface User extends DefaultUser {
@@ -18,6 +19,7 @@ declare module 'next-auth' {
 		refresh_token: string;
 		business_id: string;
 		member_id: string;
+		role: string;
 		id: string;
 	}
 }

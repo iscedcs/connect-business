@@ -7,7 +7,6 @@ import Link from 'next/link';
 import SigninLayout from './signin-layout';
 import BlurImage from '@/components/shared/ui/blur-image';
 import { signIn } from 'next-auth/react';
-import { NextResponse } from 'next/server';
 import NewInput from '@/components/shared/form/input/new-input';
 import Image from 'next/image';
 
@@ -21,8 +20,15 @@ export default function SignUp() {
 	const [passWord, setPassWord] = useState('');
 	const [errorUsername, setErrorUsername] = useState<boolean>(false);
 	const [errorPassword, setErrorPassword] = useState<boolean>(false);
+	const [errorLogin, setErrorLogin] = useState<boolean>(false);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
-	const [errors, setErrors] = useState<any[]>([]);
+	const [errors, setErrors] = useState<Error[]>([]);
+
+	const hasLoginError = () => {
+		if (errors.some((error) => error.title === 'login')) {
+			setErrorLogin(true);
+		} else setErrorLogin(false);
+	};
 
 	// const handleInput = (e: FormEvent<HTMLFormElement>) => {};
 	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -32,7 +38,7 @@ export default function SignUp() {
 		if (!userName) {
 			setErrors((prevErrors) => [
 				...prevErrors,
-				{ name: 'Please enter username', title: 'username' },
+				{ message: 'Please enter username', title: 'username' },
 			]);
 			setErrorUsername(true);
 			setIsLoading(false);
@@ -41,7 +47,7 @@ export default function SignUp() {
 		if (!passWord) {
 			setErrors((prevErrors) => [
 				...prevErrors,
-				{ password: 'Please Enter Password', title: 'password' },
+				{ message: 'Please Enter Password', title: 'password' },
 			]);
 			setErrorPassword(true);
 			setIsLoading(false);
@@ -58,8 +64,13 @@ export default function SignUp() {
 			setIsLoading(true);
 			return result;
 		} catch (error) {
-			setIsLoading(true);
-			return NextResponse.json(error);
+			setIsLoading(false);
+			setErrors((prevErrors) => [
+				...prevErrors,
+				{ message: error as string, title: 'login' },
+			]);
+			console.log(error);
+			return;
 		}
 	};
 
@@ -80,14 +91,14 @@ export default function SignUp() {
 		if (name === 'username' && value.trim() === '') {
 			setErrors((prevErrors) => [
 				...prevErrors,
-				{ [name]: 'Username Connot Be Empty', title: name },
+				{ message: 'Username Connot Be Empty', title: name },
 			]);
 		}
 
 		if (name === 'password' && value.trim() === '') {
 			setErrors((prevErrors) => [
 				...prevErrors,
-				{ [name]: 'Password Connot Be Empty', title: name },
+				{ message: 'Password Connot Be Empty', title: name },
 			]);
 		}
 	};
@@ -124,6 +135,11 @@ export default function SignUp() {
 							</Text>
 						</div>
 						<div className='flex flex-col gap-3 xl:gap-6'>
+							{errorLogin && (
+								<div className='text-rose-600 text-xs text-center'>
+									Error Occured
+								</div>
+							)}
 							<div className='flex flex-col gap-2 xl:gap-6'>
 								<NewInput
 									type='text'
