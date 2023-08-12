@@ -44,7 +44,7 @@ export default function TemplateThree({
 					/>
 				</div>
 				<Link
-					href={'/admin/settings/edit-profile'}
+					href={'/admin/settings/edit-user'}
 					className='flex justify-end items-center absolute right-0 md:right-10 top-5 lg:top-10 gap-3 text-white'
 				>
 					<svg

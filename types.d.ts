@@ -461,6 +461,7 @@ interface ProfileP {
 }
 
 interface ServiceP {
+	id: number | string;
 	name: string;
 	description: string;
 	image: string;
@@ -501,11 +502,19 @@ interface BusinessFormP {
 	details: string;
 	images: ImageP[];
 }
-
-interface ServicesFormP {
-	services: ServiceP[];
+interface UserFormP {
+	name: string;
+	profile_image: string;
 }
 
 interface SocialsFormP {
 	features: FeatureP[];
+}
+
+interface StaffMessageP {
+	senderName?: string;
+	senderImage?: string;
+	time?: string;
+	messageSubject?: string;
+	messageBody?: string;
 }

@@ -18,6 +18,11 @@ export default function Settings() {
 					link='/admin/settings/edit-user'
 				/>
 				<SettingsCard
+					title='Edit Services'
+					icon={editIcon}
+					link='/admin/settings/edit-services'
+				/>
+				<SettingsCard
 					title='Edit Social Links'
 					icon={editIcon}
 					link='/admin/settings/edit-social'

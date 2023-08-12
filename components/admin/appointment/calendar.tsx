@@ -32,11 +32,13 @@ const Calendar: React.FC<CalendarProps> = ({
 		setSelectedDate(date);
 
 		// Check if the clicked date has an event
-		const hasEvent = appointmentList.some(
-			(event) =>
-				new Date(event.date).toLocaleDateString() ===
-				date.toLocaleDateString()
-		);
+		const hasEvent =
+			appointmentList.length > 0 &&
+			appointmentList.some(
+				(event) =>
+					new Date(event.date).toLocaleDateString() ===
+					date.toLocaleDateString()
+			);
 
 		if (hasEvent) {
 			setShowEventListModal(true);
@@ -150,13 +152,16 @@ const Calendar: React.FC<CalendarProps> = ({
 	};
 
 	const hasAppointmentOnDate = (date: Date) => {
-		return appointmentList.some((event) => {
-			const eventStartDate = new Date(event.date);
-			return (
-				eventStartDate.toLocaleDateString() ===
-				date.toLocaleDateString()
-			);
-		});
+		return (
+			appointmentList.length > 0 &&
+			appointmentList.some((event) => {
+				const eventStartDate = new Date(event.date);
+				return (
+					eventStartDate.toLocaleDateString() ===
+					date.toLocaleDateString()
+				);
+			})
+		);
 	};
 
 	const getMonthName = (month: number) => {

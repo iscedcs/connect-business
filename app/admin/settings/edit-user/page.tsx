@@ -1,5 +1,6 @@
 import { options } from '@/app/api/auth/[...nextauth]/options';
 import EditProfileform from '@/components/shared/form/edit-business-about-form';
+import EditUserForm from '@/components/shared/form/edit-user-form';
 import { API, URLS } from '@/utils/consts';
 import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
@@ -33,19 +34,13 @@ const getServerProfileData = async () => {
 const EditUser = async () => {
 	const sd = await getServerProfileData();
 	console.log('server....', sd);
-	const profileData: ProfileFormP = {
-		name: sd.business.name || '',
-		logo: sd.business.base_image || '',
+	const userData: UserFormP = {
+		name: sd.user.name || '',
 		profile_image: sd.user.profile_image || '',
-		description: sd.business.description || '',
-		details: sd.business.details || '',
-		images: sd.business.images || [],
-		services: sd.business.services || [],
-		features: sd.business.features || [],
 	};
 	return (
 		<div>
-			<EditProfileform profileData={profileData} />
+			<EditUserForm userData={userData} />
 		</div>
 	);
 };

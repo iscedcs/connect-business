@@ -1,18 +1,22 @@
 import React from 'react';
 import BlurImage from '../blur-image';
-import { appointmentDeleteIcon } from '@/utils/icons';
+import { appointmentDeleteIcon, appointmentEditIcon } from '@/utils/icons';
 
 const ServiceCardLandscape = ({
 	image,
 	name,
 	description,
+	handleClick,
+	handleDelete,
 }: {
 	image: string;
 	name: string;
 	description: string;
+	handleClick?: () => void;
+	handleDelete?: () => void;
 }) => {
 	return (
-		<div className='w-full bg-gray-100 rounded-2xl overflow-hidden flex gap-2 relative'>
+		<div className='w-full bg-gray-100 rounded-2xl overflow-hidden flex gap-2 relative cursor-pointer'>
 			<div className='w-[60px] h-[60px] shrink-0 overflow-hidden rounded-2xl'>
 				<BlurImage
 					src={image}
@@ -27,8 +31,19 @@ const ServiceCardLandscape = ({
 				<p className='text-sm'>{description}</p>
 			</div>
 
-			<div className='absolute top-0 right-0 text-rose-500 p-2'>
-				{appointmentDeleteIcon}
+			<div className='absolute top-0 right-0 flex gap-3 p-2'>
+				<div
+					className='text-rose-500'
+					onClick={handleDelete}
+				>
+					{appointmentDeleteIcon}
+				</div>
+				<div
+					className='text-blue-500'
+					onClick={handleClick}
+				>
+					{appointmentEditIcon}
+				</div>
 			</div>
 		</div>
 	);

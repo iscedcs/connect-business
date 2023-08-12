@@ -3,23 +3,14 @@ import { AnimatePresence, motion } from 'framer-motion';
 import React from 'react';
 import FileUploader from './images/file-uploader';
 import NewInput from './input/new-input';
-import MultipleImagesUploader from './images/image-uploader';
 import Button from '../ui/button/button';
 import { useRouter } from 'next/navigation';
 
-const EditBusinessForm = ({
-	businessData,
-}: {
-	businessData: BusinessFormP;
-}) => {
+const EditUserForm = ({ userData }: { userData: UserFormP }) => {
 	const router = useRouter();
 	const [formData, setFormData] = React.useState({
-		name: businessData.name,
-		logo: businessData.logo,
-		profile_image: businessData.profile_image,
-		description: businessData.description,
-		details: businessData.details,
-		images: businessData.images,
+		name: userData.name,
+		profile_image: userData.profile_image,
 	});
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -33,12 +24,6 @@ const EditBusinessForm = ({
 		setFormData(updatedFormData);
 	};
 
-	const handleBusinessLogo = async (file: any) => {
-		const updatedFormData = { ...formData };
-		updatedFormData.logo = file.url;
-		setFormData(updatedFormData);
-	};
-
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		console.log(formData);
 		const { name, value } = e.target;
@@ -46,12 +31,6 @@ const EditBusinessForm = ({
 			...prevFormData,
 			[name]: value,
 		}));
-	};
-
-	const handleFiles = (newImages: ImageP[]) => {
-		const updatedFormData = { ...formData };
-		updatedFormData.images = [...updatedFormData.images, ...newImages];
-		setFormData(updatedFormData);
 	};
 
 	return (
@@ -65,22 +44,14 @@ const EditBusinessForm = ({
 					type: 'tween',
 					duration: 0.5,
 				}}
-				className='flex flex-col gap-4 mx-5 justify-center items-center'
+				className='flex flex-col gap-4 mx-5'
 				onSubmit={handleSubmit}
 			>
 				<div className='flex flex-col gap-4 max-w-lg '>
 					<FileUploader
-						className='mx-auto'
 						handleFile={handleprofileImage}
 						folder='profile_images'
 						type='circle'
-					/>
-					<FileUploader
-						className='w-96'
-						handleFile={handleBusinessLogo}
-						folder='business_logo'
-						type='landscape'
-						text='Add Business Logo'
 					/>
 					<NewInput
 						className='w-full'
@@ -91,31 +62,7 @@ const EditBusinessForm = ({
 						onInput={handleChange}
 						onChange={handleChange}
 					/>
-					<NewInput
-						className='w-full'
-						type='text'
-						label='Business Description'
-						name='description'
-						value={formData.description}
-						onInput={handleChange}
-						onChange={handleChange}
-					/>
-					<NewInput
-						className='w-full'
-						type='text'
-						label='About Business'
-						name='details'
-						value={formData.details}
-						onInput={handleChange}
-						onChange={handleChange}
-					/>
 				</div>
-				<MultipleImagesUploader
-					handleFiles={handleFiles}
-					folder='features_images'
-					text='Add Business Images'
-					initialImages={formData.images}
-				/>
 				<div className='mt-3 max-w-lg '>
 					<Button
 						variant='primary'
@@ -129,4 +76,4 @@ const EditBusinessForm = ({
 	);
 };
 
-export default EditBusinessForm;
+export default EditUserForm;

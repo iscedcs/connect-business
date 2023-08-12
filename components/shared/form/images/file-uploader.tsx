@@ -12,6 +12,7 @@ interface FileUploaderProps {
 	fileName?: string | null;
 	type?: 'circle' | 'portrait' | 'landscape';
 	handleFile: (newImage: any) => void;
+	className?: string;
 }
 
 const FileUploader: React.FC<FileUploaderProps> = (props) => {
@@ -105,7 +106,7 @@ const FileUploader: React.FC<FileUploaderProps> = (props) => {
 	return (
 		<>
 			<div
-				className={`${container} relative cursor-pointer`}
+				className={`${container} ${props.className} relative cursor-pointer`}
 				onClick={handleClick}
 			>
 				<div
@@ -114,8 +115,8 @@ const FileUploader: React.FC<FileUploaderProps> = (props) => {
 					{image && image ? (
 						<BlurImage
 							src={image as string}
-							height={116}
-							width={116}
+							height={600}
+							width={400}
 							alt='avatar'
 							className={`w-full h-full object-cover object-center overflow-hidden bg-white ${
 								props.type === 'circle'

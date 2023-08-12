@@ -30,15 +30,30 @@ const getServerProfileData = async () => {
 		return serverProfileData;
 	}
 };
+const initialServices: ServiceP[] = [
+	{
+		id: 0,
+		name: 'Service 1',
+		description:
+			'Description 1 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt quos eum ipsam mollitia odit enim voluptas dignissimos quis nisi ab harum hic, consequuntur eligendi, inventore neque necessitatibus in, rem eveniet? ',
+		image: '/img/1.jpeg',
+	},
+	{
+		id: 1,
+		name: 'Service 2',
+		description: 'Description 2',
+		image: '/img/2.jpeg',
+	},
+];
+
 const EditServices = async () => {
 	const sd = await getServerProfileData();
 	console.log('server....', sd);
-	const servicesData: ServicesFormP = {
-		services: sd.business.images || [],
-	};
+	const servicesData: ServiceP[] = sd.business.services || [];
 	return (
 		<div>
 			<EditServicesForm servicesData={servicesData} />
+			{/* <EditServicesForm servicesData={initialServices} /> */}
 		</div>
 	);
 };

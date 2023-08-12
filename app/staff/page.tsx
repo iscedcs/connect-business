@@ -1,18 +1,6 @@
 import Appointment from '@/components/admin/appointment/appointment';
 
 export default function Dashboard() {
-	const appointmentsData = [
-		{ date: '2023-07-31', appointments: 5 },
-		{ date: '2023-08-01', appointments: 5 },
-		{ date: '2023-08-02', appointments: 10 },
-		{ date: '2023-08-03', appointments: 2 },
-		{ date: '2023-08-04', appointments: 6 },
-		{ date: '2023-08-05', appointments: 8 },
-		{ date: '2023-08-06', appointments: 20 },
-		{ date: '2023-08-07', appointments: 7 },
-		// ... more data
-	];
-
 	return (
 		<div className='px-4 md:px-10'>
 			<div className='grid grid-cols-12 gap-6 overflow-hidden mt-5'>

@@ -16,15 +16,19 @@ export default function Error({
 	}, [error]);
 
 	return (
-		<div className='h-screen text-orange-600 flex flex-col items-center justify-center'>
-			<h2>Something went wrong!</h2>
+		<div className='h-screen text-orange-600 flex flex-col gap-6 items-center justify-center'>
+			<h2 className=' text-2xl'>Oooooops!</h2>
+			<div className='w-96 text-center'>
+				{/* <div className='text-2xl'>{error.name}</div> */}
+				<div className=''>{error.message}</div>
+			</div>
 			<button
 				onClick={
 					// Attempt to recover by trying to re-render the segment
 					() => reset()
 				}
 			>
-				Try again
+				Refresh Page
 			</button>
 			<Link href={'/admin'}>Go to Dashboard</Link>
 		</div>

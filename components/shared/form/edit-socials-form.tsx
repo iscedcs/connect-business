@@ -44,7 +44,6 @@ const EditSocialsForm = ({ socialsData }: { socialsData: SocialsFormP }) => {
 		<Fragment>
 			<AnimatePresence>
 				<motion.form
-					key='services'
 					initial={{ x: '1000%' }}
 					animate={{ x: '0%' }}
 					exit={{ x: '-1000%' }}
@@ -52,7 +51,7 @@ const EditSocialsForm = ({ socialsData }: { socialsData: SocialsFormP }) => {
 						type: 'tween',
 						duration: 0.5,
 					}}
-					className='flex flex-col justify-start items-start gap-6'
+					className='flex flex-col px-5 lg:px-10 justify-start items-start gap-6'
 					onSubmit={handleSubmit}
 				>
 					<div className='flex flex-col justify-between h-96 items-start relative gap-5 w-[556px]'>
