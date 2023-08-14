@@ -28,7 +28,7 @@ export default function Appointment({
 				</p>
 				<AppointmentList
 					appointmentData={appointments!}
-					selectedDate={selectedDate}
+					// selectedDate={selectedDate}
 				/>
 			</div>
 		</div>

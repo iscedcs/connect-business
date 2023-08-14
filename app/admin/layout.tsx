@@ -14,13 +14,26 @@ export default async function DashboardLayout({
 	children: React.ReactNode;
 }) {
 	const data: DashboardDataP = await getData();
-	const businessname = data.data.user?.name;
+	console.log(data);
+	const profile = data.data;
+	const isAdmin = data.data.user.role === 'admin';
 	return (
 		<div className='w-full h-screen md:h-screen relative flex overflow-hidden bg-black px-2 py-2'>
 			<NavBar links={ADMIN_NAVLINKS} />
 			<div className='w-full h-full flex flex-col gap-3 overflow-hidden rounded-2xl bg-white'>
 				<>
-					<Header name={businessname} />
+					<Header
+						name={
+							isAdmin
+								? profile.business.name
+								: profile.user.name
+						}
+						logo={
+							isAdmin
+								? profile.business.base_image
+								: profile.user.profile_image
+						}
+					/>
 					<div className='h-full overflow-y-scroll mb-3'>
 						{children}
 					</div>

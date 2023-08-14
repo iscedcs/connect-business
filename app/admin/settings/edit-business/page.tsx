@@ -27,16 +27,15 @@ const getServerProfileData = async () => {
 	} else {
 		const serverProfileDataRaw = await response.json();
 		const serverProfileData = serverProfileDataRaw.data;
+		console.log(serverProfileData);
 		return serverProfileData;
 	}
 };
 const EditBusiness = async () => {
 	const sd = await getServerProfileData();
-	console.log('server....', sd);
 	const businessData: BusinessFormP = {
 		name: sd.business.name || '',
 		logo: sd.business.base_image || '',
-		profile_image: sd.user.profile_image || '',
 		description: sd.business.description || '',
 		details: sd.business.details || '',
 		images: sd.business.images || [],

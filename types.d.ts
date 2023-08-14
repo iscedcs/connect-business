@@ -99,6 +99,7 @@ interface EmployeeCardProps {
 	onOnboard?: () => void;
 	waitlist?: boolean;
 	index: number;
+	role?: string;
 }
 
 interface NavBarMobileButtonProps {
@@ -144,6 +145,7 @@ interface OnboardedEmployeesProps {
 	handleCardClick: any;
 	handleDelete: any;
 	handleOnboard?: any;
+	role?: string;
 }
 
 interface EmployeesProps {}
@@ -225,6 +227,7 @@ interface Button {
 
 interface EmployeesButtonGroupProps {
 	buttons: Button[];
+	role: string;
 }
 
 interface OnboardedEmployeesProps {
@@ -368,6 +371,7 @@ interface DashboardDataP {
 			name?: string;
 			email?: string;
 			password?: string;
+			profile_image?: string;
 			phone?: string;
 			role?: string;
 			gender?: string;
@@ -379,6 +383,7 @@ interface DashboardDataP {
 		business: {
 			id: 5;
 			business_id?: string;
+			base_image?: string;
 			name?: string;
 			email?: string;
 			type?: string;
@@ -466,6 +471,9 @@ interface ServiceP {
 	description: string;
 	image: string;
 }
+interface AllServicesP {
+	services: ServiceP[];
+}
 
 interface ImageP {
 	name: string;
@@ -496,7 +504,6 @@ interface ProfileFormP {
 
 interface BusinessFormP {
 	name: string;
-	profile_image: string;
 	logo: string;
 	description: string;
 	details: string;
@@ -504,7 +511,10 @@ interface BusinessFormP {
 }
 interface UserFormP {
 	name: string;
+	email: string;
+	phone: string;
 	profile_image: string;
+	gender: string;
 }
 
 interface SocialsFormP {

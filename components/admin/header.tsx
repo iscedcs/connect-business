@@ -8,7 +8,7 @@ import { notificationIcon } from '@/utils/icons';
 import IconButton from '@/components/shared/ui/button/icon-button';
 import BlurImage from '@/components/shared/ui/blur-image';
 
-const Header = ({ name }: { name?: string }) => {
+const Header = ({ name, logo }: { name?: string; logo?: string }) => {
 	let pathName = usePathname();
 
 	if (
@@ -38,13 +38,17 @@ const Header = ({ name }: { name?: string }) => {
 						{notificationIcon}
 					</IconButton>
 					<div className='hidden md:flex justify-center items-center flex-grow-0 flex-shrink-0 w-fit relative gap-2'>
-						<p className='flex-grow-0 flex-shrink-0 w-fit text-base font-bold text-left text-[#2b2b2b]'>
+						<p className='flex-grow-0 flex-shrink-0 text-base font-bold'>
 							{name}
 						</p>
 						<Link href={'/admin/profile'}>
-							<div className='flex justify-center items-center overflow-hidden flex-grow-0 flex-shrink-0 w-11 h-11 rounded-full bg-black bg-cover bg-no-repeat bg-center'>
+							<div
+								className={`flex justify-center items-center overflow-hidden flex-grow-0 flex-shrink-0 w-12 h-12 rounded-full shadow-mid border-2 ${
+									logo ? '' : 'p-2'
+								}`}
+							>
 								<BlurImage
-									src={COMPANY_PROFILE.logo}
+									src={logo || '/icons/profile.svg'}
 									height={44}
 									width={44}
 									alt='profile image'

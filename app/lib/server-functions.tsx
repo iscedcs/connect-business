@@ -16,7 +16,6 @@ export async function getData() {
 		headers,
 		next: { revalidate: 10 },
 	});
-
 	if (!res.ok) {
 		throw new Error('Failed to fetch data');
 	}
@@ -42,4 +41,28 @@ export async function getAppointments() {
 		throw new Error('Failed to fetch data');
 	}
 	return res.json();
+}
+
+export async function getStaff() {
+	const session = await getServerSession(options);
+	const accessToken = session?.user.access_token;
+
+	const headers = {
+		'Content-Type': 'application/json',
+		'x-api-key': process.env.X_API_KEY,
+		Authorization: `Bearer ${accessToken}`,
+	};
+	const url = API + URLS.business.team.create;
+	console.log(accessToken);
+
+	const response = await fetch(url, {
+		method: 'GET',
+		headers,
+		// next: { revalidate: 10 },
+	});
+
+	if (!response.ok) {
+		throw new Error('Failed to fetch data');
+	}
+	return response.json();
 }

@@ -47,6 +47,8 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 			  )
 			: [...services, { ...formData, id: Date.now() }];
 
+		console.log(formData);
+		console.log(services);
 		setServices(updatedServices);
 		setIsModalOpen(false);
 	};

@@ -53,7 +53,7 @@ const FileUploader: React.FC<FileUploaderProps> = (props) => {
 				quality: 1,
 				success: async (compressedImage) => {
 					const imageName = `c4b-${generateUniqueID()}-${folder}`;
-					const maxAllowedSize = 50 * 1024 * 1024;
+					const maxAllowedSize = 10 * 1024 * 1024;
 
 					if (compressedImage.size > maxAllowedSize) {
 						console.log(
@@ -112,7 +112,7 @@ const FileUploader: React.FC<FileUploaderProps> = (props) => {
 				<div
 					className={`${shapes} flex items-center justify-center`}
 				>
-					{image && image ? (
+					{image && image !== '' && image ? (
 						<BlurImage
 							src={image as string}
 							height={600}

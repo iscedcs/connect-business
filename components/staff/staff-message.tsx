@@ -27,7 +27,7 @@ const StaffMessage = ({
 						src={senderImage}
 					/>
 				</div>
-				<div className='flex flex-col items-between justify-between pl-3 lg:pl-5 w-[calc(100%-48px)] bg-red-100'>
+				<div className='flex flex-col items-between justify-between pl-3 lg:pl-5 w-[calc(100%-48px)]'>
 					<div className='flex justify-between items-start w-full'>
 						<p className='text-sm lg:text-base flex-grow-0 flex-shrink-0 font-bold text-black'>
 							{senderName}

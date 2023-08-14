@@ -5,6 +5,7 @@ export default function OnboardedEmployees({
 	searchResults,
 	handleCardClick,
 	handleDelete,
+	role,
 }: OnboardedEmployeesProps) {
 	const isEmpty = searchResults.length === 0;
 
@@ -15,6 +16,7 @@ export default function OnboardedEmployees({
 			{!isEmpty ? (
 				sortedResults.map((member, index) => (
 					<EmployeeCard
+						role={role}
 						key={member.member_id}
 						name={member.name}
 						email={member.email}

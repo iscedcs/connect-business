@@ -6,27 +6,28 @@ import React from 'react';
 export default function Connect() {
 	return (
 		<>
-			<div className='grid grid-cols-2 xxs:grid-cols-3 xs:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3 lg:gap-6'>
-				{CARD_VIEW.socials.map((social) => (
+			<div className='w-screen flex flex-col justify-start py-2 lg:justify-center md:flex-row flex-wrap md:flex-nowrap h-[160px] md:h-fit gap-3 md:gap-5 overflow-x-scroll  px-4 lg:px-10'>
+				{CARD_VIEW.socials.map((social, i) => (
 					<Link
-						key={social.id}
+						key={i}
 						href={social.link}
-						className=' overflow-hidden hover:scale-105 transition-all'
+						className='hover:scale-105 transition-all h-16 w-16 md:h-24 md:w-24'
 						style={{ color: CARD_VIEW.user.theme }}
 					>
 						{social.svg}
 					</Link>
 				))}
 			</div>
-			<div className='flex flex-col gap-4'>
+			<div className='flex flex-col gap-4 w-full'>
 				<p className='font-bold'>Our Service</p>
-				<div className='grid grid-cols-2'>
-					{CARD_VIEW.services.map((service) => (
+				<div className='flex gap-3 flex-nowrap overflow-x-scroll pb-5 w-full'>
+					{CARD_VIEW.services.map((service, k) => (
 						<ServiceCard
-							key={service.id}
+							key={k}
 							image={service.image}
 							title={service.title}
 							description={service.description}
+							link={service.link}
 						/>
 					))}
 				</div>

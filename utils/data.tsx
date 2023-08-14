@@ -5819,6 +5819,7 @@ export const COMPANY_PROFILE = {
 	],
 	templates: [
 		{
+			id: 'template-one',
 			image: '/img/template-1.png',
 			name: 'Template-1',
 			active: false,
@@ -5826,6 +5827,7 @@ export const COMPANY_PROFILE = {
 			themeColor: '#f40dee',
 		},
 		{
+			id: 'template-two',
 			image: '/img/template-2.png',
 			name: 'Template-2',
 			active: false,
@@ -5833,6 +5835,7 @@ export const COMPANY_PROFILE = {
 			themeColor: 'red',
 		},
 		{
+			id: 'template-three',
 			image: '/img/template-3.png',
 			name: 'Template-3',
 			active: true,
@@ -6056,7 +6059,7 @@ export const CARD_VIEW = {
 					viewBox='0 0 100 100'
 					fill='none'
 					xmlns='http://www.w3.org/2000/svg'
-					className='flex-grow-0 flex-shrink-0 w-[90px] h-[90px] relative'
+					className='flex-grow-0 flex-shrink-0 w-full h-full object-center object-cover'
 					preserveAspectRatio='xMidYMid meet'
 				>
 					<rect
@@ -6105,7 +6108,7 @@ export const CARD_VIEW = {
 					viewBox='0 0 100 100'
 					fill='none'
 					xmlns='http://www.w3.org/2000/svg'
-					className='flex-grow-0 flex-shrink-0 w-[90px] h-[90px] relative'
+					className='flex-grow-0 flex-shrink-0 w-full h-full object-center object-cover'
 					preserveAspectRatio='xMidYMid meet'
 				>
 					<rect
@@ -6150,7 +6153,7 @@ export const CARD_VIEW = {
 					viewBox='0 0 100 100'
 					fill='none'
 					xmlns='http://www.w3.org/2000/svg'
-					className='flex-grow-0 flex-shrink-0 w-[90px] h-[90px] relative'
+					className='flex-grow-0 flex-shrink-0 w-full h-full object-center object-cover'
 					preserveAspectRatio='xMidYMid meet'
 				>
 					<rect
@@ -6195,7 +6198,7 @@ export const CARD_VIEW = {
 					viewBox='0 0 100 100'
 					fill='none'
 					xmlns='http://www.w3.org/2000/svg'
-					className='flex-grow-0 flex-shrink-0 w-[90px] h-[90px] relative'
+					className='flex-grow-0 flex-shrink-0 w-full h-full object-center object-cover'
 					preserveAspectRatio='xMidYMid meet'
 				>
 					<rect
@@ -6238,7 +6241,7 @@ export const CARD_VIEW = {
 					viewBox='0 0 100 100'
 					fill='none'
 					xmlns='http://www.w3.org/2000/svg'
-					className='flex-grow-0 flex-shrink-0 w-[90px] h-[90px] relative'
+					className='flex-grow-0 flex-shrink-0 w-full h-full object-center object-cover'
 					preserveAspectRatio='xMidYMid meet'
 				>
 					<rect
@@ -6277,7 +6280,7 @@ export const CARD_VIEW = {
 					viewBox='0 0 100 100'
 					fill='none'
 					xmlns='http://www.w3.org/2000/svg'
-					className='flex-grow-0 flex-shrink-0 w-[90px] h-[90px] relative'
+					className='flex-grow-0 flex-shrink-0 w-full h-full object-center object-cover'
 					preserveAspectRatio='xMidYMid meet'
 				>
 					<rect
@@ -6316,7 +6319,7 @@ export const CARD_VIEW = {
 					viewBox='0 0 100 100'
 					fill='none'
 					xmlns='http://www.w3.org/2000/svg'
-					className='flex-grow-0 flex-shrink-0 w-[90px] h-[90px] relative'
+					className='flex-grow-0 flex-shrink-0 w-full h-full object-center object-cover'
 					preserveAspectRatio='xMidYMid meet'
 				>
 					<rect
@@ -6355,7 +6358,7 @@ export const CARD_VIEW = {
 					viewBox='0 0 100 100'
 					fill='none'
 					xmlns='http://www.w3.org/2000/svg'
-					className='flex-grow-0 flex-shrink-0 w-[90px] h-[90px] relative'
+					className='flex-grow-0 flex-shrink-0 w-full h-full object-center object-cover'
 					preserveAspectRatio='xMidYMid meet'
 				>
 					<rect
@@ -6371,14 +6374,268 @@ export const CARD_VIEW = {
 						fill='currentColor'
 					></path>
 					<path
-						fill-rule='evenodd'
-						clip-rule='evenodd'
+						fillRule='evenodd'
+						clipRule='evenodd'
 						d='M55.525 38.95H44.475C43.175 39.1125 42.525 39.275 42.0375 39.4375C41.3875 39.6 40.9 39.925 40.4125 40.4125C40.0267 40.7983 39.8445 41.184 39.6242 41.6503C39.5661 41.7731 39.5053 41.902 39.4375 42.0375C39.4124 42.1129 39.3833 42.1922 39.3522 42.2772C39.1822 42.7417 38.95 43.3761 38.95 44.475V55.525C39.1125 56.825 39.275 57.475 39.4375 57.9625C39.6 58.6125 39.925 59.1 40.4125 59.5875C40.7983 59.9733 41.184 60.1555 41.6503 60.3758C41.7733 60.4339 41.9018 60.4947 42.0375 60.5625C42.1129 60.5876 42.1922 60.6167 42.2772 60.6478C42.7417 60.8178 43.3761 61.05 44.475 61.05H55.525C56.825 60.8875 57.475 60.725 57.9625 60.5625C58.6125 60.4 59.1 60.075 59.5875 59.5875C59.9733 59.2017 60.1555 58.816 60.3758 58.3497C60.4339 58.2268 60.4947 58.0981 60.5625 57.9625C60.5876 57.8871 60.6167 57.8078 60.6478 57.7228C60.8178 57.2583 61.05 56.6239 61.05 55.525V44.475C60.8875 43.175 60.725 42.525 60.5625 42.0375C60.4 41.3875 60.075 40.9 59.5875 40.4125C59.2017 40.0267 58.816 39.8445 58.3497 39.6242C58.2269 39.5662 58.0979 39.5052 57.9625 39.4375C57.8871 39.4124 57.8078 39.3833 57.7228 39.3522C57.2583 39.1822 56.6239 38.95 55.525 38.95ZM50 43.0125C46.1 43.0125 43.0125 46.1 43.0125 50C43.0125 53.9 46.1 56.9875 50 56.9875C53.9 56.9875 56.9875 53.9 56.9875 50C56.9875 46.1 53.9 43.0125 50 43.0125ZM58.775 42.85C58.775 43.7475 58.0475 44.475 57.15 44.475C56.2525 44.475 55.525 43.7475 55.525 42.85C55.525 41.9525 56.2525 41.225 57.15 41.225C58.0475 41.225 58.775 41.9525 58.775 42.85Z'
 						fill='currentColor'
 					></path>
 					<path
-						fill-rule='evenodd'
-						clip-rule='evenodd'
+						fillRule='evenodd'
+						clipRule='evenodd'
+						d='M24 50C24 35.6406 35.6406 24 50 24C64.3594 24 76 35.6406 76 50C76 64.3594 64.3594 76 50 76C35.6406 76 24 64.3594 24 50ZM44.475 36.5125H55.525C56.9875 36.675 57.9625 36.8375 58.775 37.1625C59.75 37.65 60.4 37.975 61.2125 38.7875C62.025 39.6 62.5125 40.4125 62.8375 41.225C63.1625 42.0375 63.4875 43.0125 63.4875 44.475V55.525C63.325 56.9875 63.1625 57.9625 62.8375 58.775C62.35 59.75 62.025 60.4 61.2125 61.2125C60.4 62.025 59.5875 62.5125 58.775 62.8375C57.9625 63.1625 56.9875 63.4875 55.525 63.4875H44.475C43.0125 63.325 42.0375 63.1625 41.225 62.8375C40.25 62.35 39.6 62.025 38.7875 61.2125C37.975 60.4 37.4875 59.5875 37.1625 58.775C36.8375 57.9625 36.5125 56.9875 36.5125 55.525V44.475C36.675 43.0125 36.8375 42.0375 37.1625 41.225C37.65 40.25 37.975 39.6 38.7875 38.7875C39.6 37.975 40.4125 37.4875 41.225 37.1625C42.0375 36.8375 43.0125 36.5125 44.475 36.5125Z'
+						fill='currentColor'
+					></path>
+					<rect
+						x='0.5'
+						y='0.5'
+						width='99'
+						height='99'
+						rx='11.5'
+						stroke='#E0E0E0'
+					></rect>
+				</svg>
+			),
+		},
+		{
+			id: 8,
+			platform: 'twitter',
+			link: 'https://facebook.com/oyeniran',
+			svg: (
+				<svg
+					width={100}
+					height={100}
+					viewBox='0 0 100 100'
+					fill='none'
+					xmlns='http://www.w3.org/2000/svg'
+					className='flex-grow-0 flex-shrink-0 w-full h-full object-center object-cover'
+					preserveAspectRatio='xMidYMid meet'
+				>
+					<rect
+						x='0.5'
+						y='0.5'
+						width={99}
+						height={99}
+						rx='11.5'
+						fill='#F2F2F2'
+					/>
+					<path
+						fillRule='evenodd'
+						clipRule='evenodd'
+						d='M24 50C24 35.6406 35.6406 24 50 24C64.3594 24 76 35.6406 76 50C76 64.3594 64.3594 76 50 76C35.6406 76 24 64.3594 24 50ZM59.9125 42.6875C61.05 42.525 62.025 42.3625 63 41.875C62.35 43.0125 61.375 43.9875 60.2375 44.6375C60.5625 52.275 55.0375 60.5625 45.125 60.5625C42.2 60.5625 39.4375 59.5875 37 58.125C39.7625 58.45 42.6875 57.6375 44.6375 56.175C42.2 56.175 40.25 54.55 39.6 52.4375C40.4125 52.6 41.225 52.4375 42.0375 52.275C39.6 51.625 37.8125 49.35 37.8125 46.9125C38.625 47.2375 39.4375 47.5625 40.25 47.5625C37.975 45.9375 37.1625 42.85 38.625 40.4125C41.3875 43.6625 45.2875 45.775 49.675 45.9375C48.8625 42.6875 51.4625 39.4375 54.875 39.4375C56.3375 39.4375 57.8 40.0875 58.775 41.0625C60.075 40.7375 61.2125 40.4125 62.1875 39.7625C61.8625 41.0625 61.05 42.0375 59.9125 42.6875Z'
+						fill='currentColor'
+					/>
+					<rect
+						x='0.5'
+						y='0.5'
+						width={99}
+						height={99}
+						rx='11.5'
+						stroke='#E0E0E0'
+					/>
+				</svg>
+			),
+		},
+		{
+			id: 6,
+			platform: 'facebook',
+			link: 'https://facebook.com/oyeniran',
+			svg: (
+				<svg
+					width={100}
+					height={100}
+					viewBox='0 0 100 100'
+					fill='none'
+					xmlns='http://www.w3.org/2000/svg'
+					className='flex-grow-0 flex-shrink-0 w-full h-full object-center object-cover'
+					preserveAspectRatio='xMidYMid meet'
+				>
+					<rect
+						x='0.5'
+						y='0.5'
+						width={99}
+						height={99}
+						rx='11.5'
+						fill='#F2F2F2'
+					/>
+					<path
+						fillRule='evenodd'
+						clipRule='evenodd'
+						d='M26 50C26 35.6406 37.6406 24 52 24C66.3594 24 78 35.6406 78 50C78 64.3594 66.3594 76 52 76C37.6406 76 26 64.3594 26 50ZM52 37C59.15 37 65 42.85 65 50C65 56.5 60.2875 62.025 53.7875 63V53.7375H56.875L57.525 50H53.95V47.5625C53.95 46.5875 54.4375 45.6125 56.0625 45.6125H57.6875V42.3625C57.6875 42.3625 56.225 42.0375 54.7625 42.0375C51.8375 42.0375 49.8875 43.825 49.8875 47.075V50H46.6375V53.7375H49.8875V62.8375C43.7125 61.8625 39 56.5 39 50C39 42.85 44.85 37 52 37Z'
+						fill='currentColor'
+					/>
+					<rect
+						x='0.5'
+						y='0.5'
+						width={99}
+						height={99}
+						rx='11.5'
+						stroke='#E0E0E0'
+					/>
+				</svg>
+			),
+		},
+		{
+			id: 7,
+			platform: 'instagram',
+			link: 'https://facebook.com/oyeniran',
+			svg: (
+				<svg
+					width={100}
+					height={100}
+					viewBox='0 0 100 100'
+					fill='none'
+					xmlns='http://www.w3.org/2000/svg'
+					className='flex-grow-0 flex-shrink-0 w-full h-full object-center object-cover'
+					preserveAspectRatio='xMidYMid meet'
+				>
+					<rect
+						x='0.5'
+						y='0.5'
+						width='99'
+						height='99'
+						rx='11.5'
+						fill='#F2F2F2'
+					></rect>
+					<path
+						d='M50 54.55C47.5625 54.55 45.45 52.6 45.45 50C45.45 47.5625 47.4 45.45 50 45.45C52.4375 45.45 54.55 47.4 54.55 50C54.55 52.4375 52.4375 54.55 50 54.55Z'
+						fill='currentColor'
+					></path>
+					<path
+						fillRule='evenodd'
+						clipRule='evenodd'
+						d='M55.525 38.95H44.475C43.175 39.1125 42.525 39.275 42.0375 39.4375C41.3875 39.6 40.9 39.925 40.4125 40.4125C40.0267 40.7983 39.8445 41.184 39.6242 41.6503C39.5661 41.7731 39.5053 41.902 39.4375 42.0375C39.4124 42.1129 39.3833 42.1922 39.3522 42.2772C39.1822 42.7417 38.95 43.3761 38.95 44.475V55.525C39.1125 56.825 39.275 57.475 39.4375 57.9625C39.6 58.6125 39.925 59.1 40.4125 59.5875C40.7983 59.9733 41.184 60.1555 41.6503 60.3758C41.7733 60.4339 41.9018 60.4947 42.0375 60.5625C42.1129 60.5876 42.1922 60.6167 42.2772 60.6478C42.7417 60.8178 43.3761 61.05 44.475 61.05H55.525C56.825 60.8875 57.475 60.725 57.9625 60.5625C58.6125 60.4 59.1 60.075 59.5875 59.5875C59.9733 59.2017 60.1555 58.816 60.3758 58.3497C60.4339 58.2268 60.4947 58.0981 60.5625 57.9625C60.5876 57.8871 60.6167 57.8078 60.6478 57.7228C60.8178 57.2583 61.05 56.6239 61.05 55.525V44.475C60.8875 43.175 60.725 42.525 60.5625 42.0375C60.4 41.3875 60.075 40.9 59.5875 40.4125C59.2017 40.0267 58.816 39.8445 58.3497 39.6242C58.2269 39.5662 58.0979 39.5052 57.9625 39.4375C57.8871 39.4124 57.8078 39.3833 57.7228 39.3522C57.2583 39.1822 56.6239 38.95 55.525 38.95ZM50 43.0125C46.1 43.0125 43.0125 46.1 43.0125 50C43.0125 53.9 46.1 56.9875 50 56.9875C53.9 56.9875 56.9875 53.9 56.9875 50C56.9875 46.1 53.9 43.0125 50 43.0125ZM58.775 42.85C58.775 43.7475 58.0475 44.475 57.15 44.475C56.2525 44.475 55.525 43.7475 55.525 42.85C55.525 41.9525 56.2525 41.225 57.15 41.225C58.0475 41.225 58.775 41.9525 58.775 42.85Z'
+						fill='currentColor'
+					></path>
+					<path
+						fillRule='evenodd'
+						clipRule='evenodd'
+						d='M24 50C24 35.6406 35.6406 24 50 24C64.3594 24 76 35.6406 76 50C76 64.3594 64.3594 76 50 76C35.6406 76 24 64.3594 24 50ZM44.475 36.5125H55.525C56.9875 36.675 57.9625 36.8375 58.775 37.1625C59.75 37.65 60.4 37.975 61.2125 38.7875C62.025 39.6 62.5125 40.4125 62.8375 41.225C63.1625 42.0375 63.4875 43.0125 63.4875 44.475V55.525C63.325 56.9875 63.1625 57.9625 62.8375 58.775C62.35 59.75 62.025 60.4 61.2125 61.2125C60.4 62.025 59.5875 62.5125 58.775 62.8375C57.9625 63.1625 56.9875 63.4875 55.525 63.4875H44.475C43.0125 63.325 42.0375 63.1625 41.225 62.8375C40.25 62.35 39.6 62.025 38.7875 61.2125C37.975 60.4 37.4875 59.5875 37.1625 58.775C36.8375 57.9625 36.5125 56.9875 36.5125 55.525V44.475C36.675 43.0125 36.8375 42.0375 37.1625 41.225C37.65 40.25 37.975 39.6 38.7875 38.7875C39.6 37.975 40.4125 37.4875 41.225 37.1625C42.0375 36.8375 43.0125 36.5125 44.475 36.5125Z'
+						fill='currentColor'
+					></path>
+					<rect
+						x='0.5'
+						y='0.5'
+						width='99'
+						height='99'
+						rx='11.5'
+						stroke='#E0E0E0'
+					></rect>
+				</svg>
+			),
+		},
+		{
+			id: 5,
+			platform: 'twitter',
+			link: 'https://facebook.com/oyeniran',
+			svg: (
+				<svg
+					width={100}
+					height={100}
+					viewBox='0 0 100 100'
+					fill='none'
+					xmlns='http://www.w3.org/2000/svg'
+					className='flex-grow-0 flex-shrink-0 w-full h-full object-center object-cover'
+					preserveAspectRatio='xMidYMid meet'
+				>
+					<rect
+						x='0.5'
+						y='0.5'
+						width={99}
+						height={99}
+						rx='11.5'
+						fill='#F2F2F2'
+					/>
+					<path
+						fillRule='evenodd'
+						clipRule='evenodd'
+						d='M24 50C24 35.6406 35.6406 24 50 24C64.3594 24 76 35.6406 76 50C76 64.3594 64.3594 76 50 76C35.6406 76 24 64.3594 24 50ZM59.9125 42.6875C61.05 42.525 62.025 42.3625 63 41.875C62.35 43.0125 61.375 43.9875 60.2375 44.6375C60.5625 52.275 55.0375 60.5625 45.125 60.5625C42.2 60.5625 39.4375 59.5875 37 58.125C39.7625 58.45 42.6875 57.6375 44.6375 56.175C42.2 56.175 40.25 54.55 39.6 52.4375C40.4125 52.6 41.225 52.4375 42.0375 52.275C39.6 51.625 37.8125 49.35 37.8125 46.9125C38.625 47.2375 39.4375 47.5625 40.25 47.5625C37.975 45.9375 37.1625 42.85 38.625 40.4125C41.3875 43.6625 45.2875 45.775 49.675 45.9375C48.8625 42.6875 51.4625 39.4375 54.875 39.4375C56.3375 39.4375 57.8 40.0875 58.775 41.0625C60.075 40.7375 61.2125 40.4125 62.1875 39.7625C61.8625 41.0625 61.05 42.0375 59.9125 42.6875Z'
+						fill='currentColor'
+					/>
+					<rect
+						x='0.5'
+						y='0.5'
+						width={99}
+						height={99}
+						rx='11.5'
+						stroke='#E0E0E0'
+					/>
+				</svg>
+			),
+		},
+		{
+			id: 6,
+			platform: 'facebook',
+			link: 'https://facebook.com/oyeniran',
+			svg: (
+				<svg
+					width={100}
+					height={100}
+					viewBox='0 0 100 100'
+					fill='none'
+					xmlns='http://www.w3.org/2000/svg'
+					className='flex-grow-0 flex-shrink-0 w-full h-full object-center object-cover'
+					preserveAspectRatio='xMidYMid meet'
+				>
+					<rect
+						x='0.5'
+						y='0.5'
+						width={99}
+						height={99}
+						rx='11.5'
+						fill='#F2F2F2'
+					/>
+					<path
+						fillRule='evenodd'
+						clipRule='evenodd'
+						d='M26 50C26 35.6406 37.6406 24 52 24C66.3594 24 78 35.6406 78 50C78 64.3594 66.3594 76 52 76C37.6406 76 26 64.3594 26 50ZM52 37C59.15 37 65 42.85 65 50C65 56.5 60.2875 62.025 53.7875 63V53.7375H56.875L57.525 50H53.95V47.5625C53.95 46.5875 54.4375 45.6125 56.0625 45.6125H57.6875V42.3625C57.6875 42.3625 56.225 42.0375 54.7625 42.0375C51.8375 42.0375 49.8875 43.825 49.8875 47.075V50H46.6375V53.7375H49.8875V62.8375C43.7125 61.8625 39 56.5 39 50C39 42.85 44.85 37 52 37Z'
+						fill='currentColor'
+					/>
+					<rect
+						x='0.5'
+						y='0.5'
+						width={99}
+						height={99}
+						rx='11.5'
+						stroke='#E0E0E0'
+					/>
+				</svg>
+			),
+		},
+		{
+			id: 7,
+			platform: 'instagram',
+			link: 'https://facebook.com/oyeniran',
+			svg: (
+				<svg
+					width={100}
+					height={100}
+					viewBox='0 0 100 100'
+					fill='none'
+					xmlns='http://www.w3.org/2000/svg'
+					className='flex-grow-0 flex-shrink-0 w-full h-full object-center object-cover'
+					preserveAspectRatio='xMidYMid meet'
+				>
+					<rect
+						x='0.5'
+						y='0.5'
+						width='99'
+						height='99'
+						rx='11.5'
+						fill='#F2F2F2'
+					></rect>
+					<path
+						d='M50 54.55C47.5625 54.55 45.45 52.6 45.45 50C45.45 47.5625 47.4 45.45 50 45.45C52.4375 45.45 54.55 47.4 54.55 50C54.55 52.4375 52.4375 54.55 50 54.55Z'
+						fill='currentColor'
+					></path>
+					<path
+						fillRule='evenodd'
+						clipRule='evenodd'
+						d='M55.525 38.95H44.475C43.175 39.1125 42.525 39.275 42.0375 39.4375C41.3875 39.6 40.9 39.925 40.4125 40.4125C40.0267 40.7983 39.8445 41.184 39.6242 41.6503C39.5661 41.7731 39.5053 41.902 39.4375 42.0375C39.4124 42.1129 39.3833 42.1922 39.3522 42.2772C39.1822 42.7417 38.95 43.3761 38.95 44.475V55.525C39.1125 56.825 39.275 57.475 39.4375 57.9625C39.6 58.6125 39.925 59.1 40.4125 59.5875C40.7983 59.9733 41.184 60.1555 41.6503 60.3758C41.7733 60.4339 41.9018 60.4947 42.0375 60.5625C42.1129 60.5876 42.1922 60.6167 42.2772 60.6478C42.7417 60.8178 43.3761 61.05 44.475 61.05H55.525C56.825 60.8875 57.475 60.725 57.9625 60.5625C58.6125 60.4 59.1 60.075 59.5875 59.5875C59.9733 59.2017 60.1555 58.816 60.3758 58.3497C60.4339 58.2268 60.4947 58.0981 60.5625 57.9625C60.5876 57.8871 60.6167 57.8078 60.6478 57.7228C60.8178 57.2583 61.05 56.6239 61.05 55.525V44.475C60.8875 43.175 60.725 42.525 60.5625 42.0375C60.4 41.3875 60.075 40.9 59.5875 40.4125C59.2017 40.0267 58.816 39.8445 58.3497 39.6242C58.2269 39.5662 58.0979 39.5052 57.9625 39.4375C57.8871 39.4124 57.8078 39.3833 57.7228 39.3522C57.2583 39.1822 56.6239 38.95 55.525 38.95ZM50 43.0125C46.1 43.0125 43.0125 46.1 43.0125 50C43.0125 53.9 46.1 56.9875 50 56.9875C53.9 56.9875 56.9875 53.9 56.9875 50C56.9875 46.1 53.9 43.0125 50 43.0125ZM58.775 42.85C58.775 43.7475 58.0475 44.475 57.15 44.475C56.2525 44.475 55.525 43.7475 55.525 42.85C55.525 41.9525 56.2525 41.225 57.15 41.225C58.0475 41.225 58.775 41.9525 58.775 42.85Z'
+						fill='currentColor'
+					></path>
+					<path
+						fillRule='evenodd'
+						clipRule='evenodd'
 						d='M24 50C24 35.6406 35.6406 24 50 24C64.3594 24 76 35.6406 76 50C76 64.3594 64.3594 76 50 76C35.6406 76 24 64.3594 24 50ZM44.475 36.5125H55.525C56.9875 36.675 57.9625 36.8375 58.775 37.1625C59.75 37.65 60.4 37.975 61.2125 38.7875C62.025 39.6 62.5125 40.4125 62.8375 41.225C63.1625 42.0375 63.4875 43.0125 63.4875 44.475V55.525C63.325 56.9875 63.1625 57.9625 62.8375 58.775C62.35 59.75 62.025 60.4 61.2125 61.2125C60.4 62.025 59.5875 62.5125 58.775 62.8375C57.9625 63.1625 56.9875 63.4875 55.525 63.4875H44.475C43.0125 63.325 42.0375 63.1625 41.225 62.8375C40.25 62.35 39.6 62.025 38.7875 61.2125C37.975 60.4 37.4875 59.5875 37.1625 58.775C36.8375 57.9625 36.5125 56.9875 36.5125 55.525V44.475C36.675 43.0125 36.8375 42.0375 37.1625 41.225C37.65 40.25 37.975 39.6 38.7875 38.7875C39.6 37.975 40.4125 37.4875 41.225 37.1625C42.0375 36.8375 43.0125 36.5125 44.475 36.5125Z'
 						fill='currentColor'
 					></path>
@@ -6406,18 +6663,41 @@ export const CARD_VIEW = {
 			title: 'Hall Rentals',
 			image: '/img/about-2.jpg',
 			description: `We provide the best planners and materials suited to meet all your occasions including birthdays, bridal and baby showers, wedding, burial, house opening events and lots more.`,
+			link: 'https://facebook.com/oyrniran/',
 		},
 		{
 			id: '2',
 			title: 'Event Hosting',
 			image: '/img/about-3.jpg',
 			description: `We provide the best planners and materials suited to meet all your occasions including birthdays, bridal and baby showers, wedding, burial, house opening events and lots more.`,
+			link: 'https://facebook.com/oyrniran/',
 		},
 		{
 			id: '3',
+			title: 'Event Hosting',
+			image: '/img/about-3.jpg',
+			description: `We provide the best planners and materials suited to meet all your occasions including birthdays, bridal and baby showers, wedding, burial, house opening events and lots more.`,
+		},
+		{
+			id: '4',
 			title: 'Event Materials',
 			image: '/img/about-4.jpg',
 			description: `We provide the best planners and materials suited to meet all your occasions including birthdays, bridal and baby showers, wedding, burial, house opening events and lots more.`,
+			link: 'https://facebook.com/oyrniran/',
+		},
+		{
+			id: '5',
+			title: 'Event Materials',
+			image: '/img/about-4.jpg',
+			description: `We provide the best planners and materials suited to meet all your occasions including birthdays, bridal and baby showers, wedding, burial, house opening events and lots more.`,
+			link: 'https://facebook.com/oyrniran/',
+		},
+		{
+			id: '6',
+			title: 'Event Materials',
+			image: '/img/about-4.jpg',
+			description: `We provide the best planners and materials suited to meet all your occasions including birthdays, bridal and baby showers, wedding, burial, house opening events and lots more.`,
+			link: 'https://facebook.com/oyrniran/',
 		},
 	],
 };

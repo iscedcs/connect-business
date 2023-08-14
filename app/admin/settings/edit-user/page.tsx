@@ -1,5 +1,4 @@
 import { options } from '@/app/api/auth/[...nextauth]/options';
-import EditProfileform from '@/components/shared/form/edit-business-about-form';
 import EditUserForm from '@/components/shared/form/edit-user-form';
 import { API, URLS } from '@/utils/consts';
 import { getServerSession } from 'next-auth';
@@ -36,7 +35,10 @@ const EditUser = async () => {
 	console.log('server....', sd);
 	const userData: UserFormP = {
 		name: sd.user.name || '',
+		email: sd.user.email || '',
+		phone: sd.user.phone || '',
 		profile_image: sd.user.profile_image || '',
+		gender: sd.user.gender || '',
 	};
 	return (
 		<div>

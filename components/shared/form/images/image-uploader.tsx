@@ -37,7 +37,7 @@ const MultipleImagesUploader: React.FC<MultipleImagesUploaderProps> = (
 
 	const uploadProfileImages = async (images: File[]) => {
 		const maxAllowedSize = 10 * 1024 * 1024;
-		const uploadedImages = [];
+		const uploadedImages: ImageP[] = [];
 
 		for (const inputImage of images) {
 			if (inputImage.size > maxAllowedSize) {
@@ -52,9 +52,10 @@ const MultipleImagesUploader: React.FC<MultipleImagesUploaderProps> = (
 			formData.append('name', imageName);
 
 			const response = await uploadProfileImage(formData);
+			const singleImage: ImageP = response.data;
 
 			if (response?.success === 'true') {
-				uploadedImages.push(response.data.url);
+				uploadedImages.push(singleImage);
 				console.log('Uploaded successfully');
 			} else {
 				console.log('Unable to upload file');

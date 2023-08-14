@@ -19,6 +19,10 @@ export const URLS = {
 		},
 		profile: {
 			all: '/business/profile',
+			business: '/business/profile/business',
+			personal: '/business/profile/personal',
+			socials: '/business/profile/business/socials',
+			services: '/business/profile/business/services',
 		},
 
 		// Add more namespaces or routes under 'business' if needed

@@ -1,4 +1,5 @@
 'use client';
+import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import React from 'react';
 
@@ -6,9 +7,12 @@ export default function SearchBar({
 	onChange,
 	showAddEmployee,
 }: SearchBarProps) {
+	const { data: session } = useSession();
+	const role = session?.user.role;
+	console.log(session);
 	return (
 		<div className='flex items-center gap-4 justify-between lg:justify-end w-full'>
-			{showAddEmployee && (
+			{showAddEmployee && role === 'admin' && (
 				<div className='flex-grow-0 flex-shrink-0 min-w-min px-5 xl:w-[180px] h-10 rounded-xl bg-black'>
 					<Link
 						className='w-full h-full flex items-center justify-center'

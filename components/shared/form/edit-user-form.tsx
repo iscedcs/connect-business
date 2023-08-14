@@ -5,17 +5,50 @@ import FileUploader from './images/file-uploader';
 import NewInput from './input/new-input';
 import Button from '../ui/button/button';
 import { useRouter } from 'next/navigation';
+import { NextResponse } from 'next/server';
 
 const EditUserForm = ({ userData }: { userData: UserFormP }) => {
 	const router = useRouter();
+	const [isLoading, setIsLoading] = React.useState<boolean>(false);
 	const [formData, setFormData] = React.useState({
 		name: userData.name,
+		email: userData.email,
+		phone: userData.phone,
+		gender: userData.gender,
 		profile_image: userData.profile_image,
 	});
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		router.push('admin/settings/edit-services');
+		try {
+			const response = await fetch(`/api/edit-profile/personal`, {
+				method: 'POST',
+				body: JSON.stringify({
+					name: formData.name,
+					email: formData.email,
+					phone: formData.phone,
+					gender: formData.gender,
+					profile_image: formData.profile_image,
+				}),
+			});
+			if (response.status === 200) {
+				// setConfirmIsLoading(false);
+				// setprofileModalOpen(false);
+				// setAddSuccess(true);
+				// window.location.reload();
+				console.log('Saved SUCCESSFULLY');
+				setIsLoading(false);
+				return NextResponse.json(response);
+			} else {
+				console.log('something went wrong');
+				console.log(response);
+				setIsLoading(false);
+				return null;
+			}
+		} catch (error) {
+			console.log(error);
+		}
+		// router.push('admin/settings/edit-services');
 	};
 
 	const handleprofileImage = async (file: any) => {
@@ -50,15 +83,43 @@ const EditUserForm = ({ userData }: { userData: UserFormP }) => {
 				<div className='flex flex-col gap-4 max-w-lg '>
 					<FileUploader
 						handleFile={handleprofileImage}
+						image={formData.profile_image}
 						folder='profile_images'
 						type='circle'
 					/>
 					<NewInput
 						className='w-full'
 						type='text'
-						label='Business Name'
+						label='Full Name'
 						name='name'
 						value={formData.name}
+						onInput={handleChange}
+						onChange={handleChange}
+					/>
+					<NewInput
+						className='w-full'
+						type='text'
+						label='Gender'
+						name='gender'
+						value={formData.gender}
+						onInput={handleChange}
+						onChange={handleChange}
+					/>
+					<NewInput
+						className='w-full'
+						type='text'
+						label='Phone Number'
+						name='phone'
+						value={formData.phone}
+						onInput={handleChange}
+						onChange={handleChange}
+					/>
+					<NewInput
+						className='w-full'
+						type='text'
+						label='Email Address'
+						name='email'
+						value={formData.email}
 						onInput={handleChange}
 						onChange={handleChange}
 					/>
@@ -67,6 +128,7 @@ const EditUserForm = ({ userData }: { userData: UserFormP }) => {
 					<Button
 						variant='primary'
 						className='w-full'
+						isLoading={isLoading}
 					>
 						Next
 					</Button>
