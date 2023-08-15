@@ -6,18 +6,20 @@ const ServiceCardLandscape = ({
 	image,
 	name,
 	description,
+	link,
 	handleClick,
 	handleDelete,
 }: {
 	image: string;
 	name: string;
 	description: string;
+	link?: string;
 	handleClick?: () => void;
 	handleDelete?: () => void;
 }) => {
 	return (
 		<div className='w-full bg-gray-100 rounded-2xl overflow-hidden flex gap-2 relative cursor-pointer'>
-			<div className='w-[60px] h-[60px] shrink-0 overflow-hidden rounded-2xl'>
+			<div className='w-16 aspect-[3/2] shrink-0 overflow-hidden rounded-2xl'>
 				<BlurImage
 					src={image}
 					alt={name}
@@ -26,9 +28,9 @@ const ServiceCardLandscape = ({
 					className='object-cover object-center w-full h-full'
 				/>
 			</div>
-			<div className='h-[60px] overflow-hidden p-2'>
-				<h3 className='font-bold text-xl'>{name}</h3>
-				<p className='text-sm'>{description}</p>
+			<div className='overflow-hidden p-2'>
+				<h3 className='font-bold text-sm md:text-xl'>{name}</h3>
+				<p className='text-xs md:text-sm'>{description}</p>
 			</div>
 
 			<div className='absolute top-0 right-0 flex gap-3 p-2'>

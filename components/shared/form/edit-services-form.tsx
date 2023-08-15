@@ -21,6 +21,7 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 		name: '',
 		description: '',
 		image: '',
+		link: '',
 	});
 
 	const openModalForEdit = (service: ServiceP) => {
@@ -36,6 +37,7 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 			name: '',
 			description: '',
 			image: '',
+			link: '',
 		});
 		setIsModalOpen(true);
 	};
@@ -67,9 +69,9 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 		});
 
 	return (
-		<div className='max-w-2xl px-4 md:px-10 flex flex-col min-h-[500px] justify-between gap-4'>
+		<div className='px-4 md:px-10 flex flex-col min-h-[500px] max-w-2xl justify-between gap-4'>
 			<div className='flex flex-col gap-4'>
-				<div className='w-64'>
+				<div className='w-full'>
 					<Button
 						variant='success'
 						className='shrink-0'
@@ -83,6 +85,7 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 						key={service.id}
 						name={service.name}
 						image={service.image}
+						link={service.link}
 						description={service.description}
 						handleClick={() => openModalForEdit(service)}
 						handleDelete={() => deleteService(service.id)}
@@ -98,7 +101,7 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 			</Button>
 			<Modal isOpen={isModalOpen}>
 				<div className='w-[504px] overflow-hidden rounded-xl bg-white shadow-mid'>
-					<div className='w-full h-[84px] rounded-tl-xl rounded-tr-xl bg-white border-t-0 border-0 border-b border-l-0 border-[#e0e0e0] relative flex items-center justify-center'>
+					<div className='w-full h-[50px] rounded-tl-xl rounded-tr-xl bg-white border-t-0 border-0 border-b border-l-0 border-[#e0e0e0] relative flex items-center justify-center'>
 						<div
 							className='absolute left-0 h-full px-5 flex items-center justify-center'
 							onClick={() => setIsModalOpen(false)}
@@ -127,7 +130,10 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 									strokeLinejoin='round'
 								/>
 							</svg>
-							{selectedService?.name || 'Add New Service'}
+							<div className='text-center'>
+								{selectedService?.name ||
+									'Add New Service'}
+							</div>
 						</div>
 					</div>
 
@@ -161,6 +167,19 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 								setFormData({
 									...formData,
 									description: e.target.value,
+								})
+							}
+						/>
+						<NewInput
+							className='w-full'
+							type='text'
+							label='Service Link'
+							name='link'
+							value={formData.link}
+							onChange={(e) =>
+								setFormData({
+									...formData,
+									link: e.target.value,
 								})
 							}
 						/>

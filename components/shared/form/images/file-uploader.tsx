@@ -95,7 +95,7 @@ const FileUploader: React.FC<FileUploaderProps> = (props) => {
 		props.type === 'circle'
 			? 'h-[120px] w-[120px] bg-gradient-to-b rounded-full p-[3px] from-black/0 to-black/100 p-[2px]'
 			: props.type === 'portrait'
-			? 'w-60 aspect-[2/3] rounded-2xl bg-gray-100 flex-col'
+			? 'w-32 aspect-[2/3] rounded-2xl bg-gray-100 flex-col'
 			: 'aspect-[2/1] bg-gray-100 rounded-2xl';
 	const container = props.type === 'circle' ? 'h-[120px] w-[120px]' : '';
 	const placeholder =

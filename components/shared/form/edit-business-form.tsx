@@ -88,13 +88,13 @@ const EditBusinessForm = ({
 					type: 'tween',
 					duration: 0.5,
 				}}
-				className='flex flex-col gap-4 mx-5 justify-center items-center'
+				className='flex flex-col gap-4 mx-5'
 				onSubmit={handleSubmit}
 			>
 				<div className='flex flex-col gap-4 max-w-lg '>
 					<FileUploader
 						image={formData.logo}
-						className='w-96'
+						className=''
 						handleFile={handleBusinessLogo}
 						folder='business_logo'
 						type='landscape'
@@ -140,7 +140,7 @@ const EditBusinessForm = ({
 						className='w-full'
 						isLoading={isLoading}
 					>
-						Next
+						Save
 					</Button>
 				</div>
 			</motion.form>

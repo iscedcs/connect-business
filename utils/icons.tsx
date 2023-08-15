@@ -121,6 +121,7 @@ export const appointmentDeleteIcon = (
 		height='24'
 		viewBox='0 0 24 24'
 		fill='none'
+		className=''
 	>
 		<path
 			d='M21 5.97998C17.67 5.64998 14.32 5.47998 10.98 5.47998C9 5.47998 7.02 5.57998 5.04 5.77998L3 5.97998'

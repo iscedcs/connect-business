@@ -470,6 +470,7 @@ interface ServiceP {
 	name: string;
 	description: string;
 	image: string;
+	link?: string;
 }
 interface AllServicesP {
 	services: ServiceP[];

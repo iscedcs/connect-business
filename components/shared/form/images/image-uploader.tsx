@@ -120,7 +120,7 @@ const MultipleImagesUploader: React.FC<MultipleImagesUploaderProps> = (
 						{imagePreviews.map((imageUrl, index) => (
 							<div
 								key={index}
-								className='relative w-52 aspect-[2/3] rounded-2xl overflow-hidden'
+								className='relative max-w-52 aspect-[2/3] rounded-2xl overflow-hidden'
 							>
 								<BlurImage
 									key={index}
