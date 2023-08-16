@@ -1,5 +1,10 @@
 'use client';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
+interface ModalProps {
+	children: React.ReactNode;
+	isOpen: boolean;
+	onClose?: () => void;
+}
 
 const Modal = ({ children, isOpen, onClose }: ModalProps) => {
 	const modalVariants: Variants = {

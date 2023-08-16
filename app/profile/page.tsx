@@ -6,7 +6,7 @@ import React from 'react';
 export default function Connect() {
 	return (
 		<>
-			<div className='w-screen flex flex-col justify-start py-2 lg:justify-center md:flex-row flex-wrap md:flex-nowrap h-[160px] md:h-fit gap-3 md:gap-5 overflow-x-scroll  px-4 lg:px-10'>
+			<div className='w-screen flex flex-col justify-start py-2 lg:justify-center md:flex-row flex-wrap md:flex-nowrap h-[160px] md:h-fit gap-3 md:gap-5 overflow-x-scroll px-4 lg:px-10'>
 				{CARD_VIEW.socials.map((social, i) => (
 					<Link
 						key={i}

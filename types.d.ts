@@ -241,12 +241,6 @@ interface VerificationCodeValidationBoxProps {
 	error?: boolean;
 }
 
-interface ModalProps {
-	children: React.ReactNode;
-	isOpen: boolean;
-	onClose?: () => void;
-}
-
 interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	image: string;
 }

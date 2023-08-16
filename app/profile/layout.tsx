@@ -11,7 +11,7 @@ export default function CustomerView({
 }) {
 	return (
 		<Fragment>
-			<div className='w-screen p-2 h-screen bg-black'>
+			<div className='w-screen p-2 h-screen bg-black relative'>
 				<div className='w-full overflow-x-clip overflow-y-scroll rounded-2xl bg-white h-full'>
 					<div className='w-full h-[120px] xs:h-[192px] relative'>
 						<div className='overflow-hidden rounded-t-2xl'>
@@ -44,7 +44,7 @@ export default function CustomerView({
 							</div>
 						</div>
 					</div>
-					<div className='flex flex-col items-center justify-center mt-[80px] md:mt-[180px] text-center px-5 py-20 gap-5 md:gap-10'>
+					<div className='flex flex-col items-center justify-center mt-[80px] md:mt-[180px] text-center px-4 py-20 gap-5 md:gap-10'>
 						<TabMenu
 							tabs={CUSTOMER_TAB}
 							color={CARD_VIEW.user.theme}

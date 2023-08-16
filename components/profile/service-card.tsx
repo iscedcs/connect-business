@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import BlurImage from '../shared/ui/blur-image';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Modal from '../layouts/modal';
 
 export default function ServiceCard({
 	image,
@@ -17,56 +18,103 @@ export default function ServiceCard({
 }) {
 	const [hovered, setHovered] = useState<boolean>(false);
 	const router = useRouter();
+	const [serviceIsOpen, setServiceIsOpen] = useState<boolean>(false);
+
 	return (
-		<div
-			className='flex-grow-0 flex-shrink-0 w-48 md:w-72 aspect-[3/5] relative bg-white shadow-mid rounded-2xl cursor-pointer overflow-hidden'
-			onMouseEnter={() => setHovered(true)}
-			onMouseLeave={() => setHovered(false)}
-		>
-			<BlurImage
-				src={image}
-				height={384}
-				width={288}
-				alt={title}
-				className={`w-48 md:w-72 object-cover object-center transition-all duration-500 ${
-					hovered
-						? 'aspect-[3/5] rounded-2xl'
-						: 'aspect-[4/6] rounded-t-2xl'
-				} overflow-hidden`}
-			/>
+		<>
 			<div
-				className={`w-full ${
-					hovered ? 'h-0 p-0' : 'h-10 md:h-16 p-1 md:p-3'
-				} text-left text-sm md:text-xl font-bold overflow-hidden transition-all duration-500`}
+				className='flex-grow-0 flex-shrink-0 w-48 md:w-72 aspect-[3/5] relative bg-white shadow-mid rounded-2xl cursor-pointer overflow-hidden'
+				onMouseEnter={() => setHovered(true)}
+				onMouseLeave={() => setHovered(false)}
 			>
-				{title}
-			</div>
-			<div
-				className={`absolute w-48 md:w-72 aspect-[3/4] transition-all duration-500 ${
-					hovered
-						? 'h-full left-2 md:left-6 top-6 opacity-100'
-						: 'h-0 left-0 top-0 opacity-0'
-				} rounded-2xl bg-black/80`}
-			>
-				<div className='flex flex-col justify-start items-start w-full absolute left-2 md:left-4 top-3 md:top-10 gap-2'>
-					<p className='flex-grow-0 flex-shrink-0 w-full text-sm md:text-lg font-bold text-white text-left'>
-						{title}
-					</p>
-					<div className='text-xs md:text-sm'>
-						<p className='w-full text-white text-left'>
-							{description}
+				<BlurImage
+					src={image}
+					height={384}
+					width={288}
+					alt={title}
+					className={`w-48 md:w-72 object-cover object-center transition-all duration-500 ${
+						hovered
+							? 'aspect-[3/5] rounded-2xl'
+							: 'aspect-[4/6] rounded-t-2xl'
+					} overflow-hidden`}
+				/>
+				<div
+					className={`w-full ${
+						hovered ? 'h-0 p-0' : 'h-10 md:h-16 p-1 md:p-3'
+					} text-left text-sm md:text-xl font-bold overflow-hidden transition-all duration-500`}
+				>
+					{title}
+				</div>
+				<div
+					className={`absolute w-48 md:w-72 aspect-[3/4] transition-all duration-500 ${
+						hovered
+							? 'h-full left-2 md:left-6 top-6 opacity-100'
+							: 'h-0 left-0 top-0 opacity-0'
+					} rounded-2xl bg-black/80`}
+				>
+					<div className='flex flex-col justify-start items-start w-full absolute left-2 md:left-4 top-3 md:top-10 gap-2'>
+						<p className='flex-grow-0 flex-shrink-0 w-full text-sm md:text-lg font-bold text-white text-left'>
+							{title}
 						</p>
+						<div className='text-xs md:text-sm'>
+							<p className='w-full text-white text-left'>
+								{description}
+							</p>
+							<button
+								onClick={() => setServiceIsOpen(true)}
+							>
+								View Service
+							</button>
+						</div>
 					</div>
 				</div>
+				{link && link !== '' && (
+					<Link
+						href={link}
+						className='absolute top-0 right-0 w-full text-white flex text-xs md:text-base  items-center justify-center bg-gradient-to-b from-black via-black to-black/0 h-10'
+					>
+						Vist Link
+					</Link>
+				)}
 			</div>
-			{link && link !== '' && (
-				<Link
-					href={link}
-					className='absolute top-0 right-0 w-full text-white flex text-xs md:text-base  items-center justify-center bg-gradient-to-b from-black via-black to-black/0 h-10'
-				>
-					Vist Link
-				</Link>
-			)}
-		</div>
+			<Modal isOpen={serviceIsOpen}>
+				<div className='bg-white rounded-lg max-w-[600px] shadow-mid'>
+					<div className='flex justify-center items-center w-full h-16 border-b text-large font-bold relative'>
+						<button
+							onClick={() => setServiceIsOpen(false)}
+							className='w-16 h-16 rounded-full absolute left-0 top-0 px-6'
+						>
+							<svg
+								width={24}
+								height={24}
+								viewBox='0 0 24 24'
+								fill='none'
+								xmlns='http://www.w3.org/2000/svg'
+								preserveAspectRatio='none'
+							>
+								<path
+									d='M5 5L18.9991 18.9991'
+									stroke='#000001'
+									strokeWidth='1.5'
+									strokeLinecap='round'
+									strokeLinejoin='round'
+								/>
+								<path
+									d='M5.00094 18.9991L19 5'
+									stroke='#000001'
+									strokeWidth='1.5'
+									strokeLinecap='round'
+									strokeLinejoin='round'
+								/>
+							</svg>
+						</button>
+						Delete Profile
+					</div>
+					<div className=''>
+						{title} {description}
+					</div>
+				</div>
+			</Modal>
+		</>
 	);
 }
