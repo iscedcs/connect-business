@@ -30,7 +30,7 @@ export default function About() {
 					</div>
 				))}
 			</div>
-			<div className='absolute h-20 px-4  bottom-0 left-0 w-full flex gap-2 md:gap-10 justify-center items-center'>
+			<div className='fixed h-20 px-4  bottom-0 left-0 w-full flex gap-2 md:gap-10 justify-center items-center'>
 				<div className='w-1/2 px-4 text-center py-3 max-w-[300px] text-[10px] bg-black text-white rounded-2xl'>
 					Save Contact
 				</div>

@@ -1,6 +1,6 @@
 'use client';
 import React, { Fragment, useState, ChangeEvent } from 'react';
-import Modal from '@/components/layouts/modal';
+import Modal from '@/components/shared/layouts/modal';
 import BlurImage from '@/components/shared/ui/blur-image';
 import EmployeesButtonGroup from '@/components/admin/employee/employee-button-group';
 import SearchBar from '@/components/admin/search-bar';

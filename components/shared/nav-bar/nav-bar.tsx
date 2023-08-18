@@ -7,7 +7,7 @@ import { signOut } from 'next-auth/react';
 import { COMPANY_PROFILE } from '@/utils/data';
 import NavBarLogo from './nav-bar-logo';
 import Button from '../ui/button/button';
-import Modal from '@/components/layouts/modal';
+import Modal from '@/components/shared/layouts/modal';
 
 export default function NavBar({ links }: { links: Link[] }) {
 	const [showLogOut, setShowLogOut] = React.useState<boolean>(false);

@@ -1,5 +1,5 @@
 'use client';
-import Modal from '@/components/layouts/modal';
+import Modal from '@/components/shared/layouts/modal';
 import Button from '@/components/shared/ui/button/button';
 import React, { Fragment } from 'react';
 import { useSession } from 'next-auth/react';

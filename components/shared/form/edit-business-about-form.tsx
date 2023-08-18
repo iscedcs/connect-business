@@ -1,6 +1,6 @@
 'use client';
 import TextInput from '@/components/shared/form/input/text-input';
-import Modal from '@/components/layouts/modal';
+import Modal from '@/components/shared/layouts/modal';
 import Button from '@/components/shared/ui/button/button';
 import IconButton from '@/components/shared/ui/button/icon-button';
 import { SOCIAL_ICONS } from '@/utils/data';

@@ -1,9 +1,13 @@
 'use client';
 import { formatDate, getInitials } from '@/utils/function-helpers';
 import React, { MouseEventHandler } from 'react';
-import Modal from '../../layouts/modal';
+import Modal from '../../shared/layouts/modal';
 import Button from '@/components/shared/ui/button/button';
-import { appointmentDeleteIcon, appointmentEditIcon } from '@/utils/icons';
+import {
+	appointmentDeleteIcon,
+	appointmentEditIcon,
+	modalCloseIcon,
+} from '@/utils/icons';
 import NewInput from '@/components/shared/form/input/new-input';
 import EditAppointmentForm from '@/components/shared/form/edit-appointments-form';
 
@@ -86,29 +90,7 @@ export default function AppointmentListItem({
 							}
 							className='w-16 h-16 rounded-full absolute left-0 top-0 px-6'
 						>
-							<svg
-								width={24}
-								height={24}
-								viewBox='0 0 24 24'
-								fill='none'
-								xmlns='http://www.w3.org/2000/svg'
-								preserveAspectRatio='none'
-							>
-								<path
-									d='M5 5L18.9991 18.9991'
-									stroke='#000001'
-									strokeWidth='1.5'
-									strokeLinecap='round'
-									strokeLinejoin='round'
-								/>
-								<path
-									d='M5.00094 18.9991L19 5'
-									stroke='#000001'
-									strokeWidth='1.5'
-									strokeLinecap='round'
-									strokeLinejoin='round'
-								/>
-							</svg>
+							{modalCloseIcon}
 						</button>
 						Profile
 					</div>
@@ -188,29 +170,7 @@ export default function AppointmentListItem({
 							onClick={() => setShowDelete(false)}
 							className='w-16 h-16 rounded-full absolute left-0 top-0 px-6'
 						>
-							<svg
-								width={24}
-								height={24}
-								viewBox='0 0 24 24'
-								fill='none'
-								xmlns='http://www.w3.org/2000/svg'
-								preserveAspectRatio='none'
-							>
-								<path
-									d='M5 5L18.9991 18.9991'
-									stroke='#000001'
-									strokeWidth='1.5'
-									strokeLinecap='round'
-									strokeLinejoin='round'
-								/>
-								<path
-									d='M5.00094 18.9991L19 5'
-									stroke='#000001'
-									strokeWidth='1.5'
-									strokeLinecap='round'
-									strokeLinejoin='round'
-								/>
-							</svg>
+							{modalCloseIcon}
 						</button>
 						Delete Appointment
 					</div>
@@ -270,29 +230,7 @@ export default function AppointmentListItem({
 							onClick={() => setShowEdit(false)}
 							className='w-16 h-16 rounded-full absolute left-0 top-0 px-6'
 						>
-							<svg
-								width={24}
-								height={24}
-								viewBox='0 0 24 24'
-								fill='none'
-								xmlns='http://www.w3.org/2000/svg'
-								preserveAspectRatio='none'
-							>
-								<path
-									d='M5 5L18.9991 18.9991'
-									stroke='#000001'
-									strokeWidth='1.5'
-									strokeLinecap='round'
-									strokeLinejoin='round'
-								/>
-								<path
-									d='M5.00094 18.9991L19 5'
-									stroke='#000001'
-									strokeWidth='1.5'
-									strokeLinecap='round'
-									strokeLinejoin='round'
-								/>
-							</svg>
+							{modalCloseIcon}
 						</button>
 						Edit Appointment
 					</div>

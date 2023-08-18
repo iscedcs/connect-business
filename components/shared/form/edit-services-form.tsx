@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import ServiceCardLandscape from '../ui/cards/service-card-landscape';
 import NewInput from './input/new-input';
-import Modal from '@/components/layouts/modal';
+import Modal from '@/components/shared/layouts/modal';
 import Button from '../ui/button/button';
 import FileUploader from './images/file-uploader';
 

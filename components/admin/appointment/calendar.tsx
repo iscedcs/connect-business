@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import Modal from '../../layouts/modal';
+import Modal from '../../shared/layouts/modal';
 import AppointmentListItem from './appointment-list-item';
 import Button from '@/components/shared/ui/button/button';
 

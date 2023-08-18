@@ -3,7 +3,10 @@ import React, { useState } from 'react';
 import BlurImage from '../shared/ui/blur-image';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import Modal from '../layouts/modal';
+import Modal from '../shared/layouts/modal';
+import { doubleRightIcon, modalCloseIcon } from '@/utils/icons';
+import Button from '../shared/ui/button/button';
+import BookAppointmentForm from '../shared/form/book-appointments-form';
 
 export default function ServiceCard({
 	image,
@@ -17,13 +20,14 @@ export default function ServiceCard({
 	link?: string;
 }) {
 	const [hovered, setHovered] = useState<boolean>(false);
+	const [showAppointment, setShowAppointment] = React.useState(false);
 	const router = useRouter();
 	const [serviceIsOpen, setServiceIsOpen] = useState<boolean>(false);
 
 	return (
 		<>
 			<div
-				className='flex-grow-0 flex-shrink-0 w-48 md:w-72 aspect-[3/5] relative bg-white shadow-mid rounded-2xl cursor-pointer overflow-hidden'
+				className='flex-grow-0 flex-shrink-0 w-48 md:w-72 aspect-[3/4] relative bg-white shadow-mid rounded-2xl cursor-pointer overflow-hidden'
 				onMouseEnter={() => setHovered(true)}
 				onMouseLeave={() => setHovered(false)}
 			>
@@ -34,25 +38,37 @@ export default function ServiceCard({
 					alt={title}
 					className={`w-48 md:w-72 object-cover object-center transition-all duration-500 ${
 						hovered
-							? 'aspect-[3/5] rounded-2xl'
-							: 'aspect-[4/6] rounded-t-2xl'
+							? 'h-[90%] rounded-2xl'
+							: 'aspect-[5/6] rounded-t-2xl'
 					} overflow-hidden`}
 				/>
+				{link && link !== '' ? (
+					<Link
+						href={link}
+						className={`absolute bottom-0 left-0 z-50 w-full flex h-[10%] items-center pl-3 text-left text-sm md:text-xl font-bold overflow-hidden transition-all duration-500`}
+					>
+						{title}{' '}
+						<span
+							className={`${
+								hovered && 'pl-10'
+							} transition-all duration-500`}
+						>
+							{doubleRightIcon}
+						</span>
+					</Link>
+				) : (
+					<div
+						className={`absolute bottom-0 left-0 z-50 w-full flex h-[10%] items-center pl-3 text-left text-sm md:text-xl font-bold overflow-hidden transition-all duration-500`}
+					>
+						{title}
+					</div>
+				)}
 				<div
-					className={`w-full ${
-						hovered ? 'h-0 p-0' : 'h-10 md:h-16 p-1 md:p-3'
-					} text-left text-sm md:text-xl font-bold overflow-hidden transition-all duration-500`}
-				>
-					{title}
-				</div>
-				<div
-					className={`absolute w-48 md:w-72 aspect-[3/4] transition-all duration-500 ${
-						hovered
-							? 'h-full left-2 md:left-6 top-6 opacity-100'
-							: 'h-0 left-0 top-0 opacity-0'
+					className={`absolute w-48 md:w-72 aspect-[3/4] transition-all duration-500 left-0 top-0 ${
+						hovered ? 'h-[90%] opacity-100' : 'h-0 opacity-0'
 					} rounded-2xl bg-black/80`}
 				>
-					<div className='flex flex-col justify-start items-start w-full absolute left-2 md:left-4 top-3 md:top-10 gap-2'>
+					<div className='flex flex-col justify-start items-start w-full absolute left-2 md:left-4 top-3 md:top-10 gap-2 pointer-events-none '>
 						<p className='flex-grow-0 flex-shrink-0 w-full text-sm md:text-lg font-bold text-white text-left'>
 							{title}
 						</p>
@@ -60,58 +76,74 @@ export default function ServiceCard({
 							<p className='w-full text-white text-left'>
 								{description}
 							</p>
-							<button
-								onClick={() => setServiceIsOpen(true)}
-							>
-								View Service
-							</button>
 						</div>
 					</div>
-				</div>
-				{link && link !== '' && (
-					<Link
-						href={link}
-						className='absolute top-0 right-0 w-full text-white flex text-xs md:text-base  items-center justify-center bg-gradient-to-b from-black via-black to-black/0 h-10'
+					<button
+						className='absolute bottom-0 right-0 w-full  text-white flex text-xs md:text-base  items-center justify-center bg-gradient-to-t from-black via-black to-black/0 h-10'
+						onClick={() => setServiceIsOpen(true)}
 					>
-						Vist Link
-					</Link>
-				)}
+						View Service
+					</button>
+				</div>
 			</div>
 			<Modal isOpen={serviceIsOpen}>
-				<div className='bg-white rounded-lg max-w-[600px] shadow-mid'>
-					<div className='flex justify-center items-center w-full h-16 border-b text-large font-bold relative'>
+				<div className='rounded-lg max-w-[500px] bg-white h-screen md:h-min shadow-mid relative overflow-hidden'>
+					<div className='flex justify-center text-white bg-black/20 items-center w-full h-16 text-large font-bold absolute backdrop-blur-[2px] z-[220]'>
 						<button
 							onClick={() => setServiceIsOpen(false)}
 							className='w-16 h-16 rounded-full absolute left-0 top-0 px-6'
 						>
-							<svg
-								width={24}
-								height={24}
-								viewBox='0 0 24 24'
-								fill='none'
-								xmlns='http://www.w3.org/2000/svg'
-								preserveAspectRatio='none'
-							>
-								<path
-									d='M5 5L18.9991 18.9991'
-									stroke='#000001'
-									strokeWidth='1.5'
-									strokeLinecap='round'
-									strokeLinejoin='round'
-								/>
-								<path
-									d='M5.00094 18.9991L19 5'
-									stroke='#000001'
-									strokeWidth='1.5'
-									strokeLinecap='round'
-									strokeLinejoin='round'
-								/>
-							</svg>
+							{modalCloseIcon}
 						</button>
-						Delete Profile
+						{title}
 					</div>
-					<div className=''>
-						{title} {description}
+					<div className='flex flex-col justify-between h-full'>
+						<div className=''>
+							<div className='h-[300px] overflow-hidden'>
+								<BlurImage
+									src={image}
+									alt={title}
+									height={200}
+									width={600}
+									className='object-cover object-center h-full w-full'
+								/>
+							</div>
+							<div className='p-3 md:p-5'>
+								{description}
+							</div>
+						</div>
+						<div className='p-3 md:p-5 grid'>
+							<Button
+								onClick={() => {
+									setServiceIsOpen(false);
+									setShowAppointment(true);
+								}}
+								variant='primary'
+							>
+								Book Now
+							</Button>
+						</div>
+					</div>
+				</div>
+			</Modal>
+			<Modal isOpen={showAppointment}>
+				<div className='rounded-lg max-w-[500px] w-full bg-white h-screen md:h-min shadow-mid relative overflow-hidden'>
+					<div className='flex justify-center items-center w-full h-16 border-b text-large font-bold relative'>
+						<button
+							onClick={() => setShowAppointment(false)}
+							className='w-16 h-16 rounded-full absolute left-0 top-0 px-6'
+						>
+							{modalCloseIcon}
+						</button>
+						Book Appointment
+					</div>
+					<div className='flex flex-col w-full gap-6 md:gap-12 px-4 md:px-10 p-10'>
+						<div className='flex flex-col gap-4'>
+							<BookAppointmentForm
+								service={title}
+								setShowAppointment={setShowAppointment}
+							/>
+						</div>
 					</div>
 				</div>
 			</Modal>

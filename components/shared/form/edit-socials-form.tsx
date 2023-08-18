@@ -4,7 +4,7 @@ import React, { Fragment } from 'react';
 import Button from '../ui/button/button';
 import { useRouter } from 'next/navigation';
 import IconButton from '../ui/button/icon-button';
-import Modal from '@/components/layouts/modal';
+import Modal from '@/components/shared/layouts/modal';
 import TextInput from './input/text-input';
 import { SOCIAL_ICONS } from '@/utils/data';
 

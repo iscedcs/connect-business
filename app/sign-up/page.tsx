@@ -8,7 +8,7 @@ import React, { Fragment } from 'react';
 import SigninLayout from '../sign-in/signin-layout';
 import BlurImage from '@/components/shared/ui/blur-image';
 import SelectInput from '@/components/shared/form/select/select-input';
-import Modal from '@/components/layouts/modal';
+import Modal from '@/components/shared/layouts/modal';
 import { createBusiness } from '@/utils/server-data-retrival-functions';
 import NewInput from '@/components/shared/form/input/new-input';
 import axios from 'axios';

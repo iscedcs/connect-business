@@ -2,7 +2,7 @@
 import React from 'react';
 import BlurImage from '../shared/ui/blur-image';
 import Button from '../shared/ui/button/button';
-import Modal from '../layouts/modal';
+import Modal from '../shared/layouts/modal';
 
 const StaffMessage = ({
 	senderName = 'Sender Name',
