@@ -1,3 +1,4 @@
+import ExchangeContactButton from '@/components/profile/exchange-contact-button';
 import TabMenu from '@/components/profile/profile-tabs';
 import BlurImage from '@/components/shared/ui/blur-image';
 import { CARD_VIEW, CUSTOMER_TAB } from '@/utils/data';
@@ -50,6 +51,12 @@ export default function CustomerView({
 							color={CARD_VIEW.user.theme}
 						/>
 						{children}
+						<div className='fixed h-20 px-4  bottom-0 left-0 w-full flex gap-2 md:gap-10 justify-center items-center'>
+							<div className='w-1/2 px-4 text-center py-3 max-w-[300px] text-[10px] bg-black text-white rounded-2xl'>
+								Save Contact
+							</div>
+							<ExchangeContactButton />
+						</div>
 					</div>
 				</div>
 			</div>

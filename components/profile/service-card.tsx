@@ -7,6 +7,7 @@ import Modal from '../shared/layouts/modal';
 import { doubleRightIcon, modalCloseIcon } from '@/utils/icons';
 import Button from '../shared/ui/button/button';
 import BookAppointmentForm from '../shared/form/book-appointments-form';
+import AlertModal from '../shared/layouts/alert-modal';
 
 export default function ServiceCard({
 	image,
@@ -20,8 +21,8 @@ export default function ServiceCard({
 	link?: string;
 }) {
 	const [hovered, setHovered] = useState<boolean>(false);
+	const [showAlert, setShowAlert] = useState<boolean>(false);
 	const [showAppointment, setShowAppointment] = React.useState(false);
-	const router = useRouter();
 	const [serviceIsOpen, setServiceIsOpen] = useState<boolean>(false);
 
 	return (
@@ -45,7 +46,7 @@ export default function ServiceCard({
 				{link && link !== '' ? (
 					<Link
 						href={link}
-						className={`absolute bottom-0 left-0 z-50 w-full flex h-[10%] items-center pl-3 text-left text-sm md:text-xl font-bold overflow-hidden transition-all duration-500`}
+						className={`absolute bottom-0 left-0 w-full flex h-[10%] items-center pl-3 text-left text-sm md:text-xl font-bold overflow-hidden transition-all duration-500`}
 					>
 						{title}{' '}
 						<span
@@ -58,7 +59,7 @@ export default function ServiceCard({
 					</Link>
 				) : (
 					<div
-						className={`absolute bottom-0 left-0 z-50 w-full flex h-[10%] items-center pl-3 text-left text-sm md:text-xl font-bold overflow-hidden transition-all duration-500`}
+						className={`absolute bottom-0 left-0 w-full flex h-[10%] items-center pl-3 text-left text-sm md:text-xl font-bold overflow-hidden transition-all duration-500`}
 					>
 						{title}
 					</div>
@@ -88,7 +89,7 @@ export default function ServiceCard({
 			</div>
 			<Modal isOpen={serviceIsOpen}>
 				<div className='rounded-lg max-w-[500px] bg-white h-screen md:h-min shadow-mid relative overflow-hidden'>
-					<div className='flex justify-center text-white bg-black/20 items-center w-full h-16 text-large font-bold absolute backdrop-blur-[2px] z-[220]'>
+					<div className='flex justify-center text-white bg-black/20 items-center w-full h-16 text-large font-bold absolute backdrop-blur-[2px] z-10'>
 						<button
 							onClick={() => setServiceIsOpen(false)}
 							className='w-16 h-16 rounded-full absolute left-0 top-0 px-6'
@@ -97,7 +98,7 @@ export default function ServiceCard({
 						</button>
 						{title}
 					</div>
-					<div className='flex flex-col justify-between h-full'>
+					<div className='flex flex-col gap-32 h-full'>
 						<div className=''>
 							<div className='h-[300px] overflow-hidden'>
 								<BlurImage
@@ -142,11 +143,19 @@ export default function ServiceCard({
 							<BookAppointmentForm
 								service={title}
 								setShowAppointment={setShowAppointment}
+								setShowAlert={setShowAlert}
 							/>
 						</div>
 					</div>
 				</div>
 			</Modal>
+			<AlertModal
+				type='success'
+				isOpen={showAlert}
+				onClose={() => setShowAlert(false)}
+				message='We have received your booking and will contact you shortly, thank you for choosing us.'
+				title='Appointment Booked'
+			/>
 		</>
 	);
 }

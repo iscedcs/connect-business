@@ -5,9 +5,11 @@ import Button from '../ui/button/button';
 export default function BookAppointmentForm({
 	service,
 	setShowAppointment,
+	setShowAlert,
 }: {
 	service: string;
 	setShowAppointment: React.Dispatch<React.SetStateAction<boolean>>;
+	setShowAlert: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
 	const [isLoading, setIsLoading] = useState(false);
 	const [formData, setFormData] = useState({
@@ -34,6 +36,7 @@ export default function BookAppointmentForm({
 		console.log(formData);
 		setIsLoading(false);
 		setShowAppointment(false);
+		setShowAlert(true);
 	};
 	return (
 		<form

@@ -36,7 +36,7 @@ const Modal = ({ children, isOpen, onClose }: ModalProps) => {
 			{isOpen && (
 				<motion.div
 					key='modal'
-					className='fixed inset-0 flex items-center justify-center bg-opacity-20 bg-gray-900 backdrop-filter-[4px] backdrop-blur-sm z-[210]'
+					className='fixed inset-0 flex items-start md:items-center justify-center bg-opacity-20 bg-gray-900 backdrop-filter-[4px] backdrop-blur-sm z-[210]'
 					variants={modalVariants}
 					initial='initial'
 					animate='animate'

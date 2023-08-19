@@ -1,6 +1,5 @@
 'use client';
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import TextInput from '@/components/shared/form/input/text-input';
 import Button from '@/components/shared/ui/button/button';
 import Text from '@/components/shared/ui/text';
 import Link from 'next/link';
@@ -9,6 +8,7 @@ import BlurImage from '@/components/shared/ui/blur-image';
 import { signIn } from 'next-auth/react';
 import NewInput from '@/components/shared/form/input/new-input';
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 
 interface Error {
 	message: string;
@@ -16,6 +16,8 @@ interface Error {
 }
 
 export default function SignUp() {
+	const searchParams = useSearchParams();
+	const errorMessage = searchParams.get('error');
 	const [userName, setUserName] = useState('');
 	const [passWord, setPassWord] = useState('');
 	const [errorUsername, setErrorUsername] = useState<boolean>(false);
@@ -138,6 +140,11 @@ export default function SignUp() {
 							{errorLogin && (
 								<div className='text-rose-600 text-xs text-center'>
 									Error Occured
+								</div>
+							)}
+							{errorMessage !== '' && (
+								<div className='text-rose-600 text-xs text-center capitalize'>
+									{errorMessage}
 								</div>
 							)}
 							<div className='flex flex-col gap-2 xl:gap-6'>
