@@ -460,7 +460,7 @@ interface ProfileP {
 }
 
 interface ServiceP {
-	id: number | string;
+	id?: number | string;
 	name: string;
 	description: string;
 	image: string;
@@ -473,6 +473,11 @@ interface AllServicesP {
 interface ImageP {
 	name: string;
 	url: string;
+	business_id?: string;
+	createdAt?: string;
+	id?: number | string;
+	image_id?: string;
+	updatedAt?: string;
 }
 
 interface FeatureP {
@@ -502,11 +507,12 @@ interface BusinessFormP {
 	logo: string;
 	description: string;
 	details: string;
+	// images: ImageP[];
 	images: ImageP[];
 }
 interface UserFormP {
 	name: string;
-	email: string;
+	email?: string;
 	phone: string;
 	profile_image: string;
 	gender: string;
@@ -522,4 +528,9 @@ interface StaffMessageP {
 	time?: string;
 	messageSubject?: string;
 	messageBody?: string;
+}
+
+interface Message {
+	type: 'success' | 'error' | 'info';
+	message: string;
 }

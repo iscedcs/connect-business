@@ -52,11 +52,11 @@ const AlertModal = ({ isOpen, onClose, type, message, title }: ModalProps) => {
 					exit='exit'
 					onClick={onClose}
 				>
-					<div className='rounded-t-3xl max-w-[500px] w-full bg-white md:h-min shadow-mid relative overflow-hidden'>
+					<div className='rounded-t-3xl md:rounded-3xl md:max-w-[400px] w-full bg-white md:h-min shadow-mid relative overflow-hidden'>
 						<div className='flex justify-center items-center w-full h-16 text-large font-bold relative'>
 							<button
 								onClick={onClose}
-								className='w-16 h-16 flex items-center rounded-full absolute left-0 top-0 px-6'
+								className='w-16 h-16 flex items-center rounded-full absolute left-0 top-0 px-6 shrink-0 grow-0'
 							>
 								{modalCloseIcon}
 							</button>
@@ -79,7 +79,9 @@ const AlertModal = ({ isOpen, onClose, type, message, title }: ModalProps) => {
 										? modalFailureIcon
 										: modalInfoIcon}
 								</div>
-								<div className=''>{message}</div>
+								<div className='text-center'>
+									{message}
+								</div>
 								<Button
 									variant='primary'
 									onClick={onClose}

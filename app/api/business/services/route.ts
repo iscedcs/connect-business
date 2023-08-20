@@ -17,18 +17,11 @@ export async function POST(req: NextRequest, res: NextResponse) {
 	};
 
 	try {
-		const url = `${API}${URLS.business.profile.personal}`;
+		const url = `${API}${URLS.business.profile.services}`;
 		console.log(url);
 		const response = await fetch(url, {
 			method: 'POST',
 			headers,
-			body: JSON.stringify({
-				name: body.name,
-				// email: body.email,
-				phone: body.phone,
-				gender: body.gender,
-				proile_image: body.profile_image,
-			}),
 		});
 
 		if (response.status !== 200) {

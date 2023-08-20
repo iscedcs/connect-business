@@ -32,7 +32,9 @@ const ExchangeContactButton = ({}: Props) => {
 					</div>
 					<div className='flex flex-col w-full gap-6 md:gap-12 px-4 md:px-10 p-10'>
 						<div className='flex flex-col gap-4'>
-							<ExchangeContactForm />
+							<ExchangeContactForm
+								setShowAlert={setShowAlert}
+							/>
 						</div>
 					</div>
 				</div>

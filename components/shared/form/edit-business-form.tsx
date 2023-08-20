@@ -7,6 +7,7 @@ import MultipleImagesUploader from './images/image-uploader';
 import Button from '../ui/button/button';
 import { useRouter } from 'next/navigation';
 import { NextResponse } from 'next/server';
+import AlertModal from '../layouts/alert-modal';
 
 const EditBusinessForm = ({
 	businessData,
@@ -14,6 +15,7 @@ const EditBusinessForm = ({
 	businessData: BusinessFormP;
 }) => {
 	const [isLoading, setIsLoading] = React.useState<boolean>(false);
+	const [message, setMessage] = React.useState<Message | null>(null);
 	const router = useRouter();
 	const [formData, setFormData] = React.useState({
 		name: businessData.name,
@@ -40,12 +42,18 @@ const EditBusinessForm = ({
 			if (response.status === 200) {
 				// setConfirmIsLoading(false);
 				// setprofileModalOpen(false);
-				// setAddSuccess(true);
+				setMessage({
+					type: 'success',
+					message: 'Changes Saved Successfully',
+				});
 				// window.location.reload();
 				setIsLoading(false);
 				return NextResponse.json(response);
 			} else {
-				console.log('something went wrong');
+				setMessage({
+					type: 'error',
+					message: 'Could not Save Changes',
+				});
 				console.log(response);
 				setIsLoading(false);
 				return null;
@@ -53,7 +61,6 @@ const EditBusinessForm = ({
 		} catch (error) {
 			console.log(error);
 		}
-		router.push('admin/settings/edit-services');
 	};
 
 	const handleBusinessLogo = async (file: ImageP) => {
@@ -78,73 +85,84 @@ const EditBusinessForm = ({
 	};
 
 	return (
-		<AnimatePresence>
-			<motion.form
-				key='about'
-				initial={{ x: '1000%' }}
-				animate={{ x: '0%' }}
-				exit={{ x: '-1000%' }}
-				transition={{
-					type: 'tween',
-					duration: 0.5,
-				}}
-				className='flex flex-col gap-4 mx-5'
-				onSubmit={handleSubmit}
-			>
-				<div className='flex flex-col gap-4 max-w-lg '>
-					<FileUploader
-						image={formData.logo}
-						className=''
-						handleFile={handleBusinessLogo}
-						folder='business_logo'
-						type='landscape'
-						text='Add Business Logo'
+		<>
+			<AnimatePresence>
+				<motion.form
+					key='about'
+					initial={{ x: '1000%' }}
+					animate={{ x: '0%' }}
+					exit={{ x: '-1000%' }}
+					transition={{
+						type: 'tween',
+						duration: 0.5,
+					}}
+					className='flex flex-col gap-4 mx-5'
+					onSubmit={handleSubmit}
+				>
+					<div className='flex flex-col gap-4 max-w-lg '>
+						<FileUploader
+							image={formData.logo}
+							className=''
+							handleFile={handleBusinessLogo}
+							folder='business_logo'
+							type='landscape'
+							text='Add Business Logo'
+						/>
+						<NewInput
+							className='w-full'
+							type='text'
+							label='Business Name'
+							name='name'
+							value={formData.name}
+							onInput={handleChange}
+							onChange={handleChange}
+						/>
+						<NewInput
+							className='w-full'
+							type='text'
+							label='Business Description'
+							name='description'
+							value={formData.description}
+							onInput={handleChange}
+							onChange={handleChange}
+						/>
+						<NewInput
+							className='w-full'
+							type='text'
+							label='About Business'
+							name='details'
+							value={formData.details}
+							onInput={handleChange}
+							onChange={handleChange}
+						/>
+					</div>
+					<MultipleImagesUploader
+						handleFiles={handleFiles}
+						folder='features_images'
+						text='Add Business Images'
+						initialImages={formData.images}
 					/>
-					<NewInput
-						className='w-full'
-						type='text'
-						label='Business Name'
-						name='name'
-						value={formData.name}
-						onInput={handleChange}
-						onChange={handleChange}
-					/>
-					<NewInput
-						className='w-full'
-						type='text'
-						label='Business Description'
-						name='description'
-						value={formData.description}
-						onInput={handleChange}
-						onChange={handleChange}
-					/>
-					<NewInput
-						className='w-full'
-						type='text'
-						label='About Business'
-						name='details'
-						value={formData.details}
-						onInput={handleChange}
-						onChange={handleChange}
-					/>
-				</div>
-				<MultipleImagesUploader
-					handleFiles={handleFiles}
-					folder='features_images'
-					text='Add Business Images'
-					initialImages={formData.images}
+					<div className='mt-3 max-w-lg '>
+						<Button
+							variant='primary'
+							className='w-full'
+							isLoading={isLoading}
+						>
+							Save Changes
+						</Button>
+					</div>
+				</motion.form>
+			</AnimatePresence>
+			{message && (
+				<AlertModal
+					isOpen={!!message}
+					type={message.type!}
+					onClose={() => setMessage(null)}
+					message={message.message}
+					title={message.type.toLocaleUpperCase()}
 				/>
-				<div className='mt-3 max-w-lg '>
-					<Button
-						variant='primary'
-						className='w-full'
-						isLoading={isLoading}
-					>
-						Save
-					</Button>
-				</div>
-			</motion.form>
-		</AnimatePresence>
+			)}
+		</>
 	);
 };
 

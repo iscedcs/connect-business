@@ -18,7 +18,7 @@ const ServiceCardLandscape = ({
 	handleDelete?: () => void;
 }) => {
 	return (
-		<div className='w-full bg-gray-100 rounded-2xl overflow-hidden flex gap-2 relative cursor-pointer'>
+		<div className='w-full h-20 bg-gray-100 rounded-2xl overflow-hidden flex gap-2 relative cursor-pointer'>
 			<div className='w-16 aspect-[3/2] shrink-0 overflow-hidden rounded-2xl'>
 				<BlurImage
 					src={image}

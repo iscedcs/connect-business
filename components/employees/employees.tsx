@@ -8,6 +8,8 @@ import WaitlistedEmployees from '@/components/admin/employee/waitlisted-employee
 import OnboardedEmployees from '@/components/admin/employee/onboarded-employees';
 import { NextResponse } from 'next/server';
 import Button from '@/components/shared/ui/button/button';
+import AlertModal from '../shared/layouts/alert-modal';
+import { modalCloseIcon } from '@/utils/icons';
 
 export default function Employees({
 	onboarded,
@@ -179,29 +181,7 @@ export default function Employees({
 									onClick={handleCloseModal}
 									className='w-16 h-16 rounded-full absolute left-0 top-0 px-6'
 								>
-									<svg
-										width={24}
-										height={24}
-										viewBox='0 0 24 24'
-										fill='none'
-										xmlns='http://www.w3.org/2000/svg'
-										preserveAspectRatio='none'
-									>
-										<path
-											d='M5 5L18.9991 18.9991'
-											stroke='#000001'
-											strokeWidth='1.5'
-											strokeLinecap='round'
-											strokeLinejoin='round'
-										/>
-										<path
-											d='M5.00094 18.9991L19 5'
-											stroke='#000001'
-											strokeWidth='1.5'
-											strokeLinecap='round'
-											strokeLinejoin='round'
-										/>
-									</svg>
+									{modalCloseIcon}
 								</button>
 								Profile
 							</div>
@@ -353,29 +333,7 @@ export default function Employees({
 										}
 										className='w-16 h-16 rounded-full absolute left-0 top-0 px-6'
 									>
-										<svg
-											width={24}
-											height={24}
-											viewBox='0 0 24 24'
-											fill='none'
-											xmlns='http://www.w3.org/2000/svg'
-											preserveAspectRatio='none'
-										>
-											<path
-												d='M5 5L18.9991 18.9991'
-												stroke='#000001'
-												strokeWidth='1.5'
-												strokeLinecap='round'
-												strokeLinejoin='round'
-											/>
-											<path
-												d='M5.00094 18.9991L19 5'
-												stroke='#000001'
-												strokeWidth='1.5'
-												strokeLinecap='round'
-												strokeLinejoin='round'
-											/>
-										</svg>
+										{modalCloseIcon}
 									</button>
 									Delete Profile
 								</div>
@@ -420,50 +378,20 @@ export default function Employees({
 					</>
 				)}
 			</Modal>
-			<Modal isOpen={addSuccess}>
-				<div className='bg-white rounded-lg min-w-[200px] shadow-mid'>
-					<div className='flex flex-col gap-6 md:gap-12 px-4 md:px-10 pt-4 pb-10'>
-						<div className='flex flex-col gap-4'>
-							<div className='flex flex-col justify-center items-center py-10'>
-								Onboarded Succesfully
-							</div>
-							<div className='flex flex-col items-center gap-3'>
-								<Button
-									variant='success'
-									onClick={() => {
-										setAddSuccess(false);
-									}}
-									className='w-[200px] capitalize px-5 py-2 rounded-full font-semibold'
-								>
-									Close
-								</Button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</Modal>
-			<Modal isOpen={deleteSuccess}>
-				<div className='bg-white rounded-lg min-w-[200px] shadow-mid'>
-					<div className='flex flex-col gap-6 md:gap-12 px-4 md:px-10 pt-4 pb-10'>
-						<div className='flex flex-col gap-4'>
-							<div className='flex flex-col justify-center items-center py-10'>
-								Deleted Succesfully
-							</div>
-							<div className='flex flex-col items-center gap-3'>
-								<Button
-									variant='success'
-									onClick={() => {
-										setDeleteSuccess(false);
-									}}
-									className='w-[200px] capitalize px-5 py-2 rounded-full font-semibold'
-								>
-									Close
-								</Button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</Modal>
+			<AlertModal
+				type='success'
+				isOpen={addSuccess}
+				onClose={() => setAddSuccess(false)}
+				message={`Employee onboarded successfully!!!`}
+				title='Onboarded'
+			/>
+			<AlertModal
+				type='success'
+				isOpen={deleteSuccess}
+				onClose={() => setDeleteSuccess(false)}
+				message={`Employee has been deleted from business successfully!!!`}
+				title='Deleted Succesfully'
+			/>
 		</Fragment>
 	);
 }

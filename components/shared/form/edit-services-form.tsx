@@ -5,19 +5,22 @@ import NewInput from './input/new-input';
 import Modal from '@/components/shared/layouts/modal';
 import Button from '../ui/button/button';
 import FileUploader from './images/file-uploader';
+import { NextResponse } from 'next/server';
+import AlertModal from '../layouts/alert-modal';
 
 interface MainComponentProps {
 	servicesData: ServiceP[];
 }
 
 const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
+	const [message, setMessage] = React.useState<Message | null>(null);
+	const [isLoading, setIsLoading] = React.useState<boolean>(false);
 	const [services, setServices] = useState<ServiceP[]>(servicesData);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [selectedService, setSelectedService] = useState<ServiceP | null>(
 		null
 	);
 	const [formData, setFormData] = useState<ServiceP>({
-		id: '',
 		name: '',
 		description: '',
 		image: '',
@@ -33,7 +36,6 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 	const openModalForAdd = () => {
 		setSelectedService(null);
 		setFormData({
-			id: '',
 			name: '',
 			description: '',
 			image: '',
@@ -68,6 +70,40 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 			image: file.url,
 		});
 
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		setIsLoading(true);
+		try {
+			const response = await fetch(`/api/business/services`, {
+				method: 'POST',
+				body: JSON.stringify({
+					services: services,
+				}),
+			});
+			if (response.status === 200) {
+				// setConfirmIsLoading(false);
+				// setprofileModalOpen(false);
+				setMessage({
+					type: 'success',
+					message: 'Changes Saved Successfully',
+				});
+				// window.location.reload();
+				setIsLoading(false);
+				return NextResponse.json(response);
+			} else {
+				setMessage({
+					type: 'error',
+					message: 'Could not Save Changes',
+				});
+				console.log(response);
+				setIsLoading(false);
+				return null;
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	return (
 		<div className='px-4 md:px-10 flex flex-col min-h-[500px] max-w-2xl justify-between gap-4'>
 			<div className='flex flex-col gap-4'>
@@ -88,14 +124,16 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 						link={service.link}
 						description={service.description}
 						handleClick={() => openModalForEdit(service)}
-						handleDelete={() => deleteService(service.id)}
+						handleDelete={() => deleteService(service.id!)}
 					/>
 				))}
 			</div>
 
 			<Button
 				variant='primary'
+				onClick={handleSubmit}
 				className='shrink-0'
+				isLoading={isLoading}
 			>
 				Save Changes
 			</Button>
@@ -202,6 +240,15 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 					</form>
 				</div>
 			</Modal>
+			{message && (
+				<AlertModal
+					isOpen={!!message}
+					type={message.type!}
+					onClose={() => setMessage(null)}
+					message={message.message}
+					title={message.type.toLocaleUpperCase()}
+				/>
+			)}
 		</div>
 	);
 };

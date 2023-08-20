@@ -16,8 +16,10 @@ interface MultipleImagesUploaderProps {
 const MultipleImagesUploader: React.FC<MultipleImagesUploaderProps> = (
 	props
 ) => {
+	const urls: string[] = props.initialImages.map((image) => image.url);
+
 	const [isLoading, setIsLoading] = useState<boolean>(false);
-	const [imagePreviews, setImagePreviews] = useState<string[]>([]);
+	const [imagePreviews, setImagePreviews] = useState<string[]>(urls);
 	const hiddenFileInput = useRef<HTMLInputElement>(null);
 
 	const uploadProfileImage = async (data: FormData) => {
@@ -53,6 +55,7 @@ const MultipleImagesUploader: React.FC<MultipleImagesUploaderProps> = (
 
 			const response = await uploadProfileImage(formData);
 			const singleImage: ImageP = response.data;
+			console.log('Single Image.....', singleImage);
 
 			if (response?.success === 'true') {
 				uploadedImages.push(singleImage);
@@ -99,6 +102,7 @@ const MultipleImagesUploader: React.FC<MultipleImagesUploaderProps> = (
 			const newImageUrls = compressedImages.map((compressedImage) =>
 				URL.createObjectURL(compressedImage)
 			);
+			console.log(newImageUrls);
 			setImagePreviews((prevImagePreviews) => [
 				...prevImagePreviews,
 				...newImageUrls,

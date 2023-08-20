@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { Dispatch, useState } from 'react';
 import NewInput from './input/new-input';
 import Button from '../ui/button/button';
 import { useRouter } from 'next/navigation';
 
-export default function ExchangeContactForm() {
+export default function ExchangeContactForm({
+	setShowAlert,
+}: {
+	setShowAlert: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
 	const router = useRouter();
 	const [isLoading, setIsLoading] = useState(false);
 	const [formData, setFormData] = useState({
@@ -24,7 +28,7 @@ export default function ExchangeContactForm() {
 		setIsLoading(true);
 		console.log(formData);
 		setIsLoading(false);
-		router.push('/profile?m=s');
+		setShowAlert(true);
 	};
 	return (
 		<form

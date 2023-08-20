@@ -38,7 +38,7 @@ const EditBusiness = async () => {
 		logo: sd.business.base_image || '',
 		description: sd.business.description || '',
 		details: sd.business.details || '',
-		images: sd.business.images || [],
+		images: sd.business.images,
 	};
 	return (
 		<div>

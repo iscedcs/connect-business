@@ -8,6 +8,14 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
 	const session = await getServerSession(options);
 	const accessToken = session?.user.access_token;
+	const bid = session?.user.business_id;
+
+	const modifiedBody = {
+		business_id: bid,
+		gender: '',
+		...body,
+	};
+	console.log(modifiedBody);
 
 	const headers = {
 		'Content-Type': 'application/json',
@@ -15,25 +23,34 @@ export async function POST(req: NextRequest, res: NextResponse) {
 		Authorization: `Bearer ${accessToken}`,
 	};
 
-	try {
-		const url = API + URLS.business.team.create;
+	const url = API + URLS.business.team.create;
 
+	try {
 		const response = await fetch(url, {
 			method: 'POST',
 			headers,
-			body: JSON.stringify(body),
-			// next: { revalidate: 10 },
+			body: JSON.stringify(modifiedBody),
 		});
 
-		if (response.status !== 200) {
-			throw new Error('Something Went wrong');
-		} else {
-			const serverData = await response.json();
+		const serverData = await response.json();
 
+		if (response.ok) {
+			console.log(serverData);
 			return NextResponse.json(serverData);
+		} else {
+			const errorMessage =
+				serverData.errors[0].message ||
+				serverData.message ||
+				'Unknown Error';
+			console.log(errorMessage);
+			throw new Error(errorMessage);
 		}
-	} catch (error: any) {
-		return error?.message;
+	} catch (error) {
+		console.log(error);
+		return NextResponse.json(
+			{ error: 'Internal Server Error' },
+			{ status: 500 }
+		);
 	}
 }
 

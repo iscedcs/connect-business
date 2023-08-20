@@ -16,6 +16,7 @@ interface FileUploaderProps {
 }
 
 const FileUploader: React.FC<FileUploaderProps> = (props) => {
+	console.log(props.image);
 	const [image, setImage] = useState<string>(props.image || '');
 	const [name, setName] = useState<string>('');
 	const [folder] = useState<string>(props.folder || 'unknown');
