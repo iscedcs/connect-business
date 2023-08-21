@@ -12,6 +12,7 @@ export const metadata = {
 	description: 'ISCE Connect for Businesses, Teams, Groups and many more.',
 	viewport:
 		'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
+	manifest: '/manifest.json',
 };
 
 export default function RootLayout({

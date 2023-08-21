@@ -130,7 +130,7 @@ const EditUserForm = ({ userData }: { userData: UserFormP }) => {
 							className='w-full'
 							isLoading={isLoading}
 						>
-							Next
+							Save Changes
 						</Button>
 					</div>
 				</motion.form>
