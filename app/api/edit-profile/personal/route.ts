@@ -24,10 +24,9 @@ export async function POST(req: NextRequest, res: NextResponse) {
 			headers,
 			body: JSON.stringify({
 				name: body.name,
-				// email: body.email,
 				phone: body.phone,
 				gender: body.gender,
-				proile_image: body.profile_image,
+				profile_image: body.profile_image,
 			}),
 		});
 

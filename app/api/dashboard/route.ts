@@ -18,7 +18,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
 		const response = await fetch(url, {
 			headers,
-			// next: { revalidate: 10 },
+			// next: { revalidate: 1 },
 		});
 
 		if (response.status !== 200) {

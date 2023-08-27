@@ -18,7 +18,7 @@ const getServerProfileData = async () => {
 	const response = await fetch(url, {
 		method: 'GET',
 		headers,
-		next: { revalidate: 10 },
+		// next: { revalidate: 1 },
 	});
 
 	if (response.status !== 200) {

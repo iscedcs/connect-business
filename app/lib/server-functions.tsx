@@ -14,7 +14,7 @@ export async function getData() {
 	const url = API + URLS.business.dashboard;
 	const res = await fetch(url, {
 		headers,
-		next: { revalidate: 10 },
+		// next: { revalidate: 1 },
 	});
 	if (!res.ok) {
 		throw new Error('Failed to fetch data');
@@ -34,7 +34,7 @@ export async function getAppointments() {
 	const url = API + URLS.business.appointments.all;
 	const res = await fetch(url, {
 		headers,
-		next: { revalidate: 10 },
+		// next: { revalidate: 1 },
 	});
 
 	if (!res.ok) {
@@ -58,7 +58,7 @@ export async function getStaff() {
 	const response = await fetch(url, {
 		method: 'GET',
 		headers,
-		// next: { revalidate: 10 },
+		// next: { revalidate: 1 },
 	});
 
 	if (!response.ok) {

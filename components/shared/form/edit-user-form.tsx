@@ -52,6 +52,7 @@ const EditUserForm = ({ userData }: { userData: UserFormP }) => {
 	};
 	const handleprofileImage = async (file: any) => {
 		const updatedFormData = { ...formData };
+		console.log(file);
 		updatedFormData.profile_image = file.url;
 		setFormData(updatedFormData);
 	};

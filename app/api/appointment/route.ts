@@ -22,7 +22,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
 			method: 'POST',
 			headers,
 			body: JSON.stringify(body),
-			// next: { revalidate: 10 },
+			// next: { revalidate: 1 },
 		});
 
 		if (response.status !== 200) {
@@ -53,7 +53,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
 		const response = await fetch(url, {
 			method: 'GET',
 			headers,
-			// next: { revalidate: 10 },
+			// next: { revalidate: 1 },
 		});
 
 		if (response.status !== 200) {
