@@ -1,7 +1,6 @@
 import { getAppointments } from '@/app/lib/server-functions';
 import ApointmentList from '@/components/admin/appointment/appointment-list';
 import Calendar from '@/components/admin/appointment/calendar';
-import { NextResponse } from 'next/server';
 import React, { Fragment, useState } from 'react';
 
 export default async function Appointments() {

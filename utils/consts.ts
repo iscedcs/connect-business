@@ -5,8 +5,8 @@ export const URLS = {
 	business: {
 		auth: {
 			create: '/business/auth/create',
-			signin: '/business/auth/login',
 			reset: '/business/auth/reset',
+			signin: '/business/auth/login',
 			// Add more routes under the 'auth' namespace if needed
 		},
 		dashboard: '/business/dashboard',
@@ -23,6 +23,13 @@ export const URLS = {
 			personal: '/business/profile/personal',
 			socials: '/business/profile/b/socials',
 			services: '/business/profile/b/services',
+		},
+		card: {
+			downloadCard: '/business/profile/card/download', //GET
+			downloadContact: '/business/profile/contact/download', //GET
+			profile: '/business/profile/card', //GET
+			register: '/business/team-members/card', //POST
+			share: '/business/profile/business/contact/share', //POST
 		},
 
 		// Add more namespaces or routes under 'business' if needed

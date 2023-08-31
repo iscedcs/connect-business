@@ -534,3 +534,135 @@ interface Message {
 	type: 'success' | 'error' | 'info';
 	message: string;
 }
+
+interface CardProfileI {}
+
+interface CardFeatureI {
+	id: number;
+	feature_id: string;
+	business_id: string;
+	type: string;
+	icon: string;
+	label: string;
+	content: string;
+	position: number;
+	status: number;
+	createdAt: string;
+	updatedAt: string;
+}
+
+interface CardImageI {
+	id: number;
+	image_id: string;
+	business_id: string;
+	name: string;
+	url: string;
+	createdAt: string;
+	updatedAt: string;
+}
+
+interface CardsCardI {
+	id: number;
+	card_id: string;
+	user_id: string;
+	theme_id: string;
+	theme_color: string;
+	card_lang: string;
+	cover: string;
+	profile: string;
+	card_url: string;
+	card_type: string;
+	title: string;
+	sub_title: string;
+	description: string;
+	card_status: string;
+	status: string;
+	locked: string;
+	created_at: string;
+	updated_at: string;
+}
+
+interface CardFieldI {
+	id: string;
+	card_id: string;
+	type: string;
+	icon: string;
+	label: string;
+	content: string;
+	position: string;
+	status: string;
+	created_at: string;
+	updated_at: string;
+}
+
+interface CardServiceI {
+	id: string;
+	card_id: string;
+	service_name: string;
+	service_image: string;
+	service_description: string;
+	enable_enquiry: string;
+	status: string;
+	created_at: string;
+	updated_at: string;
+	phone: string;
+	link: string;
+}
+
+interface UserI {
+	id: number;
+	member_id: string;
+	business_id: string;
+	device_id: string;
+	device_type: string;
+	user_id: string;
+	name: string;
+	email: string;
+	job_title: string;
+	job_description: string;
+	isExecutive: string;
+	password: string;
+	profile_image: string;
+	phone: string;
+	role: string;
+	gender: string;
+	waitlist: string;
+	deleted: string;
+	createdAt: string;
+	updatedAt: string;
+}
+
+interface CardI {
+	card: CardsCardI;
+	fields: CardFieldI[];
+	services: CardServiceI[];
+	download_url: string;
+}
+
+interface BusinessI {
+	id: number;
+	business_id: string;
+	name: string;
+	email: string;
+	type: string;
+	phone: string;
+	address: string;
+	website: string;
+	tax_id: string;
+	description: string;
+	details: string;
+	base_image: string;
+	deleted: string;
+	createdAt: string;
+	updatedAt: string;
+	settings: string;
+	services: CardServiceI[];
+	features: CardFeatureI[];
+	images: CardImageI[];
+}
+
+interface CardFullDataI {
+	business: BusinessI;
+	card: CardI;
+	user: UserI;
+}
