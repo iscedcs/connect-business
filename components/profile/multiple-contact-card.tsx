@@ -28,16 +28,28 @@ export default function MultipleContactCard({
 					color: color && color,
 				}}
 			>
-				{label === 'email' && <Icons.EmailIcon />}
-				{label === 'instagram' && <Icons.InstagramIcon />}
-				{label === 'linkedIn' && <Icons.LinkedIcon />}
-				{label === 'phone' && <Icons.PhoneIcon />}
-				{label === 'snapChat' && <Icons.CustomizeIcon />}
-				{label === 'tikTok' && <Icons.CustomizeIcon />}
-				{label === 'twitter' && <Icons.TwitterIcon />}
-				{label === 'website' && <Icons.CustomizeIcon />}
-				{label === 'whatsapp' && <Icons.WhatsappIcon />}
-				{label === 'string' && <Icons.CustomizeIcon />}
+				{label.toLowerCase() === 'email' && <Icons.EmailIcon />}
+				{label.toLowerCase() === 'instagram' && (
+					<Icons.InstagramIcon />
+				)}
+				{label.toLowerCase() === 'linkedIn' && <Icons.LinkedIcon />}
+				{label.toLowerCase() === 'phone' && <Icons.PhoneIcon />}
+				{label.toLowerCase() === 'snapChat' && (
+					<Icons.CustomizeIcon />
+				)}
+				{label.toLowerCase() === 'tikTok' && (
+					<Icons.CustomizeIcon />
+				)}
+				{label.toLowerCase() === 'twitter' && <Icons.TwitterIcon />}
+				{label.toLowerCase() === 'website' && (
+					<Icons.CustomizeIcon />
+				)}
+				{label.toLowerCase() === 'whatsapp' && (
+					<Icons.WhatsappIcon />
+				)}
+				{label.toLowerCase() === 'string' && (
+					<Icons.CustomizeIcon />
+				)}
 			</DialogTrigger>
 			<DialogContent>
 				<DialogHeader>
@@ -57,34 +69,44 @@ export default function MultipleContactCard({
 						>
 							<Card className='flex h-10 rounded-md overflow-hidden'>
 								<div className='h-10 w-10 rounded-md overflow-hidden'>
-									{social.label === 'email' && (
+									{social.label.toLowerCase() ===
+										'email' && (
 										<Icons.EmailIcon />
 									)}
-									{social.label === 'instagram' && (
+									{social.label.toLowerCase() ===
+										'instagram' && (
 										<Icons.InstagramIcon />
 									)}
-									{social.label === 'linkedIn' && (
+									{social.label.toLowerCase() ===
+										'linkedIn' && (
 										<Icons.LinkedIcon />
 									)}
-									{social.label === 'phone' && (
+									{social.label.toLowerCase() ===
+										'phone' && (
 										<Icons.PhoneIcon />
 									)}
-									{social.label === 'snapChat' && (
+									{social.label.toLowerCase() ===
+										'snapChat' && (
 										<Icons.CustomizeIcon />
 									)}
-									{social.label === 'tikTok' && (
+									{social.label.toLowerCase() ===
+										'tikTok' && (
 										<Icons.CustomizeIcon />
 									)}
-									{social.label === 'twitter' && (
+									{social.label.toLowerCase() ===
+										'twitter' && (
 										<Icons.TwitterIcon />
 									)}
-									{social.label === 'website' && (
+									{social.label.toLowerCase() ===
+										'website' && (
 										<Icons.CustomizeIcon />
 									)}
-									{social.label === 'whatsapp' && (
+									{social.label.toLowerCase() ===
+										'whatsapp' && (
 										<Icons.WhatsappIcon />
 									)}
-									{social.label === 'string' && (
+									{social.label.toLowerCase() ===
+										'string' && (
 										<Icons.CustomizeIcon />
 									)}
 								</div>
