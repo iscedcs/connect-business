@@ -142,8 +142,19 @@ export function getUrlForLabel(
 	value: string
 ): string | undefined {
 	const urlFormatter = labelToUrlMap[label.toLowerCase()];
+
 	if (urlFormatter) {
-		return urlFormatter(value);
+		// Check if the value already starts with a known URL scheme (e.g., "http://" or "https://")
+		if (value.match(/^(https?|ftp):\/\//i)) {
+			return value; // Return the value as is
+		}
+
+		// Check if the value starts with a domain (e.g., "instagram.com")
+		if (value.match(/^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
+			return `https://${value}`; // Add "https://" protocol
+		}
+
+		return urlFormatter(`${value}`);
 	}
 	return undefined; // Return undefined if label is not recognized
 }
