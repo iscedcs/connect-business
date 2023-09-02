@@ -181,7 +181,7 @@ export default function Connect() {
 						<TabsContent value='about'>
 							<div className='w-full'>
 								<p className='flex-grow-0 flex-shrink-0 max-w-2xl text-base text-black my-5'>
-									{data.business.description}
+									{data.business.details}
 								</p>
 								<div className='flex gap-3 flex-nowrap overflow-x-scroll pb-5 w-full justify-start lg:justify-center p-2'>
 									{data.business.images.map(
