@@ -105,7 +105,7 @@ export default function Connect() {
 						</TabsList>
 						<TabsContent value='connect'>
 							<div className='w-full'>
-								<div className='w-screen flex flex-col justify-start py-2 lg:justify-center md:flex-row flex-wrap md:flex-nowrap h-[160px] md:h-fit gap-3 md:gap-5 overflow-x-scroll px-4 lg:px-10'>
+								<div className='w-full flex flex-col justify-start py-2 lg:justify-center md:flex-row flex-wrap md:flex-nowrap h-[160px] md:h-fit gap-3 md:gap-5 overflow-x-scroll px-4 lg:px-10'>
 									{Object.keys(result).map(
 										(label, k) => {
 											console.log(
@@ -180,19 +180,19 @@ export default function Connect() {
 						</TabsContent>
 						<TabsContent value='about'>
 							<div className='w-full'>
-								<p className='flex-grow-0 flex-shrink-0 max-w-2xl text-base text-black'>
+								<p className='flex-grow-0 flex-shrink-0 max-w-2xl text-base text-black my-5'>
 									{data.business.description}
 								</p>
-								<div className='flex gap-3 flex-nowrap overflow-x-scroll pb-5 w-full justify-start lg:justify-center'>
+								<div className='flex gap-3 flex-nowrap overflow-x-scroll pb-5 w-full justify-start lg:justify-center p-2'>
 									{data.business.images.map(
 										(i, k) => (
 											<div
-												className='w-60 shrink-0 overflow-hidden rounded-3xl'
+												className='flex-grow-0 flex-shrink-0 w-40 md:w-72 aspect-[3/4] overflow-hidden rounded-3xl'
 												key={k}
 											>
 												<BlurImage
 													src={i.url}
-													className='max-w-72 h-96 rounded-3xl object-cover'
+													className='max-w-72 h-full rounded-3xl object-cover'
 													alt='About 1'
 													height={384}
 													width={288}
