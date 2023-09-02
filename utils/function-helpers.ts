@@ -109,3 +109,41 @@ export const generateUniqueID = (): string => {
 	console.log(id);
 	return id;
 };
+
+export function splitArrayByLabel(inputArray: SocialFieldI[]): OutputObject {
+	const outputObject: OutputObject = {};
+
+	inputArray.forEach((item) => {
+		const { label, ...rest } = item;
+		if (!outputObject[label]) {
+			outputObject[label] = [];
+		}
+		outputObject[label].push({ label, ...rest });
+	});
+
+	return outputObject;
+}
+
+const labelToUrlMap: LabelToUrlMap = {
+	email: (value) => `mailto:${value}`,
+	phone: (value) => `tel:${value}`,
+	address: (value) =>
+		`https://maps.google.com/?q=${encodeURIComponent(value)}`,
+	whatsapp: (value) => `https://wa.me/${value}`,
+	tiktok: (value) => `https://www.tiktok.com/${value}`,
+	snapchat: (value) => `https://www.snapchat.com/add/${value}`,
+	linkedin: (value) => `https://www.linkedin.com/in/${value}`,
+	instagram: (value) => `https://www.instagram.com/${value}`,
+	twitter: (value) => `https://twitter.com/${value}`,
+};
+
+export function getUrlForLabel(
+	label: string,
+	value: string
+): string | undefined {
+	const urlFormatter = labelToUrlMap[label.toLowerCase()];
+	if (urlFormatter) {
+		return urlFormatter(value);
+	}
+	return undefined; // Return undefined if label is not recognized
+}

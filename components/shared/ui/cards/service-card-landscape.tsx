@@ -1,6 +1,6 @@
 import React from 'react';
 import BlurImage from '../blur-image';
-import { appointmentDeleteIcon, appointmentEditIcon } from '@/utils/icons';
+import { AppointmentDeleteIcon, AppointmentEditIcon } from '@/utils/icons';
 
 const ServiceCardLandscape = ({
 	image,
@@ -38,13 +38,13 @@ const ServiceCardLandscape = ({
 					className='text-rose-500'
 					onClick={handleDelete}
 				>
-					{appointmentDeleteIcon}
+					{<AppointmentDeleteIcon />}
 				</div>
 				<div
 					className='text-blue-500'
 					onClick={handleClick}
 				>
-					{appointmentEditIcon}
+					{<AppointmentEditIcon />}
 				</div>
 			</div>
 		</div>

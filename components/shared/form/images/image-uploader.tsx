@@ -2,7 +2,7 @@
 import React, { useState, useRef } from 'react';
 import Compressor from 'compressorjs';
 import { generateUniqueID } from '@/utils/function-helpers';
-import { imageAddIcon } from '@/utils/icons';
+import { ImageAddIcon } from '@/utils/icons';
 import BlurImage from '../../ui/blur-image';
 import Alert from '../../ui/alert';
 
@@ -147,7 +147,7 @@ const MultipleImagesUploader: React.FC<MultipleImagesUploaderProps> = (
 								className='absolute top-0 right-0 p-2 text-red-500 cursor-pointer'
 							>
 								<IconButton className='bg-white p-1 rounded-full overflow-hidden text-rose-500'>
-									{appointmentDeleteIcon}
+									{<AppointmentDeleteIcon />}
 								</IconButton>
 							</div> */}
 							</div>
@@ -161,7 +161,7 @@ const MultipleImagesUploader: React.FC<MultipleImagesUploaderProps> = (
 									isLoading ? 'animate-spin' : ''
 								}`}
 							>
-								{imageAddIcon}
+								{<ImageAddIcon />}
 							</div>
 							<p className='text-sm text-center text-black'>
 								{isLoading ? 'Uploading' : props.text}

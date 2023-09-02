@@ -1,6 +1,6 @@
 import { options } from '@/app/api/auth/[...nextauth]/options';
 import SettingsCard from '@/components/admin/settings/settings-card';
-import { customizeIcon, editIcon, updateIcon } from '@/utils/icons';
+import { CustomizeIcon, EditIcon, UpdateIcon } from '@/utils/icons';
 import { getServerSession } from 'next-auth';
 import React, { Fragment } from 'react';
 
@@ -13,37 +13,37 @@ export default async function Settings() {
 				{role === 'admin' && (
 					<SettingsCard
 						title='Edit Business Profile'
-						icon={editIcon}
+						icon={<EditIcon />}
 						link='/admin/settings/edit-business'
 					/>
 				)}
 				<SettingsCard
 					title='Edit User Profile'
-					icon={editIcon}
+					icon={<EditIcon />}
 					link='/admin/settings/edit-user'
 				/>
 				{role === 'admin' && (
 					<>
 						<SettingsCard
 							title='Edit Services'
-							icon={editIcon}
+							icon={<EditIcon />}
 							link='/admin/settings/edit-services'
 						/>
 						<SettingsCard
 							title='Edit Social Links'
-							icon={editIcon}
+							icon={<EditIcon />}
 							link='/admin/settings/edit-social'
 						/>
 					</>
 				)}
 				<SettingsCard
 					title='Customize Business Profile'
-					icon={customizeIcon}
+					icon={<CustomizeIcon />}
 					link='/admin/settings/customize-profile'
 				/>
 				<SettingsCard
 					title='Update Passwoord'
-					icon={updateIcon}
+					icon={<UpdateIcon />}
 					link='/admin/settings/update-password'
 				/>
 			</div>

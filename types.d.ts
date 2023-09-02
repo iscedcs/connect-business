@@ -634,7 +634,7 @@ interface UserI {
 
 interface CardI {
 	card: CardsCardI;
-	fields: CardFieldI[];
+	fields: SocialFieldI[];
 	services: CardServiceI[];
 	download_url: string;
 }
@@ -657,7 +657,7 @@ interface BusinessI {
 	updatedAt: string;
 	settings: string;
 	services: CardServiceI[];
-	features: CardFeatureI[];
+	features: SocialFieldI[];
 	images: CardImageI[];
 }
 
@@ -666,3 +666,24 @@ interface CardFullDataI {
 	card: CardI;
 	user: UserI;
 }
+
+type SocialFieldI = {
+	id: number | string;
+	feature_id?: string;
+	business_id?: string;
+	type?: string;
+	icon?: string;
+	label: string;
+	content?: string;
+	position?: string;
+	status?: string;
+	createdAt?: string;
+	updatedAt?: string;
+	card_id?: string;
+	created_at?: string;
+	updated_at?: string;
+};
+
+type OutputObject = Record<string, SocialFieldI[]>;
+
+type LabelToUrlMap = Record<string, (value: string) => string>;

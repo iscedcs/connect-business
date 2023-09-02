@@ -10,11 +10,10 @@ export async function GET(req: NextRequest, res: NextResponse) {
 	const type = req.nextUrl.searchParams.get('type');
 	console.log('ID.......', id);
 	console.log('TYPE.......', type);
+	const url = `${API}${URLS.business.card.profile}?id=${id}&type=${type}`;
 
+	console.log(url);
 	try {
-		const url = `${API}${URLS.business.card.profile}?id=${id}&type=${type}`;
-		console.log(url);
-
 		const response = await fetch(url, {
 			method: 'GET',
 			headers,

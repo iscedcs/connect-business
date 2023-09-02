@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { GetTitle } from '@/utils/function-helpers';
 import { COMPANY_PROFILE } from '@/utils/data';
-import { notificationIcon } from '@/utils/icons';
+import { NotificationIcon } from '@/utils/icons';
 import IconButton from '@/components/shared/ui/button/icon-button';
 import BlurImage from '@/components/shared/ui/blur-image';
 
@@ -35,7 +35,7 @@ const Header = ({ name, logo }: { name?: string; logo?: string }) => {
 						}
 						href='/admin/notifications'
 					>
-						{notificationIcon}
+						{<NotificationIcon />}
 					</IconButton>
 					<div className='hidden md:flex justify-center items-center flex-grow-0 flex-shrink-0 w-fit relative gap-2'>
 						<p className='flex-grow-0 flex-shrink-0 text-base font-bold'>

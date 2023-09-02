@@ -1,6 +1,6 @@
 'use client';
 import { getTimeAgo } from '@/utils/function-helpers';
-import { notificationIcon } from '@/utils/icons';
+import { NotificationIcon } from '@/utils/icons';
 import React, { Fragment, useState } from 'react';
 
 export default function NotificationItem({
@@ -24,7 +24,7 @@ export default function NotificationItem({
 				></div>
 				<div className='flex shrink-0 grow-0 items-center gap-3 relative'>
 					<div className='w-6 shrink-0 grow-0'>
-						{notificationIcon}
+						{<NotificationIcon />}
 					</div>
 					<div className='w-60 md:w-full'>
 						<p className='flex-grow-0 text-base text-left truncate'>

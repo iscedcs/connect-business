@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Modal from '../shared/layouts/modal';
 import AlertModal from '../shared/layouts/alert-modal';
-import { modalCloseIcon } from '@/utils/icons';
+import { ModalCloseIcon } from '@/utils/icons';
 import ExchangeContactForm from '../shared/form/exchange-contact-form';
 import { CARD_VIEW } from '@/utils/data';
 
@@ -26,7 +26,7 @@ const ExchangeContactButton = ({}: Props) => {
 							onClick={() => setShowEC(false)}
 							className='w-16 h-16 flex items-center rounded-full absolute left-0 top-0 px-6'
 						>
-							{modalCloseIcon}
+							{<ModalCloseIcon />}
 						</div>
 						Exchange Contact
 					</div>

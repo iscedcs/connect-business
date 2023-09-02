@@ -1,9 +1,9 @@
 'use client';
 import {
-	modalCloseIcon,
-	modalFailureIcon,
-	modalInfoIcon,
-	modalSuccessIcon,
+	ModalCloseIcon,
+	ModalFailureIcon,
+	ModalInfoIcon,
+	ModalSuccessIcon,
 } from '@/utils/icons';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 import Button from '../ui/button/button';
@@ -58,7 +58,7 @@ const AlertModal = ({ isOpen, onClose, type, message, title }: ModalProps) => {
 								onClick={onClose}
 								className='w-16 h-16 flex items-center rounded-full absolute left-0 top-0 px-6 shrink-0 grow-0'
 							>
-								{modalCloseIcon}
+								{<ModalCloseIcon />}
 							</button>
 							<div>{title}</div>
 						</div>
@@ -73,11 +73,13 @@ const AlertModal = ({ isOpen, onClose, type, message, title }: ModalProps) => {
 											: 'text-blue-600'
 									}`}
 								>
-									{type === 'success'
-										? modalSuccessIcon
-										: type === 'error'
-										? modalFailureIcon
-										: modalInfoIcon}
+									{type === 'success' ? (
+										<ModalSuccessIcon />
+									) : type === 'error' ? (
+										<ModalFailureIcon />
+									) : (
+										<ModalInfoIcon />
+									)}
 								</div>
 								<div className='text-center'>
 									{message}

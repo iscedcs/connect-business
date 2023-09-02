@@ -4,7 +4,7 @@ import BlurImage from '../shared/ui/blur-image';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Modal from '../shared/layouts/modal';
-import { doubleRightIcon, modalCloseIcon } from '@/utils/icons';
+import { DoubleRightIcon, ModalCloseIcon } from '@/utils/icons';
 import Button from '../shared/ui/button/button';
 import BookAppointmentForm from '../shared/form/book-appointments-form';
 import AlertModal from '../shared/layouts/alert-modal';
@@ -54,7 +54,7 @@ export default function ServiceCard({
 								hovered && 'pl-10'
 							} transition-all duration-500`}
 						>
-							{doubleRightIcon}
+							{<DoubleRightIcon />}
 						</span>
 					</Link>
 				) : (
@@ -94,7 +94,7 @@ export default function ServiceCard({
 							onClick={() => setServiceIsOpen(false)}
 							className='w-16 h-16 rounded-full absolute left-0 top-0 px-6'
 						>
-							{modalCloseIcon}
+							{<ModalCloseIcon />}
 						</button>
 						{title}
 					</div>
@@ -134,7 +134,7 @@ export default function ServiceCard({
 							onClick={() => setShowAppointment(false)}
 							className='w-16 h-16 rounded-full absolute left-0 top-0 px-6'
 						>
-							{modalCloseIcon}
+							{<ModalCloseIcon />}
 						</button>
 						Book Appointment
 					</div>

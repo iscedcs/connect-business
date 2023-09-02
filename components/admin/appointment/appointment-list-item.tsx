@@ -4,9 +4,9 @@ import React, { MouseEventHandler } from 'react';
 import Modal from '../../shared/layouts/modal';
 import Button from '@/components/shared/ui/button/button';
 import {
-	appointmentDeleteIcon,
-	appointmentEditIcon,
-	modalCloseIcon,
+	AppointmentDeleteIcon,
+	AppointmentEditIcon,
+	ModalCloseIcon,
 } from '@/utils/icons';
 import NewInput from '@/components/shared/form/input/new-input';
 import EditAppointmentForm from '@/components/shared/form/edit-appointments-form';
@@ -69,13 +69,13 @@ export default function AppointmentListItem({
 								className='flex flex-grow-0 flex-shrink-0 relative'
 								onClick={handleDelete}
 							>
-								{appointmentDeleteIcon}
+								{<AppointmentDeleteIcon />}
 							</button>
 							<button
 								className='flex flex-grow-0 flex-shrink-0 relative'
 								onClick={handleEdit}
 							>
-								{appointmentEditIcon}
+								{<AppointmentEditIcon />}
 							</button>
 						</div>
 					)}
@@ -90,7 +90,7 @@ export default function AppointmentListItem({
 							}
 							className='w-16 h-16 rounded-full absolute left-0 top-0 px-6'
 						>
-							{modalCloseIcon}
+							{<ModalCloseIcon />}
 						</button>
 						Profile
 					</div>
@@ -170,7 +170,7 @@ export default function AppointmentListItem({
 							onClick={() => setShowDelete(false)}
 							className='w-16 h-16 rounded-full absolute left-0 top-0 px-6'
 						>
-							{modalCloseIcon}
+							{<ModalCloseIcon />}
 						</button>
 						Delete Appointment
 					</div>
@@ -230,7 +230,7 @@ export default function AppointmentListItem({
 							onClick={() => setShowEdit(false)}
 							className='w-16 h-16 rounded-full absolute left-0 top-0 px-6'
 						>
-							{modalCloseIcon}
+							{<ModalCloseIcon />}
 						</button>
 						Edit Appointment
 					</div>

@@ -9,7 +9,7 @@ import OnboardedEmployees from '@/components/admin/employee/onboarded-employees'
 import { NextResponse } from 'next/server';
 import Button from '@/components/shared/ui/button/button';
 import AlertModal from '../shared/layouts/alert-modal';
-import { modalCloseIcon } from '@/utils/icons';
+import { ModalCloseIcon } from '@/utils/icons';
 
 export default function Employees({
 	onboarded,
@@ -181,7 +181,7 @@ export default function Employees({
 									onClick={handleCloseModal}
 									className='w-16 h-16 rounded-full absolute left-0 top-0 px-6'
 								>
-									{modalCloseIcon}
+									{<ModalCloseIcon />}
 								</button>
 								Profile
 							</div>
@@ -333,7 +333,7 @@ export default function Employees({
 										}
 										className='w-16 h-16 rounded-full absolute left-0 top-0 px-6'
 									>
-										{modalCloseIcon}
+										{<ModalCloseIcon />}
 									</button>
 									Delete Profile
 								</div>

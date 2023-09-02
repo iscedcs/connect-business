@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 import Compressor from 'compressorjs';
 import { generateUniqueID } from '@/utils/function-helpers';
 import BlurImage from '../../ui/blur-image';
-import { imageAddIcon, imageProfileIcon } from '@/utils/icons';
+import { ImageAddIcon, ImageProfileIcon } from '@/utils/icons';
 
 interface FileUploaderProps {
 	image?: string;
@@ -129,9 +129,11 @@ const FileUploader: React.FC<FileUploaderProps> = (props) => {
 						<div
 							className={`w-full h-full flex items-center justify-center ${placeholder}`}
 						>
-							{props.type === 'circle'
-								? imageProfileIcon
-								: imageAddIcon}
+							{props.type === 'circle' ? (
+								<ImageProfileIcon />
+							) : (
+								<ImageAddIcon />
+							)}
 							{props.type !== 'circle' && (
 								<p className='text-xs text-center text-black'>
 									{props.text}
