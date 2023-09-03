@@ -21,7 +21,9 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 		null
 	);
 	const [formData, setFormData] = useState<ServiceP>({
-		name: '',
+		id: '',
+		service_id: '',
+		title: '',
 		description: '',
 		image: '',
 		link: '',
@@ -36,7 +38,9 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 	const openModalForAdd = () => {
 		setSelectedService(null);
 		setFormData({
-			name: '',
+			id: '',
+			service_id: '',
+			title: '',
 			description: '',
 			image: '',
 			link: '',
@@ -49,7 +53,7 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 			? services.map((service) =>
 					service.id === selectedService.id ? formData : service
 			  )
-			: [...services, { ...formData, id: Date.now() }];
+			: [...services, { ...formData, id: Date.now().toString() }];
 
 		console.log(formData);
 		console.log(services);
@@ -59,7 +63,7 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 
 	const deleteService = (serviceId: number | string) => {
 		const updatedServices = services.filter(
-			(service) => service.id !== serviceId
+			(service) => service.service_id !== serviceId
 		);
 		setServices(updatedServices);
 	};
@@ -73,11 +77,12 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		setIsLoading(true);
+		console.log(services);
 		try {
 			const response = await fetch(`/api/business/services`, {
 				method: 'POST',
 				body: JSON.stringify({
-					services: services,
+					services,
 				}),
 			});
 			if (response.status === 200) {
@@ -118,13 +123,15 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 				</div>
 				{services.map((service) => (
 					<ServiceCardLandscape
-						key={service.id}
-						name={service.name}
+						key={service.service_id}
+						name={service.title}
 						image={service.image}
 						link={service.link}
 						description={service.description}
 						handleClick={() => openModalForEdit(service)}
-						handleDelete={() => deleteService(service.id!)}
+						handleDelete={() =>
+							deleteService(service.service_id)
+						}
 					/>
 				))}
 			</div>
@@ -169,7 +176,7 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 								/>
 							</svg>
 							<div className='text-center'>
-								{selectedService?.name ||
+								{selectedService?.title ||
 									'Add New Service'}
 							</div>
 						</div>
@@ -187,11 +194,11 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 							type='text'
 							label='Service Rendered'
 							name='services'
-							value={formData.name}
+							value={formData.title}
 							onChange={(e) =>
 								setFormData({
 									...formData,
-									name: e.target.value,
+									title: e.target.value,
 								})
 							}
 						/>

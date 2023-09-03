@@ -460,11 +460,15 @@ interface ProfileP {
 }
 
 interface ServiceP {
-	id?: number | string;
-	name: string;
+	id: string;
+	service_id: string;
+	business_id?: string;
+	title: string;
 	description: string;
 	image: string;
 	link?: string;
+	createdAt?: string;
+	updatedAt?: string;
 }
 interface AllServicesP {
 	services: ServiceP[];

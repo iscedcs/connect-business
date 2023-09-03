@@ -34,7 +34,7 @@ const getServerProfileData = async () => {
 const EditServices = async () => {
 	const sd = await getServerProfileData();
 	console.log('server....', sd);
-	const servicesData: ServiceP[] = sd.business.services || [];
+	const servicesData: ServiceP[] = await sd.business.services;
 	return (
 		<div>
 			<EditServicesForm servicesData={servicesData} />
