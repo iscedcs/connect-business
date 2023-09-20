@@ -1,44 +1,84 @@
 'use client';
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import TextInput from '@/components/form/input/text-input';
-import Button from '@/components/ui/button/button';
-import Text from '@/components/ui/text';
+import Button from '@/components/shared/ui/button/button';
+import Text from '@/components/shared/ui/text';
 import Link from 'next/link';
 import SigninLayout from './signin-layout';
-import BlurImage from '@/components/ui/blur-image';
-import axios from 'axios';
-import { redirect } from 'next/navigation';
+import BlurImage from '@/components/shared/ui/blur-image';
+import { signIn } from 'next-auth/react';
+import NewInput from '@/components/shared/form/input/new-input';
+import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 
 interface Error {
 	message: string;
+	title: string;
 }
 
-export default function Login() {
+export default function SignUp() {
+	const searchParams = useSearchParams();
+	const errorMessage = searchParams.get('error');
 	const [userName, setUserName] = useState('');
 	const [passWord, setPassWord] = useState('');
-	const [error, setError] = useState<Error[]>([]);
+	const [errorUsername, setErrorUsername] = useState<boolean>(false);
+	const [errorPassword, setErrorPassword] = useState<boolean>(false);
+	const [errorLogin, setErrorLogin] = useState<boolean>(false);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [errors, setErrors] = useState<Error[]>([]);
 
-	const hasErrors = error.length > 0;
+	const hasLoginError = () => {
+		if (errors.some((error) => error.title === 'login')) {
+			setErrorLogin(true);
+		} else setErrorLogin(false);
+	};
 
-	const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-		event.preventDefault();
+	// const handleInput = (e: FormEvent<HTMLFormElement>) => {};
+	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+		setIsLoading(true);
+		e.preventDefault();
 
-		const { data: response } = await axios.post('http://localhost:5000/api/business/auth/login', {
-			email: userName,
-			password: passWord
-		}, { headers: { 'x-api-key': 'UISNAHSJAKKSJSKASL' }});
-
-		if (!response) {
-			console.log(response.message);
+		if (!userName) {
+			setErrors((prevErrors) => [
+				...prevErrors,
+				{ message: 'Please enter username', title: 'username' },
+			]);
+			setErrorUsername(true);
+			setIsLoading(false);
+			return;
+		}
+		if (!passWord) {
+			setErrors((prevErrors) => [
+				...prevErrors,
+				{ message: 'Please Enter Password', title: 'password' },
+			]);
+			setErrorPassword(true);
+			setIsLoading(false);
 			return;
 		}
 
-		window.location.href = '/dashboard';
-		return;
+		try {
+			const result = await signIn('credentials', {
+				email: userName,
+				password: passWord,
+				redirect: true,
+				callbackUrl: '/admin',
+			});
+			setIsLoading(true);
+			return result;
+		} catch (error) {
+			setIsLoading(false);
+			setErrors((prevErrors) => [
+				...prevErrors,
+				{ message: error as string, title: 'login' },
+			]);
+			console.log(error);
+			return;
+		}
 	};
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
+		// console.log(errors);
 
 		if (name === 'username') {
 			setUserName(value);
@@ -47,33 +87,33 @@ export default function Login() {
 		}
 
 		// Clear existing errors
-		setError([]);
+		// setErrors([]);
 
 		// Validate input fields
 		if (name === 'username' && value.trim() === '') {
-			setError((prevErrors) => [
+			setErrors((prevErrors) => [
 				...prevErrors,
-				{ message: 'Username is required' },
+				{ message: 'Username Connot Be Empty', title: name },
 			]);
 		}
 
 		if (name === 'password' && value.trim() === '') {
-			setError((prevErrors) => [
+			setErrors((prevErrors) => [
 				...prevErrors,
-				{ message: 'Password is required' },
+				{ message: 'Password Connot Be Empty', title: name },
 			]);
 		}
 	};
 
 	const leftSide = (
-		<div className='flex flex-col justify-center items-center col-span-2 lg:col-span-1 px-3 lg:px-0 pt-10 lg:pt-0'>
+		<div className='flex flex-col justify-center items-center col-span-3 lg:col-span-1 px-3 lg:px-0 pt-10 lg:pt-0'>
 			<form
-				className='overflow-hidden bg-white flex flex-col justify-between max-w-[400px] h-[500px] xl:h-[650px] 2xl:h-[750px]'
+				className='overflow-hidden bg-white flex flex-col justify-between max-w-[400px] w-full min-w-[280px] px-2 h-[500px] xl:h-[650px] 2xl:h-[750px]'
 				onSubmit={handleSubmit}
 			>
-				<div>
+				<div className=''>
 					<div className='mx-auto h-6 xl:h-10 mb-5'>
-						<BlurImage
+						<Image
 							src='/img/logo_full_black.svg'
 							alt='ISCE Connect Logo'
 							height={48}
@@ -97,21 +137,38 @@ export default function Login() {
 							</Text>
 						</div>
 						<div className='flex flex-col gap-3 xl:gap-6'>
+							{errorLogin && (
+								<div className='text-rose-600 text-xs text-center'>
+									Error Occured
+								</div>
+							)}
+							{errorMessage !== '' && (
+								<div className='text-rose-600 text-xs text-center capitalize'>
+									{errorMessage}
+								</div>
+							)}
 							<div className='flex flex-col gap-2 xl:gap-6'>
-								<TextInput
+								<NewInput
+									type='text'
 									className='w-full'
 									label='Business ID'
 									name='username'
+									value={userName}
+									onInput={handleChange}
 									onBlur={handleChange}
-									error={hasErrors}
+									hasError={errorUsername}
+									errorMessage='UserName Error'
 								/>
-								<TextInput
-									variant='password'
+								<NewInput
+									type='password'
 									className='w-full'
 									label='Password'
 									name='password'
+									value={passWord}
+									onInput={handleChange}
 									onBlur={handleChange}
-									error={hasErrors}
+									hasError={errorPassword}
+									errorMessage='Password Error'
 								/>
 							</div>
 							<Text
@@ -131,6 +188,7 @@ export default function Login() {
 					</div>
 				</div>
 				<Button
+					isLoading={isLoading}
 					variant='primary'
 					className='w-full'
 					type={'submit'}

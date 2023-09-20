@@ -36,4 +36,4 @@ yarn-error.log*
 next-env.d.ts
 
 # Always remember to comment middleware.ts
-middleware.ts
+# middleware.ts

@@ -1,36 +1,33 @@
-'use client';
 import './globals.css';
-import { SessionProvider } from 'next-auth/react';
-import { Inter } from 'next/font/google';
+import { Mulish } from 'next/font/google';
 import NextTopLoader from 'nextjs-toploader';
-import { Session } from 'next-auth';
+import Provider from '@/components/helpers/session-provider';
 
-const inter = Inter({ subsets: ['latin'] });
+const mulish = Mulish({
+	subsets: ['latin'],
+});
 
-// interface NextAuthSession extends Session {
-// 	user: {
-// 		id: string;
-// 		name: string;
-// 		email: string;
-// 	};
-// }
+export const metadata = {
+	title: 'ISCE | Connect For Business',
+	description: 'ISCE Connect for Businesses, Teams, Groups and many more.',
+	viewport:
+		'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
+	manifest: '/manifest.json',
+};
 
 export default function RootLayout({
 	children,
-	session,
 }: {
 	children: React.ReactNode;
-	session: any;
-	// session: NextAuthSession;
 }) {
 	return (
 		<html lang='en'>
-			<SessionProvider session={session}>
-				<body className={inter.className}>
+			<Provider>
+				<body className={`${mulish.className}`}>
 					<NextTopLoader showSpinner={false} />
 					{children}
 				</body>
-			</SessionProvider>
+			</Provider>
 		</html>
 	);
 }

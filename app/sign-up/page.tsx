@@ -1,19 +1,22 @@
 'use client';
-import Checkbox from '@/components/form/checkbox/checkbox';
-import TextInput from '@/components/form/input/text-input';
-import Button from '@/components/ui/button/button';
-import Text from '@/components/ui/text';
+import Checkbox from '@/components/shared/form/checkbox/checkbox';
+import TextInput from '@/components/shared/form/input/text-input';
+import Button from '@/components/shared/ui/button/button';
+import Text from '@/components/shared/ui/text';
 import Link from 'next/link';
 import React, { Fragment } from 'react';
 import SigninLayout from '../sign-in/signin-layout';
-import BlurImage from '@/components/ui/blur-image';
-import SelectInput from '@/components/form/select/select-input';
-import { API, URLS } from '@/utils/consts';
+import BlurImage from '@/components/shared/ui/blur-image';
+import SelectInput from '@/components/shared/form/select/select-input';
+import Modal from '@/components/shared/layouts/modal';
+import { createBusiness } from '@/utils/server-data-retrival-functions';
+import NewInput from '@/components/shared/form/input/new-input';
 import axios from 'axios';
-import Modal from '@/components/layouts/modal';
+import { API, URLS } from '@/utils/consts';
 
 export default function SignUp() {
 	const [failureMessage, setFailureMessage] = React.useState('');
+	const [isLoading, setIsLoading] = React.useState(false);
 	const [successMessage, setSuccessMessage] = React.useState('');
 	const [formData, setFormData] = React.useState({
 		name: '',
@@ -23,9 +26,16 @@ export default function SignUp() {
 		confirm_password: '',
 		termsAgreed: false,
 	});
+
+	const config = {
+		headers: {
+			'Content-Type': 'application/json',
+			'x-api-key': 'UISNAHSJAKKSJSKASL',
+		},
+	};
+
 	const [successModal, setSuccessModal] = React.useState(false);
 	const [failureModal, setFailureModal] = React.useState(false);
-	console.log(formData);
 
 	const options = [
 		'Service Based Business',
@@ -34,24 +44,21 @@ export default function SignUp() {
 	];
 
 	const handleSelect = (option: string) => {
-		console.log('Selected option:', option);
 		setFormData((prevFormData) => ({
 			...prevFormData,
 			type: option,
 		}));
-		// Do something with the selected option
 	};
 
 	const handleChecked = (checked: boolean) => {
-		console.log(checked);
 		setFormData((prevFormData) => ({
 			...prevFormData,
 			termsAgreed: checked,
 		}));
-		// Do something with the selected option
 	};
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		// console.log(formData);
 		const { name, value, type, checked } = e.target;
 		const fieldValue = type === 'checkbox' ? checked : value;
 		setFormData((prevFormData) => ({
@@ -62,6 +69,7 @@ export default function SignUp() {
 
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
+		setIsLoading(true);
 
 		const data = {
 			name: formData.name,
@@ -71,10 +79,7 @@ export default function SignUp() {
 			confirm_password: formData.password,
 		};
 
-		console.log(data);
-
 		try {
-			// Validate the form data
 			if (
 				!formData.name ||
 				!formData.email ||
@@ -82,21 +87,23 @@ export default function SignUp() {
 				!formData.password ||
 				formData.password !== formData.confirm_password
 			) {
+				setIsLoading(false);
 				throw new Error('Invalid form data'); // Throw an error instead of sending a response
 			}
 
-			// Make the API request to create the business account
-			const { data: response } = await axios.post(
+			const { data: response } = await await axios.post(
 				API + URLS.business.auth.create,
-				data
+				data,
+				config
 			);
-			console.log(response);
 
 			if (!response) {
+				setIsLoading(false);
 				throw new Error('Hello! Something went wrong');
 			}
 			setSuccessModal(true);
 			setSuccessMessage(response);
+			setIsLoading(false);
 			setFormData({
 				name: '',
 				email: '',
@@ -105,11 +112,13 @@ export default function SignUp() {
 				confirm_password: '',
 				termsAgreed: false,
 			});
+			setSuccessMessage(response.message);
+			return response.data;
 		} catch ({ error }: any) {
 			const errorMessage =
 				error?.response?.data?.message || error?.message;
-			// Handle any unexpected errors
-			// Handle the error accordingly, e.g., show an error message to the user
+
+			setIsLoading(false);
 			setFailureModal(true);
 			setFailureMessage(errorMessage);
 			console.error(errorMessage); // Log the error
@@ -152,7 +161,7 @@ export default function SignUp() {
 			<form
 				method='POST'
 				onSubmit={handleSubmit}
-				className='overflow-hidden bg-white flex flex-col justify-between max-w-[400px] h-[500px] xl:h-[650px] 2xl:h-[750px]'
+				className='overflow-hidden bg-white flex flex-col justify-between max-w-[400px] min-h-[500px]'
 			>
 				<div className='mx-auto h-6 xl:h-10 mb-5'>
 					<BlurImage
@@ -163,7 +172,7 @@ export default function SignUp() {
 						className='object-cover object-center w-full h-full'
 					/>
 				</div>
-				<div className=''>
+				<div className=' mb-5'>
 					<div className='flex flex-col justify-center items-center xl:gap-2 mb-4 xl:mb-6'>
 						<Text
 							color='black'
@@ -178,18 +187,25 @@ export default function SignUp() {
 					</div>
 					<div className='flex flex-col gap-3 xl:gap-6'>
 						<div className='flex flex-col gap-2 xl:gap-6'>
-							<TextInput
+							<NewInput
+								type='text'
 								className='w-full'
 								label='Business Name'
 								name='name'
+								value={formData.name}
+								onInput={handleChange}
 								onBlur={handleChange}
+								errorMessage='Business Name Error'
 							/>
-							<TextInput
+							<NewInput
+								type='email'
 								className='w-full'
-								variant='email'
 								label='Business Email'
 								name='email'
+								value={formData.email}
+								onInput={handleChange}
 								onBlur={handleChange}
+								errorMessage='Business Email Error'
 							/>
 							<SelectInput
 								options={options}
@@ -197,19 +213,25 @@ export default function SignUp() {
 								onSelect={handleSelect}
 								name='type'
 							/>
-							<TextInput
-								variant='password'
+							<NewInput
+								type='password'
 								className='w-full'
 								label='Password'
 								name='password'
+								value={formData.password}
+								onInput={handleChange}
 								onBlur={handleChange}
+								errorMessage='Password Error'
 							/>
-							<TextInput
-								variant='password'
+							<NewInput
+								type='password'
 								className='w-full'
 								label='Confirm Password'
 								name='confirm_password'
+								value={formData.confirm_password}
+								onInput={handleChange}
 								onBlur={handleChange}
+								errorMessage='Confirm Password Error'
 							/>
 						</div>
 						<div className='flex justify-start items-start relative gap-3'>
@@ -242,6 +264,7 @@ export default function SignUp() {
 					</div>
 				</div>
 				<Button
+					isLoading={isLoading}
 					variant='primary'
 					className='w-full'
 				>
@@ -260,22 +283,23 @@ export default function SignUp() {
 				onClose={() => setSuccessModal(false)}
 				isOpen={successModal}
 			>
-				<div className='h-[500px] w-[500px] flex justify-center items-center bg-white rounded-3xl'>
+				<div className='h-[500px] w-[500px] flex flex-col gap-5 justify-center items-center bg-white rounded-3xl'>
 					<svg
 						width={132}
 						height={132}
 						viewBox='0 0 132 132'
 						fill='none'
 						xmlns='http://www.w3.org/2000/svg'
-						className='w-[132px] h-[132px] relative'
+						className='w-[132px] h-[132px] flex items-center justify-center relative'
 						preserveAspectRatio='xMidYMid meet'
 					>
 						<rect
-							width={132}
-							height={132}
+							width={80}
+							height={80}
 							rx={66}
 							fill='#00B96B'
 							fillOpacity='0.12'
+							className='animate-scale absolute top-1/2 left-1/2 -translate-y-1/2'
 						/>
 						<path
 							d='M66.0013 84.3337C76.1265 84.3337 84.3346 76.1255 84.3346 66.0003C84.3346 55.8751 76.1265 47.667 66.0013 47.667C55.8761 47.667 47.668 55.8751 47.668 66.0003C47.668 76.1255 55.8761 84.3337 66.0013 84.3337Z'
@@ -286,6 +310,16 @@ export default function SignUp() {
 							fill='#FFFFFE'
 						/>
 					</svg>
+
+					<div className='mb-10'>{successMessage}</div>
+
+					<Button
+						className='w-[200px]'
+						variant='success'
+						onClick={() => setSuccessModal(false)}
+					>
+						Close
+					</Button>
 				</div>
 			</Modal>
 			<Modal
@@ -314,7 +348,14 @@ export default function SignUp() {
 							fill='#BA1A1A'
 						/>
 					</svg>
-					<span>Failed</span>
+					<div>Something Went Wrong</div>
+
+					<Button
+						onClick={() => setFailureModal(false)}
+						variant='primary'
+					>
+						Close
+					</Button>
 				</div>
 			</Modal>
 		</Fragment>

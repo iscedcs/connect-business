@@ -1,12 +1,12 @@
 'use client';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Button from '@/components/ui/button/button';
-import TextInput from '@/components/form/input/text-input';
-import Text from '@/components/ui/text';
+import Button from '@/components/shared/ui/button/button';
+import TextInput from '@/components/shared/form/input/text-input';
+import Text from '@/components/shared/ui/text';
 import Link from 'next/link';
-import VerificationCodeValidationBox from '@/components/form/verification-code-box/verification-code-input';
-import BlurImage from '@/components/ui/blur-image';
+import VerificationCodeValidationBox from '@/components/shared/form/verification-code-box/verification-code-input';
+import BlurImage from '@/components/shared/ui/blur-image';
 
 type ResetPageState =
 	| 'enter-email'
@@ -24,8 +24,8 @@ const PasswordResetPage = () => {
 	const handleVerificationCode = (code: string) => {
 		setVerificationCode(code);
 	};
-	console.log(error);
-	console.log(verificationCode);
+	// console.log(error);
+	// console.log(verificationCode);
 
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 	const verificationCodeRegex = /^\d{4}$/;
