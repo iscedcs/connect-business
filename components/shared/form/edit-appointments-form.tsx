@@ -32,7 +32,7 @@ export default function EditAppointmentForm({
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		setIsLoading(true);
-		console.log(formData);
+		// console.log(formData);
 		setIsLoading(false);
 		setShowEdit(false);
 	};

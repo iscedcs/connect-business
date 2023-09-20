@@ -1,13 +1,12 @@
 import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
-import { options } from '../auth/[...nextauth]/options';
 import { API, URLS } from '@/utils/consts';
+import { options } from '../../auth/[...nextauth]/options';
 
 export async function POST(req: NextRequest, res: NextResponse) {
-	const body = await req.json();
-	const id = body.id;
-	const wl: string = body.waitlist.toString();
+	const body: UserFormP = await req.json();
 
+	// console.log(body);
 	const session = await getServerSession(options);
 	const accessToken = session?.user.access_token;
 
@@ -18,20 +17,19 @@ export async function POST(req: NextRequest, res: NextResponse) {
 	};
 
 	try {
-		const url = `${API}${URLS.business.team.onboard}${id}`;
+		const url = `${API}${URLS.business.profile.socials}`;
 		// console.log(url);
 		const response = await fetch(url, {
 			method: 'POST',
 			headers,
-			body: JSON.stringify({ waitlist: wl }),
-			// next: { revalidate: 1 },
+			body: JSON.stringify(body),
 		});
 
 		if (response.status !== 200) {
+			// console.log(response);
 			throw new Error(`Something Went wrong ${response.statusText}`);
 		} else {
 			const serverData = await response.json();
-
 			return NextResponse.json(serverData);
 		}
 	} catch (error: any) {

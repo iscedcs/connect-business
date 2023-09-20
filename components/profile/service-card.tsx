@@ -1,7 +1,6 @@
 'use client';
 import React, { useState } from 'react';
 import BlurImage from '../shared/ui/blur-image';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Modal from '../shared/layouts/modal';
 import { DoubleRightIcon, ModalCloseIcon } from '@/utils/icons';

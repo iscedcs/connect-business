@@ -4,7 +4,7 @@ import React, { Fragment } from 'react';
 export default function ProfileAbout() {
 	return (
 		<Fragment>
-			<p className='flex-grow-0 flex-shrink-0 w-full text-base text-black'>
+			<p className='flex-grow-0 flex-shrink-0 w-full text-base text-black max-w-3xl'>
 				Event planning involves the process of organizing and
 				coordinating various elements to create a successful event.
 				This could include social gatherings, corporate conferences,

@@ -32,7 +32,7 @@ export const options: NextAuthOptions = {
 						// console.log(user);
 						return user;
 					} else {
-						console.log('something went wrong');
+						// console.log('something went wrong');
 						return null;
 					}
 				} catch (error) {

@@ -5823,7 +5823,7 @@ export const COMPANY_PROFILE = {
 			image: '/img/template-1.png',
 			name: 'Template-1',
 			active: false,
-			default: true,
+			default: false,
 			themeColor: '#f40dee',
 		},
 		{
@@ -5831,14 +5831,14 @@ export const COMPANY_PROFILE = {
 			image: '/img/template-2.png',
 			name: 'Template-2',
 			active: false,
-			default: false,
+			default: true,
 			themeColor: 'red',
 		},
 		{
 			id: 'template-three',
 			image: '/img/template-3.png',
 			name: 'Template-3',
-			active: true,
+			active: false,
 			default: false,
 			themeColor: 'green',
 		},
@@ -5869,7 +5869,7 @@ export const CUSTOMIZE_TAB: TabProps[] = [
 
 export const CUSTOM_TEMPLATE_LIST = [];
 
-export const SOCIAL_ICONS: SocialIcons[] = [
+export const SOCIAL_ICONS = [
 	{
 		name: 'facebook',
 		icon: (

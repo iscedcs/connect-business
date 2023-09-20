@@ -77,7 +77,7 @@ export default function EditProfileform({
 	});
 
 	const handleAboutChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		console.log(formData);
+		// console.log(formData);
 		const { name, value } = e.target;
 		setFormData((prevFormData) => ({
 			...prevFormData,
@@ -378,7 +378,7 @@ export default function EditProfileform({
 													</div>
 													<div className='h-[20px] w-full text-center text-xs capitalize'>
 														{
-															icon.name
+															icon.label
 														}
 													</div>
 													<IconButton
@@ -567,8 +567,10 @@ export default function EditProfileform({
 								setSocialFD([
 									...SocialFD,
 									{
-										name: socialIcon || '',
-										icon: socialIconLogo,
+										type: '',
+										label: socialIcon || '',
+										icon: '',
+										content: '',
 									},
 								]);
 								setShowSocialIcon(false);

@@ -34,7 +34,7 @@ const EditUserForm = ({ userData }: { userData: UserFormP }) => {
 					type: 'success',
 					message: 'Changes Saved Successfully',
 				});
-				console.log('Saved SUCCESSFULLY');
+				// console.log('Saved SUCCESSFULLY');
 				setIsLoading(false);
 				return NextResponse.json(response);
 			} else {
@@ -42,23 +42,23 @@ const EditUserForm = ({ userData }: { userData: UserFormP }) => {
 					type: 'error',
 					message: 'Could not Save Changes',
 				});
-				console.log(response);
+				// console.log(response);
 				setIsLoading(false);
 				return null;
 			}
 		} catch (error) {
-			console.log(error);
+			// console.log(error);
 		}
 	};
 	const handleprofileImage = async (file: any) => {
 		const updatedFormData = { ...formData };
-		console.log(file);
+		// console.log(file);
 		updatedFormData.profile_image = file.url;
 		setFormData(updatedFormData);
 	};
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		console.log(formData);
+		// console.log(formData);
 		const { name, value } = e.target;
 		setFormData((prevFormData) => ({
 			...prevFormData,

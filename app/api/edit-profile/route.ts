@@ -14,8 +14,8 @@ export async function GET(req: NextRequest, res: NextResponse) {
 	};
 	try {
 		const url = API + URLS.business.profile.all;
-		console.log(accessToken);
-		console.log(url);
+		// console.log(accessToken);
+		// console.log(url);
 
 		const response = await fetch(url, {
 			method: 'GET',
@@ -24,11 +24,11 @@ export async function GET(req: NextRequest, res: NextResponse) {
 		});
 
 		if (response.status !== 200) {
-			console.log(NextResponse.json(response));
+			// console.log(NextResponse.json(response));
 			throw new Error('Something Went wrong');
 		} else {
 			const serverData = await response.json();
-			console.log(serverData);
+			// console.log(serverData);
 			return NextResponse.json(serverData);
 		}
 	} catch (error: any) {

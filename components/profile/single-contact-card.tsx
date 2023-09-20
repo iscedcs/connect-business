@@ -21,16 +21,17 @@ export default function SingleContactCard({
 				color: color && color,
 			}}
 		>
-			{label === 'Email' && <Icons.EmailIcon />}
-			{label === 'Instagram' && <Icons.InstagramIcon />}
-			{label === 'LinkedIn' && <Icons.LinkedIcon />}
-			{label === 'Phone' && <Icons.PhoneIcon />}
-			{label === 'SnapChat' && <Icons.CustomizeIcon />}
-			{label === 'TikTok' && <Icons.CustomizeIcon />}
-			{label === 'Twitter' && <Icons.TwitterIcon />}
-			{label === 'Website' && <Icons.CustomizeIcon />}
-			{label === 'Whatsapp' && <Icons.WhatsappIcon />}
-			{label === 'String' && <Icons.CustomizeIcon />}
+			{label.toLowerCase() === 'email' && <Icons.EmailIcon />}
+			{label.toLowerCase() === 'address' && <Icons.AddressIcon />}
+			{label.toLowerCase() === 'instagram' && <Icons.InstagramIcon />}
+			{label.toLowerCase() === 'linkedin' && <Icons.LinkedIcon />}
+			{label.toLowerCase() === 'phone' && <Icons.PhoneIcon />}
+			{label.toLowerCase() === 'snapchat' && <Icons.CustomizeIcon />}
+			{label.toLowerCase() === 'tiktok' && <Icons.CustomizeIcon />}
+			{label.toLowerCase() === 'twitter' && <Icons.TwitterIcon />}
+			{label.toLowerCase() === 'website' && <Icons.CustomizeIcon />}
+			{label.toLowerCase() === 'whatsapp' && <Icons.WhatsappIcon />}
+			{label.toLowerCase() === 'string' && <Icons.CustomizeIcon />}
 		</Link>
 	);
 }

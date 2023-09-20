@@ -21,7 +21,6 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 		null
 	);
 	const [formData, setFormData] = useState<ServiceP>({
-		id: '',
 		service_id: '',
 		title: '',
 		description: '',
@@ -38,7 +37,6 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 	const openModalForAdd = () => {
 		setSelectedService(null);
 		setFormData({
-			id: '',
 			service_id: '',
 			title: '',
 			description: '',
@@ -51,12 +49,14 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 	const saveService = () => {
 		const updatedServices = selectedService
 			? services.map((service) =>
-					service.id === selectedService.id ? formData : service
+					service.service_id === selectedService.service_id
+						? formData
+						: service
 			  )
 			: [...services, { ...formData, id: Date.now().toString() }];
 
-		console.log(formData);
-		console.log(services);
+		// console.log(formData);
+		// console.log(services);
 		setServices(updatedServices);
 		setIsModalOpen(false);
 	};
@@ -77,7 +77,7 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		setIsLoading(true);
-		console.log(services);
+		// console.log(services);
 		try {
 			const response = await fetch(`/api/business/services`, {
 				method: 'POST',
@@ -87,7 +87,6 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 			});
 			if (response.status === 200) {
 				// setConfirmIsLoading(false);
-				// setprofileModalOpen(false);
 				setMessage({
 					type: 'success',
 					message: 'Changes Saved Successfully',
@@ -100,12 +99,12 @@ const MainComponent: React.FC<MainComponentProps> = ({ servicesData }) => {
 					type: 'error',
 					message: 'Could not Save Changes',
 				});
-				console.log(response);
+				// console.log(response);
 				setIsLoading(false);
 				return null;
 			}
 		} catch (error) {
-			console.log(error);
+			// console.log(error);
 		}
 	};
 

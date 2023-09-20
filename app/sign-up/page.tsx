@@ -58,7 +58,7 @@ export default function SignUp() {
 	};
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		console.log(formData);
+		// console.log(formData);
 		const { name, value, type, checked } = e.target;
 		const fieldValue = type === 'checkbox' ? checked : value;
 		setFormData((prevFormData) => ({

@@ -6,7 +6,7 @@ import { API, URLS } from '@/utils/consts';
 export async function POST(req: NextRequest, res: NextResponse) {
 	const body: BusinessFormP = await req.json();
 
-	console.log(body);
+	// console.log(body);
 	const session = await getServerSession(options);
 	const accessToken = session?.user.access_token;
 
@@ -18,7 +18,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
 	try {
 		const url = `${API}${URLS.business.profile.business}`;
-		console.log(url);
+		// console.log(url);
 		const response = await fetch(url, {
 			method: 'POST',
 			headers,
@@ -38,7 +38,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
 			return NextResponse.json(serverData);
 		}
 	} catch (error: any) {
-		console.log(error?.message);
+		// console.log(error?.message);
 		return error?.message;
 	}
 }

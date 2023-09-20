@@ -6,7 +6,7 @@ import { options } from '../../auth/[...nextauth]/options';
 export async function POST(req: NextRequest, res: NextResponse) {
 	const body: UserFormP = await req.json();
 
-	console.log(body);
+	// console.log(body);
 	const session = await getServerSession(options);
 	const accessToken = session?.user.access_token;
 
@@ -18,21 +18,22 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
 	try {
 		const url = `${API}${URLS.business.profile.services}`;
-		console.log(url);
+		// console.log(url);
 		const response = await fetch(url, {
 			method: 'POST',
 			headers,
+			body: JSON.stringify(body),
 		});
 
 		if (response.status !== 200) {
-			console.log(response);
+			// console.log(response);
 			throw new Error(`Something Went wrong ${response.statusText}`);
 		} else {
 			const serverData = await response.json();
 			return NextResponse.json(serverData);
 		}
 	} catch (error: any) {
-		console.log(error?.message);
+		// console.log(error?.message);
 		return error?.message;
 	}
 }

@@ -29,6 +29,7 @@ export default function MultipleContactCard({
 				}}
 			>
 				{label.toLowerCase() === 'email' && <Icons.EmailIcon />}
+				{label.toLowerCase() === 'address' && <Icons.AddressIcon />}
 				{label.toLowerCase() === 'instagram' && (
 					<Icons.InstagramIcon />
 				)}

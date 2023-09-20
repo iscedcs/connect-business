@@ -17,7 +17,7 @@ export async function DELETE(req: NextRequest) {
 	try {
 		const memberId = extractLastPartFromUrl(req.url);
 		const apiUrl = `${API}${URLS.business.team.create}/${memberId}`;
-		console.log(apiUrl);
+		// console.log(apiUrl);
 		const response = await fetch(apiUrl, {
 			method: 'DELETE',
 			headers,
@@ -32,7 +32,7 @@ export async function DELETE(req: NextRequest) {
 		}
 	} catch (error) {
 		// Handle the error when parsing JSON data
-		console.error(error);
+		// console.error(error);
 		return NextResponse.json(
 			JSON.stringify({
 				status: 400,

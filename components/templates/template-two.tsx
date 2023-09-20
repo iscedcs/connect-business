@@ -3,20 +3,24 @@ import TabMenu from '../profile/profile-tabs';
 import { COMPANY_PROFILE, PROFILE_TAB } from '@/utils/data';
 import BlurImage from '../shared/ui/blur-image';
 import Link from 'next/link';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { getInitials } from '@/utils/function-helpers';
 
 export default function TemplateTwo({
 	children,
 	color,
+	data,
 }: {
 	children: React.ReactNode;
 	color: string;
+	data: CardFullDataI;
 }) {
 	return (
 		<Fragment>
 			<div className='w-full h-[192px] relative'>
 				<div className='overflow-hidden rounded-t-2xl'>
 					<BlurImage
-						src={COMPANY_PROFILE.cardBanner}
+						src={data.business.base_image || ''}
 						alt='header-image'
 						width={1080}
 						height={200}
@@ -66,17 +70,19 @@ export default function TemplateTwo({
 				</Link>
 				<div className='flex flex-col justify-center items-center absolute top-3/4 p-4 md:p-10 left-1/2 -translate-x-1/2 gap-4 w-[80%] bg-white rounded-2xl shadow-mid'>
 					<div className='flex-grow-0 flex-shrink-0 w-[120px] h-[120px] relative overflow-hidden rounded-full bg-gradient-to-b from-black/0 via-black/100 to-black/100 p-[2px]'>
-						<BlurImage
-							className='w-full h-full rounded-full object-center object-cover'
-							src={COMPANY_PROFILE.adminPicture}
-							alt='profile-image'
-							height={110}
-							width={110}
-						/>
+						<Avatar>
+							<AvatarImage
+								src={data.user.profile_image}
+								alt={data.user.name}
+							/>
+							<AvatarFallback>
+								{getInitials(data.user.name)}
+							</AvatarFallback>
+						</Avatar>
 					</div>
 					<div className='flex flex-col gap-2 justify-center items-start flex-grow-0 flex-shrink-0 relative'>
 						<p className='flex-grow-0 flex-shrink-0 text-2xl font-bold text-center w-full'>
-							{COMPANY_PROFILE.admin}
+							{data.user.name}
 						</p>
 						<p className='flex-grow-0 flex-shrink-0 text-xs text-center w-full'>
 							{COMPANY_PROFILE.name} |{' '}

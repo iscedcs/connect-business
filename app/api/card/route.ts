@@ -8,11 +8,11 @@ export async function GET(req: NextRequest, res: NextResponse) {
 	};
 	const id = req.nextUrl.searchParams.get('id');
 	const type = req.nextUrl.searchParams.get('type');
-	console.log('ID.......', id);
-	console.log('TYPE.......', type);
+	// console.log('ID.......', id);
+	// console.log('TYPE.......', type);
 	const url = `${API}${URLS.business.card.profile}?id=${id}&type=${type}`;
 
-	console.log(url);
+	// console.log(url);
 	try {
 		const response = await fetch(url, {
 			method: 'GET',
@@ -20,9 +20,9 @@ export async function GET(req: NextRequest, res: NextResponse) {
 		});
 
 		if (response.status !== 200) {
-			console.log(
-				`${response.status} => ${response.statusText}: 'Something went wrong`
-			);
+			// console.log(
+			// 	`${response.status} => ${response.statusText}: 'Something went wrong`
+			// );
 			throw new Error(
 				`${response.status} => ${response.statusText}: 'Something went wrong`
 			);

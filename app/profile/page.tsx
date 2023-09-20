@@ -3,12 +3,17 @@ import ExchangeContactButton from '@/components/profile/exchange-contact-button'
 import ServiceCard from '@/components/profile/service-card';
 import BlurImage from '@/components/shared/ui/blur-image';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { formatName, splitArrayByLabel } from '@/utils/function-helpers';
+import {
+	formatName,
+	getInitials,
+	splitArrayByLabel,
+} from '@/utils/function-helpers';
 import { useSearchParams } from 'next/navigation';
 import React, { Fragment, useEffect, useState } from 'react';
 import SingleContactCard from '@/components/profile/single-contact-card';
 import MultipleContactCard from '@/components/profile/multiple-contact-card';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 export default function Connect() {
 	const [data, setData] = useState<CardFullDataI | null>(null);
@@ -22,32 +27,29 @@ export default function Connect() {
 			try {
 				const response = await fetch(apiUrl);
 				const data = await response.json();
+				// console.log(data);
 				setData(data.data);
 			} catch (error) {
-				console.log('something went wrong!!!');
+				// console.log('something went wrong!!!');
 			}
 		}
 		fetchData();
 	}, []);
 
 	if (data) {
-		const allServices = [
-			...data?.business.services,
-			...data?.card.services,
-		];
-		const allSocials: SocialFieldI[] = [
-			...data?.business.features,
-			...data?.card.fields,
-		];
+		const allServices = [...data?.business.services];
+		const allSocials = [...data?.business.features];
 		const result: OutputObject = splitArrayByLabel(allSocials);
-		// console.log(result);
 
 		return (
 			<Fragment>
 				<div className='w-full h-[120px] xs:h-[192px] relative'>
 					<div className='overflow-hidden rounded-t-2xl'>
 						<BlurImage
-							src={data.business.base_image}
+							src={
+								data.business.base_image ||
+								'/header-image.jpg'
+							}
 							alt='header-image'
 							width={1080}
 							height={200}
@@ -56,13 +58,15 @@ export default function Connect() {
 					</div>
 					<div className='flex flex-col justify-center items-center absolute top-3/4 p-5 md:p-10 left-1/2 -translate-x-1/2 gap-3 w-[92%] md:w-[80%] bg-white rounded-2xl shadow-mid overflow-hidden'>
 						<div className='flex-grow-0 flex-shrink-0 w-[80px] md:w-[120px] h-[80px] md:h-[120px] overflow-hidden rounded-full bg-gradient-to-b from-black/0 via-black/100 to-black/100 p-[2px]'>
-							<BlurImage
-								className='w-full h-full rounded-full object-center object-cover'
-								src={data.user.profile_image}
-								alt='profile-image'
-								height={110}
-								width={110}
-							/>
+							<Avatar>
+								<AvatarImage
+									src={data.user.profile_image}
+									alt={data.user.name}
+								/>
+								<AvatarFallback>
+									{getInitials(data.user.name)}
+								</AvatarFallback>
+							</Avatar>
 						</div>
 						<div className='flex flex-col gap-2 justify-center items-center'>
 							<p className='text-xl font-bold text-center'>
@@ -84,20 +88,12 @@ export default function Connect() {
 						<TabsList className=''>
 							<TabsTrigger
 								className={`w-24`}
-								// style={{
-								// 	borderColor:
-								// 		data.card.card.theme_color,
-								// }}
 								value='connect'
 							>
 								Connect
 							</TabsTrigger>
 							<TabsTrigger
 								className={`w-24`}
-								// style={{
-								// 	borderColor:
-								// 		data.card.card.theme_color,
-								// }}
 								value='about'
 							>
 								About
@@ -106,46 +102,53 @@ export default function Connect() {
 						<TabsContent value='connect'>
 							<div className='w-full'>
 								<div className='w-full flex flex-col justify-start py-2 lg:justify-center md:flex-row flex-wrap md:flex-nowrap h-[160px] md:h-fit gap-3 md:gap-5 overflow-x-scroll px-4 lg:px-10'>
-									{Object.keys(result).map(
-										(label, k) => {
-											console.log(
-												result[label]
-											);
-											if (
-												result[label]
-													.length > 1
-											) {
-												return (
-													<MultipleContactCard
-														key={k}
-														socials={
-															result[
+									{Object.keys(result).length > 0 ? (
+										Object.keys(result).map(
+											(label, k) => {
+												console.log(label);
+												if (
+													result[label]
+														.length >
+													1
+												) {
+													return (
+														<MultipleContactCard
+															key={
+																k
+															}
+															socials={
+																result[
+																	label
+																]
+															}
+															label={
 																label
-															]
-														}
-														label={
-															label
-														}
-													/>
-												);
-											} else {
-												return (
-													<SingleContactCard
-														key={k}
-														href={
-															result[
+															}
+														/>
+													);
+												} else {
+													return (
+														<SingleContactCard
+															key={
+																k
+															}
+															href={
+																result[
+																	label
+																][0]
+																	.content ||
+																''
+															}
+															label={
 																label
-															][0]
-																.content ||
-															''
-														}
-														label={
-															label
-														}
-													/>
-												);
+															}
+														/>
+													);
+												}
 											}
-										}
+										)
+									) : (
+										<div>No Contact Links</div>
 									)}
 								</div>
 								{allServices.length > 0 && (
@@ -153,19 +156,19 @@ export default function Connect() {
 										<p className='font-bold'>
 											Our Service
 										</p>
-										<div className='flex gap-3 flex-nowrap overflow-x-scroll pb-5 w-full'>
+										<div className='flex gap-3 flex-nowrap overflow-x-scroll pb-5 w-full justify-center'>
 											{allServices.map(
 												(service, k) => (
 													<ServiceCard
 														key={k}
 														image={
-															service.service_image
+															service.image
 														}
 														title={
-															service.service_name
+															service.title
 														}
 														description={
-															service.service_description
+															service.description
 														}
 														link={
 															service.link
@@ -179,11 +182,11 @@ export default function Connect() {
 							</div>
 						</TabsContent>
 						<TabsContent value='about'>
-							<div className='w-full'>
+							<div className='w-full flex flex-col items-center'>
 								<p className='flex-grow-0 flex-shrink-0 max-w-2xl text-base text-black my-5'>
 									{data.business.details}
 								</p>
-								<div className='flex gap-3 flex-nowrap overflow-x-scroll pb-5 w-full justify-start lg:justify-center p-2'>
+								<div className='flex gap-3 flex-nowrap overflow-x-scroll pb-5 w-full justify-start lg:justify-center p-2 max-w-3xl'>
 									{data.business.images.map(
 										(i, k) => (
 											<div
@@ -252,7 +255,7 @@ export default function Connect() {
 								})}
 							</div>
 							<div className='flex flex-col gap-4 w-full'>
-								<p className='font-bold'>Our Service</p>
+								<Skeleton className='border border-gray-300 h-6 w-20 mx-auto' />
 								<div className='flex gap-3 flex-nowrap overflow-x-scroll pb-5 w-full'>
 									{[1, 2, 3, 4].map((k) => (
 										<Skeleton

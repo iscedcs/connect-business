@@ -1,14 +1,17 @@
+import { getServerProfileData } from '@/app/lib/server-functions';
 import TemplateOne from '@/components/templates/template-one';
 import TemplateThree from '@/components/templates/template-three';
 import TemplateTwo from '@/components/templates/template-two';
 import { COMPANY_PROFILE } from '@/utils/data';
 import Link from 'next/link';
 
-export default function ProfileLayout({
+export default async function ProfileLayout({
 	children,
 }: {
 	children: React.ReactNode;
 }) {
+	const data: CardFullDataI = await getServerProfileData();
+
 	const activeTemplate = COMPANY_PROFILE.templates.find(
 		(template) => template.active
 	);
@@ -28,7 +31,10 @@ export default function ProfileLayout({
 			break;
 		case 'Template-2':
 			layout = (
-				<TemplateTwo color={template.themeColor}>
+				<TemplateTwo
+					data={data}
+					color={template.themeColor}
+				>
 					{children}
 				</TemplateTwo>
 			);

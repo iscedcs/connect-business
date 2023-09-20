@@ -9,7 +9,7 @@ export default function SearchBar({
 }: SearchBarProps) {
 	const { data: session } = useSession();
 	const role = session?.user.role;
-	console.log(session);
+	// console.log(session);
 	return (
 		<div className='flex items-center gap-4 justify-between lg:justify-end w-full'>
 			{showAddEmployee && role === 'admin' && (
@@ -62,6 +62,7 @@ export default function SearchBar({
 								strokeLinejoin='round'
 							/>
 						</svg>
+						<div className='sr-only'>Ok Button</div>
 					</button>
 				</div>
 			</div>

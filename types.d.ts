@@ -299,8 +299,10 @@ interface TemplatesProps {
 }
 
 interface SocialIcons {
-	name: string;
-	icon: React.ReactNode;
+	type: string;
+	icon: string;
+	label: string;
+	content: string;
 }
 
 interface Link {
@@ -460,15 +462,11 @@ interface ProfileP {
 }
 
 interface ServiceP {
-	id: string;
 	service_id: string;
-	business_id?: string;
 	title: string;
 	description: string;
 	image: string;
 	link?: string;
-	createdAt?: string;
-	updatedAt?: string;
 }
 interface AllServicesP {
 	services: ServiceP[];
@@ -485,10 +483,16 @@ interface ImageP {
 }
 
 interface FeatureP {
-	type: string;
-	icon: string;
-	label: string;
+	business_id?: string;
 	content: string;
+	createdAt?: string;
+	feature_id?: string;
+	icon: string;
+	id?: number;
+	label: string;
+	position?: string;
+	status?: string;
+	type: string;
 }
 interface Error {
 	message: string;
@@ -556,13 +560,13 @@ interface CardFeatureI {
 }
 
 interface CardImageI {
+	business_id: string;
+	createdAt: string;
 	id: number;
 	image_id: string;
-	business_id: string;
 	name: string;
-	url: string;
-	createdAt: string;
 	updatedAt: string;
+	url: string;
 }
 
 interface CardsCardI {
@@ -600,17 +604,15 @@ interface CardFieldI {
 }
 
 interface CardServiceI {
-	id: string;
-	card_id: string;
-	service_name: string;
-	service_image: string;
-	service_description: string;
-	enable_enquiry: string;
-	status: string;
+	business_id: string;
 	created_at: string;
-	updated_at: string;
-	phone: string;
-	link: string;
+	description: string;
+	id: string;
+	image: string;
+	link?: string;
+	service_id: string;
+	title: string;
+	updatedAt: string;
 }
 
 interface UserI {
@@ -630,8 +632,8 @@ interface UserI {
 	phone: string;
 	role: string;
 	gender: string;
-	waitlist: string;
-	deleted: string;
+	waitlist: boolean;
+	deleted: boolean;
 	createdAt: string;
 	updatedAt: string;
 }
@@ -644,48 +646,42 @@ interface CardI {
 }
 
 interface BusinessI {
-	id: number;
+	base_image?: string;
 	business_id: string;
-	name: string;
-	email: string;
-	type: string;
-	phone: string;
-	address: string;
-	website: string;
-	tax_id: string;
+	createdAt: string;
+	deleted: boolean;
 	description: string;
 	details: string;
-	base_image: string;
-	deleted: string;
-	createdAt: string;
-	updatedAt: string;
-	settings: string;
-	services: CardServiceI[];
+	email: string;
 	features: SocialFieldI[];
+	id: number;
 	images: CardImageI[];
+	name: string;
+	phone: string;
+	services: CardServiceI[];
+	settings: string;
+	tax_id: string;
+	updatedAt: string;
+	website: string;
 }
 
 interface CardFullDataI {
 	business: BusinessI;
-	card: CardI;
 	user: UserI;
 }
 
 type SocialFieldI = {
-	id: number | string;
-	feature_id?: string;
 	business_id?: string;
-	type?: string;
-	icon?: string;
-	label: string;
 	content?: string;
+	createdAt?: string;
+	feature_id?: string;
+	icon?: string;
+	id: number | string;
+	label: string;
 	position?: string;
 	status?: string;
-	createdAt?: string;
+	type?: string;
 	updatedAt?: string;
-	card_id?: string;
-	created_at?: string;
-	updated_at?: string;
 };
 
 type OutputObject = Record<string, SocialFieldI[]>;

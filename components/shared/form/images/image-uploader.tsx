@@ -43,7 +43,7 @@ const MultipleImagesUploader: React.FC<MultipleImagesUploaderProps> = (
 
 		for (const inputImage of images) {
 			if (inputImage.size > maxAllowedSize) {
-				console.log('Image size must not be larger than 10MB');
+				// console.log('Image size must not be larger than 10MB');
 				continue;
 			}
 
@@ -55,13 +55,13 @@ const MultipleImagesUploader: React.FC<MultipleImagesUploaderProps> = (
 
 			const response = await uploadProfileImage(formData);
 			const singleImage: ImageP = response.data;
-			console.log('Single Image.....', singleImage);
+			// console.log('Single Image.....', singleImage);
 
 			if (response?.success === 'true') {
 				uploadedImages.push(singleImage);
-				console.log('Uploaded successfully');
+				// console.log('Uploaded successfully');
 			} else {
-				console.log('Unable to upload file');
+				// console.log('Unable to upload file');
 			}
 		}
 
@@ -102,7 +102,7 @@ const MultipleImagesUploader: React.FC<MultipleImagesUploaderProps> = (
 			const newImageUrls = compressedImages.map((compressedImage) =>
 				URL.createObjectURL(compressedImage)
 			);
-			console.log(newImageUrls);
+			// console.log(newImageUrls);
 			setImagePreviews((prevImagePreviews) => [
 				...prevImagePreviews,
 				...newImageUrls,
@@ -112,7 +112,7 @@ const MultipleImagesUploader: React.FC<MultipleImagesUploaderProps> = (
 			setIsLoading(false);
 		} else {
 			setIsLoading(false);
-			console.log('Unable to upload images');
+			// console.log('Unable to upload images');
 		}
 	};
 
@@ -173,6 +173,7 @@ const MultipleImagesUploader: React.FC<MultipleImagesUploaderProps> = (
 					ref={hiddenFileInput}
 					type='file'
 					onChange={handleImageSelection}
+					placeholder='image uploader'
 					accept='image/*'
 					className='hidden'
 					disabled={isLoading}

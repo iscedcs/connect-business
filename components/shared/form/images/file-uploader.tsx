@@ -16,7 +16,7 @@ interface FileUploaderProps {
 }
 
 const FileUploader: React.FC<FileUploaderProps> = (props) => {
-	console.log(props.image);
+	// console.log(props.image);
 	const [image, setImage] = useState<string>(props.image || '');
 	const [name, setName] = useState<string>('');
 	const [folder] = useState<string>(props.folder || 'unknown');
@@ -57,9 +57,9 @@ const FileUploader: React.FC<FileUploaderProps> = (props) => {
 					const maxAllowedSize = 10 * 1024 * 1024;
 
 					if (compressedImage.size > maxAllowedSize) {
-						console.log(
-							'Image size must not be larger than 10MB'
-						);
+						// console.log(
+						// 	'Image size must not be larger than 10MB'
+						// );
 						input.value = '';
 					} else {
 						const formData = new FormData();
@@ -78,18 +78,18 @@ const FileUploader: React.FC<FileUploaderProps> = (props) => {
 							setImage(newImage.url);
 							setName(newImage.name);
 							props.handleFile(newImage);
-							console.log('Uploaded successfully');
+							// console.log('Uploaded successfully');
 						} else {
-							console.log('Unable to upload file');
+							// console.log('Unable to upload file');
 						}
 					}
 				},
 				error: (err) => {
-					console.log('Image compression error:', err);
+					// console.log('Image compression error:', err);
 				},
 			});
 		} else {
-			console.log('Unable to upload image');
+			// console.log('Unable to upload image');
 		}
 	};
 	const shapes =
@@ -146,6 +146,7 @@ const FileUploader: React.FC<FileUploaderProps> = (props) => {
 			<input
 				ref={hiddenFileInput}
 				type='file'
+				placeholder='Image'
 				onChange={handleChange}
 				accept='image/*'
 				className='hidden'

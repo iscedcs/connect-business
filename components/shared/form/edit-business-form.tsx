@@ -54,12 +54,12 @@ const EditBusinessForm = ({
 					type: 'error',
 					message: 'Could not Save Changes',
 				});
-				console.log(response);
+				// console.log(response);
 				setIsLoading(false);
 				return null;
 			}
 		} catch (error) {
-			console.log(error);
+			// console.log(error);
 		}
 	};
 
@@ -70,7 +70,7 @@ const EditBusinessForm = ({
 	};
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		console.log(formData);
+		// console.log(formData);
 		const { name, value } = e.target;
 		setFormData((prevFormData) => ({
 			...prevFormData,

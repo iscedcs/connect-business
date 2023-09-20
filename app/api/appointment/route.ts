@@ -48,7 +48,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
 	};
 	try {
 		const url = API + URLS.business.appointments.all;
-		console.log(accessToken);
+		// console.log(accessToken);
 
 		const response = await fetch(url, {
 			method: 'GET',
@@ -57,11 +57,11 @@ export async function GET(req: NextRequest, res: NextResponse) {
 		});
 
 		if (response.status !== 200) {
-			console.log(NextResponse.json(response));
+			// console.log(NextResponse.json(response));
 			throw new Error('Something Went wrong');
 		} else {
 			const serverData = await response.json();
-			console.log(serverData);
+			// console.log(serverData);
 			return NextResponse.json(serverData);
 		}
 	} catch (error: any) {

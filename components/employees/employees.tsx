@@ -70,7 +70,7 @@ export default function Employees({
 
 	const handleDelete = async (id: string) => {
 		setDeleteIsLoading(true);
-		console.log(id);
+		// console.log(id);
 		try {
 			const response = await fetch(`/api/delete-staff/${id}`, {
 				method: 'DELETE',
@@ -82,17 +82,17 @@ export default function Employees({
 				setDeleteIsLoading(false);
 				setprofileModalOpen(false);
 				setDeleteSuccess(true);
-				console.log(response);
+				// console.log(response);
 				setprofileDeleteOpen(false);
 				return NextResponse.json(response);
 			} else {
-				console.log('something went wrong');
+				// console.log('something went wrong');
 				setDeleteIsLoading(false);
 				// setprofileModalOpen(false);
 				return null;
 			}
 		} catch (error) {
-			console.log(error);
+			// console.log(error);
 			return NextResponse.json(error);
 		}
 	};
@@ -115,12 +115,12 @@ export default function Employees({
 				// window.location.reload();
 				return NextResponse.json(response);
 			} else {
-				console.log('something went wrong');
+				// console.log('something went wrong');
 				setprofileModalOpen(false);
 				return null;
 			}
 		} catch (error) {
-			console.log(error);
+			// console.log(error);
 		}
 	};
 
@@ -350,9 +350,9 @@ export default function Employees({
 												}
 												variant='danger'
 												onClick={() => {
-													console.log(
-														selectedEmployee.member_id
-													);
+													// console.log(
+													// 	selectedEmployee.member_id
+													// );
 													handleDelete(
 														selectedEmployee.member_id!
 													);

@@ -15,7 +15,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
 		gender: '',
 		...body,
 	};
-	console.log(modifiedBody);
+	// console.log(modifiedBody);
 
 	const headers = {
 		'Content-Type': 'application/json',
@@ -35,18 +35,18 @@ export async function POST(req: NextRequest, res: NextResponse) {
 		const serverData = await response.json();
 
 		if (response.ok) {
-			console.log(serverData);
+			// console.log(serverData);
 			return NextResponse.json(serverData);
 		} else {
 			const errorMessage =
 				serverData.errors[0].message ||
 				serverData.message ||
 				'Unknown Error';
-			console.log(errorMessage);
+			// console.log(errorMessage);
 			throw new Error(errorMessage);
 		}
 	} catch (error) {
-		console.log(error);
+		// console.log(error);
 		return NextResponse.json(
 			{ error: 'Internal Server Error' },
 			{ status: 500 }
@@ -65,7 +65,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
 	};
 	try {
 		const url = API + URLS.business.team.create;
-		console.log(accessToken);
+		// console.log(accessToken);
 
 		const response = await fetch(url, {
 			method: 'GET',
@@ -74,7 +74,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
 		});
 
 		if (response.status !== 200) {
-			console.log(NextResponse.json(response));
+			// console.log(NextResponse.json(response));
 			throw new Error('Something Went wrong');
 		} else {
 			const serverData = await response.json();

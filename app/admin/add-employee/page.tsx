@@ -51,7 +51,7 @@ const AddEmployee = () => {
 				if (!res.ok) {
 					setErrorMessage(true);
 					const fullRes = await res.json();
-					console.log(fullRes);
+					// console.log(fullRes);
 					return res.status;
 				} else {
 					setEmployeeAdded(true);
